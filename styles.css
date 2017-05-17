@@ -8,7 +8,7 @@ body {
 h1 {
 	text-align: center;
 	color: #333;
-	font-size:6em;
+	font-size:3em;
 }
  input {
 	font-size:5em;
@@ -17,8 +17,8 @@ h1 {
 	
 }
 #img {
-    height: 250px; 
-    width: 250px; 
+    height: 50px; 
+    width: 50px; 
     
 }
 
@@ -40,7 +40,7 @@ ul li {
 	border-right:1px solid #CCC
     list-style-position:inside;
     overflow:hidden;
-    font-size: 50px;
+    font-size: 1em;
     line-height: 60px;
     list-style-type:none;
 	
