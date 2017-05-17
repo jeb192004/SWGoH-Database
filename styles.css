@@ -1,0 +1,48 @@
+body {
+	font-family: "calibri";
+    background: #FFF;
+    
+    padding-top: 16px;
+    color: #333;
+}
+h1 {
+	text-align: center;
+	color: #333;
+	font-size:6em;
+}
+ input {
+	font-size:5em;
+	color: #333;
+	margin-left:5em;
+	
+}
+#img {
+    height: 250px; 
+    width: 250px; 
+    
+}
+
+ul {
+    
+    padding:10px;
+	text-align:center;
+	color:#FFF;
+
+	
+}
+
+ul li {
+    background: #219AFF;
+    padding:5px 0 0 5px;
+    margin:2px 0;
+    border-bottom:1px solid #CCC;
+	border-left:1px solid #CCC;
+	border-right:1px solid #CCC
+    list-style-position:inside;
+    overflow:hidden;
+    font-size: 50px;
+    line-height: 60px;
+    list-style-type:none;
+	
+}
+
