@@ -31,7 +31,7 @@ function contactHtmlFromObject(toons){
       html += '<p><div>'
 	 	   + '<img id= "img" src="'+toons.photoUrl+'"alt="enter"/>'
 	  	   + '</div>'+'</p>';
-	html += '<p>'+toons.catagory+'</p>;
+	html += '<p>'+toons.catagory+'</p>';
                 html += '<p>"added by: " +toons.userId
                 +'</p>';
     html += '</div>';
