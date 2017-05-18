@@ -15,7 +15,12 @@ contactsRef.on("child_added", function(snap) {
 
 });
       
-
+var mylist = $('.list-group');
+var listitems = mylist.children('li').get();
+listitems.sort(function(a, b) {
+   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+});
+$.each(listitems, function(idx, itm) { mylist.append(itm); });
 
 
 });
@@ -38,3 +43,5 @@ function contactHtmlFromObject(toons){
   
   return html;
 }
+
+
