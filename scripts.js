@@ -30,7 +30,7 @@ function contactHtmlFromObject(toons){
   console.log( toons );
   var html = '';
   html += '<li class="list-group-item contact">';
-    html += '<div id="toonlist">';
+    html += '<div class="toonlist">';
       
       html += '<p>'+'<div>'
 	 	   + '<img id= "img" src="'+toons.photoUrl+'"alt="enter"/>'

@@ -10,8 +10,8 @@ h1 {
 }
  
 #img {
-    height: 150px; 
-    width: 150px; 
+    height: 80px; 
+    width: 80px; 
     border-radius: 50%;
 	float:left;
 	
@@ -37,7 +37,7 @@ ul li {
     list-style-position:inside;
     overflow:hidden;
     font-size: 1em;
-    line-height: 40px;
+    line-height: 10px;
 	
 	
 }
