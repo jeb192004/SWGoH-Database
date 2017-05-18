@@ -7,7 +7,7 @@ contactsRef.on("child_added", function(snap) {
   console.log("added", snap.key(), snap.val());
   document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(snap.val());
-	$(".list li").on("click", function() {
+	$(".list-group li").on("click", function() {
     //alert($(this).find("p.lead").html());
 	var toonName = $(this).find("p.lead").html();
 	window.location = 'toonInfo.html';
@@ -30,12 +30,12 @@ function contactHtmlFromObject(toons){
   console.log( toons );
   var html = '';
   html += '<li class="list-group-item contact">';
-    html += '<div>';
-      html += '<p class="lead">'+toons.name+'</p>';
+    html += '<div id="toonlist">';
       
       html += '<p>'+'<div>'
 	 	   + '<img id= "img" src="'+toons.photoUrl+'"alt="enter"/>'
 	  	   + '</div>'+'</p>';
+		   html += '<p class="lead">'+toons.name+'</p>'
 	html += '<p>'+toons.catagory+'</p>';
                 html += '<p>'+"added by: " +toons.userId+'</p>';
     html += '</div>';

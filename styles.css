@@ -1,8 +1,6 @@
 body {
 	font-family: "calibri";
     background: #FFF;
-    
-    padding-top: 10px;
     color: #333;
 }
 h1 {
@@ -10,22 +8,21 @@ h1 {
 	color: #333;
 	font-size:3em;
 }
- input {
-	font-size:5em;
-	color: #333;
-	margin-left:5em;
-	
-}
+ 
 #img {
     height: 150px; 
     width: 150px; 
     border-radius: 50%;
+	float:left;
+	
 }
 
 ul {
     
-    padding:5px;
-	text-align:center;
+    padding-left:5px;
+	padding-right:5px;
+	
+	
 	color:#FFF;
 
 	
@@ -33,7 +30,6 @@ ul {
 
 ul li {
     background: #219AFF;
-    padding:5px 0 0 0px;
     margin:2px 0;
     border-bottom:1px solid #CCC;
 	border-left:1px solid #CCC;
@@ -42,7 +38,7 @@ ul li {
     overflow:hidden;
     font-size: 1em;
     line-height: 40px;
-    list-style-type:none;
+	
 	
 }
 
