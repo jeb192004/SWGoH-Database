@@ -2,7 +2,7 @@ body {
 	font-family: "calibri";
     background: #FFF;
     
-    padding-top: 16px;
+    padding-top: 10px;
     color: #333;
 }
 h1 {
@@ -17,8 +17,8 @@ h1 {
 	
 }
 #img {
-    height: 50px; 
-    width: 50px; 
+    height: 150px; 
+    width: 150px; 
     
 }
 
