@@ -27,10 +27,10 @@ function contactHtmlFromObject(toons){
   html += '<li class="list-group-item contact">';
     html += '<div>';
       html += '<p class="lead">'+toons.name+'</p>';
-      html += '<p>'+toons.catagory+'</p>';
       html += '<p><div>'
 	 	   + '<img id= "img" src="'+toons.photoUrl+'"alt="enter"/>'
-	  	   + '</div>'
+	  	   + '</div>'</p>';
+      html += '<p>'+toons.catagory
                 +"added by: " + toons.userId
                 +'</p>';
     html += '</div>';
