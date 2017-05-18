@@ -14,7 +14,8 @@ h1 {
     width: 80px; 
     border-radius: 50%;
 	float:left;
-	
+	margin-left:10px;
+	margin-right:10px;
 }
 
 ul {
@@ -38,7 +39,7 @@ ul li {
     overflow:hidden;
     font-size: 1em;
     line-height: 10px;
-	
+	list-style-type:none;
 	
 }
 
