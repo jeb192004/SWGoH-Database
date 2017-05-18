@@ -38,5 +38,3 @@ function contactHtmlFromObject(toons){
   
   return html;
 }
- 
-
