@@ -24,7 +24,7 @@ h1 {
 
 ul {
     
-    padding:10px;
+    padding:5px;
 	text-align:center;
 	color:#FFF;
 
@@ -33,7 +33,7 @@ ul {
 
 ul li {
     background: #219AFF;
-    padding:5px 0 0 5px;
+    padding:5px 0 0 0px;
     margin:2px 0;
     border-bottom:1px solid #CCC;
 	border-left:1px solid #CCC;
@@ -41,7 +41,7 @@ ul li {
     list-style-position:inside;
     overflow:hidden;
     font-size: 1em;
-    line-height: 60px;
+    line-height: 40px;
     list-style-type:none;
 	
 }
