@@ -26,7 +26,7 @@ function contactHtmlFromObject(toons){
   var html = '';
   html += '<li class="list-group-item contact">';
     html += '<div>';
-      html += ' class="lead">'+toons.name;
+      html += '<p class="lead">'+toons.name;
       html += toons.catagory;
       html += '<div>'
 	 	   + '<img id= "img" src="'+toons.photoUrl+'"alt="enter"/>'
