@@ -7,20 +7,48 @@
 	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 	<title>SWGoH Database</title>
 	<!-- Latest compiled and minified CSS -->
-	<link href="styles.css" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href="toonInfoStyles.css" rel="stylesheet">
   </head>
-  <body>
+  <body id="toon-info">
+	<div data-role="header">
+	  <h1 id="header">SWGoH Database pg.2</h1>
+	  <div data-role="navbar">
+		<ul>
+		  <li><a id="home" href="#anylink">Home</a></li>
+		  <li><a href="#anylink">Page Two</a></li>
+		  <li><a href="#anylink">Search</a></li>
+		</ul>
+	  </div>
+	</div>
 	
-	<h1 id="header">SWGoH Database pg.2</h1>
-	<hr/>
+	<table id="table1" style="width:100%">
+	  <tr>
+		<th>Power</th>
+		<th>Speed</th> 
+		<th>Health</th>
+	  </tr>
+	</table>
+	<table id="table2" style="width:100%" >
+	  <tr>
+		<td id="power">Jill</td>
+		<td id="speed">Smith</td> 
+		<td id="health">50</td>
+	  </tr>
+	  
+	</table>
 
 	
-
-
-
+	<div id="container" class="list">
+	  <ul id="toons" class="list-group">
+		<!-- Conatct Object li.list-group-item.contact will be added here by js -->
+	  </ul>
+	</div>  
+		  
+		  
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<!-- Latest compiled and minified Bootstrap -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<!-- Include Firebase Library -->
