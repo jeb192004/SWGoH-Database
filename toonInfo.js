@@ -5,7 +5,7 @@ var contactsRef = dbRef.child(toon);
 
 
 document.getElementById("header").innerHTML = sessionStorage.getItem('toon');
-window.sessionStorage.removeItem('toon');
+
 
 //load older conatcts as well as any newly added one...
 contactsRef.on("value", function(snap) {
