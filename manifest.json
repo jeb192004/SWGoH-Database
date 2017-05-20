@@ -6,8 +6,20 @@
       "src": "img/overlay_icon.png",
       "type": "image/png",
       "sizes": "48x48"
-    },
+    }, {
+    "src": "img/overlay_icon.png",
+    "type": "image/png",
+    "sizes": "152x152"
+  }, {
+    "src": "img/overlay_icon.png",
+    "type": "image/png",
+    "sizes": "144x144"
+  }, {
+    "src": "img/overlay_icon.png",
+    "type": "image/png",
+    "sizes": "192x192"
+  }
     
   ],
-  "start_url": "index.html?launcher=true"
+  "start_url": "https://jeb192004.github.io/SWGoH-Database/index.html"
 }
