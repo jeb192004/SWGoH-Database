@@ -8,7 +8,7 @@ document.getElementById("header").innerHTML = sessionStorage.getItem('toon');
 
 
 //load older conatcts as well as any newly added one...
-contactsRef.on("value", function(snap) {
+contactsRef.once("value", function(snap) {
   console.log("added", snap.key(), snap.val());
   document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(snap.val());
