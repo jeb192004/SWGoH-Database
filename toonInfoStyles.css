@@ -15,14 +15,8 @@ h2{
 
 td 
 {
-    height: 50px; 
-    width:50px;
-}
-
-#table1 td 
-{
-    text-align:center; 
-    vertical-align:middle;
+    border-collapse:collapse;
+	min-width:10em;
 }
 
 

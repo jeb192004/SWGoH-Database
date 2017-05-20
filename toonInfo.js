@@ -50,23 +50,33 @@ function contactHtmlFromObject(toons){
   document.getElementById("sp1Description").innerHTML = toons.special_description;
   if (toons.special_damage === undefined) {
 	  document.getElementById("sp1Dmg").innerHTML = "";}
-	  else{document.getElementById("sp1Dmg").innerHTML = toons.special_damage;}
+	  else{document.getElementById("sp1Dmg").innerHTML = "Damage: "+toons.special_damage;}
   if (toons.cooldown_special === undefined) {
 	  document.getElementById("sp1cooldown").innerHTML = "";}
 	  else{document.getElementById("sp1cooldown").innerHTML = toons.cooldown_special+" turn cooldown";}
   document.getElementById("sp1AbilImg").innerHTML = '<img src="'+toons.special1_ability_image+'"/>';
   //special 2 ability
-  document.getElementById("sp2Level").innerHTML = "Special: level " + toons.special_level_2;
-  document.getElementById("sp2Name").innerHTML = toons.special_name_2;
-  document.getElementById("sp2Img").innerHTML = '<img src="' + toons.special_url_2 + '"/>';
-  document.getElementById("sp2Description").innerHTML = toons.special_description_2;
+    if (toons.special_level_2 === undefined) {
+	  document.getElementById("sp2Level").innerHTML = "";}
+	  else{ document.getElementById("sp2Level").innerHTML = "Special: level " + toons.special_level_2;}
+      if (toons.special_name_2 === undefined) {
+	  document.getElementById("sp2Name").innerHTML = "";}
+	  else{document.getElementById("sp2Name").innerHTML = toons.special_name_2;}
+     if (toons.special_url_2 === undefined) {
+	  document.getElementById("sp2Img").innerHTML = "";}
+	  else{document.getElementById("sp2Img").innerHTML = '<img src="' + toons.special_url_2 + '"/>';}
+     if (toons.special_description_2 === undefined) {
+	  document.getElementById("sp2Description").innerHTML = "";}
+	  else{document.getElementById("sp2Description").innerHTML = toons.special_description_2;}
    if (toons.special_damage_2 === undefined) {
 	  document.getElementById("sp2Dmg").innerHTML = "";}
-	  else{document.getElementById("sp2Dmg").innerHTML = toons.special_damage_2;}
+	  else{document.getElementById("sp2Dmg").innerHTML = "Damage: "+ toons.special_damage_2;}
   if (toons.cooldown_special_2 === undefined) {
 	  document.getElementById("sp2cooldown").innerHTML = "";}
 	  else{document.getElementById("sp2cooldown").innerHTML = toons.cooldown_special_2+" turn cooldown";}
-  document.getElementById("sp2AbilImg").innerHTML = '<img src="'+toons.special2_ability_image+'"/>';
+     if (toons.special2_ability_image === undefined) {
+	  document.getElementById("sp2AbilImg").innerHTML = "";}
+	  else{document.getElementById("sp2AbilImg").innerHTML = '<img src="'+toons.special2_ability_image+'"/>';}
   //special 3 ability
   if (toons.special_level_3 === undefined) {
 	  document.getElementById("sp3Level").innerHTML = "";}
@@ -86,7 +96,9 @@ function contactHtmlFromObject(toons){
   if (toons.cooldown_special_3 === undefined) {
 	  document.getElementById("sp3cooldown").innerHTML = "";}
 	  else{document.getElementById("sp3cooldown").innerHTML = toons.cooldown_special_3+" turn cooldown";}
-document.getElementById("sp3AbilImg").innerHTML = '<img src="'+toons.special3_ability_image+'"/>';
+   if (toons.special3_ability_image === undefined) {
+	  document.getElementById("sp3AbilImg").innerHTML = "";}
+	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="'+toons.special3_ability_image+'"/>';
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel").innerHTML = "";}
