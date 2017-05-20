@@ -1,3 +1,4 @@
+var $load = $('<div class="loading">Loading...</div>').appendTo('body');
 //create firebase reference
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var contactsRef = dbRef.child('toons');
@@ -12,7 +13,7 @@ contactsRef.on("child_added", function(snap) {
 	var toonName = $(this).find("p.lead").html();
 	window.location = 'toonInfo.html';
   window.localStorage.setItem('toon',toonName);
-
+ $load.hide()
 });
       
 var mylist = $('.list-group');
