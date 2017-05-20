@@ -11,7 +11,7 @@ contactsRef.on("child_added", function(snap) {
     //alert($(this).find("p.lead").html());
 	var toonName = $(this).find("p.lead").html();
 	window.location = 'toonInfo.html';
-  window.sessionStorage.setItem('toon',toonName);
+  window.localStorage.setItem('toon',toonName);
 
 });
       
