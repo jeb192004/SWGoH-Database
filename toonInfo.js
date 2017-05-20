@@ -1,7 +1,7 @@
 //create firebase reference
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var toon = sessionStorage.getItem('toon');
-var contactsRef = dbRef.child('Bistan');
+var contactsRef = dbRef.child(toon);
 
 
 document.getElementById("header").innerHTML = sessionStorage.getItem('toon');
