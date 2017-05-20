@@ -3,7 +3,7 @@
   "name": "SWGoH Database",
   "icons": [
     {
-      "src": "img/swgoh.png",
+      "src": "img/overlay_icon.png",
       "type": "image/png",
       "sizes": "48x48"
     },
