@@ -98,7 +98,7 @@ function contactHtmlFromObject(toons){
 	  else{document.getElementById("sp3cooldown").innerHTML = toons.cooldown_special_3+" turn cooldown";}
    if (toons.special3_ability_image === undefined) {
 	  document.getElementById("sp3AbilImg").innerHTML = "";}
-	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="'+toons.special3_ability_image+'"/>';
+	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="'+toons.special3_ability_image+'"/>';}
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel").innerHTML = "";}
