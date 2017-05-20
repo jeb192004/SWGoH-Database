@@ -1,7 +1,8 @@
 //create firebase reference
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
-var contactsRef = dbRef.child('Bistan');
 var toon = sessionStorage.getItem('toon');
+var contactsRef = dbRef.child(toon);
+
 
 document.getElementById("header").innerHTML = sessionStorage.getItem('toon');
 window.sessionStorage.removeItem('toon');
@@ -26,6 +27,8 @@ for (var i = 0; i < links.length; i++) {
 function contactHtmlFromObject(toons){
   console.log( toons );
   
+  
+  var y = document.getElementById("toon-description").innerHTML = toons.toon_description;
   var y = document.getElementById("power").innerHTML = toons.power;
   var y = document.getElementById("speed").innerHTML = toons.speed;
   var y = document.getElementById("health").innerHTML = toons.health;
