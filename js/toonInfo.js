@@ -1,3 +1,4 @@
+var $load = $('<div class="loading">Loading...</div>').appendTo('body');
 //create firebase reference
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var toon = localStorage.getItem('toon');
@@ -14,7 +15,7 @@ contactsRef.once("value", function(snap) {
     .innerHTML += contactHtmlFromObject(snap.val());
 	
      
-    
+   $load.hide();
 
 // For each <li> inside #links
 for (var i = 0; i < links.length; i++) {
