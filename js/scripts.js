@@ -12,8 +12,9 @@ contactsRef.on("child_added", function(snap) {
     //alert($(this).find("p.lead").html());
 	var toonName = $(this).find("p.lead").html();
 	window.location = 'toonInfo.html';
-  window.localStorage.setItem('toon',toonName);
- $load.hide()
+  window.sessionStorage.setItem('toon',toonName);
+  
+ 
 });
       
 var mylist = $('.list-group');
@@ -41,8 +42,9 @@ function contactHtmlFromObject(toons){
                 html += '<p>'+"added by: " +toons.userId+'</p>';
     html += '</div>';
   html += '</li>';
-  
+  $load.hide();
   return html;
+  
 }
 
 

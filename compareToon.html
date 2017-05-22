@@ -11,53 +11,44 @@
 	<link href="css/toonInfoStyles.css" rel="stylesheet">
   </head>
   <body id="toon-info">
-	<div id="compareToonAbility">
-	  <!-- Popup Div Starts Here -->
-	  <div id="compareToonAbilityPopUp">
-		<!-- Contact Us Form -->
-		<form action="#" id="form" method="post" name="form">
-		  <img id="close" src="images/3.png" onclick ="div_hide()">
-		  <h3>Click a character who you want to compare abilities with</h3>
-		  <hr>
-		  <div id="container" class="list">
-			<ul id="toons2" class="list-group">
-			  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
-			</ul>
-		  </div>
-		 
-		</form>
-	  </div>
-	  <!-- Popup Div Ends Here -->
-	</div>
-	
 	<div data-role="header">
-	  <h1 id="header">SWGoH Database pg.2</h1>
+	  <h1 id="header">Compare Abilities</h1>
 	  <div data-role="navbar">
 		<ul>
 		  <li><a id="home" >Home</a></li>
-		  <li><a onclick="div_show()">Compare Abilities</a></li>
-		  <li><a href="#anylink">Search</a></li>
+		  <li><a href="#anylink"></a></li>
+		  <li><a href="#anylink"></a></li>
 		</ul>
 	  </div>
 	</div>
-	<div id="toonInfo">
+	<div id="compareToon">
 	  
 	  
-	  
+	  <table id="table" border=1 style="width:100%">
+	   <tr>
+		 <th id="toon1"></th> 
+		 <th id="toon2"></th>
+	   </tr>
+	 </table>
 	  
 <!--power/speed/health-->
-	<h2 id="toon-description" font-size:3em></h2>
 	<hr>
 	<table id="table1" border=1 style="width:100%">
-	  <tr>
-		<th>Power</th>
-		<th>Speed</th> 
-		<th>Health</th>
-	  </tr>
+	  
 	  <tr>
 		<td id="power"></td>
-		<td id="speed"></td> 
+		<th>Power</th> 
+		<td id="power2"></td>
+	  </tr>
+	  <tr>
+		<td id="speed"></td>
+		<th>Speed</th> 
+		<td id="speed2"></td>
+	  </tr>
+	  <tr>
 		<td id="health"></td>
+		<th>Health</th> 
+		<td id="health2"></td>
 	  </tr>
 	</table>
 <!--attacks and abilities-->
@@ -66,41 +57,65 @@
 <!--basic-->
 	  <tr>
 		<td id="basicLevel"></td>
-		<td id="basicName"></td> 
+		<td id="basicLevel2"></td> 
+	  </tr>
+	  <tr>
+		<td id="basicName"></td>
+		<td id="basicName2"></td> 
+	  </tr>
+	  <tr>
+		<td id="basicDescription"></td>
+		<td id="basicDescription2"></td>
 	  </tr>
 	<tr>
-	  <td id="basicImg"></td>
-	  <td id="basicDescription"></td>
-	</tr>
-	<tr>
 	  <td id="basicDmg"></td>
-	  <td id="basicAbilImg"></td>
+	  <td id="basicDmg2"></td>
 	</tr>
+	  <tr>
+		<td id="basicAbilImg"></td>
+		<td id="basicAbilImg2"></td>
+	  </tr>
 <!--special 1-->  
 		<tr>
 		  <td id="sp1Level"></td>
-		  <td id="sp1Name"></td> 
+		  <td id="sp1Level2"></td> 
 		</tr>
-		<tr>
-		  <td id="sp1Img"></td>
-		  <td id="sp1Description"></td>
-		</tr>
+	  <tr>
+		<td id="sp1Name"></td>
+		<td id="sp1Name2"></td> 
+	  </tr>
+	  <tr>
+		<td id="sp1Description"></td>
+		<td id="sp1Description2"></td>
+	  </tr>
 		<tr>
 		  <td>
 			<span id="sp1cooldown"></span>
 			<br>
 			<span id="sp1Dmg"></span>
 		  </td>
-		  <td id="sp1AbilImg"></td>
+		  <td>
+			<span id="sp1cooldown2"></span>
+			<br>
+			<span id="sp1Dmg2"></span>
+		  </td>
 		</tr>
+	  <tr>
+		<td id="sp1AbilImg"></td>
+		<td id="sp1AbilImg2"></td>
+	  </tr>
 <!--special 2-->
 	  <tr>
 		<td id="sp2Level"></td>
-		<td id="sp2Name"></td> 
+		<td id="sp2Level2"></td> 
 	  </tr>
 	  <tr>
-		<td id="sp2Img"></td>
+		<td id="sp2Name"></td>
+		<td id="sp2Name2"></td> 
+	  </tr>
+	  <tr>
 		<td id="sp2Description"></td>
+		<td id="sp2Description2"></td>
 	  </tr>
 	  <tr>
 		<td>
@@ -108,16 +123,28 @@
 		  <br>
 		  <span id="sp2Dmg"></span>
 		</td>
-		<td id="sp2AbilImg"></td>
+		<td>
+		  <span id="sp2cooldown2"></span>
+		  <br>
+		  <span id="sp2Dmg2"></span>
+		</td>
+	  </tr>
+	  <tr>
+	  <td id="sp2AbilImg"></td>
+	  <td id="sp2AbilImg2"></td>
 	  </tr>
 <!--special 3-->
 	  <tr>
 		<td id="sp3Level"></td>
-		<td id="sp3Name"></td> 
+		<td id="sp3Level2"></td> 
 	  </tr>
 	  <tr>
-		<td id="sp3Img"></td>
+		<td id="sp3Name"></td>
+		<td id="sp3Name2"></td> 
+	  </tr>
+	  <tr>
 		<td id="sp3Description"></td>
+		<td id="sp3Description2"></td>
 	  </tr>
 	  <tr>
 		<td>
@@ -125,46 +152,79 @@
 		  <br>
 		  <span id="sp3Dmg"></span>
 		</td>
+		<td>
+		  <span id="sp3cooldown2"></span>
+		  <br>
+		  <span id="sp3Dmg2"></span>
+		</td>
+		
+	  </tr>
+	  <tr>
 		<td id="sp3AbilImg"></td>
+		<td id="sp3AbilImg2"></td>
 	  </tr>
 <!--leader-->
 	  <tr>
 		<td id="leadLevel"></td>
-		<td id="leadName"></td> 
+		<td id="leadLevel2"></td> 
 	  </tr>
 	  <tr>
-		<td id="leadImg"></td>
+		<td id="leadName"></td>
+		<td id="leadName2"></td> 
+	  </tr>
+	  <tr>
 		<td id="leadDescription"></td>
+		<td id="leadDescription2"></td>
 	  </tr>
 	  <tr>
 		<td id="leadDmg"></td>
+		<td id="leadDmg2"></td>
+	  </tr>
+	  <tr>
 		<td id="leadAbilImg"></td>
+		<td id="leadAbilImg2"></td>
 	  </tr>
 <!--unique 1-->
 	  <tr>
 		<td id="unique1Level"></td>
-		<td id="unique1Name"></td> 
+		<td id="unique1Level2"></td> 
 	  </tr>
 	  <tr>
-		<td id="unique1Img"></td>
+		<td id="unique1Name"></td>
+		<td id="unique1Name2"></td> 
+	  </tr>
+	  <tr>
 		<td id="unique1Description"></td>
+		<td id="unique1Description2"></td>
 	  </tr>
 	  <tr>
 		<td id="unique1Dmg"></td>
+		<td id="unique1Dmg2"></td>
+	  </tr>
+	  <tr>
 		<td id="unique1AbilImg"></td>
+		<td id="unique1AbilImg2"></td>
 	  </tr>
 <!--unique 2-->
 	  <tr>
 		<td id="unique2Level"></td>
-		<td id="unique2Name"></td> 
+		<td id="unique2Level2"></td> 
 	  </tr>
 	  <tr>
-		<td id="unique2Img"></td>
+		<td id="unique2Name"></td>
+		<td id="unique2Name2"></td> 
+	  </tr>
+	  <tr>
 		<td id="unique2Description"></td>
+		<td id="unique2Description2"></td>
 	  </tr>
 	  <tr>
 		<td id="unique2Dmg"></td>
+		<td id="unique2Dmg2"></td>
+	  </tr>
+	  <tr>
 		<td id="unique2AbilImg"></td>
+		<td id="unique2AbilImg2"></td>
 	  </tr>
 	  </table>
 	
@@ -193,6 +253,6 @@
 	<!-- Include Firebase Library -->
 	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
 	<!-- Contacts Store JavaScript -->
-	<script src="js/toonInfo.js"></script>
+	<script src="js/compareToon.js"></script>
   </body>
 </html>

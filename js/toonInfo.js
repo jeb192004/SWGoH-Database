@@ -1,40 +1,20 @@
-var $load = $('<div class="loading">Loading...</div>').appendTo('body');
+
 //create firebase reference
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
-var toon = localStorage.getItem('toon');
+var toon = sessionStorage.getItem('toon');
 var contactsRef = dbRef.child(toon);
 
 
-document.getElementById("header").innerHTML = sessionStorage.getItem('toon');
+document.getElementById("header").innerHTML = toon;
 
 
 //load older conatcts as well as any newly added one...
 contactsRef.once("value", function(snap) {
   console.log("added", snap.key(), snap.val());
-  document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(snap.val());
-	
-     
-   $load.hide();
-
-// For each <li> inside #links
-for (var i = 0; i < links.length; i++) {
-  var link = links[i];
-  link.onclick = myFunction;
-}
-});
-
-$('#home').click(function(){
-    window.location = 'index.html';
-});
-
-//prepare conatct object's HTML
-function contactHtmlFromObject(toons){
-  console.log( toons );
-  
+  var toons = snap.val();
   //description-power-speed-health
   document.getElementById("toon-description").innerHTML = toons.toon_description;
-  document.getElementById("power").innerHTML = toons.power;
+     document.getElementById("power").innerHTML = toons.power;
   document.getElementById("speed").innerHTML = toons.speed;
   document.getElementById("health").innerHTML = toons.health;
   //basic ability
@@ -149,20 +129,59 @@ function contactHtmlFromObject(toons){
 	  document.getElementById("unique2AbilImg").innerHTML = "";}
 	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="'+toons.unique2_ability_image+'"/>';}
   
-  
-  
-  
-  
-  
-  return html;
-}
- var cars = document.querySelector(".list-group");
+   
 
-cars.addEventListener("click", function(e)
-{
-  //alert("Available colors: " + e.target.textHTML);
-  window.location = 'toonInfo.html';
-	
-	
+
 
 });
+
+$('#home').click(function(){
+    window.location = 'index.html';
+});
+
+
+//Function To Display Popup
+function div_show() {
+	document.getElementById('compareToonAbility').style.display = "block";
+var toon002 = dbRef.child('toons');
+
+//load older conatcts as well as any newly added one...
+toon002.on("child_added", function(snap02) {
+  console.log("added", snap02.key(), snap02.val());
+  document.querySelector('#toons2')
+    .innerHTML += contactHtmlFromObject(snap02.val());
+	$(".list-group li").on("click", function() {
+    //alert($(this).find("p.lead").html());
+	var toonName2 = $(this).find("p.lead2").html();
+	window.location = 'compareToon.html';
+  window.sessionStorage.setItem('toon1',toon);
+  window.sessionStorage.setItem('toon2',toonName2);
+  document.getElementById('compareToonAbility').style.display = "none";
+ 
+});
+      
+var mylist = $('.list-group');
+var listitems = mylist.children('li').get();
+listitems.sort(function(a, b) {
+   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+});
+$.each(listitems, function(idx, itm) { mylist.append(itm); });
+
+
+});
+
+//prepare conatct object's HTML
+function contactHtmlFromObject(toons){
+  console.log( toons );
+  var html = '';
+  html += '<li class="list-group-item contact">';
+    html += '<div class="toonlist">';
+		   html += '<p class="lead2">'+toons.name+'</p>';
+    html += '</div>';
+  html += '</li>';
+  return html;
+  
+}
+
+}
+
