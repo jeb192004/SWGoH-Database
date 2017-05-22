@@ -21,7 +21,7 @@ toon1.once("value", function(snap) {
   
   document.getElementById("basicDescription").innerHTML = toons.basic_description;
   document.getElementById("basicDmg").innerHTML = "Damage: " + toons.basic_damage;
-  document.getElementById("basicAbilImg").innerHTML = '<img src="'+toons.basic_ability_image+'"/>';
+  document.getElementById("basicAbilImg").innerHTML = '<img src="img/'+toons.basic_ability_image+'.jpg" width="25px"/>';
   //special 1 ability
   document.getElementById("sp1Level").innerHTML = "Special: level " + toons.special_level;
   document.getElementById("sp1Name").innerHTML = toons.special_name;
@@ -33,7 +33,7 @@ toon1.once("value", function(snap) {
   if (toons.cooldown_special === undefined) {
 	  document.getElementById("sp1cooldown").innerHTML = "";}
 	  else{document.getElementById("sp1cooldown").innerHTML = toons.cooldown_special+" turn cooldown";}
-  document.getElementById("sp1AbilImg").innerHTML = '<img src="'+toons.special1_ability_image+'"/>';
+  document.getElementById("sp1AbilImg").innerHTML = '<img src="img/'+toons.special1_ability_image+'.jpg" width="25px"/>';
   //special 2 ability
     if (toons.special_level_2 === undefined) {
 	  document.getElementById("sp2Level").innerHTML = "";}
@@ -53,7 +53,7 @@ toon1.once("value", function(snap) {
 	  else{document.getElementById("sp2cooldown").innerHTML = toons.cooldown_special_2+" turn cooldown";}
      if (toons.special2_ability_image === undefined) {
 	  document.getElementById("sp2AbilImg").innerHTML = "";}
-	  else{document.getElementById("sp2AbilImg").innerHTML = '<img src="'+toons.special2_ability_image+'"/>';}
+	  else{document.getElementById("sp2AbilImg").innerHTML = '<img src="img/'+toons.special2_ability_image+'.jpg" width="25px"/>';}
   //special 3 ability
   if (toons.special_level_3 === undefined) {
 	  document.getElementById("sp3Level").innerHTML = "";}
@@ -73,7 +73,7 @@ toon1.once("value", function(snap) {
 	  else{document.getElementById("sp3cooldown").innerHTML = toons.cooldown_special_3+" turn cooldown";}
    if (toons.special3_ability_image === undefined) {
 	  document.getElementById("sp3AbilImg").innerHTML = "";}
-	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="'+toons.special3_ability_image+'"/>';}
+	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="img/'+toons.special3_ability_image+'.jpg" width="25px"/>';}
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel").innerHTML = "";}
@@ -87,7 +87,7 @@ toon1.once("value", function(snap) {
 	  else{ document.getElementById("leadDescription").innerHTML = toons.leader_description;}
    if (toons.leader_ability_image === undefined) {
 	  document.getElementById("leadAbilImg").innerHTML = "";}
-	  else{ document.getElementById("leadAbilImg").innerHTML = '<img src="'+toons.leader_ability_image+'"/>';}
+	  else{ document.getElementById("leadAbilImg").innerHTML = '<img src="img/'+toons.leader_ability_image+'.jpg" width="25px"/>';}
   //unique 1 ability
   if (toons.unique_level === undefined) {
 	  document.getElementById("unique1Level").innerHTML = "";}
@@ -101,7 +101,7 @@ toon1.once("value", function(snap) {
 	  else{ document.getElementById("unique1Description").innerHTML = toons.unique_description;}
    if (toons.unique1_ability_image === undefined) {
 	  document.getElementById("unique1AbilImg").innerHTML = "";}
-	  else{ document.getElementById("unique1AbilImg").innerHTML = '<img src="'+toons.unique1_ability_image+'"/>';}
+	  else{ document.getElementById("unique1AbilImg").innerHTML = '<img src="img/'+toons.unique1_ability_image+'.jpg" width="25px"/>';}
   //unique 2 ability
    if (toons.unique_level_2 === undefined) {
 	  document.getElementById("unique2Level").innerHTML = "";}
@@ -115,7 +115,7 @@ toon1.once("value", function(snap) {
 	  else{document.getElementById("unique2Description").innerHTML = toons.unique_description_2;}
    if (toons.unique2_ability_image === undefined) {
 	  document.getElementById("unique2AbilImg").innerHTML = "";}
-	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="'+toons.unique2_ability_image+'"/>';}
+	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
  });
 //home button
 $('#home').click(function(){
@@ -142,7 +142,7 @@ toon2.once("value", function(snap) {
   
   document.getElementById("basicDescription2").innerHTML = toons.basic_description;
   document.getElementById("basicDmg2").innerHTML = "Damage: " + toons.basic_damage;
-  document.getElementById("basicAbilImg2").innerHTML = '<img src="'+toons.basic_ability_image+'"/>';
+  document.getElementById("basicAbilImg2").innerHTML = '<img src="img/'+toons.basic_ability_image+'.jpg" width="25px"/>';
   //special 1 ability
   document.getElementById("sp1Level2").innerHTML = "Special: level " + toons.special_level;
   document.getElementById("sp1Name2").innerHTML = toons.special_name;
@@ -154,7 +154,7 @@ toon2.once("value", function(snap) {
   if (toons.cooldown_special === undefined) {
 	  document.getElementById("sp1cooldown2").innerHTML = "";}
 	  else{document.getElementById("sp1cooldown2").innerHTML = toons.cooldown_special+" turn cooldown";}
-  document.getElementById("sp1AbilImg2").innerHTML = '<img src="'+toons.special1_ability_image+'"/>';
+  document.getElementById("sp1AbilImg2").innerHTML = '<img src="img/'+toons.special1_ability_image+'.jpg" width="25px"/>';
   //special 2 ability
     if (toons.special_level_2 === undefined) {
 	  document.getElementById("sp2Level2").innerHTML = "";}
@@ -174,7 +174,7 @@ toon2.once("value", function(snap) {
 	  else{document.getElementById("sp2cooldown2").innerHTML = toons.cooldown_special_2+" turn cooldown";}
      if (toons.special2_ability_image === undefined) {
 	  document.getElementById("sp2AbilImg2").innerHTML = "";}
-	  else{document.getElementById("sp2AbilImg2").innerHTML = '<img src="'+toons.special2_ability_image+'"/>';}
+	  else{document.getElementById("sp2AbilImg2").innerHTML = '<img src="img/'+toons.special2_ability_image+'.jpg" width="25px"/>';}
   //special 3 ability
   if (toons.special_level_3 === undefined) {
 	  document.getElementById("sp3Level2").innerHTML = "";}
@@ -194,7 +194,7 @@ toon2.once("value", function(snap) {
 	  else{document.getElementById("sp3cooldown2").innerHTML = toons.cooldown_special_3+" turn cooldown";}
    if (toons.special3_ability_image === undefined) {
 	  document.getElementById("sp3AbilImg2").innerHTML = "";}
-	  else{ document.getElementById("sp3AbilImg2").innerHTML = '<img src="'+toons.special3_ability_image+'"/>';}
+	  else{ document.getElementById("sp3AbilImg2").innerHTML = '<img src="img/'+toons.special3_ability_image+'.jpg" width="25px"/>';}
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel2").innerHTML = "";}
@@ -208,7 +208,7 @@ toon2.once("value", function(snap) {
 	  else{ document.getElementById("leadDescription2").innerHTML = toons.leader_description;}
    if (toons.leader_ability_image === undefined) {
 	  document.getElementById("leadAbilImg2").innerHTML = "";}
-	  else{ document.getElementById("leadAbilImg2").innerHTML = '<img src="'+toons.leader_ability_image+'"/>';}
+	  else{ document.getElementById("leadAbilImg2").innerHTML = '<img src="img/'+toons.leader_ability_image+'.jpg" width="25px"/>';}
   //unique 1 ability
   if (toons.unique_level === undefined) {
 	  document.getElementById("unique1Level2").innerHTML = "";}
@@ -222,7 +222,7 @@ toon2.once("value", function(snap) {
 	  else{ document.getElementById("unique1Description2").innerHTML = toons.unique_description;}
    if (toons.unique1_ability_image === undefined) {
 	  document.getElementById("unique1AbilImg2").innerHTML = "";}
-	  else{ document.getElementById("unique1AbilImg2").innerHTML = '<img src="'+toons.unique1_ability_image+'"/>';}
+	  else{ document.getElementById("unique1AbilImg2").innerHTML = '<img src="img/'+toons.unique1_ability_image+'.jpg" width="25px"/>';}
   //unique 2 ability
    if (toons.unique_level_2 === undefined) {
 	  document.getElementById("unique2Level2").innerHTML = "";}
@@ -236,5 +236,5 @@ toon2.once("value", function(snap) {
 	  else{document.getElementById("unique2Description2").innerHTML = toons.unique_description_2;}
    if (toons.unique2_ability_image === undefined) {
 	  document.getElementById("unique2AbilImg2").innerHTML = "";}
-	  else{ document.getElementById("unique2AbilImg2").innerHTML = '<img src="'+toons.unique2_ability_image+'"/>';}
+	  else{ document.getElementById("unique2AbilImg2").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
  });
