@@ -16,9 +16,37 @@
   </head>
   <body>
 	<div data-role="header">
-	  <h1>SWGoH Database</h1>
-	</div>
+	  <h1 id="header">SWGoH Database</h1>
+	  <div data-role="navbar">
+		<ul>
+		  <li><a id="home" >Home</a></li>
+		  <li><a id="compare">Compare Abilities</a></li>
+		  <li><a id="search" >Search</a></li>
+		</ul>
+	  </div>
 	  
+	  
+	</div>
+	<div id="searchText">
+	  <span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
+		placeholder="Type name or tag of the character you would like to search for"></span>  
+	</div>
+<script language="javascript" type="text/javascript">
+    function filter(element) {
+        var value = $(element).val();
+ value = value.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+ });
+        $("#toons > li").each(function() {
+            if ($(this).text().search(value) > -1) {
+                $(this).show();
+            }
+            else {
+                $(this).hide();
+            }
+        });
+    }
+</script>
 		<div id="container" class="list">
 		  <ul id="toons" class="list-group">
 			<!-- Conatct Object li.list-group-item.contact will be added here by js -->

@@ -13,10 +13,22 @@ contactsRef.on("child_added", function(snap) {
 	var toonName = $(this).find("p.lead").html();
 	window.location = 'toonInfo.html';
   window.sessionStorage.setItem('toon',toonName);
-  
- 
 });
-      
+  
+
+$('#compare').click(function(){
+    window.location="compareToon.html";
+});
+
+$('#search').click(function(){
+    document.getElementById("searchText").style.display='inline';
+});
+
+
+
+
+
+	
 var mylist = $('.list-group');
 var listitems = mylist.children('li').get();
 listitems.sort(function(a, b) {

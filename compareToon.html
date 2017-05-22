@@ -11,6 +11,42 @@
 	<link href="css/compareToon.css" rel="stylesheet">
   </head>
   <body id="toon-info">
+	<div id="compareToonAbility">
+	  <!-- Popup Div Starts Here -->
+	  <div id="compareToonAbilityPopUp">
+		<!-- Contact Us Form -->
+		<form action="#" id="form" method="post" name="form">
+		  <img id="close" src="images/3.png" onclick ="div_hide()">
+		  <h3>Click a character who you want to compare abilities with</h3>
+		  <hr>
+		  <div id="container" class="list">
+			<ul id="toons2" class="list-group">
+			  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
+			</ul>
+		  </div>
+
+		</form>
+	  </div>
+	  <!-- Popup Div Ends Here -->
+	</div>
+	<div id="compareToonAbility2">
+	  <!-- Popup Div Starts Here -->
+	  <div id="compareToonAbilityPopUp2">
+		<!-- Contact Us Form -->
+		<form action="#" id="form" method="post" name="form">
+		  <img id="close" src="images/3.png" onclick ="div_hide()">
+		  <h3>Click a character who you want to compare abilities with</h3>
+		  <hr>
+		  <div id="container" class="list">
+			<ul id="toons3" class="list-group3">
+			  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
+			</ul>
+		  </div>
+
+		</form>
+	  </div>
+	  <!-- Popup Div Ends Here -->
+	</div>
 	<div data-role="header">
 	  <h1 id="header">Compare Abilities</h1>
 	  <div data-role="navbar">
@@ -18,6 +54,10 @@
 		  <li><a id="home" >Home</a></li>
 		  <li><a href="#anylink"></a></li>
 		  <li><a href="#anylink"></a></li>
+		</ul>
+		<ul>
+		  <li><a onclick="div_show()">Toon 1</a></li>
+		  <li><a onclick="div_show2()">Toon 2</a></li>
 		</ul>
 	  </div>
 	</div>
@@ -176,10 +216,7 @@
 		<td id="leadDescription"></td>
 		<td id="leadDescription2"></td>
 	  </tr>
-	  <tr>
-		<td id="leadDmg"></td>
-		<td id="leadDmg2"></td>
-	  </tr>
+	  
 	  <tr>
 		<td id="leadAbilImg"></td>
 		<td id="leadAbilImg2"></td>
@@ -197,10 +234,7 @@
 		<td id="unique1Description"></td>
 		<td id="unique1Description2"></td>
 	  </tr>
-	  <tr>
-		<td id="unique1Dmg"></td>
-		<td id="unique1Dmg2"></td>
-	  </tr>
+	  
 	  <tr>
 		<td id="unique1AbilImg"></td>
 		<td id="unique1AbilImg2"></td>
@@ -218,10 +252,7 @@
 		<td id="unique2Description"></td>
 		<td id="unique2Description2"></td>
 	  </tr>
-	  <tr>
-		<td id="unique2Dmg"></td>
-		<td id="unique2Dmg2"></td>
-	  </tr>
+	  
 	  <tr>
 		<td id="unique2AbilImg"></td>
 		<td id="unique2AbilImg2"></td>

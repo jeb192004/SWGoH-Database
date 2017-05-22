@@ -3,9 +3,104 @@
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var toon01 = sessionStorage.getItem('toon1');
 var toon02 = sessionStorage.getItem('toon2');
+firstToon(toon01);
+secondToon(toon02);
+
+//home button
+$('#home').click(function(){
+    window.location = 'index.html';
+});
+
+
+    
+//Function To Display Popup
+function div_show() {
+	document.getElementById('compareToonAbility').style.display = "block";
+var toon002 = dbRef.child('toons');
+
+//load older conatcts as well as any newly added one...
+toon002.on("child_added", function(snap04) {
+  console.log("added", snap04.key(), snap04.val());
+  document.querySelector('#toons2')
+    .innerHTML += contactHtmlFromObject(snap04.val());
+	$(".list-group li").on("click", function() {
+    //alert($(this).find("p.lead").html());
+	var toon01 = $(this).find("p.lead2").html();
+  document.getElementById('compareToonAbility').style.display = "none";
+ firstToon(toon01);
+ $(".list-group li").remove();
+});
+      
+var mylist = $('.list-group');
+var listitems = mylist.children('li').get();
+listitems.sort(function(a, b) {
+   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+});
+$.each(listitems, function(idx, itm) { mylist.append(itm); });
+
+
+});
+
+//prepare conatct object's HTML
+function contactHtmlFromObject(toons){
+  console.log( toons );
+  var html = '';
+  html += '<li class="list-group-item contact">';
+    html += '<div class="toonlist">';
+		   html += '<p class="lead2">'+toons.name+'</p>';
+    html += '</div>';
+  html += '</li>';
+  return html;
+}
+}
+
+function div_show2() {
+	document.getElementById('compareToonAbility2').style.display = "block";
+var toon002 = dbRef.child('toons');
+
+//load older conatcts as well as any newly added one...
+toon002.on("child_added", function(snap03) {
+  console.log("added", snap03.key(), snap03.val());
+  document.querySelector('#toons3')
+    .innerHTML += contactHtmlFromObject(snap03.val());
+	$(".list-group3 li").on("click", function() {
+    //alert($(this).find("p.lead").html());
+	var toon02 = $(this).find("p.lead2").html();
+	
+  document.getElementById('compareToonAbility2').style.display = "none";
+ secondToon(toon02);
+ $(".list-group3 li").remove();
+});
+      
+var mylist = $('.list-group3');
+var listitems = mylist.children('li').get();
+listitems.sort(function(a, b) {
+   return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
+});
+$.each(listitems, function(idx, itm) { mylist.append(itm); });
+
+
+});
+
+//prepare conatct object's HTML
+function contactHtmlFromObject(toons){
+  console.log( toons );
+  var html = '';
+  html += '<li class="list-group-item contact">';
+    html += '<div class="toonlist">';
+		   html += '<p class="lead2">'+toons.name+'</p>';
+    html += '</div>';
+  html += '</li>';
+  return html;
+  
+}
+
+}
+
+function firstToon(toon01){
+var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var toon1 = dbRef.child(toon01);
 document.getElementById("toon1").innerHTML=toon01;
-
 //load older conatcts as well as any newly added one...
 toon1.once("value", function(snap) {
   console.log("added", snap.key(), snap.val());
@@ -77,7 +172,7 @@ toon1.once("value", function(snap) {
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel").innerHTML = "";}
-	  else{document.getElementById("leadLevel").innerHTML = "Unique: level " + toons.leader_level;}
+	  else{document.getElementById("leadLevel").innerHTML = "Leader: level " + toons.leader_level;}
  if (toons.leader_name === undefined) {
 	  document.getElementById("leadName").innerHTML = "";}
 	  else{ document.getElementById("leadName").innerHTML = toons.leader_name;}
@@ -117,13 +212,10 @@ toon1.once("value", function(snap) {
 	  document.getElementById("unique2AbilImg").innerHTML = "";}
 	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
  });
-//home button
-$('#home').click(function(){
-    window.location = 'index.html';
-});
+}
 
 
-
+function secondToon(toon02){
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var toon2 = dbRef.child(toon02);
 document.getElementById("toon2").innerHTML=toon02;
@@ -198,7 +290,7 @@ toon2.once("value", function(snap) {
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel2").innerHTML = "";}
-	  else{document.getElementById("leadLevel2").innerHTML = "Unique: level " + toons.leader_level;}
+	  else{document.getElementById("leadLevel2").innerHTML = "Leader: level " + toons.leader_level;}
  if (toons.leader_name === undefined) {
 	  document.getElementById("leadName2").innerHTML = "";}
 	  else{ document.getElementById("leadName2").innerHTML = toons.leader_name;}
@@ -237,4 +329,4 @@ toon2.once("value", function(snap) {
    if (toons.unique2_ability_image === undefined) {
 	  document.getElementById("unique2AbilImg2").innerHTML = "";}
 	  else{ document.getElementById("unique2AbilImg2").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
- });
+ });}

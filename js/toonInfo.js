@@ -83,7 +83,7 @@ contactsRef.once("value", function(snap) {
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel").innerHTML = "";}
-	  else{document.getElementById("leadLevel").innerHTML = "Unique: level " + toons.leader_level;}
+	  else{document.getElementById("leadLevel").innerHTML = "Leader: level " + toons.leader_level;}
  if (toons.leader_name === undefined) {
 	  document.getElementById("leadName").innerHTML = "";}
 	  else{ document.getElementById("leadName").innerHTML = toons.leader_name;}
