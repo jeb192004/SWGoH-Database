@@ -12,12 +12,18 @@ h1{
 h2{
   text-align:center;
 }
-#tabl1 td 
-{
-    border-collapse:none;
-	min-width:10em;
-}
 
+table{
+  background-color:#219AFF;
+}
+td 
+{
+  background-color:#FFFFFF;
+  width:50%;
+}
+th{
+  background-color:#FFFFFF;
+}
 
 #compareToonAbility {
 width:100%;
