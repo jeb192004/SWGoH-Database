@@ -41,7 +41,7 @@ contactsRef.once("value", function(snap) {
 	  document.getElementById("sp2Level").innerHTML = "";}
 	  else{ document.getElementById("sp2Level").innerHTML = "Special: level " + toons.special_level_2;}
       if (toons.special_name_2 === undefined) {
-	  document.getElementById("sp2Name").innerHTML = "";}
+	  document.getElementById("stable2").style.display="none";}
 	  else{document.getElementById("sp2Name").innerHTML = toons.special_name_2;}
      if (toons.special_url_2 === undefined) {
 	  document.getElementById("sp2Img").innerHTML = "";}
@@ -63,7 +63,7 @@ contactsRef.once("value", function(snap) {
 	  document.getElementById("sp3Level").innerHTML = "";}
 	  else{  document.getElementById("sp3Level").innerHTML = "Special: level " + toons.special_level_3;}
    if (toons.special_name_3 === undefined) {
-	  document.getElementById("sp3Name").innerHTML = "";}
+	  document.getElementById("stable3").style.display="none";}
 	  else{ document.getElementById("sp3Name").innerHTML = toons.special_name_3;}
    if (toons.special_url_3 === undefined) {
 	  document.getElementById("sp3Img").innerHTML = "";}
@@ -85,7 +85,7 @@ contactsRef.once("value", function(snap) {
 	  document.getElementById("leadLevel").innerHTML = "";}
 	  else{document.getElementById("leadLevel").innerHTML = "Leader: level " + toons.leader_level;}
  if (toons.leader_name === undefined) {
-	  document.getElementById("leadName").innerHTML = "";}
+	  document.getElementById("ltable").style.display="none";}
 	  else{ document.getElementById("leadName").innerHTML = toons.leader_name;}
    if (toons.leader_url === undefined) {
 	  document.getElementById("leadImg").innerHTML = "";}
@@ -101,7 +101,7 @@ contactsRef.once("value", function(snap) {
 	  document.getElementById("unique1Level").innerHTML = "";}
 	  else{document.getElementById("unique1Level").innerHTML = "Unique: level " + toons.unique_level;}
 	if (toons.unique_name === undefined) {
-	  document.getElementById("unique1Name").innerHTML = "";}
+	  document.getElementById("utable1").style.display="none";}
 	  else{document.getElementById("unique1Name").innerHTML = toons.unique_name;}
    if (toons.unique_url === undefined) {
 	  document.getElementById("unique1Img").innerHTML = "";}
@@ -117,7 +117,7 @@ contactsRef.once("value", function(snap) {
 	  document.getElementById("unique2Level").innerHTML = "";}
 	  else{ document.getElementById("unique2Level").innerHTML = "Unique: level " + toons.unique_level_2;}
    if (toons.unique_name_2 === undefined) {
-	  document.getElementById("unique2Name").innerHTML = "";}
+	  document.getElementById("utable2").style.display="none";}
 	  else{ document.getElementById("unique2Name").innerHTML = toons.unique_name_2;}
     if (toons.unique_url_2 === undefined) {
 	  document.getElementById("unique2Img").innerHTML = "";}

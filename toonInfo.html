@@ -10,7 +10,7 @@
 	  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link href="css/toonInfoStyles.css" rel="stylesheet">
   </head>
-  <body id="toon-info">
+  <body id="toon-info"  >
 	<div id="compareToonAbility">
 	  <!-- Popup Div Starts Here -->
 	  <div id="compareToonAbilityPopUp">
@@ -29,7 +29,7 @@
 	  </div>
 	  <!-- Popup Div Ends Here -->
 	</div>
-	
+	<div style=" background-color:#219AFF;">
 	<div data-role="header">
 	  <h1 id="header">SWGoH Database pg.2</h1>
 	  <div data-role="navbar">
@@ -40,143 +40,142 @@
 		</ul>
 	  </div>
 	</div>
-	<div id="toonInfo">
+	<div id="toonInfo"  >
 	  
 	  
 	  
 	  
 <!--power/speed/health-->
-	<h2 id="toon-description" font-size:3em></h2>
-	<hr>
-	<table id="table1" border=1 style="width:100%">
+	<h2 id="toon-description" style="color:#FFFFFF; font-size:1em"></h2>
+	  <table id="table1" border=1 style="width:100%; text-align:center;">
 	  <tr>
-		<th>Power</th>
-		<th>Speed</th> 
-		<th>Health</th>
+		<th style= "background-color:#FFFFFF">Power</th>
+		<th style= "background-color:#FFFFFF" >Speed</th> 
+		<th  style= "background-color:#FFFFFF">Health</th>
 	  </tr>
 	  <tr>
-		<td id="power"></td>
-		<td id="speed"></td> 
-		<td id="health"></td>
+		<td id="power"  style= "background-color:#FFFFFF"></td>
+		<td id="speed" style= "background-color:#FFFFFF" ></td> 
+		<td id="health"  style= "background-color:#FFFFFF"></td>
 	  </tr>
 	</table>
 <!--attacks and abilities-->
-	<h1 id="header">Attacks & Abilities</h1>
-	<table id="btable" class="abilTable" border=1 style="width:100%">
+	<h1 id="header" style="color:#FFFFFF">Attacks & Abilities</h1>
+	  <table id="btable" class="abilTable" border=1 style="width:100%; background-color:#31313q; ">
 <!--basic-->
 	  <tr>
-		<td id="basicLevel" style="width:50%"></td>
-		<td id="basicName" style="width:50%"></td> 
+		<td id="basicLevel" style="width:50%;  background-color:#FFFFFF;"></td>
+		<td id="basicName" style="width:50%;  background-color:#FFFFFF;"></td> 
 	  </tr>
 	<tr>
-	  <td id="basicImg" style="width:50%"></td>
-	  <td id="basicDescription"style="width:50%" ></td>
+	  <td id="basicImg" style="width:50%; background-color:#FFFFFF; "></td>
+	  <td id="basicDescription"style="width:50%; background-color:#FFFFFF; " ></td>
 	</tr>
 	<tr>
-	  <td id="basicDmg" style="width:50%"></td>
-	  <td id="basicAbilImg" style="width:50%"></td>
+	  <td id="basicDmg" style="width:50%; background-color:#FFFFFF; "></td>
+	  <td id="basicAbilImg" style="width:50%; background-color:#FFFFFF; "></td>
 	</tr>
 	</table>
 <!--special 1-->  
 	  <table id="stable1" class="abilTable" border=1 style="width:100%; margin-top:5px">
 		<tr class="row2">
-		  <td id="sp1Level" style="width:50%"></td>
-		  <td id="sp1Name" style="width:50%"></td> 
+		  <td id="sp1Level" style="width:50%; background-color:#FFFFFF; "></td>
+		  <td id="sp1Name" style="width:50%; background-color:#FFFFFF; "></td> 
 		</tr>
 		<tr>
-		  <td id="sp1Img" style="width:50%"></td>
-		  <td id="sp1Description" style="width:50%"></td>
+		  <td id="sp1Img" style="width:50%; background-color:#FFFFFF; "></td>
+		  <td id="sp1Description" style="width:50%; background-color:#FFFFFF; "></td>
 		</tr>
 		<tr>
-		  <td style="width:50%">
+		  <td style="width:50%; background-color:#FFFFFF; ">
 			<span id="sp1cooldown"></span>
 			<br>
 			<span id="sp1Dmg"></span>
 		  </td>
-		  <td id="sp1AbilImg" style="width:50%"></td>
+		  <td id="sp1AbilImg" style="width:50%; background-color:#FFFFFF; "></td>
 		</tr>
 	  </table>
 <!--special 2-->
 	  <table id="stable2"class="abilTable" border=1 style="width:100%; margin-top:5px">
 	  <tr>
-		<td id="sp2Level" style="width:50%"></td>
-		<td id="sp2Name" style="width:50%"></td> 
+		<td id="sp2Level" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="sp2Name" style="width:50%; background-color:#FFFFFF; "></td> 
 	  </tr>
 	  <tr>
-		<td id="sp2Img" style="width:50%"></td>
-		<td id="sp2Description"style="width:50%" ></td>
+		<td id="sp2Img" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="sp2Description"style="width:50%; background-color:#FFFFFF; " ></td>
 	  </tr>
 	  <tr>
-		<td style="width:50%">
+		<td style="width:50%;  background-color:#FFFFFF;">
 		  <span id="sp2cooldown"></span>
 		  <br>
 		  <span id="sp2Dmg"></span>
 		</td>
-		<td id="sp2AbilImg" style="width:50%"></td>
+		<td id="sp2AbilImg" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  </table>
 <!--special 3-->
 	  <table id="stable3"class="abilTable" border=1 style="width:100%; margin-top:5px">
 	  <tr>
-		<td id="sp3Level" style="width:50%"></td>
-		<td id="sp3Name"style="width:50%" ></td> 
+		<td id="sp3Level" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="sp3Name"style="width:50%; background-color:#FFFFFF; " ></td> 
 	  </tr>
 	  <tr>
-		<td id="sp3Img" style="width:50%"></td>
-		<td id="sp3Description"style="width:50%" ></td>
+		<td id="sp3Img" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="sp3Description"style="width:50%; background-color:#FFFFFF; " ></td>
 	  </tr>
 	  <tr>
-		<td style="width:50%">
+		<td style="width:50%; background-color:#FFFFFF; ">
 		  <span id="sp3cooldown"></span>
 		  <br>
 		  <span id="sp3Dmg"></span>
 		</td>
-		<td id="sp3AbilImg"style="width:50%" ></td>
+		<td id="sp3AbilImg"style="width:50%; background-color:#FFFFFF; " ></td>
 	  </tr>
 	  </table>
 <!--leader-->
 	  <table id="ltable" class="abilTable" border=1 style="width:100%; margin-top:5px">
 	  <tr>
-		<td id="leadLevel" style="width:50%"></td>
-		<td id="leadName" style="width:50%"></td> 
+		<td id="leadLevel" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="leadName" style="width:50%; background-color:#FFFFFF; "></td> 
 	  </tr>
 	  <tr>
-		<td id="leadImg" style="width:50%"></td>
-		<td id="leadDescription" style="width:50%"></td>
+		<td id="leadImg" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="leadDescription" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  <tr>
-		<td id="leadDmg" style="width:50%"></td>
-		<td id="leadAbilImg" style="width:50%"></td>
+		<td id="leadDmg" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="leadAbilImg" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  </table>
 <!--unique 1-->
 	  <table id="utable1"class="abilTable" border=1 style="width:100%; margin-top:5px">
 	  <tr>
-		<td id="unique1Level" style="width:50%"></td>
-		<td id="unique1Name" style="width:50%"></td> 
+		<td id="unique1Level" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="unique1Name" style="width:50%; background-color:#FFFFFF; "></td> 
 	  </tr>
 	  <tr>
-		<td id="unique1Img" style="width:50%"></td>
-		<td id="unique1Description" style="width:50%"></td>
+		<td id="unique1Img" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="unique1Description" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  <tr>
-		<td id="unique1Dmg" style="width:50%"></td>
-		<td id="unique1AbilImg" style="width:50%"></td>
+		<td id="unique1Dmg" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="unique1AbilImg" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  </table>
 <!--unique 2-->
 	  <table id="utable2"class="abilTable" border=1 style="width:100%; margin-top:5px">
 	  <tr>
-		<td id="unique2Level" style="width:50%"></td>
-		<td id="unique2Name" style="width:50%"></td> 
+		<td id="unique2Level" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="unique2Name" style="width:50%; background-color:#FFFFFF; "></td> 
 	  </tr>
 	  <tr>
-		<td id="unique2Img" style="width:50%"></td>
-		<td id="unique2Description" style="width:50%"></td>
+		<td id="unique2Img" style="width:50%; background-color:#FFFFFF; "></td>
+		<td id="unique2Description" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  <tr>
-		<td id="unique2Dmg" style="width:50%"></td>
-		<td id="unique2AbilImg" style="width:50%"></td>
+		<td id="unique2Dmg" style="width:50%;  background-color:#FFFFFF;"></td>
+		<td id="unique2AbilImg" style="width:50%; background-color:#FFFFFF; "></td>
 	  </tr>
 	  </table>
 	
@@ -196,6 +195,7 @@
 	
 	  
 		  
+	</div>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

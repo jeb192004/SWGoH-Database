@@ -1,11 +1,5 @@
 
-body{
-  width:100%;
-}
-#inner-body{
-  margin-left:10px;
-  margin-right:10px
-}
+
 h1{
   text-align:center;
 }
@@ -15,11 +9,7 @@ h2{
 
 
 
-.abilTable{
-  width:500px;
-  margin-left:5px;
-  margin-right:5px;
-}
+
 
 #compareToonAbility {
 width:100%;
