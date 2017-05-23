@@ -13,11 +13,14 @@ h2{
   text-align:center;
 }
 
-#tabl1 td 
-{
-    border-collapse:collapse;
-	min-width:10em;
+
+
+.abilTable{
+  width:500px;
+  margin-left:5px;
+  margin-right:5px;
 }
+
 #compareToonAbility {
 width:100%;
 height:100%;
