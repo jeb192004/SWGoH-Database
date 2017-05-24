@@ -9,6 +9,9 @@ secondToon(toon02);
 $('#home').click(function(){
     window.location = 'index.html';
 });
+$('#edit').click(function(){
+    window.location = 'editToonAbil.html';
+});
 
 
     
