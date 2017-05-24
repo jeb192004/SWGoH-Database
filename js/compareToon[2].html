@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>SWGoH Database</title>
+	<!-- Latest compiled and minified CSS -->
+	  <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href="css/compareToon.css" rel="stylesheet">
+  </head>
+  <body id="toon-info">
+	<div style="background-color:#219AFF">
+	<div id="compareToonAbility">
+	  <!-- Popup Div Starts Here -->
+	  <div id="compareToonAbilityPopUp">
+		<!-- Contact Us Form -->
+		<form action="#" id="form" method="post" name="form">
+		  <img id="close" src="images/3.png" onclick ="div_hide()">
+		  <h3>Click a character who you want to compare abilities with</h3>
+		  <hr>
+		  <div id="container" class="list">
+			<ul id="toons2" class="list-group">
+			  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
+			</ul>
+		  </div>
+
+		</form>
+	  </div>
+	  <!-- Popup Div Ends Here -->
+	</div>
+	<div id="compareToonAbility2">
+	  <!-- Popup Div Starts Here -->
+	  <div id="compareToonAbilityPopUp2">
+		<!-- Contact Us Form -->
+		<form action="#" id="form" method="post" name="form">
+		  <img id="close" src="images/3.png" onclick ="div_hide()">
+		  <h3>Click a character who you want to compare abilities with</h3>
+		  <hr>
+		  <div id="container" class="list">
+			<ul id="toons3" class="list-group3">
+			  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
+			</ul>
+		  </div>
+
+		</form>
+	  </div>
+	  <!-- Popup Div Ends Here -->
+	</div>
+	<div data-role="header">
+	  <h1 id="header">Compare Abilities</h1>
+	  <div data-role="navbar">
+		<ul>
+		  <li><a id="home" >Home</a></li>
+		  <li><a href="#anylink"></a></li>
+		  <li><a href="#anylink"></a></li>
+		</ul>
+		<ul>
+		  <li><a onclick="div_show()">Toon 1</a></li>
+		  <li><a onclick="div_show2()">Toon 2</a></li>
+		</ul>
+	  </div>
+	</div>
+	<div id="compareToon">
+	  
+	  
+	  <table id="table" style="width:100%">
+	   <tr>
+		 <th id="toon1" style="width:50%"></th> 
+		 <th id="toon2" style="width:50%"></th>
+	   </tr>
+	 </table>
+	  
+<!--power/speed/health-->
+	<hr>
+	<table id="table1" style="width:100%">
+	  
+	  <tr>
+		<td id="power"></td>
+		<th>Power</th> 
+		<td id="power2"></td>
+	  </tr>
+	  <tr>
+		<td id="speed"></td>
+		<th>Speed</th> 
+		<td id="speed2"></td>
+	  </tr>
+	  <tr>
+		<td id="health"></td>
+		<th>Health</th> 
+		<td id="health2"></td>
+	  </tr>
+	</table>
+<!--attacks and abilities-->
+	<h1 id="header" style="color:#FFFFFF">Attacks & Abilities</h1>
+	<table id="table1" style="width:100%">
+<!--basic-->
+	  <tr>
+		<td id="basicLevel"></td>
+		<td id="basicLevel2"></td> 
+	  </tr>
+	  <tr>
+		<td id="basicName"></td>
+		<td id="basicName2"></td> 
+	  </tr>
+	  <tr>
+		<td id="basicDescription"></td>
+		<td id="basicDescription2"></td>
+	  </tr>
+	<tr>
+	  <td id="basicDmg"></td>
+	  <td id="basicDmg2"></td>
+	</tr>
+	  <tr>
+		<td id="basicAbilImg"></td>
+		<td id="basicAbilImg2"></td>
+	  </tr>
+<!--special 1-->  
+  <tr>
+  <td style="background-color:#219AFF"></td>
+	<td style="background-color:#219AFF" ></td>
+  </tr>
+		<tr>
+		  <td id="sp1Level"></td>
+		  <td id="sp1Level2"></td> 
+		</tr>
+	  <tr>
+		<td id="sp1Name"></td>
+		<td id="sp1Name2"></td> 
+	  </tr>
+	  <tr>
+		<td id="sp1Description"></td>
+		<td id="sp1Description2"></td>
+	  </tr>
+		<tr>
+		  <td>
+			<span id="sp1cooldown"></span>
+			<br>
+			<span id="sp1Dmg"></span>
+		  </td>
+		  <td>
+			<span id="sp1cooldown2"></span>
+			<br>
+			<span id="sp1Dmg2"></span>
+		  </td>
+		</tr>
+	  <tr>
+		<td id="sp1AbilImg"></td>
+		<td id="sp1AbilImg2"></td>
+	  </tr>
+<!--special 2-->
+	  <tr>
+		<td style="background-color:#219AFF"></td>
+		<td style="background-color:#219AFF" ></td>
+	  </tr>
+	  <tr>
+		<td id="sp2Level"></td>
+		<td id="sp2Level2"></td> 
+	  </tr>
+	  <tr>
+		<td id="sp2Name"></td>
+		<td id="sp2Name2"></td> 
+	  </tr>
+	  <tr>
+		<td id="sp2Description"></td>
+		<td id="sp2Description2"></td>
+	  </tr>
+	  <tr>
+		<td>
+		  <span id="sp2cooldown"></span>
+		  <br>
+		  <span id="sp2Dmg"></span>
+		</td>
+		<td>
+		  <span id="sp2cooldown2"></span>
+		  <br>
+		  <span id="sp2Dmg2"></span>
+		</td>
+	  </tr>
+	  <tr>
+	  <td id="sp2AbilImg"></td>
+	  <td id="sp2AbilImg2"></td>
+	  </tr>
+<!--special 3-->
+	  <tr>
+		<td style="background-color:#219AFF"></td>
+		<td style="background-color:#219AFF" ></td>
+	  </tr>
+	  <tr>
+		<td id="sp3Level"></td>
+		<td id="sp3Level2"></td> 
+	  </tr>
+	  <tr>
+		<td id="sp3Name"></td>
+		<td id="sp3Name2"></td> 
+	  </tr>
+	  <tr>
+		<td id="sp3Description"></td>
+		<td id="sp3Description2"></td>
+	  </tr>
+	  <tr>
+		<td>
+		  <span id="sp3cooldown"></span>
+		  <br>
+		  <span id="sp3Dmg"></span>
+		</td>
+		<td>
+		  <span id="sp3cooldown2"></span>
+		  <br>
+		  <span id="sp3Dmg2"></span>
+		</td>
+		
+	  </tr>
+	  <tr>
+		<td id="sp3AbilImg"></td>
+		<td id="sp3AbilImg2"></td>
+	  </tr>
+<!--leader-->
+	  <tr>
+		<td style="background-color:#219AFF"></td>
+		<td style="background-color:#219AFF" ></td>
+	  </tr>
+	  <tr>
+		<td id="leadLevel"></td>
+		<td id="leadLevel2"></td> 
+	  </tr>
+	  <tr>
+		<td id="leadName"></td>
+		<td id="leadName2"></td> 
+	  </tr>
+	  <tr>
+		<td id="leadDescription"></td>
+		<td id="leadDescription2"></td>
+	  </tr>
+	  
+	  <tr>
+		<td id="leadAbilImg"></td>
+		<td id="leadAbilImg2"></td>
+	  </tr>
+<!--unique 1-->
+	  <tr>
+		<td style="background-color:#219AFF"></td>
+		<td style="background-color:#219AFF" ></td>
+	  </tr>
+	  <tr>
+		<td id="unique1Level"></td>
+		<td id="unique1Level2"></td> 
+	  </tr>
+	  <tr>
+		<td id="unique1Name"></td>
+		<td id="unique1Name2"></td> 
+	  </tr>
+	  <tr>
+		<td id="unique1Description"></td>
+		<td id="unique1Description2"></td>
+	  </tr>
+	  
+	  <tr>
+		<td id="unique1AbilImg"></td>
+		<td id="unique1AbilImg2"></td>
+	  </tr>
+<!--unique 2-->
+	  <tr>
+		<td style="background-color:#219AFF"></td>
+		<td style="background-color:#219AFF" ></td>
+	  </tr>
+	  <tr>
+		<td id="unique2Level"></td>
+		<td id="unique2Level2"></td> 
+	  </tr>
+	  <tr>
+		<td id="unique2Name"></td>
+		<td id="unique2Name2"></td> 
+	  </tr>
+	  <tr>
+		<td id="unique2Description"></td>
+		<td id="unique2Description2"></td>
+	  </tr>
+	  
+	  <tr>
+		<td id="unique2AbilImg"></td>
+		<td id="unique2AbilImg2"></td>
+	  </tr>
+	  </table>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	  
+		  
+	</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<!-- Include Firebase Library -->
+	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+	<!-- Contacts Store JavaScript -->
+	<script src="js/compareToon.js"></script>
+  </body>
+</html>
