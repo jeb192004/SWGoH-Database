@@ -11,7 +11,7 @@ contactsRef.on("child_added", function(snap) {
 	$(".list-group li").on("click", function() {
     //alert($(this).find("p.lead").html());
 	var toonName = $(this).find("p.lead").html();
-	window.location = 'swgoh.co/toonInfo.html';
+	window.location = 'toonInfo.html';
   window.sessionStorage.setItem('toon',toonName);
 });
   
