@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>SWGoH Database</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href="css/editToonAbil.css" rel="stylesheet">
+  </head>
+  <body id="toon-info"  >
+	<div data-role="navbar">
+	  <ul>
+		<li><a id="home" >Home</a></li>
+		<li><a onclick="div_show()">Select different toon</a></li>
+		<li><a id="save">Save</a></li>
+	  </ul>
+	</div>
+	<form>
+	  Description:<br>
+	  <input type="text" name="description"><br>
+	  Power:<br>
+	  <input type="number" name="power"><br>
+	  Speed:<br>
+	  <input type="number" name="speed"><br>
+	  Healh:<br>
+	  <input type="number" name="health"><br>
+	  <hr>
+		Basic Ability<br>
+	  Name:<br>
+	  <input type="text" name="bname"><br>
+	  Description:<br>
+	  <input type="text" name="bdescription"><br>
+	  Level:<br>
+	  <input type="number" name="blevel"><br>
+	  Damage:<br>
+	  <input type="number" name="bdamage"><br>
+	  Image:<br>
+	  <input type="image" src="img/omega.jpg" alt="Submit"><br>
+	  <div id="bAbilImg">
+		<input type="radio" name="bAbilImg" id="bpurple" /><br>
+        <label for="bpurple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label><br>
+		<input type="radio" name="bAbilImg" id="bomega" /><br>
+        <label for="bomega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label><br>
+		<input type="radio" name="bAbilImg" id="bzeta" /><br>
+        <label for="bzeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label><br>
+	  </div>
+		<br>
+		  <hr>
+	  Special Ability<br>
+	  Name:<br>
+	  <input type="text" name="sname1"><br>
+	  Description:<br>
+	  <input type="text" name="sdescription1"><br>
+	  Level:<br>
+	  <input type="number" name="slevel1"><br>
+	  Damage:<br>
+	  <input type="number" name="sdamage1"><br>
+	  Cooldown:<br>
+	  <input type="number" name="scooldown1"><br>
+	  Image:<br>
+	  <input type="text" name="description"><br>
+	  <div id="sAbilImg1">
+		<input type="radio" name="emotion" id="s1purple" />
+        <label for="s1purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="s1omega" />
+        <label for="s1omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="s1zeta" />
+        <label for="s1zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+	  <hr>	
+	  <input type="button" value="Add another special ability">
+		<div style="display:none">
+	  Special Ability 2<br>
+	  Name:<br>
+	  <input type="text" name="sname2"><br>
+	  Description:<br>
+	  <input type="text" name="sdescription2"><br>
+	  Level:<br>
+	  <input type="number" name="slevel2"><br>
+	  Damage:<br>
+	  <input type="number" name="sdamage2"><br>
+	  Cooldown:<br>
+	  <input type="number" name="scooldown2"><br>
+	  Image:<br>
+	  <input type="text" name="description"><br>
+	  <div id="sAbilImg2">
+		<input type="radio" name="emotion" id="s2purple" />
+        <label for="s2purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="s2omega" />
+        <label for="s2omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="s2zeta" />
+        <label for="s2zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+		</div>
+	  <hr>	
+	  <input type="button" value="Add another special ability">
+		<div style="display:none">
+	  Special Ability 3<br>
+	  Name:<br>
+	  <input type="text" name="sname3"><br>
+	  Description:<br>
+	  <input type="text" name="sdescription3"><br>
+	  Level:<br>
+	  <input type="number" name="slevel3"><br>
+	  Damage:<br>
+	  <input type="number" name="sdamge3"><br>
+	  Cooldown:<br>
+	  <input type="number" name="scooldown3"><br>
+	  Image:<br>
+	  <input type="text" name="description"><br>
+	  <div id="sAbilImg3">
+		<input type="radio" name="emotion" id="s3purple" />
+        <label for="s3purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="s3omega" />
+        <label for="s3omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="s3zeta" />
+        <label for="s3zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+		</div>
+	  <hr>	
+	  Leader Ability<br>
+	  Name:<br>
+	  <input type="text" name="lname"><br>
+	  Description:<br>
+	  <input type="text" name="ldescription"><br>
+	  Level:<br>
+	  <input type="number" name="llevel"><br>
+	   Image:<br>
+	  <input type="text" name="desl"><br>
+	  <div id="lAbilImg">
+		<input type="radio" name="emotion" id="lpurple" />
+        <label for="lpurple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="lomega" />
+        <label for="lomega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="lzeta" />
+        <label for="lzeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+	  <hr>	
+	  Unique Ability<br>
+	  Name:<br>
+	  <input type="text" name="uname1"><br>
+	  Description:<br>
+	  <input type="text" name="udescription1"><br>
+	  Level:<br>
+	  <input type="number" name="ulevel1"><br>
+	  Image:<br>
+	  <input type="text" name="description"><br>
+	  <div id="uAbilImg1">
+		<input type="radio" name="emotion" id="u1purple" />
+        <label for="u1purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="u1omega" />
+        <label for="u1omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="u1zeta" />
+        <label for="u1zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+	  <hr>	
+	  <input type="button" value="Add another unique ability">
+		<div style="display:none" >
+	  Unique Ability 2<br>
+	  Name:<br>
+	  <input type="text" name="uname2"><br>
+	  Description:<br>
+	  <input type="text" name="udescription2"><br>
+	  Level:<br>
+	  <input type="text" name="ulevel2"><br>
+	  Image:<br>
+	  <input type="text" name="description"><br>
+	  <div id="uAbilImg2">
+		<input type="radio" name="emotion" id="u2purple" />
+        <label for="u2purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="u2omega" />
+        <label for="u2omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="u2zeta" />
+        <label for="u2zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+		</div>
+		
+		
+		
+	</form>
+	
+	
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<!-- Include Firebase Library -->
+	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+	<!-- Contacts Store JavaScript -->
+	<script src="js/editToonAbil.js"></script>
+  </body>
+</html>
