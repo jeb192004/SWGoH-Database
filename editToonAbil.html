@@ -9,8 +9,45 @@
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link href="css/editToonAbil.css" rel="stylesheet">
+	
   </head>
   <body id="toon-info"  >
+	
+<script>
+ 
+
+   window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1233546183424349',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+	FB.AppEvents.logPageView();   
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    
+  
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+
+
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
+
+</script>
+	
 	<div data-role="navbar">
 	  <ul>
 		<li><a id="home" >Home</a></li>
@@ -18,33 +55,45 @@
 		<li><a id="save">Save</a></li>
 	  </ul>
 	</div>
-	<form>
+	
+	<fb:login-button 
+	  scope="public_profile,email"
+	  onlogin="checkLoginState();">
+	</fb:login-button>
+
+	<div id="status">
+	</div>
 	  Description:<br>
-	  <input type="text" name="description"><br>
+	  <input type="text" id="description"><br>
 	  Power:<br>
-	  <input type="number" name="power"><br>
+	  <input type="number" id="power"><br>
 	  Speed:<br>
-	  <input type="number" name="speed"><br>
+	  <input type="number" id="speed"><br>
 	  Healh:<br>
-	  <input type="number" name="health"><br>
+	  <input type="number" id="health"><br>
 	  <hr>
 		Basic Ability<br>
 	  Name:<br>
-	  <input type="text" name="bname"><br>
+	  <input type="text" id="bname"><br>
 	  Description:<br>
 	  <input type="text" name="bdescription"><br>
 	  Level:<br>
-	  <input type="number" name="blevel"><br>
+	  <input type="number" id="blevel"><br>
 	  Damage:<br>
-	  <input type="number" name="bdamage"><br>
+	  <input type="number" id="bdamage"><br>
 	  Image:<br>
-	  <input type="image" src="img/omega.jpg" alt="Submit"><br>
+	  <div style="margin:10px; display:none;">
+		<p id="img" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="burl"></p><br>
+		<input type="button" id="bbtn" value="Select an image">
+	  </div>
+	  <br>
 	  <div id="bAbilImg">
-		<input type="radio" name="bAbilImg" id="bpurple" /><br>
+		<input type="radio" id="bAbilImg" id="bpurple" /><br>
         <label for="bpurple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label><br>
-		<input type="radio" name="bAbilImg" id="bomega" /><br>
+		<input type="radio" id="bAbilImg" id="bomega" /><br>
         <label for="bomega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label><br>
-		<input type="radio" name="bAbilImg" id="bzeta" /><br>
+		<input type="radio" id="bAbilImg" id="bzeta" /><br>
         <label for="bzeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label><br>
 	  </div>
 		<br>
@@ -61,7 +110,11 @@
 	  Cooldown:<br>
 	  <input type="number" name="scooldown1"><br>
 	  Image:<br>
-	  <input type="text" name="description"><br>
+	  <div style="margin:10px;  display:none;">
+		<p id="bimg" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="burl"></p><br>
+		<input type="button" id="bbtn" value="Select an image">
+	  </div><br>
 	  <div id="sAbilImg1">
 		<input type="radio" name="emotion" id="s1purple" />
         <label for="s1purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
@@ -72,8 +125,8 @@
 	  </div>
 	  <br>
 	  <hr>	
-	  <input type="button" value="Add another special ability">
-		<div style="display:none">
+	  <input id="s2btn" type="button" value="Add another special ability">
+		<div id="s2layout" style="display:none">
 	  Special Ability 2<br>
 	  Name:<br>
 	  <input type="text" name="sname2"><br>
@@ -86,7 +139,11 @@
 	  Cooldown:<br>
 	  <input type="number" name="scooldown2"><br>
 	  Image:<br>
-	  <input type="text" name="description"><br>
+		  <div style="margin:10px;  display:none; ">
+			<p id="simg" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+			<p class="urltxt" id="surl"></p><br>
+			<input type="button" id="sbtn" value="Select an image">
+		  </div><br>
 	  <div id="sAbilImg2">
 		<input type="radio" name="emotion" id="s2purple" />
         <label for="s2purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
@@ -98,8 +155,8 @@
 	  <br>
 		</div>
 	  <hr>	
-	  <input type="button" value="Add another special ability">
-		<div style="display:none">
+	  <input id="s3btn" type="button" value="Add another special ability">
+		<div id="s3layout" style="display:none">
 	  Special Ability 3<br>
 	  Name:<br>
 	  <input type="text" name="sname3"><br>
@@ -112,7 +169,11 @@
 	  Cooldown:<br>
 	  <input type="number" name="scooldown3"><br>
 	  Image:<br>
-	  <input type="text" name="description"><br>
+		  <div style="margin:10px;  display:none; ">
+			<p id="simg2" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+			<p class="urltxt" id="surl2"></p><br>
+			<input type="button" id="sbtn2" value="Select an image">
+		  </div><br>
 	  <div id="sAbilImg3">
 		<input type="radio" name="emotion" id="s3purple" />
         <label for="s3purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
@@ -132,7 +193,11 @@
 	  Level:<br>
 	  <input type="number" name="llevel"><br>
 	   Image:<br>
-	  <input type="text" name="desl"><br>
+	  <div style="margin:10px;  display:none; ">
+		<p id="simg3" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="surl3"></p><br>
+		<input type="button" id="sbtn3" value="Select an image">
+	  </div><br>
 	  <div id="lAbilImg">
 		<input type="radio" name="emotion" id="lpurple" />
         <label for="lpurple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
@@ -151,7 +216,11 @@
 	  Level:<br>
 	  <input type="number" name="ulevel1"><br>
 	  Image:<br>
-	  <input type="text" name="description"><br>
+	  <div style="margin:10px;  display:none; ">
+		<p id="uimg1" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="uurl1"></p><br>
+		<input type="button" id="ubtn1" value="Select an image">
+	  </div><br>
 	  <div id="uAbilImg1">
 		<input type="radio" name="emotion" id="u1purple" />
         <label for="u1purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
@@ -162,8 +231,8 @@
 	  </div>
 	  <br>
 	  <hr>	
-	  <input type="button" value="Add another unique ability">
-		<div style="display:none" >
+	  <input id="u2btn" type="button" value="Add another unique ability">
+		<div id="u2layout" style="display:none" >
 	  Unique Ability 2<br>
 	  Name:<br>
 	  <input type="text" name="uname2"><br>
@@ -172,7 +241,11 @@
 	  Level:<br>
 	  <input type="text" name="ulevel2"><br>
 	  Image:<br>
-	  <input type="text" name="description"><br>
+		  <div style="margin:10px;  display:none; ">
+			<p id="uimg2" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+			<p class="urltxt" id="uurl2"></p><br>
+			<input type="button" id="ubtn2" value="Select an image">
+		  </div><br>
 	  <div id="uAbilImg2">
 		<input type="radio" name="emotion" id="u2purple" />
         <label for="u2purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
@@ -186,7 +259,7 @@
 		
 		
 		
-	</form>
+	
 	
 	
 	
@@ -197,6 +270,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<!-- Include Firebase Library -->
 	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+	
 	<!-- Contacts Store JavaScript -->
 	<script src="js/editToonAbil.js"></script>
   </body>

@@ -133,7 +133,7 @@ contactsRef.once("value", function(snap) {
 $('#home').click(function(){
     window.location = 'index.html';
 });$('#edit').click(function(){
-    window.location = 'editToonAbil.html';
+    window.location = 'logIn.html';
 });
 
 

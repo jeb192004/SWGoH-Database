@@ -2,4 +2,14 @@ form{
   padding:5px;
 }
 
+#img{
+    vertical-align: middle;
+    margin-right:5px;
+}
+
+.urltxt{
+  display: inline-block;
+    height: 100%;
+}
+
 
