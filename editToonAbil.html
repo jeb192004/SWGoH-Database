@@ -1,111 +1,272 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <title>Sample FirebaseUI App</title>
-   
-<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>SWGoH Database</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href="css/editToonAbil.css" rel="stylesheet">
+	
+  </head>
+  <body id="toon-info"  >
+	
 <script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
-    authDomain: "swgoh-campanion.firebaseapp.com",
-    databaseURL: "https://swgoh-campanion.firebaseio.com",
-    projectId: "swgoh-campanion",
-    storageBucket: "swgoh-campanion.appspot.com",
-    messagingSenderId: "298882100900"
+ 
+   window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1233546183424349',
+      cookie     : true,
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+	FB.AppEvents.logPageView();   
   };
-  firebase.initializeApp(config);
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+    
+  
+FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+});
+function checkLoginState() {
+  FB.getLoginStatus(function(response) {
+    statusChangeCallback(response);
+  });
+}
 </script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
-    <script type="text/javascript">
-      // FirebaseUI config.
-      var uiConfig = {
-        signInSuccessUrl: '<url-to-redirect-to-on-success>',
-        signInOptions: [
-          // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-          firebase.auth.TwitterAuthProvider.PROVIDER_ID,
-          firebase.auth.GithubAuthProvider.PROVIDER_ID,
-          firebase.auth.EmailAuthProvider.PROVIDER_ID,
-          firebase.auth.PhoneAuthProvider.PROVIDER_ID
-        ],
-        // Terms of service url.
-        tosUrl: '<your-tos-url>'
-      };
+	
+	<div data-role="navbar">
+	  <ul>
+		<li><a id="home" >Home</a></li>
+		<li><a onclick="div_show()">Select different toon</a></li>
+		<li><a id="save">Save</a></li>
+	  </ul>
+	</div>
+	
+	<fb:login-button 
+	  scope="public_profile,email"
+	  onlogin="checkLoginState();">
+	</fb:login-button>
 
-      // Initialize the FirebaseUI Widget using Firebase.
-      var ui = new firebaseui.auth.AuthUI(firebase.auth());
-      // The start method will wait until the DOM is loaded.
-      ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-  </head>
-  <body>
-    <!-- The surrounding HTML is left untouched by FirebaseUI.
-         Your app may use that space for branding, controls and other customizations.-->
-    <h1>Welcome to My Awesome App</h1>
-    <div id="firebaseui-auth-container"></div>
-  </body>
-</html>
-Here is how you would track the Auth state across all your pages:
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Sample FirebaseUI App</title>
-    <!-- *******************************************************************************************
-       * TODO(DEVELOPER): Paste the initialization snippet from:
-       * Firebase Console > Overview > Add Firebase to your web app. *
-       ***************************************************************************************** -->
-    <script type="text/javascript">
-      initApp = function() {
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var phoneNumber = user.phoneNumber;
-            var providerData = user.providerData;
-            user.getToken().then(function(accessToken) {
-              document.getElementById('sign-in-status').textContent = 'Signed in';
-              document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  ');
-            });
-          } else {
-            // User is signed out.
-            document.getElementById('sign-in-status').textContent = 'Signed out';
-            document.getElementById('sign-in').textContent = 'Sign in';
-            document.getElementById('account-details').textContent = 'null';
-          }
-        }, function(error) {
-          console.log(error);
-        });
-      };
-
-      window.addEventListener('load', function() {
-        initApp()
-      });
-    </script>
-  </head>
-  <body>
-    <h1>Welcome to My Awesome App</h1>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div>
+	<div id="status">
+	</div>
+	  Description:<br>
+	  <input type="text" id="description"><br>
+	  Power:<br>
+	  <input type="number" id="power"><br>
+	  Speed:<br>
+	  <input type="number" id="speed"><br>
+	  Healh:<br>
+	  <input type="number" id="health"><br>
+	  <hr>
+		Basic Ability<br>
+	  Name:<br>
+	  <input type="text" id="bname"><br>
+	  Description:<br>
+	  <input type="text" name="bdescription"><br>
+	  Level:<br>
+	  <input type="number" id="blevel"><br>
+	  Damage:<br>
+	  <input type="number" id="bdamage"><br>
+	  Image:<br>
+	  <div style="margin:10px; display:none;">
+		<p id="img" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="burl"></p><br>
+		<input type="button" id="bbtn" value="Select an image">
+	  </div>
+	  <br>
+	  <div id="bAbilImg">
+		<input type="radio" id="bAbilImg" id="bpurple" /><br>
+        <label for="bpurple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label><br>
+		<input type="radio" id="bAbilImg" id="bomega" /><br>
+        <label for="bomega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label><br>
+		<input type="radio" id="bAbilImg" id="bzeta" /><br>
+        <label for="bzeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label><br>
+	  </div>
+		<br>
+		  <hr>
+	  Special Ability<br>
+	  Name:<br>
+	  <input type="text" name="sname1"><br>
+	  Description:<br>
+	  <input type="text" name="sdescription1"><br>
+	  Level:<br>
+	  <input type="number" name="slevel1"><br>
+	  Damage:<br>
+	  <input type="number" name="sdamage1"><br>
+	  Cooldown:<br>
+	  <input type="number" name="scooldown1"><br>
+	  Image:<br>
+	  <div style="margin:10px;  display:none;">
+		<p id="bimg" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="burl"></p><br>
+		<input type="button" id="bbtn" value="Select an image">
+	  </div><br>
+	  <div id="sAbilImg1">
+		<input type="radio" name="emotion" id="s1purple" />
+        <label for="s1purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="s1omega" />
+        <label for="s1omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="s1zeta" />
+        <label for="s1zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+	  <hr>	
+	  <input id="s2btn" type="button" value="Add another special ability">
+		<div id="s2layout" style="display:none">
+	  Special Ability 2<br>
+	  Name:<br>
+	  <input type="text" name="sname2"><br>
+	  Description:<br>
+	  <input type="text" name="sdescription2"><br>
+	  Level:<br>
+	  <input type="number" name="slevel2"><br>
+	  Damage:<br>
+	  <input type="number" name="sdamage2"><br>
+	  Cooldown:<br>
+	  <input type="number" name="scooldown2"><br>
+	  Image:<br>
+		  <div style="margin:10px;  display:none; ">
+			<p id="simg" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+			<p class="urltxt" id="surl"></p><br>
+			<input type="button" id="sbtn" value="Select an image">
+		  </div><br>
+	  <div id="sAbilImg2">
+		<input type="radio" name="emotion" id="s2purple" />
+        <label for="s2purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="s2omega" />
+        <label for="s2omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="s2zeta" />
+        <label for="s2zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+		</div>
+	  <hr>	
+	  <input id="s3btn" type="button" value="Add another special ability">
+		<div id="s3layout" style="display:none">
+	  Special Ability 3<br>
+	  Name:<br>
+	  <input type="text" name="sname3"><br>
+	  Description:<br>
+	  <input type="text" name="sdescription3"><br>
+	  Level:<br>
+	  <input type="number" name="slevel3"><br>
+	  Damage:<br>
+	  <input type="number" name="sdamge3"><br>
+	  Cooldown:<br>
+	  <input type="number" name="scooldown3"><br>
+	  Image:<br>
+		  <div style="margin:10px;  display:none; ">
+			<p id="simg2" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+			<p class="urltxt" id="surl2"></p><br>
+			<input type="button" id="sbtn2" value="Select an image">
+		  </div><br>
+	  <div id="sAbilImg3">
+		<input type="radio" name="emotion" id="s3purple" />
+        <label for="s3purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="s3omega" />
+        <label for="s3omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="s3zeta" />
+        <label for="s3zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+		</div>
+	  <hr>	
+	  Leader Ability<br>
+	  Name:<br>
+	  <input type="text" name="lname"><br>
+	  Description:<br>
+	  <input type="text" name="ldescription"><br>
+	  Level:<br>
+	  <input type="number" name="llevel"><br>
+	   Image:<br>
+	  <div style="margin:10px;  display:none; ">
+		<p id="simg3" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="surl3"></p><br>
+		<input type="button" id="sbtn3" value="Select an image">
+	  </div><br>
+	  <div id="lAbilImg">
+		<input type="radio" name="emotion" id="lpurple" />
+        <label for="lpurple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="lomega" />
+        <label for="lomega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="lzeta" />
+        <label for="lzeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+	  <hr>	
+	  Unique Ability<br>
+	  Name:<br>
+	  <input type="text" name="uname1"><br>
+	  Description:<br>
+	  <input type="text" name="udescription1"><br>
+	  Level:<br>
+	  <input type="number" name="ulevel1"><br>
+	  Image:<br>
+	  <div style="margin:10px;  display:none; ">
+		<p id="uimg1" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+		<p class="urltxt" id="uurl1"></p><br>
+		<input type="button" id="ubtn1" value="Select an image">
+	  </div><br>
+	  <div id="uAbilImg1">
+		<input type="radio" name="emotion" id="u1purple" />
+        <label for="u1purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="u1omega" />
+        <label for="u1omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="u1zeta" />
+        <label for="u1zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+	  <hr>	
+	  <input id="u2btn" type="button" value="Add another unique ability">
+		<div id="u2layout" style="display:none" >
+	  Unique Ability 2<br>
+	  Name:<br>
+	  <input type="text" name="uname2"><br>
+	  Description:<br>
+	  <input type="text" name="udescription2"><br>
+	  Level:<br>
+	  <input type="text" name="ulevel2"><br>
+	  Image:<br>
+		  <div style="margin:10px;  display:none; ">
+			<p id="uimg2" style="float: left;"><img src="img/omega.jpg" height="60px" width="60px" border="1px"></p>
+			<p class="urltxt" id="uurl2"></p><br>
+			<input type="button" id="ubtn2" value="Select an image">
+		  </div><br>
+	  <div id="uAbilImg2">
+		<input type="radio" name="emotion" id="u2purple" />
+        <label for="u2purple"><img style="width:25px; height:25px;" src="img/purple.jpg" alt="purple" /></label>
+		<input type="radio" name="emotion" id="u2omega" />
+        <label for="u2omega"><img style="width:25px; height:25px; float:left; " src="img/omega.jpg" alt="omega" /></label>
+		<input type="radio" name="emotion" id="u2zeta" />
+        <label for="u2zeta"><img style="width:25px; height:25px;" src="img/zeta.jpg" alt="zeta" /></label>
+	  </div>
+	  <br>
+		</div>
+		
+		
+		
+	
+	
+	
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+	<!-- Include Firebase Library -->
+	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+	
+	<!-- Contacts Store JavaScript -->
+	<script src="js/editToonAbil.js"></script>
   </body>
 </html>
