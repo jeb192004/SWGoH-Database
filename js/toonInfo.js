@@ -142,14 +142,7 @@ $('#sign-out').click(function(){
   alert('Sign Out Error', error);
 });
 	  });
-function userExistsCallback(userId, exists) {
-if (exists) {
-alert('user ' + userId + ' exists!');
-} else {
-alert('user ' + userId + ' does not exist!');
-}
 
-}
 
 
 //Function To Display Popup

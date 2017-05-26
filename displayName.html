@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Create display name</title>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-database.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase-messaging.js"></script>
+	
+	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
+    authDomain: "swgoh-campanion.firebaseapp.com",
+    databaseURL: "https://swgoh-campanion.firebaseio.com",
+    projectId: "swgoh-campanion",
+    storageBucket: "swgoh-campanion.appspot.com",
+    messagingSenderId: "298882100900"
+  };
+  firebase.initializeApp(config);
+</script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
+
+  </head>
+  <body>
+    <!-- The surrounding HTML is left untouched by FirebaseUI.
+	Your app may use that space for branding, controls and other customizations.-->
+    <h1>Create a display name</h1>
+    <div id="firebaseui-auth-container"></div>
+  </body>
+</html>
+<!--Here is how you would track the Auth state across all your pages:
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Create display name</title>
+    <!-- *******************************************************************************************
+	* TODO(DEVELOPER): Paste the initialization snippet from:
+	* Firebase Console > Overview > Add Firebase to your web app. *
+	***************************************************************************************** -->
+<script type="text/javascript">
+      initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            
+            user.getToken().then(function(accessToken) {
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('account-details').textContent = displayName;
+             
+            });
+          } else {
+            // User is signed out.
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+            document.getElementById('sign-in').textContent = 'Sign in';
+            document.getElementById('account-details').textContent = 'null';
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+      window.addEventListener('load', function() {
+        initApp();
+      });
+</script>
+  </head>
+  <body>
+    
+    <div id="sign-in-status"></div>
+    <div id="sign-in"></div>
+    <div id="account-details"></div>
+	
+  </body>
+</html>
