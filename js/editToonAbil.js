@@ -65,5 +65,7 @@ document.getElementById("s3btn").onclick = function () {
 	document.getElementById("s3layout").style.display="block"; };
 document.getElementById("u2btn").onclick = function () { 
 	document.getElementById("u2layout").style.display="block"; };
+	document.getElementById("save").onclick = function () { 
+	window.location = 'logIn.html'; };
 	
 	
