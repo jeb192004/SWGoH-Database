@@ -215,7 +215,7 @@
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
-            var displayName = user.displayName;
+            var displayName = user.DisplayName;
             var email = user.email;
             var emailVerified = user.emailVerified;
             var photoURL = user.photoURL;
@@ -225,22 +225,22 @@
             user.getToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in';
               document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
+              document.getElementById('user-name').textContent = JSON.stringify({
+                displayName: displayName
+               /** email: email,
                 emailVerified: emailVerified,
                 phoneNumber: phoneNumber,
                 photoURL: photoURL,
                 uid: uid,
                 accessToken: accessToken,
-                providerData: providerData
+                providerData: providerData**/
               }, null, '  ');
             });
           } else {
             // User is signed out.
             document.getElementById('sign-in-status').textContent = 'Signed out';
             document.getElementById('sign-in').textContent = 'Sign in';
-            document.getElementById('account-details').textContent = 'null';
+            document.getElementById('user-name').textContent = 'null';
           }
         }, function(error) {
           console.log(error);
