@@ -44,4 +44,7 @@ document.getElementById("u2btn").onclick = function () {
 	$('#save').click(function(){
     window.location='logIn.html';
 });
+$('#home').click(function(){
+    window.location='index.html';
+});
 	
