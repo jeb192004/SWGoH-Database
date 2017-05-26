@@ -226,14 +226,7 @@
               document.getElementById('sign-in-status').textContent = 'Signed in';
               document.getElementById('sign-in').textContent = 'Sign out';
               document.getElementById('user-name').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
+                displayName: displayName
               }, null, '  ');
             });
           } else {
@@ -253,8 +246,9 @@
 </script>
 	
 	  
-	  <h1>Sing in status</h1>
+	  <h1>Sign in status</h1>
 	  <div id="sign-in-status"></div>
+	  <div id="sign-in"></div>
 	  <div id="user-name"></div>
 	</div>
 	</div>
