@@ -3,13 +3,7 @@ var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
 var toon = sessionStorage.getItem('toon');
 var contactsRef = dbRef.child(toon);
 
-firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-    alert("signed in");
-  } else {
-    alert("not signed in");
-  }
-});
+
 document.getElementById("header").innerHTML = toon;
 
 
