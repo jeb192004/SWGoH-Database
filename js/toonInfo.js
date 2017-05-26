@@ -135,7 +135,13 @@ $('#home').click(function(){
 });$('#edit').click(function(){
     window.location = 'editToonAbil.html';
 });
-
+$('#sign-out').click(function(){
+	firebase.auth().signOut().then(function() {
+  alert('Signed Out');
+}, function(error) {
+  alert('Sign Out Error', error);
+});
+	  });
 
 //Function To Display Popup
 function div_show() {
