@@ -55,6 +55,7 @@
 		  <li><a id="home" >Home</a></li>
 		  <li><a onclick="div_show()">Compare Abilities</a></li>
 		  <li><a id="edit">Edit</a></li>
+		  <li><a id="sign-out">Sign Out"</a></li>
 		</ul>
 	  </div>
 	</div>
@@ -248,13 +249,14 @@
       window.addEventListener('load', function() {
         initApp();
       });
+	  $('#sign-out').click(function(){
+	  firebase.auth().signOut();});
 </script>
 	
 	  
-	  <h1>Welcome to My Awesome App</h1>
+	  <h1>Sing in status</h1>
 	  <div id="sign-in-status"></div>
-	  <div id="sign-in"></div>
-	  <div id="account-details"></div>
+	  
 	</div>
 	</div>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
