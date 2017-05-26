@@ -49,7 +49,9 @@
           if (user) {
             // User is signed in.
             var displayName = user.displayName;
-            
+            if(displayName === undefined){
+			alert("no name");
+			}else{alert("name");}
             user.getToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in';
               document.getElementById('sign-in').textContent = 'Sign out';
