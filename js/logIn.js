@@ -1,25 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Sample FirebaseUI App</title>
-   
-<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-<script>
+
   // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
-    authDomain: "swgoh-campanion.firebaseapp.com",
-    databaseURL: "https://swgoh-campanion.firebaseio.com",
-    projectId: "swgoh-campanion",
-    storageBucket: "swgoh-campanion.appspot.com",
-    messagingSenderId: "298882100900"
-  };
+  
   firebase.initializeApp(config);
-</script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
-    <script type="text/javascript">
+  
+  
       // FirebaseUI config.
       var uiConfig = {
         signInSuccessUrl: 'editToonAbil.html',
@@ -39,27 +23,7 @@
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
       ui.start('#firebaseui-auth-container', uiConfig);
-    </script>
-  </head>
-  <body>
-    <!-- The surrounding HTML is left untouched by FirebaseUI.
-         Your app may use that space for branding, controls and other customizations.-->
-    <h1>Log into SWGoH.co</h1>
-    <div id="firebaseui-auth-container"></div>
-  </body>
-</html>
-<!--Here is how you would track the Auth state across all your pages:
--->
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Sample FirebaseUI App</title>
-    <!-- *******************************************************************************************
-       * TODO(DEVELOPER): Paste the initialization snippet from:
-       * Firebase Console > Overview > Add Firebase to your web app. *
-       ***************************************************************************************** -->
-    <script type="text/javascript">
+
       initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
@@ -98,13 +62,4 @@
       window.addEventListener('load', function() {
         initApp();
       });
-    </script>
-  </head>
-  <body>
-    <h1>Welcome to My Awesome App</h1>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div>
-	<script src="js/toonInfo.js"></script>
-  </body>
-</html>
+    
