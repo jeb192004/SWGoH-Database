@@ -10,6 +10,7 @@
 	
 	<script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
 <script>
+  var redirect = sessionStorage.getItem('redirect');
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
@@ -71,13 +72,15 @@
       window.addEventListener('load', function() {
         initApp();
       });
-	  
+	  document.getElementById("cancel").onclick = function () { 
+ window.location= redirect;
+};
 	  document.getElementById("save").onclick = function () { 
 
 	var currentUser = firebase.auth().currentUser;
 currentUser.updateProfile({
  displayName: document.getElementById("displayName").value});
- window.location="index.html";
+ window.location= redirect;
 };
 </script>
 
@@ -89,6 +92,7 @@ currentUser.updateProfile({
 	  <div id="account-details"  style="text-align:center; font-size:24px"></div>
 	  <input type="text" id="displayName"  style="text-align:center; font-size:24px; width:50%" >
 	  <input id="save" type="button" value="Save">
+	  <input id="cancel" type="button" value="skip">
 	</div>
   </body>
 </html>
