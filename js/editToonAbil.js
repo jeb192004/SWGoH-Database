@@ -6,7 +6,34 @@ var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 var contactsRef = dbRef.child('Ezra Bridger');
 
 
-
+var config = {
+    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
+    authDomain: "swgoh-campanion.firebaseapp.com",
+    databaseURL: "https://swgoh-campanion.firebaseio.com",
+    projectId: "swgoh-campanion",
+    storageBucket: "swgoh-campanion.appspot.com",
+    messagingSenderId: "298882100900"
+  };
+  firebase.initializeApp(config);
+  initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            
+            user.getToken().then(function(accessToken) {
+              document.getElementById("sign-out").style.display="block";
+            });
+          } else {
+         document.getElementById("sign-out").style.display="none";
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+      window.addEventListener('load', function() {
+        initApp();
+      });
 
 
 //load older conatcts as well as any newly added one...
