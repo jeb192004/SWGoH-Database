@@ -5,7 +5,41 @@ var contactsRef = dbRef.child(toon);
 
 
 document.getElementById("header").innerHTML = toon;
-
+var config = {
+    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
+    authDomain: "swgoh-campanion.firebaseapp.com",
+    databaseURL: "https://swgoh-campanion.firebaseio.com",
+    projectId: "swgoh-campanion",
+    storageBucket: "swgoh-campanion.appspot.com",
+    messagingSenderId: "298882100900"
+  };
+  firebase.initializeApp(config);
+  initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            
+            user.getToken().then(function(accessToken) {
+              document.getElementById('sign-in-status').textContent = 'Signed in';
+              //document.getElementById('sign-in').textContent = 'Sign out';
+              document.getElementById('user-name').textContent = displayName;
+             
+            });
+          } else {
+            // User is signed out.
+            document.getElementById('sign-in-status').textContent = 'Signed out';
+           // document.getElementById('sign-in').textContent = 'Sign in';
+            document.getElementById('user-name').textContent = 'null';
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+      window.addEventListener('load', function() {
+        initApp();
+      });
+	  
 
 //load older conatcts as well as any newly added one...
 contactsRef.once("value", function(snap) {
@@ -133,7 +167,20 @@ contactsRef.once("value", function(snap) {
 $('#home').click(function(){
     window.location = 'index.html';
 });$('#edit').click(function(){
-    window.location = 'editToonAbil.html';
+	firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            var displayName = user.displayName;
+            user.getToken().then(function(accessToken) {
+              window.location = 'editToonAbil.html';
+			  document.getElementById("sign-out").style.display="block";
+            });
+          } else {
+          window.location = 'logIn.html';
+		  document.getElementById("sign-out").style.display="none";
+          }
+        }, function(error) {
+          console.log(error);
+        });
 });
 $('#sign-out').click(function(){
 	firebase.auth().signOut().then(function() {
