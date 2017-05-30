@@ -24,7 +24,7 @@
       // FirebaseUI config.
       var uiConfig = {
 	  
-        signInSuccessUrl: 'index.html',
+        signInSuccessUrl: 'displayName.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -44,10 +44,12 @@
     </script>
   </head>
   <body>
+	<div style="width:100%; margin-left:10px; margin-right:10px; text-align:center">
     <!-- The surrounding HTML is left untouched by FirebaseUI.
          Your app may use that space for branding, controls and other customizations.-->
     <h1>Log into SWGoH.co</h1>
     <div id="firebaseui-auth-container"></div>
+	</div>
   </body>
 </html>
 <!--Here is how you would track the Auth state across all your pages:
@@ -65,9 +67,7 @@
       initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-		  var currentUser = firebase.auth().currentUser;
-          currentUser.updateProfile({
-          displayName: document.getElementById("displayName").value});
+		  
             // User is signed in.
             var displayName = user.displayName;
             var email = user.email;
@@ -77,15 +77,11 @@
             var phoneNumber = user.phoneNumber;
             var providerData = user.providerData;
             user.getToken().then(function(accessToken) {
-              document.getElementById('sign-in-status').textContent = 'Signed in';
               
-              document.getElementById('account-details').textContent = displayName;
             });
           } else {
             // User is signed out.
-            document.getElementById('sign-in-status').textContent = 'Signed out';
             
-            document.getElementById('account-details').textContent = 'null';
           }
         }, function(error) {
           console.log(error);
@@ -97,12 +93,7 @@
     </script>
   </head>
   <body>
-	<div style="width:100%; margin-left:10px; margin-right:10px; text-align:center">
-	  <div id="sign-in-status"  style="text-align:center; font-size:24px" ></div>
-
-	  <div id="account-details"  style="text-align:center; font-size:24px"></div>
-	  <input type="text" id="displayName"  style="text-align:center; font-size:24px; width:50%" >
-	</div>
+	
     
     
     
