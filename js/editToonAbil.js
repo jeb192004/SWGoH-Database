@@ -3,7 +3,7 @@
 
 var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 
-var contactsRef = dbRef.child('Bistan');
+var contactsRef = dbRef.child('Ezra Bridger');
 
 
 
@@ -28,6 +28,9 @@ document.getElementById("s3btn").onclick = function () {
 	document.getElementById("s3layout").style.display="block"; };
 document.getElementById("u2btn").onclick = function () { 
 	document.getElementById("u2layout").style.display="block"; };
+	
+	
+	
 	$('#save').click(function(){
     var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 var toonAbil = dbRef.child('Ezra Bridger');
