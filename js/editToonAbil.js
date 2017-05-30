@@ -26,12 +26,13 @@ var toonAbil = dbRef.child('Ezra Bridger');
 
 	var movieName = document.getElementById('bname').value;
 	alert(movieName);
-document.getElementById('bname').value = '';
+
 toonAbil.set({
   path: movieName,
   arrivedAt: movieName,
   userAgent: movieName
 });
+document.getElementById('bname').value = '';
 	};
 
 

@@ -24,7 +24,7 @@
       // FirebaseUI config.
       var uiConfig = {
 	  
-        signInSuccessUrl: 'displayName.html',
+        signInSuccessUrl: 'index.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -65,6 +65,9 @@
       initApp = function() {
         firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
+		  var currentUser = firebase.auth().currentUser;
+          currentUser.updateProfile({
+          displayName: document.getElementById("displayName").value});
             // User is signed in.
             var displayName = user.displayName;
             var email = user.email;
@@ -75,22 +78,13 @@
             var providerData = user.providerData;
             user.getToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in';
-              document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('account-details').textContent = JSON.stringify({
-                displayName: displayName,
-                email: email,
-                emailVerified: emailVerified,
-                phoneNumber: phoneNumber,
-                photoURL: photoURL,
-                uid: uid,
-                accessToken: accessToken,
-                providerData: providerData
-              }, null, '  ');
+              
+              document.getElementById('account-details').textContent = displayName;
             });
           } else {
             // User is signed out.
             document.getElementById('sign-in-status').textContent = 'Signed out';
-            document.getElementById('sign-in').textContent = 'Sign in';
+            
             document.getElementById('account-details').textContent = 'null';
           }
         }, function(error) {
@@ -103,10 +97,16 @@
     </script>
   </head>
   <body>
-    <h1>Welcome to My Awesome App</h1>
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div>
+	<div style="width:100%; margin-left:10px; margin-right:10px; text-align:center">
+	  <div id="sign-in-status"  style="text-align:center; font-size:24px" ></div>
+
+	  <div id="account-details"  style="text-align:center; font-size:24px"></div>
+	  <input type="text" id="displayName"  style="text-align:center; font-size:24px; width:50%" >
+	</div>
+    
+    
+    
+    
 	<script src="js/toonInfo.js"></script>
   </body>
 </html>

@@ -21,9 +21,9 @@
   };
   firebase.initializeApp(config);
 </script>
-    <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
-
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link href="css/toonInfoStyles.css" rel="stylesheet">
+	
   </head>
   <body>
     <!-- The surrounding HTML is left untouched by FirebaseUI.
@@ -60,14 +60,14 @@
             
             user.getToken().then(function(accessToken) {
               document.getElementById('sign-in-status').textContent = 'Signed in';
-              document.getElementById('sign-in').textContent = 'Sign out';
+              //document.getElementById('sign-in').textContent = 'Sign out';
               document.getElementById('account-details').textContent = displayName;
              
             });
           } else {
             // User is signed out.
             document.getElementById('sign-in-status').textContent = 'Signed out';
-            document.getElementById('sign-in').textContent = 'Sign in';
+           // document.getElementById('sign-in').textContent = 'Sign in';
             document.getElementById('account-details').textContent = 'null';
           }
         }, function(error) {
@@ -88,10 +88,11 @@ currentUser.updateProfile({
 
   </head>
   <body>
+    <div style="width:100%; margin-left:10px; margin-right:10px; text-align:center">
+	  <div id="sign-in-status"  style="text-align:center; font-size:24px" ></div>
     
-    <div id="sign-in-status"></div>
-    <div id="sign-in"></div>
-    <div id="account-details"></div>
-	<input type="text" id="displayName">
+	  <div id="account-details"  style="text-align:center; font-size:24px"></div>
+	  <input type="text" id="displayName"  style="text-align:center; font-size:24px; width:50%" >
+	</div>
   </body>
 </html>
