@@ -19,21 +19,7 @@ contactsRef.once("value", function(snap) {
   document.getElementById("speed").value = toons.speed;
   document.getElementById("health").value = toons.health;
   });
-document.getElementById("save").onclick = function () { 
-
-	var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
-var toonAbil = dbRef.child('Ezra Bridger');
-
-	var movieName = document.getElementById('bname').value;
-	alert(movieName);
-
-toonAbil.set({
-  toon_description: movieName,
-  arrivedAt: movieName,
-  userAgent: movieName
-});
-document.getElementById('bname').value = '';
-	};
+;
 
 
 document.getElementById("s2btn").onclick = function () { 
@@ -42,7 +28,20 @@ document.getElementById("s3btn").onclick = function () {
 	document.getElementById("s3layout").style.display="block"; };
 document.getElementById("u2btn").onclick = function () { 
 	document.getElementById("u2layout").style.display="block"; };
-	
+	$('#save').click(function(){
+    var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
+var toonAbil = dbRef.child('Ezra Bridger');
+
+	var movieName = document.getElementById('bname').value;
+	alert(movieName);
+
+toonAbil.set({
+ 	toon_description: movieName,
+  arrivedAt: movieName,
+  userAgent: movieName
+});
+document.getElementById('bname').value = '';
+});
 $('#home').click(function(){
     window.location='index.html';
 });
