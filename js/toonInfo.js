@@ -21,16 +21,10 @@ var config = {
             var displayName = user.displayName;
             
             user.getToken().then(function(accessToken) {
-              document.getElementById('sign-in-status').textContent = 'Signed in';
-              //document.getElementById('sign-in').textContent = 'Sign out';
-              document.getElementById('user-name').textContent = displayName;
-             
+              document.getElementById("sign-out").style.display="block";
             });
           } else {
-            // User is signed out.
-            document.getElementById('sign-in-status').textContent = 'Signed out';
-           // document.getElementById('sign-in').textContent = 'Sign in';
-            document.getElementById('user-name').textContent = 'null';
+         document.getElementById("sign-out").style.display="none";
           }
         }, function(error) {
           console.log(error);
@@ -172,11 +166,11 @@ $('#home').click(function(){
             var displayName = user.displayName;
             user.getToken().then(function(accessToken) {
               window.location = 'editToonAbil.html';
-			  document.getElementById("sign-out").style.display="block";
+			  
             });
           } else {
           window.location = 'logIn.html';
-		  document.getElementById("sign-out").style.display="none";
+		  
           }
         }, function(error) {
           console.log(error);
