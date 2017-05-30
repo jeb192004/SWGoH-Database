@@ -28,7 +28,7 @@ var toonAbil = dbRef.child('Ezra Bridger');
 	alert(movieName);
 
 toonAbil.set({
-  path: movieName,
+  toon_description: movieName,
   arrivedAt: movieName,
   userAgent: movieName
 });
@@ -42,9 +42,7 @@ document.getElementById("s3btn").onclick = function () {
 	document.getElementById("s3layout").style.display="block"; };
 document.getElementById("u2btn").onclick = function () { 
 	document.getElementById("u2layout").style.display="block"; };
-	$('#save').click(function(){
-    window.location='logIn.html';
-});
+	
 $('#home').click(function(){
     window.location='index.html';
 });
