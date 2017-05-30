@@ -170,7 +170,7 @@ $('#home').click(function(){
             });
           } else {
           window.location = 'logIn.html';
-		  
+		  window.sessionStorage.setItem('redirect','editToonAbil.html');
           }
         }, function(error) {
           console.log(error);

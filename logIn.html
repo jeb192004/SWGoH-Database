@@ -5,18 +5,7 @@
     <title>Sample FirebaseUI App</title>
    
 <script src="https://www.gstatic.com/firebasejs/4.0.0/firebase.js"></script>
-<script>
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
-    authDomain: "swgoh-campanion.firebaseapp.com",
-    databaseURL: "https://swgoh-campanion.firebaseio.com",
-    projectId: "swgoh-campanion",
-    storageBucket: "swgoh-campanion.appspot.com",
-    messagingSenderId: "298882100900"
-  };
-  firebase.initializeApp(config);
-</script>
+
     <script src="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.js"></script>
     <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.0.0/firebaseui.css" />
     <script type="text/javascript">
@@ -63,34 +52,7 @@
        * TODO(DEVELOPER): Paste the initialization snippet from:
        * Firebase Console > Overview > Add Firebase to your web app. *
        ***************************************************************************************** -->
-    <script type="text/javascript">
-      initApp = function() {
-        firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-		  
-            // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var phoneNumber = user.phoneNumber;
-            var providerData = user.providerData;
-            user.getToken().then(function(accessToken) {
-              
-            });
-          } else {
-            // User is signed out.
-            
-          }
-        }, function(error) {
-          console.log(error);
-        });
-      };
-      window.addEventListener('load', function() {
-        initApp();
-      });
-    </script>
+    
   </head>
   <body>
 	
