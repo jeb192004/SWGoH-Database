@@ -36,14 +36,13 @@ var redirect = sessionStorage.getItem('redirect');
       window.addEventListener('load', function() {
         initApp();
       });
-	  document.getElementById('#cancel').onclick = function () { 
+	  $('#home').click(function(){
  window.location= redirect;
  alert("yes");
-};
-	  document.getElementById("save").onclick = function () { 
-
+});
+	  $('#home').click(function(){
 	var currentUser = firebase.auth().currentUser;
 currentUser.updateProfile({
  displayName: document.getElementById("displayName").value});
  window.location= redirect;
-};
+});
