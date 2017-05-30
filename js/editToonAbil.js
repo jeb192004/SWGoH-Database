@@ -36,6 +36,25 @@ document.getElementById("u2btn").onclick = function () {
     messagingSenderId: "298882100900"
   };
   firebase.initializeApp(config);
+  initApp = function() {
+        firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+            // User is signed in.
+            var displayName = user.displayName;
+            
+            user.getToken().then(function(accessToken) {
+              document.getElementById("sign-out").style.display="block";
+            });
+          } else {
+         document.getElementById("sign-out").style.display="none";
+          }
+        }, function(error) {
+          console.log(error);
+        });
+      };
+      window.addEventListener('load', function() {
+        initApp();
+      });
   
       
 
