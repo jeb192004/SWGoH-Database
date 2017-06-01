@@ -37,6 +37,10 @@ var redirect = sessionStorage.getItem('redirect');
         initApp();
       });
 	  
-	  $('#save').click(function(){
+	  document.getElementById("save").onclick = function () { 
     alert("yes");
-});
+};
+
+document.getElementById("cancel").onclick = function () { 
+    window.location=redirect;
+};
