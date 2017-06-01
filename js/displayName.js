@@ -37,7 +37,6 @@ var redirect = sessionStorage.getItem('redirect');
         initApp();
       });
 	  
-	  var button_my_button = "#save";
-$(button_my_button).click(function(){
- alert("Yes");
+	  $('#save').click(function(){
+    alert("yes");
 });
