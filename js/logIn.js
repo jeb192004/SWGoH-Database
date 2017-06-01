@@ -9,7 +9,8 @@ var config = {
     messagingSenderId: "298882100900"
   };
   firebase.initializeApp(config);
-  
+  alert("When logging in for the first time, your first and last name will be your user name.  "+
+  "If you do not wish to use your real name please input whatever you would like when asked for it.");
   
   // FirebaseUI config.
       var uiConfig = {
@@ -37,15 +38,15 @@ var config = {
         signInSuccessUrl: 'displayName.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
-          firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-          firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+          //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+          //firebase.auth.FacebookAuthProvider.PROVIDER_ID,
           //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
           {
             provider: firebase.auth.EmailAuthProvider.PROVIDER_ID,
             // Whether the display name should be displayed in the Sign Up page.
             requireDisplayName: true
           },
-          {
+          /**{
             provider: firebase.auth.PhoneAuthProvider.PROVIDER_ID,
             // Invisible reCAPTCHA with image challenge and bottom left badge.
             recaptchaParameters: {
@@ -53,7 +54,7 @@ var config = {
               size: 'invisible',
               badge: 'bottomleft'
             }
-          }
+          }**/
         ],
         // Terms of service url.
         tosUrl: '<your-tos-url>'
