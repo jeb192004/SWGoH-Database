@@ -13,7 +13,7 @@ var config = {
   
   // FirebaseUI config.
       var uiConfig = {
-	    signInFlow: 'popup',
+	    //signInFlow: 'popup',
         signInSuccessUrl: 'displayName.html',
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
@@ -44,13 +44,7 @@ var config = {
           if (user) {
 		  
             // User is signed in.
-            var displayName = user.displayName;
-            var email = user.email;
-            var emailVerified = user.emailVerified;
-            var photoURL = user.photoURL;
-            var uid = user.uid;
-            var phoneNumber = user.phoneNumber;
-            var providerData = user.providerData;
+            
             user.getToken().then(function(accessToken) {
               
             });
