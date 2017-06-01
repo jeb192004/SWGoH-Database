@@ -13,6 +13,13 @@ var config = {
   
   // FirebaseUI config.
       var uiConfig = {
+		  callbacks: {
+          signInSuccess: function(currentUser, credential, redirectUrl) {
+            // Do something.
+            // Return type determines whether we continue the redirect automatically
+            // or whether we leave that to developer to handle.
+            return true;
+          },
 	    //signInFlow: 'popup',
         signInSuccessUrl: 'displayName.html',
         signInOptions: [
@@ -21,17 +28,17 @@ var config = {
           {
       provider: firebase.auth.FacebookAuthProvider.PROVIDER_ID,
       scopes: [
-        
+        'email'
       ]
     },
           //firebase.auth.TwitterAuthProvider.PROVIDER_ID,
           //firebase.auth.GithubAuthProvider.PROVIDER_ID,
-          //firebase.auth.EmailAuthProvider.PROVIDER_ID,
+          firebase.auth.EmailAuthProvider.PROVIDER_ID,
           //firebase.auth.PhoneAuthProvider.PROVIDER_ID
         ],
         // Terms of service url.
         tosUrl: '<your-tos-url>'
-      };
+      }};
       // Initialize the FirebaseUI Widget using Firebase.
       var ui = new firebaseui.auth.AuthUI(firebase.auth());
       // The start method will wait until the DOM is loaded.
