@@ -36,13 +36,8 @@ var redirect = sessionStorage.getItem('redirect');
       window.addEventListener('load', function() {
         initApp();
       });
-	  $('#home').click(function(){
- window.location= redirect;
- alert("yes");
-});
-	  $('#home').click(function(){
-	var currentUser = firebase.auth().currentUser;
-currentUser.updateProfile({
- displayName: document.getElementById("displayName").value});
- window.location= redirect;
+	  
+	  var button_my_button = "#save";
+$(button_my_button).click(function(){
+ alert("Yes");
 });
