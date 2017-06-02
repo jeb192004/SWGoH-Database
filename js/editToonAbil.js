@@ -60,7 +60,7 @@ document.getElementById("u2btn").onclick = function () {
 		   firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
-            var DisplayName = user.displayName;
+            
             
             user.getToken().then(function(accessToken) {
               var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
@@ -71,6 +71,8 @@ document.getElementById("u2btn").onclick = function () {
 	if (description && description.value) {
   	description1 = description;
 }
+	
+	var DisplayName = user.displayName;
 	
 	alert("data saved!!!");
 
