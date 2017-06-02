@@ -1,4 +1,3 @@
-
 var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 
 var contactsRef = dbRef.child('Ezra Bridger');
@@ -41,12 +40,10 @@ document.getElementById("u2btn").onclick = function () {
             var displayName = user.displayName;
             
             user.getToken().then(function(accessToken) {
-              
+              document.getElementById("sign-out").style.display="block";
             });
           } else {
-         alert("You need to be signed in");
-		 window.sessionStorage.setItem('redirect','editToonAbil.html');
-		//window.location="logIn.html";
+         document.getElementById("sign-out").style.display="none";
           }
         }, function(error) {
           console.log(error);
@@ -91,5 +88,3 @@ $('#home').click(function(){
     window.location='index.html';
 });
 	
-
-
