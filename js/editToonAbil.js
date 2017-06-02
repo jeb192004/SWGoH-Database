@@ -1,6 +1,3 @@
-var redirect = sessionStorage.getItem('redirect');
-
-
 
 var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 
@@ -48,7 +45,7 @@ document.getElementById("u2btn").onclick = function () {
             });
           } else {
          alert("You need to be signed in");
-		 window.sessionStorage.setItem('redirect',redirect);
+		 window.sessionStorage.setItem('redirect','editToonAbil.html');
 		window.location="logIn.html";
           }
         }, function(error) {
