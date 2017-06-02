@@ -1,3 +1,4 @@
+var redirect = sessionStorage.getItem('redirect');
 
 
 
@@ -47,6 +48,7 @@ document.getElementById("u2btn").onclick = function () {
             });
           } else {
          alert("You need to be signed in");
+		 window.sessionStorage.setItem('redirect',redirect);
 		window.location="logIn.html";
           }
         }, function(error) {
