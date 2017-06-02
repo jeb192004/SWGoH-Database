@@ -69,7 +69,7 @@ document.getElementById("u2btn").onclick = function () {
 	var movieName = document.getElementById('bname').value;
 	alert(movieName);
 
-toonAbil.push({
+toonAbil.set({
  	toon_description: movieName,
   arrivedAt: movieName,
   userAgent: movieName
