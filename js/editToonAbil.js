@@ -124,7 +124,7 @@ toonAbil.push({
 	special_name: sname1,
   	special_description: sdescription1,
   	special_level: slevel1,
-	special_damage: sdamage1,
+	special_damage : sdamage1,
 	cooldown_special: scooldown1,
 	special_level_2: slevel2,
 	cooldown_special_2: scooldown2,
