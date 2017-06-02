@@ -46,7 +46,7 @@ document.getElementById("u2btn").onclick = function () {
           } else {
          alert("You need to be signed in");
 		 window.sessionStorage.setItem('redirect','editToonAbil.html');
-		window.location="logIn.html";
+		//window.location="logIn.html";
           }
         }, function(error) {
           console.log(error);
