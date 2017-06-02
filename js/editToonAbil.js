@@ -77,7 +77,7 @@ document.getElementById("u2btn").onclick = function () {
 toonAbil.set({
  	toon_description: description1,
   	
-	
+	user_id: displayName
 });
 document.getElementById('bname').value = '';
             });
