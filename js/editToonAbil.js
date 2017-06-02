@@ -72,14 +72,14 @@ document.getElementById("u2btn").onclick = function () {
   	description1 = description;
 }
 	
-	var DisplayName = user.displayName;
+	
 	
 	alert("data saved!!!");
 
 toonAbil.set({
  	toon_description: description1,
   	
-	user_id: DisplayName
+	
 });
 document.getElementById('bname').value = '';
             });
