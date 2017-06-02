@@ -1,14 +1,5 @@
 
-firebase.auth().onAuthStateChanged(function(user) {
-          if (user) {
-            // User is signed in
-          } else {
-        alert("You need to be signed in");
-		window.location="logIn.html";
-          }
-        }, function(error) {
-          console.log(error);
-        });
+
 
 var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 
@@ -52,10 +43,11 @@ document.getElementById("u2btn").onclick = function () {
             var displayName = user.displayName;
             
             user.getToken().then(function(accessToken) {
-              document.getElementById("sign-out").style.display="block";
+              
             });
           } else {
-         document.getElementById("sign-out").style.display="none";
+         alert("You need to be signed in");
+		window.location="logIn.html";
           }
         }, function(error) {
           console.log(error);
