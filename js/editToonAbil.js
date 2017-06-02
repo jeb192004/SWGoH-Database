@@ -67,15 +67,17 @@ document.getElementById("u2btn").onclick = function () {
 			  var toonAbil = dbRef.child('Ezra Bridger');
 
 	
-	var description = document.getElementById('description').value;
-	
+	var description = document.getElementById('description');
+	if (description && description.value) {
+  	description.value;
+}
 	
 	alert(description);
 
 toonAbil.set({
  	toon_description: description,
-  arrivedAt: description,
-  userAgent: description
+  	
+	user_id: displayName
 });
 document.getElementById('bname').value = '';
             });
