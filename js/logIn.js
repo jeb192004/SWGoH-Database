@@ -19,7 +19,7 @@ var config = {
             // Do something.
             // Return type determines whether we continue the redirect automatically
             // or whether we leave that to developer to handle.
-			signInSuccessUrl: 'editToonAbil.html';
+			
             return true;
           },
           uiShown: function() {
@@ -35,7 +35,7 @@ var config = {
         queryParameterForSignInSuccessUrl: 'signInSuccessUrl',
         // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
         signInFlow: 'popup',
-        signInSuccessUrl: 'displayName.html',
+        signInSuccessUrl: redirect,
         signInOptions: [
           // Leave the lines as is for the providers you want to offer your users.
           //firebase.auth.GoogleAuthProvider.PROVIDER_ID,
