@@ -67,9 +67,9 @@ document.getElementById("u2btn").onclick = function () {
 			  var toonAbil = dbRef.child('Ezra Bridger');
 
 	
-	var description = document.getElementById('description').value;
+	var description = document.getElementById('description');
 	if (description && description.value) {
-  	description1 = description;
+  	description1 = description.value;
 }
 	
 	
