@@ -60,7 +60,7 @@ document.getElementById("u2btn").onclick = function () {
 		   firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
-            var displayName = user.displayName;
+            var DisplayName = user.displayName;
             
             user.getToken().then(function(accessToken) {
               var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
@@ -72,12 +72,12 @@ document.getElementById("u2btn").onclick = function () {
   	description1 = description;
 }
 	
-	alert(description1);
+	alert("data saved!!!");
 
 toonAbil.set({
  	toon_description: description1,
   	
-	user_id: displayName
+	user_id: DisplayName
 });
 document.getElementById('bname').value = '';
             });
