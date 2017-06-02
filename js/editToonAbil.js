@@ -69,7 +69,7 @@ document.getElementById("u2btn").onclick = function () {
 	
 	var description = document.getElementById('description');
 	if (description && description.value) {
-  	var description1 = document.getElementById('description').value;;
+  	description1 = document.getElementById('description').value;
 }
 	
 	alert(description);
@@ -77,7 +77,7 @@ document.getElementById("u2btn").onclick = function () {
 toonAbil.set({
  	toon_description: description1,
   	
-	user_id: displayName
+	
 });
 document.getElementById('bname').value = '';
             });
