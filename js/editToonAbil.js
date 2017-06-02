@@ -66,13 +66,53 @@ document.getElementById("u2btn").onclick = function () {
               var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
 			  var toonAbil = dbRef.child('Ezra Bridger');
 
-	var movieName = document.getElementById('bname').value;
-	alert(movieName);
+	
+	var description = document.getElementById('description').value;
+	var power = document.getElementById('power').value;
+	var speed = document.getElementById('speed').value;
+	var health = document.getElementById('health').value;
+	
+	var bname = document.getElementById('bname').value;
+	var bdescription = document.getElementById('bdescription').value;
+	var blevel = document.getElementById('blevel').value;
+	var bdamage = document.getElementById('bdamage').value;
+	
+	var sname1 = document.getElementById('sname1').value;
+	var sdescription1 = document.getElementById('sdescription1').value;
+	var slevel1 = document.getElementById('slevel1').value;
+	var sdamage1 = document.getElementById('sdamage1').value;
+	var scooldown1 = document.getElementById('scooldown1').value;
+	
+	var sname2 = document.getElementById('sname2').value;
+	var sdescription2 = document.getElementById('sdescription2').value;
+	var slevel2 = document.getElementById('slevel2').value;
+	var sdamage2 = document.getElementById('sdamage2').value;
+	var scooldown2 = document.getElementById('scooldown2').value;
+	
+	var sname3 = document.getElementById('sname3').value;
+	var sdescription3 = document.getElementById('sdescription3').value;
+	var slevel3 = document.getElementById('slevel3').value;
+	var sdamage3 = document.getElementById('sdamage3').value;
+	var scooldown3 = document.getElementById('scooldown3').value;
+	
+	var lname = document.getElementById('lname').value;
+	var ldescription = document.getElementById('ldescription').value;
+	var llevel = document.getElementById('llevel').value;
+	
+	var uname1 = document.getElementById('uname1').value;
+	var udescription1 = document.getElementById('udescription1').value;
+	var ulevel1 = document.getElementById('ulevel1').value;
+	
+	var uname2 = document.getElementById('uname2').value;
+	var udescription2 = document.getElementById('udescription2').value;
+	var ulevel2 = document.getElementById('ulevel2').value;
+	
+	alert(description);
 
 toonAbil.set({
- 	toon_description: movieName,
-  arrivedAt: movieName,
-  userAgent: movieName
+ 	toon_description: description,
+  arrivedAt: description,
+  userAgent: description
 });
 document.getElementById('bname').value = '';
             });
@@ -88,3 +128,8 @@ $('#home').click(function(){
     window.location='index.html';
 });
 	
+
+
+
+
+
