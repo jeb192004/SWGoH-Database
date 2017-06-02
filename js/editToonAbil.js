@@ -118,7 +118,7 @@ document.getElementById("u2btn").onclick = function () {
 	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();
 	
 
-toonAbil.push({
+toonAbil.set({
  	toon_description: description,
   	power: power,
   	speed: speed,
