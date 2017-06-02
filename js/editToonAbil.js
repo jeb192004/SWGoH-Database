@@ -124,49 +124,6 @@ toonAbil.set({
   	speed: speed,
 	health: health,
 	
-	basic_name: bname,
-  	basic_description: bdescription,
-  	basic_level: blevel,
-	basic_damage: bdamage,
-	
-	special_name: sname1,
-  	special_description: sdescription1,
-  	special_level: slevel1,
-	special_damage: sdamage1,
-	cooldown_special: scooldown1,
-	
-	special_level_2: slevel2,
-	cooldown_special_2: scooldown2,
-	special_damage_2: sdamage2,
-	special_name_2: sname2,
-	special_description_2: sdescription2,
-	
-	special_level_3: slevel3,
-	cooldown_special_3: scooldown3,
-	special_damage_3: sdamage3,
-	special_name_3: sname3,
-	special_description_3: sdescription3,
-							
-	leader_level:llevel,
-	leader_name: lname,
-	leader_description: ldescription,
-			
-	unique_level: ulevel1,
-	unique_name:uname1,
-	unique_description:udescription1,
-	
-	unique_level_2: ulevel2,
-	unique_name_2:uname2,
-	unique_description_2: udescription2,
-	
-	basic_ability_image: bAbilImg,
-	special1_ability_image: sAbilImg1,
-	special2_ability_image: sAbilImg2,
-	special3_ability_image: sAbilImg3,
-	leader_ability_image: lAbilImg,
-	unique1_ability_image: uAbilImg1,
-	unique2_ability_image: uAbilImg2,
-	
 	user_id: displayName
 	
 });
