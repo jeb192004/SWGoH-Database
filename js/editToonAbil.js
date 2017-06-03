@@ -265,7 +265,7 @@ toonAbil.set({
  	toon_description: description_1,
   	power: power_1,
   	speed: speed_1,
-	health: health_1,
+	//health: health_1,
 	/**basic_name: bname_1,
   	basic_description: bdescription_1,
   	basic_level: blevel_1,
