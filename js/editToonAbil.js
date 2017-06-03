@@ -154,13 +154,13 @@ document.getElementById("u2btn").onclick = function () {
 	
 	var description = document.getElementById('description');
 	if (description && description.value) {
-  	description_1 = description.value;}
+  	var description_1 = description.value;}
 	var power = document.getElementById('power');
 	if (power && power.value) {
-  	power_1 = power.value;}
+  	var power_1 = power.value;}
 	var speed = document.getElementById('speed');
 	if (speed && speed.value) {
-  	speed_1 = speed.value;}
+  	var speed_1 = speed.value;}
 	/**
 	var health = document.getElementById('health');
 	if (health && health.value) {
@@ -259,7 +259,7 @@ document.getElementById("u2btn").onclick = function () {
 	**/
 	
 	
-	alert("data saved!!!");
+	alert(speed_1);
 
 toonAbil.set({
  	toon_description: description_1,
