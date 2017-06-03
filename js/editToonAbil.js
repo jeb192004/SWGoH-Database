@@ -257,15 +257,18 @@ document.getElementById("u2btn").onclick = function () {
 	if (ulevel2 && ulevel2.value) {
   	ulevel2_1 = ulevel2.value;}
 
-	if(bname_1){
+
 	
-	alert(bname_1);}
+	alert("data saved!!!");
 
 toonAbil.set({
- 	toon_description: description_1,
-  	power: power_1,
-  	speed: speed_1,
-	health: health_1,
+ 	toon_description: description_1,});
+	toonAbil.set({
+  	power: power_1,});
+	toonAbil.set({
+  	speed: speed_1,});
+	toonAbil.set({
+	health: health_1,});
 	/**basic_name: bname_1,
   	basic_description: bdescription_1,
   	basic_level: blevel_1,
@@ -304,10 +307,8 @@ toonAbil.set({
 	**/
 });
 //document.getElementById('bname').value = '';
-            });
-          } else {
-        alert("You are not signed in");
-          }
+            };
+          });
         }, function(error) {
           console.log(error);
         });
