@@ -164,11 +164,11 @@ document.getElementById("u2btn").onclick = function () {
 	
 	var health = document.getElementById('health');
 	if (health && health.value) {
-  	health_1 = health.value;}
+  	var health_1 = health.value;}
 
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
-  	bname_1 = bname.value;}
+  	var bname_1 = bname.value;}
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
   	bdescription_1 = bdescription.value;}
@@ -259,7 +259,7 @@ document.getElementById("u2btn").onclick = function () {
 
 	
 	
-	alert(speed_1);
+	alert(bname_1);
 
 toonAbil.set({
  	toon_description: description_1,
