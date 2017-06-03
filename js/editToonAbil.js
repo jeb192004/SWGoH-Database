@@ -165,7 +165,7 @@ document.getElementById("u2btn").onclick = function () {
 	var health = document.getElementById('health');
 	if (health && health.value) {
   	health_1 = health.value;}
-	/**
+
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
   	bname_1 = bname.value;}
@@ -256,7 +256,7 @@ document.getElementById("u2btn").onclick = function () {
 	var ulevel2 = document.getElementById('ulevel2');
 	if (ulevel2 && ulevel2.value) {
   	ulevel2_1 = ulevel2.value;}
-	**/
+
 	
 	
 	alert(speed_1);
