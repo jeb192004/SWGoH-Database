@@ -38,9 +38,10 @@ document.getElementById("u2btn").onclick = function () {
           if (user) {
             // User is signed in.
             var displayName = user.displayName;
-            document.getElementById("status").value=displayName;
+            
             user.getToken().then(function(accessToken) {
               document.getElementById("sign-out").style.display="block";
+			  document.getElementById("status").value=displayName;
             });
           } else {
          document.getElementById("sign-out").style.display="none";
