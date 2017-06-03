@@ -161,11 +161,11 @@ document.getElementById("u2btn").onclick = function () {
 	var speed = document.getElementById('speed');
 	if (speed && speed.value) {
   	var speed_1 = speed.value;}
-	/**
+	
 	var health = document.getElementById('health');
 	if (health && health.value) {
   	health_1 = health.value;}
-	
+	/**
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
   	bname_1 = bname.value;}
@@ -265,7 +265,7 @@ toonAbil.set({
  	toon_description: description_1,
   	power: power_1,
   	speed: speed_1,
-	//health: health_1,
+	health: health_1,
 	/**basic_name: bname_1,
   	basic_description: bdescription_1,
   	basic_level: blevel_1,
