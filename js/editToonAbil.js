@@ -257,9 +257,9 @@ document.getElementById("u2btn").onclick = function () {
 	if (ulevel2 && ulevel2.value) {
   	ulevel2_1 = ulevel2.value;}
 
+	if(bname_1){
 	
-	
-	alert(bname_1);
+	alert(bname_1);}
 
 toonAbil.set({
  	toon_description: description_1,
