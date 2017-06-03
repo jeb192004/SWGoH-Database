@@ -310,7 +310,7 @@ var toonDetails={};
 	if(health_1){
 	toonDetails[ health_1] = toon_detail;}
 	
-	return toonAbil.set(toonDetails);
+    toonAbil.set(toonDetails);
 	alert("data saved!!!");
 /**
 toonAbil.set({
