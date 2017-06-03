@@ -71,7 +71,7 @@ document.getElementById("u2btn").onclick = function () {
 	var description = document.getElementById('description');
 	if (description && description.value) {
   	description_1 = description.value;}
-	var power = document.getElementById('power');
+	/**var power = document.getElementById('power');
 	if (power && power.value) {
   	power_1 = power.value;}
 	var speed = document.getElementById('speed');
@@ -171,14 +171,14 @@ document.getElementById("u2btn").onclick = function () {
 	var ulevel2 = document.getElementById('ulevel2');
 	if (ulevel2 && ulevel2.value) {
   	ulevel2_1 = ulevel2.value;}
-	
+	**/
 	
 	
 	alert("data saved!!!");
 
 toonAbil.set({
  	toon_description: description_1,
-  	power: power_1,
+  	/**power: power_1,
   	speed: speed_1,
 	health: health_1,
 	basic_name: bname_1,
@@ -216,7 +216,7 @@ toonAbil.set({
 	leader_ability_image: lAbilImg_1,
 	unique1_ability_image: uAbilImg1_1,
 	unique2_ability_image: uAbilImg2_1,
-	
+	**/
 });
 document.getElementById('bname').value = '';
             });
