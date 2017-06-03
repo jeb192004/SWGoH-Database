@@ -257,62 +257,10 @@ document.getElementById("u2btn").onclick = function () {
 	if (ulevel2 && ulevel2.value) {
   	ulevel2_1 = ulevel2.value;}
 
-	var toon_detail = {
-	toon_description: description_1,
-  	power: power_1,
-  	speed: speed_1,
-	health: health_1,
-	basic_name: bname_1,
-  	basic_description: bdescription_1,
-  	basic_level: blevel_1,
-	basic_damage: bdamage_1,
-	special_name: sname1_1,
-  	special_description: sdescription1_1,
-  	special_level: slevel1_1,
-	special_damage : sdamage1_1,
-	cooldown_special: scooldown1_1,
-	special_level_2: slevel2_1,
-	cooldown_special_2: scooldown2_1,
-	special_damage_2: sdamage2_1,
-	special_name_2: sname2_1,
-	special_description_2: sdescription2_1,
-	special_level_3: slevel3_1,
-	cooldown_special_3: scooldown3_1,
-	special_damage_3: sdamage3_1,
-	special_name_3: sname3_1,
-	special_description_3: sdescription3_1,					
-	leader_level:llevel_1,
-	leader_name: lname_1,
-	leader_description: ldescription_1,		
-	unique_level: ulevel1_1,
-	unique_name:uname1_1,
-	unique_description:udescription1_1,
-	unique_level_2: ulevel2_1,
-	unique_name_2:uname2_1,
-	unique_description_2: udescription2_1,
-	basic_ability_image: bAbilImg_1,
-	special1_ability_image: sAbilImg1_1,
-	special2_ability_image: sAbilImg2_1,
-	special3_ability_image: sAbilImg3_1,
-	leader_ability_image: lAbilImg_1,
-	unique1_ability_image: uAbilImg1_1,
-	unique2_ability_image: uAbilImg2_1,
-	};
+
 	
-	
-var toonDetails={};
-	if(description_1){
-	toonDetails[description_1] = toon_detail;}
-	if(power_1){
-  	toonDetails[power_1] = toon_detail;}
-	if(speed_1){
-  	toonDetails[speed_1] = toon_detail;}
-	if(health_1){
-	toonDetails[ health_1] = toon_detail;}
-	
-    toonAbil.set(toonDetails);
 	alert("data saved!!!");
-/**
+
 toonAbil.set({
  	toon_description: description_1,
   	power: power_1,
@@ -353,8 +301,8 @@ toonAbil.set({
 	leader_ability_image: lAbilImg_1,
 	unique1_ability_image: uAbilImg1_1,
 	unique2_ability_image: uAbilImg2_1,
-	
-});**/
+	**/
+});
 //document.getElementById('bname').value = '';
             });
           } else {
