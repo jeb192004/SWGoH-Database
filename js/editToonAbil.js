@@ -10,9 +10,93 @@ contactsRef.once("value", function(snap) {
   var toons = snap.val();
   //description-power-speed-health
   document.getElementById("description").value = toons.toon_description;
-     document.getElementById('power').value = toons.power;
+  document.getElementById('power').value = toons.power;
   document.getElementById("speed").value = toons.speed;
   document.getElementById("health").value = toons.health;
+  /**
+  document.getElementById('bname').value = toons.basic_name;
+  document.getElementById('bdescription').value = basic_description;
+  document.getElementById('blevel').value = basic_level;
+  document.getElementById('bdamage').value = basic_damage;
+	
+	var sname1 = document.getElementById('sname1');
+	if (sname1 && sname1.value) {
+  	sname1_1 = sname1.value;}
+	var sdescription1 = document.getElementById('sdescription1');
+	if (sdescription1 && sdescription1.value) {
+  	sdescription1_1 = sdescription1.value;}
+	var slevel1 = document.getElementById('slevel1');
+	if (slevel1 && slevel1.value) {
+  	slevel1_1 = slevel1.value;}
+	var sdamage1 = document.getElementById('sdamage1');
+	if (sdamage1 && sdamage1.value) {
+  	sdamage1_1 = sdamage1.value;}
+	var scooldown1 = document.getElementById('scooldown1');
+	if (scooldown1 && scooldown1.value) {
+  	scooldown1_1 = scooldown1.value;}
+	
+	var sname2 = document.getElementById('sname2');
+	if (sname2 && sname2.value) {
+  	sname2_1 = sname2.value;}
+	var sdescription2 = document.getElementById('sdescription2');
+	if (sdescription2 && sdescription2.value) {
+  	sdescription2_1 = sdescription2.value;}
+	var slevel2 = document.getElementById('slevel2');
+	if (slevel2 && slevel2.value) {
+  	slevel2_1 = slevel2.value;}
+	var sdamage2 = document.getElementById('sdamage2');
+	if (sdamage2 && sdamage2.value) {
+  	sdamage2_1 = sdamage2.value;}
+	var scooldown2 = document.getElementById('scooldown2');
+	if (scooldown2 && scooldown2.value) {
+  	scooldown2_1 = scooldown2.value;}
+	
+	var sname3 = document.getElementById('sname3');
+	if (sname3 && sname3.value) {
+  	sname3_1 = sname3.value;}
+	var sdescription3 = document.getElementById('sdescription3');
+	if (sdescription3 && sdescription3.value) {
+  	sdescription3_1 = sdescription3.value;}
+	var slevel3 = document.getElementById('slevel3');
+	if (slevel3 && slevel3.value) {
+  	slevel3_1 = slevel3.value;}
+	var sdamage3 = document.getElementById('sdamage3');
+	if (sdamage3 && sdamage3.value) {
+  	sdamage3_1 = sdamage3.value;}
+	var scooldown3 = document.getElementById('scooldown3');
+	if (scooldown3 && scooldown3.value) {
+  	scooldown3_1 = scooldown3.value;}
+	
+	var lname = document.getElementById('lname');
+	if (lname && lname.value) {
+  	lname_1 = lname.value;}
+	var ldescription = document.getElementById('ldescription');
+	if (ldescription && ldescription.value) {
+  	ldescription_1 = ldescription.value;}
+	var llevel = document.getElementById('llevel');
+	if (llevel && llevel.value) {
+  	llevel_1 = llevel.value;}
+	
+	var uname1 = document.getElementById('uname1');
+	if (uname1 && uname1.value) {
+  	uname1_1 = uname1.value;}
+	var udescription1 = document.getElementById('udescription1');
+	if (udescription1 && udescription1.value) {
+  	udescription1_1 = udescription1.value;}
+	var ulevel1 = document.getElementById('ulevel1');
+	if (ulevel1 && ulevel1.value) {
+  	ulevel1_1 = ulevel1.value;}
+	
+	var uname2 = document.getElementById('uname2');
+	if (uname2 && uname2.value) {
+  	uname2_1 = uname2.value;}
+	var udescription2 = document.getElementById('udescription2');
+	if (udescription2 && udescription2.value) {
+  	udescription2_1 = udescription2.value;}
+	var ulevel2 = document.getElementById('ulevel2');
+	if (ulevel2 && ulevel2.value) {
+  	ulevel2_1 = ulevel2.value;}
+	**/
   });
 ;
 
@@ -77,10 +161,11 @@ document.getElementById("u2btn").onclick = function () {
 	var speed = document.getElementById('speed');
 	if (speed && speed.value) {
   	speed_1 = speed.value;}
+	/**
 	var health = document.getElementById('health');
 	if (health && health.value) {
   	health_1 = health.value;}
-	/**
+	
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
   	bname_1 = bname.value;}
@@ -218,7 +303,7 @@ toonAbil.set({
 	unique2_ability_image: uAbilImg2_1,
 	**/
 });
-document.getElementById('bname').value = '';
+//document.getElementById('bname').value = '';
             });
           } else {
         alert("You are not signed in");
