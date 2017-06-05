@@ -155,28 +155,28 @@ document.getElementById("u2btn").onclick = function () {
 	var description = document.getElementById('description');
 	if (description && description.value) {
   	var description_1 = description.value;}else{
-		description_1 = "null";
+		description_1 = 0;
 	}
 	var power = document.getElementById('power');
 	if (power && power.value) {
   	var power_1 = power.value;}else{
-		power_1 = "null";
+		power_1 = 0;
 	}
 	var speed = document.getElementById('speed');
 	if (speed && speed.value) {
   	var speed_1 = speed.value;}else{
-		speed_1 = "null";
+		speed_1 = 0;
 	}
 	var health = document.getElementById('health');
 	if (health && health.value) {
   	var health_1 = health.value;}else{
-		health_1 = "null";
+		health_1 = 0;
 	}
 
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
   	var bname_1 = bname.value;}else{
-		bname_1 = null;
+		bname_1 = 0;
 	}/**
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
