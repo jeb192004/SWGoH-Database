@@ -297,7 +297,7 @@ document.getElementById("u2btn").onclick = function () {
 		ulevel2_1 = null;
 	}
 	if(document.getElementById('bAbilImg').checked) {
-	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
+	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}
 	if(document.getElementById('sAbilImg1').checked) {
 	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();
 	if(document.getElementById('sAbilImg2').checked) {
@@ -309,7 +309,7 @@ document.getElementById("u2btn").onclick = function () {
 	if(document.getElementById('uAbilImg1').checked) {
 	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}
 	if(document.getElementById('uAbilImg2').checked) {
-	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();
+	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();}
 
 
 	
