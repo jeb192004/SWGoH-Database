@@ -299,7 +299,7 @@ document.getElementById("u2btn").onclick = function () {
 	if(document.getElementById('bAbilImg').checked) {
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}
 	if(document.getElementById('sAbilImg1').checked) {
-	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();
+	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}
 	if(document.getElementById('sAbilImg2').checked) {
 	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}
 	if(document.getElementById('sAbilImg3').checked) {
