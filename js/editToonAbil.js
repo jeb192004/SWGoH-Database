@@ -332,7 +332,7 @@ toonAbil.set({
   	basic_description: bdescription_1,
   	basic_level: blevel_1,
 	basic_damage: bdamage_1,
-	special_name: sname1_1,/**
+	special_name: sname1_1,
   	special_description: sdescription1_1,
   	special_level: slevel1_1,
 	special_damage : sdamage1_1,
@@ -341,7 +341,7 @@ toonAbil.set({
 	cooldown_special_2: scooldown2_1,
 	special_damage_2: sdamage2_1,
 	special_name_2: sname2_1,
-	special_description_2: sdescription2_1,
+	special_description_2: sdescription2_1,/**
 	special_level_3: slevel3_1,
 	cooldown_special_3: scooldown3_1,
 	special_damage_3: sdamage3_1,
