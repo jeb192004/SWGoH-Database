@@ -329,7 +329,7 @@ toonAbil.set({
   	power: power_1,
   	speed: speed_1,
 	health: health_1,
-	basic_name: bname_1,
+	basic_name: bname_1,/**
   	basic_description: bdescription_1,
   	basic_level: blevel_1,
 	basic_damage: bdamage_1,
@@ -363,7 +363,7 @@ toonAbil.set({
 	special3_ability_image: sAbilImg3_1,
 	leader_ability_image: lAbilImg_1,
 	unique1_ability_image: uAbilImg1_1,
-	unique2_ability_image: uAbilImg2_1,
+	unique2_ability_image: uAbilImg2_1,**/
 
 });
 //document.getElementById('bname').value = '';
