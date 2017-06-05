@@ -37,7 +37,7 @@ contactsRef.on("value", function(snap) {
 	document.getElementById('scooldown3').value = toons.cooldown_special_3;
 	
 	document.getElementById('lname').value = toons.leader_name;
-	document.getElementById('ldescription').value = toons.leader_description
+	document.getElementById('ldescription').value = toons.leader_description;
 	document.getElementById('llevel').value = toons.leader_level;
 	
 	document.getElementById('uname1').value = toons.unique_name;
@@ -45,7 +45,7 @@ contactsRef.on("value", function(snap) {
 	document.getElementById('ulevel1').value =toons.unique_level;
 	
 	document.getElementById('uname2').value = toons.unique_name_2;
-	document.getElementById('udescription2').value = toons.unique_description_2
+	document.getElementById('udescription2').value = toons.unique_description_2;
 	document.getElementById('ulevel2').value = toons.unique_level_2;
 	
   });
