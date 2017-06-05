@@ -297,19 +297,33 @@ document.getElementById("u2btn").onclick = function () {
 		ulevel2_1 = null;
 	}
 	if(document.getElementById('bAbilImg').checked) {
-	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}
+	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}else{
+		bAbilImg = null;
+	}
 	if(document.getElementById('sAbilImg1').checked) {
-	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}
+	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
+		sAbilImg1 = null;
+	}
 	if(document.getElementById('sAbilImg2').checked) {
-	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}
+	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}else{
+		sAbilImg2 = null;
+	}
 	if(document.getElementById('sAbilImg3').checked) {
-	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();}
+	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();}else{
+		sAbilImg3 = null;
+	}
 	if(document.getElementById('lAbilImg').checked) {
-	var lAbilImg = $('input[name="lAbilImg"]:checked').val();}
+	var lAbilImg = $('input[name="lAbilImg"]:checked').val();}else{
+		lAbilImg = null;
+	}
 	if(document.getElementById('uAbilImg1').checked) {
-	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}
+	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}else{
+		uAbilImg1 = null;
+	}
 	if(document.getElementById('uAbilImg2').checked) {
-	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();}
+	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();}else{
+		uAbilImg2 = null;
+	}
 
 
 	
