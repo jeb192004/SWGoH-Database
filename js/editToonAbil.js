@@ -24,11 +24,11 @@ contactsRef.on("value", function(snap) {
 	document.getElementById('sdamage1').value = toons.special_damage;
 	document.getElementById('scooldown1').value = toons.cooldown_special;
 	
-	document.getElementById('sname2').value = toons.special_level_2;
-	document.getElementById('sdescription2').value = toons.cooldown_special_2;
-	document.getElementById('slevel2').value = toons.special_damage_2;
-	document.getElementById('sdamage2').value = toons.special_name_2;
-	document.getElementById('scooldown2').value = toons.special_description_2;
+	document.getElementById('sname2').value = toons.special_name_2;
+	document.getElementById('sdescription2').value = toons.special_description_2;
+	document.getElementById('slevel2').value = toons.special_level_2;
+	document.getElementById('sdamage2').value = toons.special_damage_2;
+	document.getElementById('scooldown2').value = toons.cooldown_special_2;
 	
 	document.getElementById('sname3').value = toons.special_name_3;
 	document.getElementById('sdescription3').value = toons.special_description_3;
