@@ -16,14 +16,14 @@ contactsRef.on("value", function(snap) {
   //basic ability
   document.getElementById("basicLevel").innerHTML = "Basic: level " + toons.basic_level;
   document.getElementById("basicName").innerHTML = toons.basic_name;
-  document.getElementById("basicImg").innerHTML = '<img src="' + toons.basic_url + '"/>';
+  //document.getElementById("basicImg").innerHTML = '<img src="' + toons.basic_url + '"/>';
   document.getElementById("basicDescription").innerHTML = toons.basic_description;
   document.getElementById("basicDmg").innerHTML = "Damage: " + toons.basic_damage;
-  document.getElementById("basicAbilImg").innerHTML = '<img src="img/'+toons.basic_ability_image+'.jpg" width="25px"/>';
+ // document.getElementById("basicAbilImg").innerHTML = '<img src="img/'+toons.basic_ability_image+'.jpg" width="25px"/>';
   //special 1 ability
   document.getElementById("sp1Level").innerHTML = "Special: level " + toons.special_level;
   document.getElementById("sp1Name").innerHTML = toons.special_name;
-  document.getElementById("sp1Img").innerHTML = '<img src="' + toons.special_url + '"/>';
+  //document.getElementById("sp1Img").innerHTML = '<img src="' + toons.special_url + '"/>';
   document.getElementById("sp1Description").innerHTML = toons.special_description;
   if (toons.special_damage === undefined) {
 	  document.getElementById("sp1Dmg").innerHTML = "";}
@@ -31,7 +31,7 @@ contactsRef.on("value", function(snap) {
   if (toons.cooldown_special === undefined) {
 	  document.getElementById("sp1cooldown").innerHTML = "";}
 	  else{document.getElementById("sp1cooldown").innerHTML = toons.cooldown_special+" turn cooldown";}
-  document.getElementById("sp1AbilImg").innerHTML = '<img src="img/'+toons.special1_ability_image+'.jpg" width="25px"/>';
+//  document.getElementById("sp1AbilImg").innerHTML = '<img src="img/'+toons.special1_ability_image+'.jpg" width="25px"/>';
   //special 2 ability
     if (toons.special_level_2 === undefined) {
 	  document.getElementById("sp2Level").innerHTML = "";}
@@ -39,9 +39,9 @@ contactsRef.on("value", function(snap) {
       if (toons.special_name_2 === undefined) {
 	  document.getElementById("stable2").style.display="none";}
 	  else{document.getElementById("sp2Name").innerHTML = toons.special_name_2;}
-     if (toons.special_url_2 === undefined) {
-	  document.getElementById("sp2Img").innerHTML = "";}
-	  else{document.getElementById("sp2Img").innerHTML = '<img src="' + toons.special_url_2 + '"/>';}
+  //   if (toons.special_url_2 === undefined) {
+	//  document.getElementById("sp2Img").innerHTML = "";}
+	 // else{document.getElementById("sp2Img").innerHTML = '<img src="' + toons.special_url_2 + '"/>';}
      if (toons.special_description_2 === undefined) {
 	  document.getElementById("sp2Description").innerHTML = "";}
 	  else{document.getElementById("sp2Description").innerHTML = toons.special_description_2;}
@@ -51,9 +51,9 @@ contactsRef.on("value", function(snap) {
   if (toons.cooldown_special_2 === undefined) {
 	  document.getElementById("sp2cooldown").innerHTML = "";}
 	  else{document.getElementById("sp2cooldown").innerHTML = toons.cooldown_special_2+" turn cooldown";}
-     if (toons.special2_ability_image === undefined) {
-	  document.getElementById("sp2AbilImg").innerHTML = "";}
-	  else{document.getElementById("sp2AbilImg").innerHTML = '<img src="img/'+toons.special2_ability_image+'.jpg" width="25px"/>';}
+     //if (toons.special2_ability_image === undefined) {
+	  //document.getElementById("sp2AbilImg").innerHTML = "";}
+	 // else{document.getElementById("sp2AbilImg").innerHTML = '<img src="img/'+toons.special2_ability_image+'.jpg" width="25px"/>';}
   //special 3 ability
   if (toons.special_level_3 === undefined) {
 	  document.getElementById("sp3Level").innerHTML = "";}
@@ -61,9 +61,9 @@ contactsRef.on("value", function(snap) {
    if (toons.special_name_3 === undefined) {
 	  document.getElementById("stable3").style.display="none";}
 	  else{ document.getElementById("sp3Name").innerHTML = toons.special_name_3;}
-   if (toons.special_url_3 === undefined) {
-	  document.getElementById("sp3Img").innerHTML = "";}
-	  else{  document.getElementById("sp3Img").innerHTML = '<img src="' + toons.special_url_3 + '"/>';}
+   //if (toons.special_url_3 === undefined) {
+	//  document.getElementById("sp3Img").innerHTML = "";}
+	//  else{  document.getElementById("sp3Img").innerHTML = '<img src="' + toons.special_url_3 + '"/>';}
     if (toons.special_description_3 === undefined) {
 	  document.getElementById("sp3Description").innerHTML = "";}
 	  else{ document.getElementById("sp3Description").innerHTML = toons.special_description_3;}
@@ -73,9 +73,9 @@ contactsRef.on("value", function(snap) {
   if (toons.cooldown_special_3 === undefined) {
 	  document.getElementById("sp3cooldown").innerHTML = "";}
 	  else{document.getElementById("sp3cooldown").innerHTML = toons.cooldown_special_3+" turn cooldown";}
-   if (toons.special3_ability_image === undefined) {
-	  document.getElementById("sp3AbilImg").innerHTML = "";}
-	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="img/'+toons.special3_ability_image+'.jpg" width="25px"/>';}
+  // if (toons.special3_ability_image === undefined) {
+	 // document.getElementById("sp3AbilImg").innerHTML = "";}
+	  //else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="img/'+toons.special3_ability_image+'.jpg" width="25px"/>';}
   //leader ability
   if (toons.leader_level === undefined) {
 	  document.getElementById("leadLevel").innerHTML = "";}
@@ -83,15 +83,15 @@ contactsRef.on("value", function(snap) {
  if (toons.leader_name === undefined) {
 	  document.getElementById("ltable").style.display="none";}
 	  else{ document.getElementById("leadName").innerHTML = toons.leader_name;}
-   if (toons.leader_url === undefined) {
-	  document.getElementById("leadImg").innerHTML = "";}
-	  else{ document.getElementById("leadImg").innerHTML = '<img src="' + toons.leader_url + '"/>';}
+   //if (toons.leader_url === undefined) {
+	//  document.getElementById("leadImg").innerHTML = "";}
+	 // else{ document.getElementById("leadImg").innerHTML = '<img src="' + toons.leader_url + '"/>';}
    if (toons.leader_description === undefined) {
 	  document.getElementById("leadDescription").innerHTML = "";}
 	  else{ document.getElementById("leadDescription").innerHTML = toons.leader_description;}
-   if (toons.leader_ability_image === undefined) {
-	  document.getElementById("leadAbilImg").innerHTML = "";}
-	  else{ document.getElementById("leadAbilImg").innerHTML = '<img src="img/'+toons.leader_ability_image+'.jpg" width="25px"/>';}
+  // if (toons.leader_ability_image === undefined) {
+	//  document.getElementById("leadAbilImg").innerHTML = "";}
+	 // else{ document.getElementById("leadAbilImg").innerHTML = '<img src="img/'+toons.leader_ability_image+'.jpg" width="25px"/>';}
   //unique 1 ability
   if (toons.unique_level === undefined) {
 	  document.getElementById("unique1Level").innerHTML = "";}
@@ -99,15 +99,15 @@ contactsRef.on("value", function(snap) {
 	if (toons.unique_name === undefined) {
 	  document.getElementById("utable1").style.display="none";}
 	  else{document.getElementById("unique1Name").innerHTML = toons.unique_name;}
-   if (toons.unique_url === undefined) {
-	  document.getElementById("unique1Img").innerHTML = "";}
-	  else{ document.getElementById("unique1Img").innerHTML = '<img src="' + toons.unique_url + '"/>';}
+   //if (toons.unique_url === undefined) {
+	//  document.getElementById("unique1Img").innerHTML = "";}
+	 // else{ document.getElementById("unique1Img").innerHTML = '<img src="' + toons.unique_url + '"/>';}
    if (toons.unique_description === undefined) {
 	  document.getElementById("unique1Description").innerHTML = "";}
 	  else{ document.getElementById("unique1Description").innerHTML = toons.unique_description;}
-   if (toons.unique1_ability_image === undefined) {
-	  document.getElementById("unique1AbilImg").innerHTML = "";}
-	  else{ document.getElementById("unique1AbilImg").innerHTML = '<img src="img/'+toons.unique1_ability_image+'.jpg" width="25px"/>';}
+  // if (toons.unique1_ability_image === undefined) {
+	//  document.getElementById("unique1AbilImg").innerHTML = "";}
+	//  else{ document.getElementById("unique1AbilImg").innerHTML = '<img src="img/'+toons.unique1_ability_image+'.jpg" width="25px"/>';}
   //unique 2 ability
    if (toons.unique_level_2 === undefined) {
 	  document.getElementById("unique2Level").innerHTML = "";}
@@ -115,15 +115,15 @@ contactsRef.on("value", function(snap) {
    if (toons.unique_name_2 === undefined) {
 	  document.getElementById("utable2").style.display="none";}
 	  else{ document.getElementById("unique2Name").innerHTML = toons.unique_name_2;}
-    if (toons.unique_url_2 === undefined) {
-	  document.getElementById("unique2Img").innerHTML = "";}
-	  else{document.getElementById("unique2Img").innerHTML = '<img src="' + toons.unique_url_2 + '"/>';}
+  //  if (toons.unique_url_2 === undefined) {
+	//  document.getElementById("unique2Img").innerHTML = "";}
+	 // else{document.getElementById("unique2Img").innerHTML = '<img src="' + toons.unique_url_2 + '"/>';}
     if (toons.unique_description_2 === undefined) {
 	  document.getElementById("unique2Description").innerHTML = "";}
 	  else{document.getElementById("unique2Description").innerHTML = toons.unique_description_2;}
-   if (toons.unique2_ability_image === undefined) {
-	  document.getElementById("unique2AbilImg").innerHTML = "";}
-	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
+   //if (toons.unique2_ability_image === undefined) {
+	//  document.getElementById("unique2AbilImg").innerHTML = "";}
+	 // else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
 	  
   });
 ;
