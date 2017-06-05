@@ -296,12 +296,8 @@ document.getElementById("u2btn").onclick = function () {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = null;
 	}
-	if(document.getElementById('bAbilImg').checked) {
-	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}else{
-		bAbilImg = null;
-	}
 	
-
+	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
 
 	
 	alert("data saved!!!");
