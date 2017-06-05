@@ -296,13 +296,19 @@ document.getElementById("u2btn").onclick = function () {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = null;
 	}
-	
+	if(document.getElementById('bAbilImg').checked) {
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
+	if(document.getElementById('sAbilImg1').checked) {
 	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();
-	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();
-	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();
-	var lAbilImg = $('input[name="lAbilImg"]:checked').val();
-	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();
+	if(document.getElementById('sAbilImg2').checked) {
+	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}
+	if(document.getElementById('sAbilImg3').checked) {
+	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();}
+	if(document.getElementById('lAbilImg').checked) {
+	var lAbilImg = $('input[name="lAbilImg"]:checked').val();}
+	if(document.getElementById('uAbilImg1').checked) {
+	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}
+	if(document.getElementById('uAbilImg2').checked) {
 	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();
 
 
