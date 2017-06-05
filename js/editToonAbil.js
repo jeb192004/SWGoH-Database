@@ -177,12 +177,12 @@ document.getElementById("u2btn").onclick = function () {
 	if (bname && bname.value) {
   	var bname_1 = bname.value;}else{
 		bname_1 = 0;
-	}/**
+	}
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
   	var bdescription_1 = bdescription.value;}else{
 		bdescription_1 = 0;
-	}
+	}/**
 	var blevel = document.getElementById('blevel');
 	if (blevel && blevel.value) {
   	var blevel_1 = blevel.value;}else{
@@ -329,8 +329,8 @@ toonAbil.set({
   	power: power_1,
   	speed: speed_1,
 	health: health_1,
-	basic_name: bname_1,/**
-  	basic_description: bdescription_1,
+	basic_name: bname_1,
+  	basic_description: bdescription_1,/**
   	basic_level: blevel_1,
 	basic_damage: bdamage_1,
 	special_name: sname1_1,
