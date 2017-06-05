@@ -5,7 +5,7 @@ var contactsRef = dbRef.child('Ezra Bridger');
 
 
 //load older conatcts as well as any newly added one...
-contactsRef.once("value", function(snap) {
+contactsRef.on("value", function(snap) {
   console.log("added", snap.key(), snap.val());
   var toons = snap.val();
   //description-power-speed-health
