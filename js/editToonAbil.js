@@ -15,10 +15,10 @@ contactsRef.once("value", function(snap) {
   document.getElementById("health").value = toons.health;
  
   document.getElementById('bname').value = toons.basic_name;
-  document.getElementById('bdescription').value = basic_description;
+ /** document.getElementById('bdescription').value = basic_description;
   document.getElementById('blevel').value = basic_level;
   document.getElementById('bdamage').value = basic_damage;
-	/**
+	
 	var sname1 = document.getElementById('sname1');
 	if (sname1 && sname1.value) {
   	sname1_1 = sname1.value;}
@@ -176,8 +176,8 @@ document.getElementById("u2btn").onclick = function () {
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
   	var bname_1 = bname.value;}else{
-		bname_1 = "null";
-	}
+		bname_1 = null;
+	}/**
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
   	var bdescription_1 = bdescription.value;}else{
@@ -319,7 +319,7 @@ document.getElementById("u2btn").onclick = function () {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = "null";
 	}
-
+**/
 
 	
 	alert("data saved!!!");
