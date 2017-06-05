@@ -298,6 +298,7 @@ document.getElementById("u2btn").onclick = function () {
 	}
 	
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
+	
 
 	
 	alert(bAbilImg);
