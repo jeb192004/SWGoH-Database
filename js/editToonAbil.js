@@ -296,16 +296,37 @@ document.getElementById("u2btn").onclick = function () {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = null;
 	}
-	
-	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
-	if ($('input[name=sAbilImg]:checked').length > 0) {
+	if ($('input[name=bAbilImg]:checked').length > 0) {
+	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}else{
+		bAbilImg = null;
+	}
+	if ($('input[name=sAbilImg1]:checked').length > 0) {
  	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
 		sAbilImg1 = null;
 	}
-	
+	if ($('input[name=sAbilImg2]:checked').length > 0) {
+ 	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}else{
+		sAbilImg2 = null;
+	}
+	if ($('input[name=sAbilImg3]:checked').length > 0) {
+ 	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();}else{
+		sAbilImg3 = null;
+	}
+	if ($('input[name=lAbilImg]:checked').length > 0) {
+ 	var lAbilImg = $('input[name="lAbilImg"]:checked').val();}else{
+		lAbilImg = null;
+	}
+	if ($('input[name=uAbilImg1]:checked').length > 0) {
+ 	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}else{
+		uAbilImg1 = null;
+	}
+	if ($('input[name=uAbilImg2]:checked').length > 0) {
+ 	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();}else{
+		uAbilImg2 = null;
+	}
 
 	
-	alert("data saved!!!" + sAbilImg1);
+	alert("data saved!!!");
 
 toonAbil.set({
  	toon_description: description_1,
@@ -341,12 +362,12 @@ toonAbil.set({
 	unique_name_2:uname2_1,
 	unique_description_2: udescription2_1,
 	basic_ability_image: bAbilImg,
-	//special1_ability_image: sAbilImg1,
-	//special2_ability_image: sAbilImg2,
-	//special3_ability_image: sAbilImg3,
-	//leader_ability_image: lAbilImg,
-	//unique1_ability_image: uAbilImg1,
-	//unique2_ability_image: uAbilImg2,
+	special1_ability_image: sAbilImg1,
+	special2_ability_image: sAbilImg2,
+	special3_ability_image: sAbilImg3,
+	leader_ability_image: lAbilImg,
+	unique1_ability_image: uAbilImg1,
+	unique2_ability_image: uAbilImg2,
  
 });
 
