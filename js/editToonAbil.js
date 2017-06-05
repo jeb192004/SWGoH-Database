@@ -154,33 +154,33 @@ document.getElementById("u2btn").onclick = function () {
 	var description = document.getElementById('description');
 	if (description && description.value) {
   	var description_1 = description.value;}else{
-		description_1 = 0;
+		description_1 = null;
 	}
 	var power = document.getElementById('power');
 	if (power && power.value) {
   	var power_1 = power.value;}else{
-		power_1 = 0;
+		power_1 = null;
 	}
 	var speed = document.getElementById('speed');
 	if (speed && speed.value) {
   	var speed_1 = speed.value;}else{
-		speed_1 = 0;
+		speed_1 = null;
 	}
 	var health = document.getElementById('health');
 	if (health && health.value) {
   	var health_1 = health.value;}else{
-		health_1 = 0;
+		health_1 = null;
 	}
 
 	var bname = document.getElementById('bname');
 	if (bname && bname.value) {
   	var bname_1 = bname.value;}else{
-		bname_1 = 0;
+		bname_1 = null;
 	}
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
   	var bdescription_1 = bdescription.value;}else{
-		bdescription_1 = 0;
+		bdescription_1 = null;
 	}
 	var blevel = document.getElementById('blevel');
 	if (blevel && blevel.value) {
