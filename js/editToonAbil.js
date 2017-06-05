@@ -298,8 +298,8 @@ document.getElementById("u2btn").onclick = function () {
 	}
 	
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
-	if(document.getElementByName('sAbilImg1').checked) {
-	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
+	if ($('input[name=sAbilImg]:checked').length > 0) {
+ 	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
 		sAbilImg1 = null;
 	}
 	
