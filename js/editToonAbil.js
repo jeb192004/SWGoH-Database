@@ -15,10 +15,10 @@ contactsRef.once("value", function(snap) {
   document.getElementById("health").value = toons.health;
  
   document.getElementById('bname').value = toons.basic_name;
- /** document.getElementById('bdescription').value = basic_description;
+  document.getElementById('bdescription').value = basic_description;
   document.getElementById('blevel').value = basic_level;
   document.getElementById('bdamage').value = basic_damage;
-	
+	/**
 	var sname1 = document.getElementById('sname1');
 	if (sname1 && sname1.value) {
   	sname1_1 = sname1.value;}
@@ -177,149 +177,149 @@ document.getElementById("u2btn").onclick = function () {
 	if (bname && bname.value) {
   	var bname_1 = bname.value;}else{
 		bname_1 = 0;
-	}/**
+	}
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
   	var bdescription_1 = bdescription.value;}else{
-		bdescription_1 = "null";
+		bdescription_1 = 0;
 	}
 	var blevel = document.getElementById('blevel');
 	if (blevel && blevel.value) {
   	var blevel_1 = blevel.value;}else{
-		blevel_1 = "null";
+		blevel_1 = null;
 	}
 	var bdamage = document.getElementById('bdamage');
 	if (bdamage && bdamage.value) {
   	var bdamage_1 = bdamage.value;}else{
-		bdamage_1 = "null";
+		bdamage_1 = null;
 	}
 	
 	var sname1 = document.getElementById('sname1');
 	if (sname1 && sname1.value) {
   	var sname1_1 = sname1.value;}else{
-		sname1_1 = "null";
+		sname1_1 = null;
 	}
 	var sdescription1 = document.getElementById('sdescription1');
 	if (sdescription1 && sdescription1.value) {
   	var sdescription1_1 = sdescription1.value;}else{
-		sdescription1_1 = "null";
+		sdescription1_1 = null;
 	}
 	var slevel1 = document.getElementById('slevel1');
 	if (slevel1 && slevel1.value) {
   	var slevel1_1 = slevel1.value;}else{
-		slevel1_1 = "null";
+		slevel1_1 = null;
 	}
 	var sdamage1 = document.getElementById('sdamage1');
 	if (sdamage1 && sdamage1.value) {
   	var sdamage1_1 = sdamage1.value;}else{
-		sdamage1_1 = "null";
+		sdamage1_1 = null;
 	}
 	var scooldown1 = document.getElementById('scooldown1');
 	if (scooldown1 && scooldown1.value) {
   	var scooldown1_1 = scooldown1.value;}else{
-		scooldown1_1 = "null";
+		scooldown1_1 = null;
 	}
 	
 	var sname2 = document.getElementById('sname2');
 	if (sname2 && sname2.value) {
   	var sname2_1 = sname2.value;}else{
-		sname2_1 = "null";
+		sname2_1 = null;
 	}
 	var sdescription2 = document.getElementById('sdescription2');
 	if (sdescription2 && sdescription2.value) {
   	var sdescription2_1 = sdescription2.value;}else{
-		sdescription2_1 = "null";
+		sdescription2_1 = null;
 	}
 	var slevel2 = document.getElementById('slevel2');
 	if (slevel2 && slevel2.value) {
   	var slevel2_1 = slevel2.value;}else{
-		slevel2_1 = "null";
+		slevel2_1 = null;
 	}
 	var sdamage2 = document.getElementById('sdamage2');
 	if (sdamage2 && sdamage2.value) {
   	var sdamage2_1 = sdamage2.value;}else{
-		sdamage2_1 = "null";
+		sdamage2_1 = null;
 	}
 	var scooldown2 = document.getElementById('scooldown2');
 	if (scooldown2 && scooldown2.value) {
   	var scooldown2_1 = scooldown2.value;}else{
-		scooldown2_1 = "null";
+		scooldown2_1 = null;
 	}
 	
 	var sname3 = document.getElementById('sname3');
 	if (sname3 && sname3.value) {
   	var sname3_1 = sname3.value;}else{
-		sname3_1 = "null";
+		sname3_1 = null;
 	}
 	var sdescription3 = document.getElementById('sdescription3');
 	if (sdescription3 && sdescription3.value) {
   	var sdescription3_1 = sdescription3.value;}else{
-		sdescription3_1 = "null";
+		sdescription3_1 = null;
 	}
 	var slevel3 = document.getElementById('slevel3');
 	if (slevel3 && slevel3.value) {
   	var slevel3_1 = slevel3.value;}else{
-		slevel3_1 = "null";
+		slevel3_1 = null;
 	}
 	var sdamage3 = document.getElementById('sdamage3');
 	if (sdamage3 && sdamage3.value) {
   	var sdamage3_1 = sdamage3.value;}else{
-		sdamage3_1 = "null";
+		sdamage3_1 = null;
 	}
 	var scooldown3 = document.getElementById('scooldown3');
 	if (scooldown3 && scooldown3.value) {
   	var scooldown3_1 = scooldown3.value;}else{
-		scooldown3_1 = "null";
+		scooldown3_1 = null;
 	}
 	
 	var lname = document.getElementById('lname');
 	if (lname && lname.value) {
   	var lname_1 = lname.value;}else{
-		lname_1 = "null";
+		lname_1 = null;
 	}
 	var ldescription = document.getElementById('ldescription');
 	if (ldescription && ldescription.value) {
   	var ldescription_1 = ldescription.value;}else{
-		ldescription_1 = "null";
+		ldescription_1 = null;
 	}
 	var llevel = document.getElementById('llevel');
 	if (llevel && llevel.value) {
   	var llevel_1 = llevel.value;}else{
-		llevel_1 = "null";
+		llevel_1 = null;
 	}
 	
 	var uname1 = document.getElementById('uname1');
 	if (uname1 && uname1.value) {
   	var uname1_1 = uname1.value;}else{
-		uname1_1 = "null";
+		uname1_1 = null;
 	}
 	var udescription1 = document.getElementById('udescription1');
 	if (udescription1 && udescription1.value) {
   	var udescription1_1 = udescription1.value;}else{
-		udescription1_1 = "null";
+		udescription1_1 = null;
 	}
 	var ulevel1 = document.getElementById('ulevel1');
 	if (ulevel1 && ulevel1.value) {
   	var ulevel1_1 = ulevel1.value;}else{
-		ulevel1_1 = "null";
+		ulevel1_1 = null;
 	}
 	
 	var uname2 = document.getElementById('uname2');
 	if (uname2 && uname2.value) {
   	var uname2_1 = uname2.value;}else{
-		uname2_1 = "null";
+		uname2_1 = null;
 	}
 	var udescription2 = document.getElementById('udescription2');
 	if (udescription2 && udescription2.value) {
   	var udescription2_1 = udescription2.value;}else{
-		udescription2_1 = "null";
+		udescription2_1 = null;
 	}
 	var ulevel2 = document.getElementById('ulevel2');
 	if (ulevel2 && ulevel2.value) {
   	var ulevel2_1 = ulevel2.value;}else{
-		ulevel2_1 = "null";
+		ulevel2_1 = null;
 	}
-**/
+
 
 	
 	alert("data saved!!!");
