@@ -333,7 +333,7 @@ toonAbil.set({
   	basic_level: blevel_1,
 	basic_damage: bdamage_1,
 	special_name: sname1_1,
-  	special_description: sdescription1_1,/**
+  	special_description: sdescription1_1,
   	special_level: slevel1_1,
 	special_damage : sdamage1_1,
 	cooldown_special: scooldown1_1,
@@ -363,7 +363,7 @@ toonAbil.set({
 	leader_ability_image: lAbilImg_1,
 	unique1_ability_image: uAbilImg1_1,
 	unique2_ability_image: uAbilImg2_1,
-**/
+
 });
 
             });
