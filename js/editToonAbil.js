@@ -67,7 +67,7 @@ contactsRef.on("value", function(snap) {
 	document.getElementById('udescription1').value = toons.unique_description;}
 	if(toons.unique_level === undefined){}else{
 	document.getElementById('ulevel1').value =toons.unique_level;}
-	if(toons.unique_name === undefined){}else{
+	if(toons.unique_name_2 === undefined){}else{
 	document.getElementById('uname2').value = toons.unique_name_2;}
 	if(toons.unique_description_2 === undefined){}else{
 	document.getElementById('udescription2').value = toons.unique_description_2;}
