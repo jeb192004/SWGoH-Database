@@ -17,85 +17,37 @@ contactsRef.on("value", function(snap) {
   document.getElementById('bdescription').value = toons.basic_description;
   document.getElementById('blevel').value = toons.basic_level;
   document.getElementById('bdamage').value = toons.basic_damage;
-	/**
-	var sname1 = document.getElementById('sname1');
-	if (sname1 && sname1.value) {
-  	sname1_1 = sname1.value;}
-	var sdescription1 = document.getElementById('sdescription1');
-	if (sdescription1 && sdescription1.value) {
-  	sdescription1_1 = sdescription1.value;}
-	var slevel1 = document.getElementById('slevel1');
-	if (slevel1 && slevel1.value) {
-  	slevel1_1 = slevel1.value;}
-	var sdamage1 = document.getElementById('sdamage1');
-	if (sdamage1 && sdamage1.value) {
-  	sdamage1_1 = sdamage1.value;}
-	var scooldown1 = document.getElementById('scooldown1');
-	if (scooldown1 && scooldown1.value) {
-  	scooldown1_1 = scooldown1.value;}
+  
+	document.getElementById('sname1').value = toons.special_name;
+	document.getElementById('sdescription1').value = toons.special_description;
+	document.getElementById('slevel1').value = toons.special_level;
+	document.getElementById('sdamage1').value = toons.special_damage;
+	document.getElementById('scooldown1').value = toons.cooldown_special;
 	
-	var sname2 = document.getElementById('sname2');
-	if (sname2 && sname2.value) {
-  	sname2_1 = sname2.value;}
-	var sdescription2 = document.getElementById('sdescription2');
-	if (sdescription2 && sdescription2.value) {
-  	sdescription2_1 = sdescription2.value;}
-	var slevel2 = document.getElementById('slevel2');
-	if (slevel2 && slevel2.value) {
-  	slevel2_1 = slevel2.value;}
-	var sdamage2 = document.getElementById('sdamage2');
-	if (sdamage2 && sdamage2.value) {
-  	sdamage2_1 = sdamage2.value;}
-	var scooldown2 = document.getElementById('scooldown2');
-	if (scooldown2 && scooldown2.value) {
-  	scooldown2_1 = scooldown2.value;}
+	document.getElementById('sname2').value = toons.special_level_2;
+	document.getElementById('sdescription2').value = toons.cooldown_special_2;
+	document.getElementById('slevel2').value = toons.special_damage_2;
+	document.getElementById('sdamage2').value = toons.special_name_2;
+	document.getElementById('scooldown2').value = toons.special_description_2;
 	
-	var sname3 = document.getElementById('sname3');
-	if (sname3 && sname3.value) {
-  	sname3_1 = sname3.value;}
-	var sdescription3 = document.getElementById('sdescription3');
-	if (sdescription3 && sdescription3.value) {
-  	sdescription3_1 = sdescription3.value;}
-	var slevel3 = document.getElementById('slevel3');
-	if (slevel3 && slevel3.value) {
-  	slevel3_1 = slevel3.value;}
-	var sdamage3 = document.getElementById('sdamage3');
-	if (sdamage3 && sdamage3.value) {
-  	sdamage3_1 = sdamage3.value;}
-	var scooldown3 = document.getElementById('scooldown3');
-	if (scooldown3 && scooldown3.value) {
-  	scooldown3_1 = scooldown3.value;}
+	document.getElementById('sname3').value = toons.special_name_3;
+	document.getElementById('sdescription3').value = toons.special_description_3;
+	document.getElementById('slevel3').value = toons.special_level_3;
+	document.getElementById('sdamage3').value = toons.special_damage_3;
+	document.getElementById('scooldown3').value = toons.cooldown_special_3;
 	
-	var lname = document.getElementById('lname');
-	if (lname && lname.value) {
-  	lname_1 = lname.value;}
-	var ldescription = document.getElementById('ldescription');
-	if (ldescription && ldescription.value) {
-  	ldescription_1 = ldescription.value;}
-	var llevel = document.getElementById('llevel');
-	if (llevel && llevel.value) {
-  	llevel_1 = llevel.value;}
+	document.getElementById('lname').value = toons.leader_name;
+	document.getElementById('ldescription').value = toons.leader_description
+	document.getElementById('llevel').value = toons.leader_level;
 	
-	var uname1 = document.getElementById('uname1');
-	if (uname1 && uname1.value) {
-  	uname1_1 = uname1.value;}
-	var udescription1 = document.getElementById('udescription1');
-	if (udescription1 && udescription1.value) {
-  	udescription1_1 = udescription1.value;}
-	var ulevel1 = document.getElementById('ulevel1');
-	if (ulevel1 && ulevel1.value) {
-  	ulevel1_1 = ulevel1.value;}
+	document.getElementById('uname1').value = toons.unique_name;
+	document.getElementById('udescription1').value = toons.unique_description;
+	document.getElementById('ulevel1').value =toons.unique_level;
 	
-	var uname2 = document.getElementById('uname2');
-	if (uname2 && uname2.value) {
-  	uname2_1 = uname2.value;}
-	var udescription2 = document.getElementById('udescription2');
-	if (udescription2 && udescription2.value) {
-  	udescription2_1 = udescription2.value;}
-	var ulevel2 = document.getElementById('ulevel2');
-	if (ulevel2 && ulevel2.value) {
-  	ulevel2_1 = ulevel2.value;}
-	**/
+	document.getElementById('uname2').value = toons.unique_name_2;
+	document.getElementById('udescription2').value = toons.unique_description_2
+	document.getElementById('ulevel2').value = toons.unique_level_2;
+	
   });
 ;
 
@@ -341,7 +293,7 @@ toonAbil.set({
 	cooldown_special_2: scooldown2_1,
 	special_damage_2: sdamage2_1,
 	special_name_2: sname2_1,
-	special_description_2: sdescription2_1,/**
+	special_description_2: sdescription2_1,
 	special_level_3: slevel3_1,
 	cooldown_special_3: scooldown3_1,
 	special_damage_3: sdamage3_1,
@@ -355,7 +307,7 @@ toonAbil.set({
 	unique_description:udescription1_1,
 	unique_level_2: ulevel2_1,
 	unique_name_2:uname2_1,
-	unique_description_2: udescription2_1,
+	unique_description_2: udescription2_1,/**
 	basic_ability_image: bAbilImg_1,
 	special1_ability_image: sAbilImg1_1,
 	special2_ability_image: sAbilImg2_1,
