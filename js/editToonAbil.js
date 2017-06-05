@@ -297,7 +297,7 @@ document.getElementById("u2btn").onclick = function () {
 		ulevel2_1 = null;
 	}
 	
-	$('input[name="bAbilImg"]:checked').val();
+	alert($('input[name="bAbilImg"]:checked').val());
 
 
 	
