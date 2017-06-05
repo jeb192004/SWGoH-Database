@@ -297,7 +297,7 @@ document.getElementById("u2btn").onclick = function () {
 		ulevel2_1 = null;
 	}
 	
-	alert($('input[name="bAbilImg"]:checked').val());
+	var abilImg = $('input[name="bAbilImg"]:checked').val();
 
 
 	
@@ -335,8 +335,8 @@ toonAbil.set({
 	unique_description:udescription1_1,
 	unique_level_2: ulevel2_1,
 	unique_name_2:uname2_1,
-	unique_description_2: udescription2_1,/**
-	basic_ability_image: bAbilImg_1,
+	unique_description_2: udescription2_1,
+	basic_ability_image: bAbilImg,/**
 	special1_ability_image: sAbilImg1_1,
 	special2_ability_image: sAbilImg2_1,
 	special3_ability_image: sAbilImg3_1,
