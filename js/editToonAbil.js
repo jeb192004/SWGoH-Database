@@ -44,7 +44,7 @@ contactsRef.on("value", function(snap) {
 	if(toons.special_damage_2 === undefined){}else{
 	document.getElementById('sdamage2').value = toons.special_damage_2;}
 	if(toons.cooldown_special_3 === undefined){}else{
-	document.getElementById('scooldown2').value = toons.cooldown_special_2;
+	document.getElementById('scooldown2').value = toons.cooldown_special_2;}
 	if(toons.special_name_3 === undefined){}else{
 	document.getElementById('sname3').value = toons.special_name_3;}
 	if(toons.special_description_3 === undefined){}else{
