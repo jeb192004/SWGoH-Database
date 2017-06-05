@@ -298,10 +298,11 @@ document.getElementById("u2btn").onclick = function () {
 	}
 	
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
+	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();
 	
 
 	
-	alert(bAbilImg);
+	alert("data saved!!!");
 
 toonAbil.set({
  	toon_description: description_1,
@@ -337,7 +338,7 @@ toonAbil.set({
 	unique_name_2:uname2_1,
 	unique_description_2: udescription2_1,
 	basic_ability_image: bAbilImg,
-	//special1_ability_image: sAbilImg1,
+	special1_ability_image: sAbilImg1,
 	//special2_ability_image: sAbilImg2,
 	//special3_ability_image: sAbilImg3,
 	//leader_ability_image: lAbilImg,
