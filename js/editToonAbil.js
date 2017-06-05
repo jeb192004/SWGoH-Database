@@ -336,12 +336,12 @@ toonAbil.set({
 	unique_name_2:uname2_1,
 	unique_description_2: udescription2_1,
 	basic_ability_image: bAbilImg,
-	special1_ability_image: sAbilImg1,
-	special2_ability_image: sAbilImg2,
-	special3_ability_image: sAbilImg3,
-	leader_ability_image: lAbilImg,
-	unique1_ability_image: uAbilImg1,
-	unique2_ability_image: uAbilImg2,
+	//special1_ability_image: sAbilImg1,
+	//special2_ability_image: sAbilImg2,
+	//special3_ability_image: sAbilImg3,
+	//leader_ability_image: lAbilImg,
+	//unique1_ability_image: uAbilImg1,
+	//unique2_ability_image: uAbilImg2,
 
 });
 
