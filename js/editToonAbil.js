@@ -177,7 +177,7 @@ document.getElementById("u2btn").onclick = function () {
 	if (bname && bname.value) {
   	var bname_1 = bname.value;}else{
 		bname_1 = 0;
-	}
+	}/**
 	var bdescription = document.getElementById('bdescription');
 	if (bdescription && bdescription.value) {
   	var bdescription_1 = bdescription.value;}else{
@@ -318,7 +318,7 @@ document.getElementById("u2btn").onclick = function () {
 	if (ulevel2 && ulevel2.value) {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = 0;
-	}
+	}**/
 
 
 	
@@ -329,7 +329,7 @@ toonAbil.set({
   	power: power_1,
   	speed: speed_1,
 	health: health_1,
-	basic_name: bname_1,
+	basic_name: bname_1,/**
   	basic_description: bdescription_1,
   	basic_level: blevel_1,
 	basic_damage: bdamage_1,
@@ -364,7 +364,7 @@ toonAbil.set({
 	leader_ability_image: lAbilImg_1,
 	unique1_ability_image: uAbilImg1_1,
 	unique2_ability_image: uAbilImg2_1,
-
+**/
 });
 
             });
