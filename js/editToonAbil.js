@@ -300,7 +300,7 @@ document.getElementById("u2btn").onclick = function () {
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();
 
 	
-	alert("data saved!!!");
+	alert(bAbilImg);
 
 toonAbil.set({
  	toon_description: description_1,
