@@ -9,25 +9,41 @@ contactsRef.on("value", function(snap) {
   console.log("added", snap.key(), snap.val());
   var toons = snap.val();
   //description-power-speed-health
-  document.getElementById("description").value = toons.toon_description;
-  document.getElementById('power').value = toons.power;
-  document.getElementById("speed").value = toons.speed;
-  document.getElementById("health").value = toons.health;
-  document.getElementById('bname').value = toons.basic_name;
-  document.getElementById('bdescription').value = toons.basic_description;
-  document.getElementById('blevel').value = toons.basic_level;
-  document.getElementById('bdamage').value = toons.basic_damage;
+  if(toons.toon_description === undefined){}else{
+  document.getElementById("description").value = toons.toon_description;}
+  if(toons.power === undefined){}else{
+  document.getElementById('power').value = toons.power;}
+  if(toons.speed === undefined){}else{
+  document.getElementById("speed").value = toons.speed;}
+  if(toons.health === undefined){}else{
+  document.getElementById("health").value = toons.health;}
+  if(toons.basic_name === undefined){}else{
+  document.getElementById('bname').value = toons.basic_name;}
+  if(toons.basic_description === undefined){}else{
+  document.getElementById('bdescription').value = toons.basic_description;}
+  if(toons.basic_level === undefined){}else{
+  document.getElementById('blevel').value = toons.basic_level;}
+  if(toons.basic_damage === undefined){}else{
+  document.getElementById('bdamage').value = toons.basic_damage;}
   if(toons.special_name === undefined){}else{
 	document.getElementById('sname1').value = toons.special_name;}
-	document.getElementById('sdescription1').value = toons.special_description;
-	document.getElementById('slevel1').value = toons.special_level;
-	document.getElementById('sdamage1').value = toons.special_damage;
-	document.getElementById('scooldown1').value = toons.cooldown_special;
-	
-	document.getElementById('sname2').value = toons.special_name_2;
-	document.getElementById('sdescription2').value = toons.special_description_2;
-	document.getElementById('slevel2').value = toons.special_level_2;
-	document.getElementById('sdamage2').value = toons.special_damage_2;
+	if(toons.special_description === undefined){}else{
+	document.getElementById('sdescription1').value = toons.special_description;}
+	if(toons.special_level === undefined){}else{
+	document.getElementById('slevel1').value = toons.special_level;}
+	if(toons.special_damage === undefined){}else{
+	document.getElementById('sdamage1').value = toons.special_damage;}
+	if(toons.cooldown_special === undefined){}else{
+	document.getElementById('scooldown1').value = toons.cooldown_special;}
+	if(toons.special_name_2 === undefined){}else{
+	document.getElementById('sname2').value = toons.special_name_2;}
+	if(toons.special_description_2 === undefined){}else{
+	document.getElementById('sdescription2').value = toons.special_description_2;}
+	if(toons.special_level_2 === undefined){}else{
+	document.getElementById('slevel2').value = toons.special_level_2;}
+	if(toons.special_damage_2 === undefined){}else{
+	document.getElementById('sdamage2').value = toons.special_damage_2;}
+	if(toons.cooldown_special_3 === undefined){}else{
 	document.getElementById('scooldown2').value = toons.cooldown_special_2;
 	if(toons.special_name_3 === undefined){}else{
 	document.getElementById('sname3').value = toons.special_name_3;}
@@ -39,18 +55,24 @@ contactsRef.on("value", function(snap) {
 	document.getElementById('sdamage3').value = toons.special_damage_3;}
 	if(toons.cooldown_special_3 === undefined){}else{
 	document.getElementById('scooldown3').value = toons.cooldown_special_3;}
-	
-	document.getElementById('lname').value = toons.leader_name;
-	document.getElementById('ldescription').value = toons.leader_description;
-	document.getElementById('llevel').value = toons.leader_level;
-	
-	document.getElementById('uname1').value = toons.unique_name;
-	document.getElementById('udescription1').value = toons.unique_description;
-	document.getElementById('ulevel1').value =toons.unique_level;
-	
-	document.getElementById('uname2').value = toons.unique_name_2;
-	document.getElementById('udescription2').value = toons.unique_description_2;
-	document.getElementById('ulevel2').value = toons.unique_level_2;
+	if(toons.leader_name === undefined){}else{
+	document.getElementById('lname').value = toons.leader_name;}
+	if(toons.leader_description === undefined){}else{
+	document.getElementById('ldescription').value = toons.leader_description;}
+	if(toons.leader_level === undefined){}else{
+	document.getElementById('llevel').value = toons.leader_level;}
+	if(toons.unique_name === undefined){}else{
+	document.getElementById('uname1').value = toons.unique_name;}
+	if(toons.unique_description === undefined){}else{
+	document.getElementById('udescription1').value = toons.unique_description;}
+	if(toons.unique_level === undefined){}else{
+	document.getElementById('ulevel1').value =toons.unique_level;}
+	if(toons.unique_name === undefined){}else{
+	document.getElementById('uname2').value = toons.unique_name_2;}
+	if(toons.unique_description_2 === undefined){}else{
+	document.getElementById('udescription2').value = toons.unique_description_2;}
+	if(toons.unique_level_2 === undefined){}else{
+	document.getElementById('ulevel2').value = toons.unique_level_2;}
 	
   });
 ;
@@ -274,6 +296,8 @@ document.getElementById("u2btn").onclick = function () {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = null;
 	}
+	
+	$('input[name="bAbilImg"]:checked').val();
 
 
 	
