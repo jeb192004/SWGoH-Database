@@ -344,7 +344,7 @@ toonAbil.set({
 	//leader_ability_image: lAbilImg,
 	//unique1_ability_image: uAbilImg1,
 	//unique2_ability_image: uAbilImg2,
-
+ 
 });
 
             });
