@@ -308,29 +308,46 @@ document.getElementById("u2btn").onclick = function () {
   	bAbilImg = bAbilImg00.innerHTML;}
 	else{bAbilImg = null;
 	}
-	alert(bAbilImg);
+	var s1AbilImg00 = document.getElementById("s1Atxt");
 	if ($('input[name=sAbilImg1]:checked').length > 0) {
- 	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
+ 	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}
+	else if (s1AbilImg00.innerHTML) {
+  	sAbilImg1 = s1AbilImg00.innerHTML;}else{
 		sAbilImg1 = null;
 	}
+	var s2AbilImg00 = document.getElementById("s2Atxt");
 	if ($('input[name=sAbilImg2]:checked').length > 0) {
- 	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}else{
+ 	var sAbilImg2 = $('input[name="sAbilImg2"]:checked').val();}
+	else if (s2AbilImg00.innerHTML) {
+  	sAbilImg2 = s2AbilImg00.innerHTML;}else{
 		sAbilImg2 = null;
 	}
+	var s3AbilImg00 = document.getElementById("s3Atxt");
 	if ($('input[name=sAbilImg3]:checked').length > 0) {
- 	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();}else{
+ 	var sAbilImg3 = $('input[name="sAbilImg3"]:checked').val();}
+	else if (s3AbilImg00.innerHTML) {
+  	sAbilImg3 = s3AbilImg00.innerHTML;}else{
 		sAbilImg3 = null;
 	}
+	var lAbilImg00 = document.getElementById("lAtxt");
 	if ($('input[name=lAbilImg]:checked').length > 0) {
- 	var lAbilImg = $('input[name="lAbilImg"]:checked').val();}else{
+ 	var lAbilImg = $('input[name="lAbilImg"]:checked').val();}
+	else if (lAbilImg00.innerHTML) {
+  	lAbilImg = lAbilImg00.innerHTML;}else{
 		lAbilImg = null;
 	}
+	var u1AbilImg00 = document.getElementById("u1Atxt");
 	if ($('input[name=uAbilImg1]:checked').length > 0) {
- 	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}else{
+ 	var uAbilImg1 = $('input[name="uAbilImg1"]:checked').val();}
+	else if (u1AbilImg00.innerHTML) {
+  	uAbilImg1 = u1AbilImg00.innerHTML;}else{
 		uAbilImg1 = null;
 	}
+	var u2AbilImg00 = document.getElementById("u2Atxt");
 	if ($('input[name=uAbilImg2]:checked').length > 0) {
- 	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();}else{
+ 	var uAbilImg2 = $('input[name="uAbilImg2"]:checked').val();}
+	else if (u2AbilImg00.innerHTML) {
+  	uAbilImg2 = u2AbilImg00.innerHTML;}else{
 		uAbilImg2 = null;
 	}
 
