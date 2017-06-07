@@ -77,7 +77,21 @@ contactsRef.on("value", function(snap) {
 	if(toons.basic_ability_image === undefined){}else{
 		document.getElementById('bAtxt').innerHTML = toons.basic_ability_image;
 		}
-	
+	if(toons.special1_ability_image === undefined){}else{
+		document.getElementById('s1Atxt').innerHTML = toons.special1_ability_image;
+		}
+		if(toons.special2_ability_image === undefined){}else{
+		document.getElementById('s2Atxt').innerHTML = toons.special2_ability_image;
+		}
+		if(toons.special3_ability_image === undefined){}else{
+		document.getElementById('s3Atxt').innerHTML = toons.special3_ability_image;
+		}
+		if(toons.unique1_ability_image === undefined){}else{
+		document.getElementById('u1Atxt').innerHTML = toons.unique1_ability_image;
+		}
+		if(toons.unique2_ability_image === undefined){}else{
+		document.getElementById('u2Atxt').innerHTML = toons.unique2_ability_image;
+		}
   });
 ;
 
