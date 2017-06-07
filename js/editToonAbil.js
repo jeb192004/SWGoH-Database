@@ -301,14 +301,14 @@ document.getElementById("u2btn").onclick = function () {
 		ulevel2_1 = null;
 	}
 	
-	var bAbilImg00 = document.getElementById("bAtxt").innerHTML;
+	var bAbilImg00 = document.getElementById("bAtxt");
 	if ($('input[name=bAbilImg]:checked').length > 0) {
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}
 	else if (bAbilImg00 && bAbilImg00.value) {
-  	bAbilImg = bAbilImg00.value;}
-	else{
-		bAbilImg = null;
-	}alert(bAbilImg00.value);
+  	bAbilImg = bAbilImg00.innerHTML;}
+	else{bAbilImg = null;
+	}
+	alert(bAbilImg);
 	if ($('input[name=sAbilImg1]:checked').length > 0) {
  	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
 		sAbilImg1 = null;
