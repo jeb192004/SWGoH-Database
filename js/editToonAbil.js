@@ -300,13 +300,15 @@ document.getElementById("u2btn").onclick = function () {
   	var ulevel2_1 = ulevel2.value;}else{
 		ulevel2_1 = null;
 	}
+	
+	var bAbilImg = document.getElementById("bAtxt").value;
 	if ($('input[name=bAbilImg]:checked').length > 0) {
-	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}else{
-		bAbilImg = document.getElementById("bAtxt").value;
-		if(bAbilImg && bAbilImg.value){
-			bAbilImg;}else{
+	bAbilImg = $('input[name="bAbilImg"]:checked').val();}
+	else if (bAbilImg && bAbilImg.value) {
+  	var bAbilImg = bAbilImg.value;}
+	else{
 		bAbilImg = null;
-	}}
+	}
 	if ($('input[name=sAbilImg1]:checked').length > 0) {
  	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
 		sAbilImg1 = null;
