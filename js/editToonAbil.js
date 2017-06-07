@@ -134,7 +134,14 @@ document.getElementById("u2btn").onclick = function () {
       });
   
       
-
+$('#save').click(function(){
+	firebase.auth().onAuthStateChanged(function(user) {
+          if (user) {
+			var  u_id = user.displayName;
+			alert(u_id);
+            // User is signed in.
+            }
+	});
 	
 	$('#save').click(function(){
 		   firebase.auth().onAuthStateChanged(function(user) {
