@@ -372,7 +372,7 @@ $('#sa').click(function(){
   	uAbilImg2 = u2AbilImg00.innerHTML;}else{
 		uAbilImg2 = null;
 	}
-
+	
 	
 	alert("data saved!!!");
 
@@ -416,7 +416,7 @@ toonAbil.set({
 	leader_ability_image: lAbilImg,
 	unique1_ability_image: uAbilImg1,
 	unique2_ability_image: uAbilImg2,
- 
+ 	user_id:u_id,
 });
 
             });
