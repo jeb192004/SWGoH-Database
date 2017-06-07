@@ -301,11 +301,11 @@ document.getElementById("u2btn").onclick = function () {
 		ulevel2_1 = null;
 	}
 	
-	var bAbilImg = document.getElementById("bAtxt").value;
+	var bAbilImg00 = document.getElementById("bAtxt").value;
 	if ($('input[name=bAbilImg]:checked').length > 0) {
-	bAbilImg = $('input[name="bAbilImg"]:checked').val();}
-	else if (bAbilImg && bAbilImg.value) {
-  	bAbilImg;}
+	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}
+	else if (bAbilImg00 && bAbilImg00.value) {
+  	bAbilImg = bAbilImg00.value;}
 	else{
 		bAbilImg = null;
 	}alert(bAbilImg);
