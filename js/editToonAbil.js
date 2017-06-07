@@ -74,6 +74,10 @@ contactsRef.on("value", function(snap) {
 	if(toons.unique_level_2 === undefined){}else{
 	document.getElementById('ulevel2').value = toons.unique_level_2;}
 	
+	if(toons.basic_ability_image === undefined){}else{
+		document.getElementById('bAtxt').innerHTML = toons.basic_ability_image;
+		}
+	
   });
 ;
 
@@ -298,8 +302,11 @@ document.getElementById("u2btn").onclick = function () {
 	}
 	if ($('input[name=bAbilImg]:checked').length > 0) {
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}else{
+		bAbilImg = document.getElementById("bAtxt").value;
+		if(bAbilImg && bAbilImg.value){
+			bAbilImg;}else{
 		bAbilImg = null;
-	}
+	}}
 	if ($('input[name=sAbilImg1]:checked').length > 0) {
  	var sAbilImg1 = $('input[name="sAbilImg1"]:checked').val();}else{
 		sAbilImg1 = null;
