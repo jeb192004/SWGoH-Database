@@ -147,7 +147,8 @@ $('#sa').click(function(){
 		   firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
-            
+            var  u_id = user.displayName;
+			alert(u_id);
             
             user.getToken().then(function(accessToken) {
               var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
