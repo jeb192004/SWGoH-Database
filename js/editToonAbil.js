@@ -304,7 +304,7 @@ document.getElementById("u2btn").onclick = function () {
 	var bAbilImg00 = document.getElementById("bAtxt");
 	if ($('input[name=bAbilImg]:checked').length > 0) {
 	var bAbilImg = $('input[name="bAbilImg"]:checked').val();}
-	else if (bAbilImg00 && bAbilImg00.value) {
+	else if (bAbilImg00.innerHTML) {
   	bAbilImg = bAbilImg00.innerHTML;}
 	else{bAbilImg = null;
 	}
