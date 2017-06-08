@@ -1,6 +1,6 @@
 var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
-
-var contactsRef = dbRef.child('Ezra Bridger');
+var toon = sessionStorage.getItem('toon');
+var contactsRef = dbRef.child(toon);
 
 
 
@@ -132,23 +132,12 @@ document.getElementById("u2btn").onclick = function () {
       window.addEventListener('load', function() {
         initApp();
       });
-  
-      
-$('#sa').click(function(){
-	firebase.auth().onAuthStateChanged(function(user) {
-          if (user != null) {
-			var  u_id = user.displayName;
-			alert(u_id);
-            // User is signed in.
-            }
-	});});
 	
 	$('#save').click(function(){
 		   firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             // User is signed in.
             var  u_id = user.displayName;
-			alert(u_id);
             
             user.getToken().then(function(accessToken) {
               var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');

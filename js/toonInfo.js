@@ -166,7 +166,7 @@ $('#home').click(function(){
             var displayName = user.displayName;
             user.getToken().then(function(accessToken) {
               window.location = 'editToonAbil.html';
-			  
+			  window.sessionStorage.setItem("toon",toon);
             });
           } else {
           window.location = 'logIn.html';
