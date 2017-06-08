@@ -141,7 +141,7 @@ document.getElementById("u2btn").onclick = function () {
             
             user.getToken().then(function(accessToken) {
               var dbRef = new Firebase('https://swgoh-campanion.firebaseio.com/');
-			  var toonAbil = dbRef.child('Ezra Bridger');
+			  var toonAbil = dbRef.child(toon);
 
 	
 	var description = document.getElementById('description');
