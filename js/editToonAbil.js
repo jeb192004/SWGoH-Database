@@ -93,7 +93,7 @@ contactsRef.on("value", function(snap) {
 		document.getElementById('u2Atxt').innerHTML = toons.unique2_ability_image;
 		}
 		if(toons.unique2_ability_image === undefined){}else{
-		document.getElementById('addedBy').innerHTML = toons.user_id;
+		document.getElementById('addedBy').innerHTML = "Edited by: "+toons.user_id;
 		}
   });
 ;
