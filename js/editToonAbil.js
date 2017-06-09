@@ -3,7 +3,7 @@ var toon = sessionStorage.getItem('toon');
 var contactsRef = dbRef.child(toon);
 
 
-
+document.getElementById("header").innerHTML = toon;
 //load older conatcts as well as any newly added one...
 contactsRef.on("value", function(snap) {
   console.log("added", snap.key(), snap.val());
@@ -91,6 +91,9 @@ contactsRef.on("value", function(snap) {
 		}
 		if(toons.unique2_ability_image === undefined){}else{
 		document.getElementById('u2Atxt').innerHTML = toons.unique2_ability_image;
+		}
+		if(toons.unique2_ability_image === undefined){}else{
+		document.getElementById('addedBy').innerHTML = toons.user_id;
 		}
   });
 ;

@@ -155,7 +155,9 @@ contactsRef.once("value", function(snap) {
    if (toons.unique2_ability_image === undefined) {
 	  document.getElementById("unique2AbilImg").innerHTML = "";}
 	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
-	  
+	  if(toons.unique2_ability_image === undefined){}else{
+		document.getElementById('addedBy').innerHTML = toons.user_id;
+		}
 });
 
 $('#home').click(function(){
