@@ -60,14 +60,12 @@
         msgElement.appendChild(msgUsernameElement);
         msgElement.appendChild(msgTextElement);
 
+         msgElement.className = "msg";
+        document.getElementById("results").appendChild(msgElement);
         document.getElementById("results").appendChild(msgElement);
       });
     }
-// ADD THIS LINE
-        msgElement.className = "msg";
-        document.getElementById("results").appendChild(msgElement);
-      });
-    }
+
     // Begin listening for data
     startListening();
   </script>
