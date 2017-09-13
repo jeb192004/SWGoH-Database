@@ -25,10 +25,17 @@
       border: none;
       color: #FFF;
     }
+      #login {
+      padding: 0.5em 1em;
+      background-color: #DD4B39;
+      border: none;
+      color: #FFF;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
-  <input id="username" type="text" placeholder="Name"><br/>
+   <button id="login">Login with Google</button><br/>
   <input id="text" type="text" placeholder="Message"><br/>
   <button id="post">Post</button><br/>
   <div id="results"></div>
@@ -38,8 +45,13 @@
     var textInput = document.querySelector('#text');
     var postButton = document.querySelector('#post');
 
+     var username = null;
+    var loginButton = document.querySelector('#login');
+    postButton.style.display = "none";
+    textInput.style.display = "none";
+    
     postButton.addEventListener("click", function() {
-      var msgUser = usernameInput.value;
+    var msgUser = username;
       var msgText = textInput.value;
       // replace myFirebase.set(...); with the next line
       myFirebase.push({username:msgUser, text:msgText});
@@ -67,7 +79,28 @@
     }
 
     // Begin listening for data
-    startListening();
+    
+   loginButton.addEventListener("click", function() {
+      myFirebase.authWithOAuthPopup("google", function(error, authData) {
+        if (error) {
+          console.log(error);
+        } else {
+          console.log(authData);
+        }
+      }, {remember: "none"}); // will end authentication on page close/reload
+    }); 
+    myFirebase.onAuth(function (authData) {
+    if (authData) {
+        username = authData.google.displayName;
+        loginButton.textContent = "Logged in as " + username;
+        loginButton.disabled = true;
+        postButton.style.display = "block";
+        textInput.style.display = "block";
+
+        // Start listening for data, remove previous calls to this method
+        startListening();
+    }
+   });
   </script>
   
 </body>
