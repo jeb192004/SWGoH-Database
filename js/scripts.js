@@ -19,7 +19,9 @@ contactsRef.on("child_added", function(snap) {
 $('#compare').click(function(){
     window.location="editToonAbil.html";
 });
-
+$('#chat').click(function(){
+    window.location="chat.html";
+});
 $('#search').click(function(){
     document.getElementById("searchText").style.display='inline';
 });
