@@ -17,8 +17,9 @@
 	  
     }
 	#text{
-      bottom:0;
-	  width:75%;
+	position:absolute;
+      bottom:10;
+	  width:80%;
 	}
     .msg {
       width: 100%;
@@ -32,8 +33,7 @@
       background-color: #50b1ff;
       border: none;
       color: #FFF;
-	  bottom:0;
-	  width:25%;
+	  width:20%
     }
       #login {
 	  width:100%; 
@@ -53,8 +53,10 @@
 </head>
 <body>
    <button id="login">Login</button><br/>
+   <div>
   <input id="text" type="text" placeholder="Message"><br/>
   <button id="post">Post</button><br/>
+   </div>
   <div id="results"></div>
   <script>
 
