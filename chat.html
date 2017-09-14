@@ -66,7 +66,7 @@ var rootRef = firebase.database().ref();
     var msgUser = username;
       var msgText = textInput.value;
       // replace myFirebase.set(...); with the next line
-      toon.push({username:msgUser, text:msgText});
+      rootRef.push({username:msgUser, text:msgText});
       textInput.value = "";
     });
     
