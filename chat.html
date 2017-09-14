@@ -16,9 +16,7 @@
       width: 400px;
       background-color: #efefef;
     }
-    #username, #text {
-      margin: 5px 0px;
-    }
+   
     #post {
       padding: 0.5em 1em;
       background-color: #50b1ff;
@@ -52,9 +50,9 @@
     messagingSenderId: "298882100900"
   };
   firebase.initializeApp(config);
-var displayName;
+
 var rootRef = firebase.database().ref();
-    var usernameInput = document.querySelector('#username');
+    
     var textInput = document.querySelector('#text');
     var postButton = document.querySelector('#post');
 
@@ -64,7 +62,7 @@ var rootRef = firebase.database().ref();
     textInput.style.display = "none";
     
     postButton.addEventListener("click", function() {
-    var msgUser = displayName;
+    var msgUser = username;
       var msgText = textInput.value;
       // replace myFirebase.set(...); with the next line
       myFirebase.push({username:msgUser, text:msgText});
@@ -95,7 +93,7 @@ var rootRef = firebase.database().ref();
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            displayName = user.displayName;
+           var displayName = user.displayName;
             user.getToken().then(function(accessToken) {
      username = displayName;
         loginButton.textContent = "Logged in as " + username;
