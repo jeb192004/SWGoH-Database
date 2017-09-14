@@ -52,7 +52,7 @@
   firebase.initializeApp(config);
 
 var rootRef = firebase.database().ref();
-     var myFirebase = new Firebase('https://swgoh-campanion.firebaseio.com/');
+    
     
     var textInput = document.querySelector('#text');
     var postButton = document.querySelector('#post');
@@ -66,7 +66,7 @@ var rootRef = firebase.database().ref();
     var msgUser = username;
       var msgText = textInput.value;
       // replace myFirebase.set(...); with the next line
-      myFirebase.push({username:msgUser, text:msgText});
+      rootRef.push({username:msgUser, text:msgText});
       textInput.value = "";
     });
     
