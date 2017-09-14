@@ -97,7 +97,7 @@ var rootRef = firebase.database().ref();
           if (user) {
             var displayName = user.displayName;
             user.getToken().then(function(accessToken) {
-     username = authData.google.displayName;
+     username = displayName;
         loginButton.textContent = "Logged in as " + username;
         loginButton.disabled = true;
         postButton.style.display = "block";
@@ -107,8 +107,12 @@ var rootRef = firebase.database().ref();
         startListening();   
                });
    } else {
-    // User logged out
-  }
+          window.location = 'logIn.html';
+		  window.sessionStorage.setItem('redirect','editToonAbil.html');
+          }
+        }, function(error) {
+          console.log(error);
+        });
 });
    loginButton.addEventListener("click", function() {
     window.location="logIn.html";
