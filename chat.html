@@ -17,7 +17,7 @@
 	  
     }
 	#text{
-	position:absolute;
+	position:fixed;
       bottom:0;
 	  
 	}
@@ -33,7 +33,7 @@
       background-color: #50b1ff;
       border: none;
       color: #FFF;
-	 position:absolute;
+	 position:fixed;
       bottom:0;
 	  right:0;
     }
@@ -45,11 +45,13 @@
       border: none;
       color: #FFF;
       cursor: pointer;
+	  position: fixed;
+    top: 0;
     }
 	#results{
 	width: 100%;
     background: blue;
-    overflow: auto;
+    overflow: scroll;
     position: absolute;
     bottom: 40px;
     top: 40px;
