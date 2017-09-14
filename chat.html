@@ -20,8 +20,8 @@
       padding: 10px;
       width: 100%;
 	  font-size:1em;
-	  position: fixed;
-      bottom: 77px;
+	  position:absolute;
+      bottom:0;
       background-color: #efefef;
     }
    
@@ -32,8 +32,6 @@
       color: #FFF;
     }
       #login {
-	  top:0; 
-	  bottom:0; 
 	  width:100%; 
 	  font-size:2em;
       padding: 0.5em 1em;
@@ -100,7 +98,7 @@ var rootRef = firebase.database().ref();
         document.getElementById("results").appendChild(msgElement);
         document.getElementById("results").appendChild(msgElement);
       });
-    }
+    };
 
     // Begin listening for data
     var provider = new firebase.auth.GoogleAuthProvider();
