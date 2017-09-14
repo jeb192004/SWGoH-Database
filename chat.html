@@ -16,10 +16,10 @@
       font-family: 'HelveticaNeue-Light';
 	  
     }
-	#text{
+	#send{
 	position:absolute;
       bottom:10;
-	  width:80%;
+	  width:100%;
 	}
     .msg {
       width: 100%;
@@ -33,7 +33,7 @@
       background-color: #50b1ff;
       border: none;
       color: #FFF;
-	  width:20%
+	 
     }
       #login {
 	  width:100%; 
@@ -53,11 +53,12 @@
 </head>
 <body>
    <button id="login">Login</button><br/>
-   <div>
+  <div id="results"></div>
+   <div id="send">
   <input id="text" type="text" placeholder="Message"><br/>
   <button id="post">Post</button><br/>
    </div>
-  <div id="results"></div>
+  
   <script>
 
 
