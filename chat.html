@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Firebase Chat</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-   <script src='https://cdn.firebase.com/js/client/2.4.0/firebase.js'></script>
+  <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
   
    <style>
     body {
@@ -40,7 +40,20 @@
   <button id="post">Post</button><br/>
   <div id="results"></div>
   <script>
-    var myFirebase = new Firebase('https://swgoh-campanion.firebaseio.com/');
+
+
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
+    authDomain: "swgoh-campanion.firebaseapp.com",
+    databaseURL: "https://swgoh-campanion.firebaseio.com",
+    projectId: "swgoh-campanion",
+    storageBucket: "swgoh-campanion.appspot.com",
+    messagingSenderId: "298882100900"
+  };
+  firebase.initializeApp(config);
+
+var rootRef = firebase.database().ref();
     var usernameInput = document.querySelector('#username');
     var textInput = document.querySelector('#text');
     var postButton = document.querySelector('#post');
