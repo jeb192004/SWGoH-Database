@@ -102,8 +102,10 @@ var rootRef = firebase.database().ref();
         }
       }, {remember: "none"}); // will end authentication on page close/reload
     }); 
-    myFirebase.onAuth(function (authData) {
-    if (authData) {
+    var auth = firebase.auth();
+
+auth.onAuthStateChanged(function(user) {
+  if (user) {
         username = authData.google.displayName;
         loginButton.textContent = "Logged in as " + username;
         loginButton.disabled = true;
@@ -112,8 +114,10 @@ var rootRef = firebase.database().ref();
 
         // Start listening for data, remove previous calls to this method
         startListening();
-    }
-   });
+   } else {
+    // User logged out
+  }
+});
   </script>
   
 </body>
