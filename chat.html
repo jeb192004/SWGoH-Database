@@ -93,14 +93,7 @@ var rootRef = firebase.database().ref();
 
     // Begin listening for data
     var provider = new firebase.auth.GoogleAuthProvider();
-    
-   loginButton.addEventListener("click", function() {
-    window.location="logIn.html";
-});
- 
-
-
-firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
             var displayName = user.displayName;
             user.getToken().then(function(accessToken) {
@@ -117,6 +110,13 @@ firebase.auth().onAuthStateChanged(function(user) {
     // User logged out
   }
 });
+   loginButton.addEventListener("click", function() {
+    window.location="logIn.html";
+});
+ 
+
+
+
   </script>
   
 </body>
