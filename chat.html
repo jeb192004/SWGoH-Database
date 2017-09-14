@@ -71,7 +71,7 @@ var rootRef = firebase.database().ref();
     });
     
      var startListening = function() {
-      myFirebase.on('child_added', function(snapshot) {
+     rootRef.on('child_added', function(snapshot) {
         var msg = snapshot.val();
       
         var msgUsernameElement = document.createElement("b");
