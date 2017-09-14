@@ -23,7 +23,9 @@
 	  
       background-color: #efefef;
     }
-   
+   #text{
+   width:75%
+   }
     #post {
       padding: 0.5em 1em;
       background-color: #50b1ff;
@@ -47,7 +49,7 @@
 	#send{
 	
 	position:fixed;
-      bottom:0;
+      bottom:5;
 	}
 	#results{
 	width: 100%;
@@ -125,7 +127,7 @@ var rootRef = firebase.database().ref();
            var displayName = user.displayName;
             user.getToken().then(function(accessToken) {
      username = displayName;
-        loginButton.textContent = "Logged in as " + username;
+        loginButton.textContent = username;
         loginButton.disabled = true;
         postButton.style.display = "block";
         textInput.style.display = "block";
