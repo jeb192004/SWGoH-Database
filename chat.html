@@ -101,7 +101,9 @@ var rootRef = firebase.database().ref();
 
 
 firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
+          if (user) {
+            var displayName = user.displayName;
+            user.getToken().then(function(accessToken) {
      username = authData.google.displayName;
         loginButton.textContent = "Logged in as " + username;
         loginButton.disabled = true;
@@ -110,6 +112,7 @@ firebase.auth().onAuthStateChanged(function(user) {
 
         // Start listening for data, remove previous calls to this method
         startListening();   
+               });
    } else {
     // User logged out
   }
