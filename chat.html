@@ -112,6 +112,7 @@ var rootRef = firebase.database().ref();
 });
    loginButton.addEventListener("click", function() {
     window.location="logIn.html";
+     window.sessionStorage.setItem('redirect','chat.html');
 });
  
 
