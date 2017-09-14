@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
   <title>Firebase Chat</title>
   <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
@@ -14,6 +19,9 @@
       margin: 10px 0;
       padding: 10px;
       width: 400px;
+	  font-size:1em
+	  position: fixed;
+      bottom: 77px;
       background-color: #efefef;
     }
    
@@ -24,6 +32,10 @@
       color: #FFF;
     }
       #login {
+	  top:0; 
+	  bottom:0; 
+	  width:100%; 
+	  font-size:2em;
       padding: 0.5em 1em;
       background-color: #DD4B39;
       border: none;
@@ -33,7 +45,7 @@
   </style>
 </head>
 <body>
-   <button id="login">Login with Google</button><br/>
+   <button id="login">Login</button><br/>
   <input id="text" type="text" placeholder="Message"><br/>
   <button id="post">Post</button><br/>
   <div id="results"></div>
@@ -106,8 +118,8 @@ var rootRef = firebase.database().ref();
         startListening();   
                });
    } else {
-          window.location = 'logIn.html';
-		  window.sessionStorage.setItem('redirect','editToonAbil.html');
+          //window.location = 'logIn.html';
+		  //window.sessionStorage.setItem('redirect','editToonAbil.html');
           }
         }, function(error) {
           console.log(error);
