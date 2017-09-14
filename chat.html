@@ -64,7 +64,7 @@ var rootRef = firebase.database().ref();
     textInput.style.display = "none";
     
     postButton.addEventListener("click", function() {
-    var msgUser = username;
+    var msgUser = displayName;
       var msgText = textInput.value;
       // replace myFirebase.set(...); with the next line
       myFirebase.push({username:msgUser, text:msgText});
