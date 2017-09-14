@@ -52,7 +52,7 @@
     messagingSenderId: "298882100900"
   };
   firebase.initializeApp(config);
-
+var displayName;
 var rootRef = firebase.database().ref();
     var usernameInput = document.querySelector('#username');
     var textInput = document.querySelector('#text');
@@ -95,7 +95,7 @@ var rootRef = firebase.database().ref();
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().onAuthStateChanged(function(user) {
           if (user) {
-            var displayName = user.displayName;
+            displayName = user.displayName;
             user.getToken().then(function(accessToken) {
      username = displayName;
         loginButton.textContent = "Logged in as " + username;
