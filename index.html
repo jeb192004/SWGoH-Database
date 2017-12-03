@@ -15,6 +15,34 @@
 	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
   </head>
   <body>
+	<div id="compareToonAbility">
+	  <!-- Popup Div Starts Here -->
+	  <div id="compareToonAbilityPopUp">
+		<!-- Contact Us Form -->
+		<form action="#" id="form" method="post" name="form">
+		  <img id="close" src="images/3.png" onclick ="div_hide()">
+		  <h3>Click a character who you want to compare abilities with</h3>
+		  <hr>
+		  <div id="container" class="list">
+			<ul id="toons2" class="list-group">
+			  <li><a id="cantina_battles">Cantina Battles</a></li>
+			  <li><a id="light_side">Light Side</a></li>
+			  <li><a id="dark_side" >Dark Side</a></li>
+			  <li><a id="Shipments" >Shipments</a></li>
+			  <li><a id="squad_arena_store">Compare Abilities</a></li>
+			  <li><a id="fleet_arena_store" >Search</a></li>
+			  <li><a id="cantina_battles_store" >Home</a></li>
+			  <li><a id="galactic_war_store">Compare Abilities</a></li>
+			  <li><a id="guild_store" >Search</a></li>
+			  <li><a id="guild_events_store">Compare Abilities</a></li>
+			  <li><a id="shard_store" >Search</a></li>
+			</ul>
+		  </div>
+
+		</form>
+	  </div>
+	  <!-- Popup Div Ends Here -->
+	</div>
 	  <div data-role="navbar">
 		<ul>
 		  <li><a id="home" >Home</a></li>
@@ -23,6 +51,7 @@
 		</ul>
 		  <ul>
 		  <li><a id="chat" >Chat</a></li>
+			<li><a onclick="area_list()">Shard Location</a></li>
 		</ul>
 	  </div>
 	  

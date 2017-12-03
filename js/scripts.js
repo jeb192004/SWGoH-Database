@@ -1,13 +1,14 @@
 var $load = $('<div class="loading">Loading...</div>').appendTo('body');
 //create firebase reference
 var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
-var contactsRef = dbRef.child('toons');
+var contactsRef = dbRef.child('new_toons');
 
 //load older conatcts as well as any newly added one...
-contactsRef.on("child_added", function(snap) {
+contactsRef.child('All Toons').on("child_added", function(snap) {
   console.log("added", snap.key(), snap.val());
   document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(snap.val());
+	
 	$(".list-group li").on("click", function() {
     //alert($(this).find("p.lead").html());
 	var toonName = $(this).find("p.lead").html();
@@ -26,7 +27,11 @@ $('#search').click(function(){
     document.getElementById("searchText").style.display='inline';
 });
 
-
+function area_list() {
+	document.getElementById('compareToonAbility').style.display = "block";
+	
+	
+}
 
 
 
