@@ -8,7 +8,6 @@ contactsRef.child('All Toons').on("child_added", function(snap) {
   console.log("added", snap.key(), snap.val());
   document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(snap.val());
-	
 	$(".list-group li").on("click", function() {
     //alert($(this).find("p.lead").html());
 	var toonName = $(this).find("p.lead").html();
@@ -27,11 +26,24 @@ $('#search').click(function(){
     document.getElementById("searchText").style.display='inline';
 });
 
-function area_list() {
-	document.getElementById('compareToonAbility').style.display = "block";
-	
-	
-}
+    var eSelect = document.getElementById('area_list');
+	var dSelect = document.getElementById('jumpmenu');
+        var optOtherReason = document.getElementById('otherdetail');
+        eSelect.onchange = function() {
+			document.getElementById("toons").innerHTML = "";
+			contactsRef.child(dSelect.options[dSelect.selectedIndex].text).on("child_added", function(snap) {
+  console.log("added", snap.key(), snap.val());
+  document.querySelector('#toons')
+    .innerHTML += contactHtmlFromObject(snap.val());
+	$(".list-group li").on("click", function() {
+    //alert($(this).find("p.lead").html());
+	var toonName = $(this).find("p.lead").html();
+	window.location = 'toonInfo.html';
+  window.sessionStorage.setItem('toon',toonName);
+});
+  
+ }); 		
+        };
 
 
 
@@ -65,5 +77,3 @@ function contactHtmlFromObject(toons){
   return html;
   
 }
-
-
