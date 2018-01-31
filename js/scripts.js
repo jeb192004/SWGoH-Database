@@ -16,8 +16,8 @@ contactsRef.child('All Toons').on("child_added", function(snap) {
 });
   
 
-$('#compare').click(function(){
-    window.location="editToonAbil.html";
+$('#ships').click(function(){
+    window.location="ships.html";
 });
 $('#chat').click(function(){
     window.location="chat.html";
