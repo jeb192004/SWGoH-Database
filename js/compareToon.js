@@ -18,7 +18,7 @@ $('#edit').click(function(){
 //Function To Display Popup
 function div_show() {
 	document.getElementById('compareToonAbility').style.display = "block";
-var toon002 = dbRef.child('toons');
+var toon002 = dbRef.child('new_toons').child("All Toons");
 
 //load older conatcts as well as any newly added one...
 toon002.on("child_added", function(snap04) {
@@ -58,7 +58,7 @@ function contactHtmlFromObject(toons){
 
 function div_show2() {
 	document.getElementById('compareToonAbility2').style.display = "block";
-var toon002 = dbRef.child('toons');
+var toon002 = dbRef.child('new_toons').child("All Toons");
 
 //load older conatcts as well as any newly added one...
 toon002.on("child_added", function(snap03) {
@@ -100,7 +100,7 @@ function contactHtmlFromObject(toons){
 }
 
 function firstToon(toon01){
-var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
+var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/toon_details");
 var toon1 = dbRef.child(toon01);
 document.getElementById("toon1").innerHTML=toon01;
 //load older conatcts as well as any newly added one...
@@ -218,7 +218,7 @@ toon1.once("value", function(snap) {
 
 
 function secondToon(toon02){
-var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
+var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/toon_details");
 var toon2 = dbRef.child(toon02);
 document.getElementById("toon2").innerHTML=toon02;
 //load older conatcts as well as any newly added one...

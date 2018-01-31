@@ -191,7 +191,7 @@ $('#sign-out').click(function(){
 //Function To Display Popup
 function div_show() {
 	document.getElementById('compareToonAbility').style.display = "block";
-var toon002 = dbRef.child('toons');
+var toon002 = dbRef.child('new_toons').child("All Toons");
 
 //load older conatcts as well as any newly added one...
 toon002.on("child_added", function(snap02) {
