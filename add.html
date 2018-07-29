@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<!-- Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106606663-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106606663-4');
+</script>
+	<!-- End Google Analytics -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--
+	<meta name="viewport" content="width=device-width">
+	-->
+	<!-- TODO add manifest here -->
+	<link rel="manifest" href="manifest.json">
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="MSF">
+	<link rel="apple-touch-icon" href="img/icons/icon152.png">
+	<meta name="msapplication-TileImage" content="img/icons/icon144.png">
+	<meta name="msapplication-TileColor" content="#2F3BA2">
+
+	<link href="css/add.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+
+  </head>
+
+  <body>
+	<header class="header">
+	  <h1 class="header__title" id="header__title">MSF</h1>
+
+	</header>
+	<form id="myform" action="/cgi-bin/umbrella.pl" method="post">
+	  <div id="sample">
+		<h2>Add Character Form</h2>
+		<span><input type="reset" class="button" value="RESET" />
+		  <input type="button" class="button" value="SUBMIT" onclick="add()" />
+		  <input type="button" class="button" value="Check/Get existing data()" onclick="get()" onclick="getAbilInfo()" />
+		</span><br />
+
+
+		<p>Character Img Url</p>
+
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="toon_name" id="toon_name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+
+		  <div>
+			<label for="name">Img URL:</label><br />
+			<span><input type="text" name="name" id="toon_img_url" class="data-entry" /></span>
+		  </div>
+		</div>
+
+		<a>Level:</a><br>
+		<select name="lvl_spinner" size="7">
+		  <option value="1">1</option>
+		  <option value="1">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>
+		  <option value="5">5</option>
+		  <option value="6">6</option>
+		  <option value="7">7</option>
+		</select><br /><br />
+		<br>
+
+		<div>
+		  <label for="name">Power:</label><br />
+		  <span><input type="text" name="name" id="power" class="data-entry" style="width:75%"/></span>
+		</div>
+		<div>
+		  <label for="name">Speed:</label><br />
+		  <span><input type="text" name="name" id="speed" class="data-entry" style="width:75%"/></span>
+		</div>
+		<div>
+		  <label for="name">Health:</label><br />
+		  <span><input type="text" name="name" id="health" class="data-entry" style="width:75%"/></span>
+		</div>
+		<br>
+		<div class="group">
+		  <label for="name">Info:</label><br />
+		  <span><input type="text" name="toon_name" id="toon_info" class="data-entry" /></span><br /><br />
+		</div>
+
+		<div>
+		  <label for="name">Traits:</label><br />
+		  <span><input type="text" name="name" id="toon_traits" class="data-entry" /></span>
+		</div>
+		<br>
+
+
+		<p>Shard Locations</p>
+
+
+		<input type="checkbox" name="vehicle" id="Shipments"> Shipments
+		<input type="checkbox" name="vehicle" id="Light Side Battles"> Light Side Battles
+		<input type="checkbox" name="vehicle" id="Dark Side Battles" > Dark Side Battles
+		<input type="checkbox" name="vehicle" id="Cantina Battles"> Cantina Battles<br>
+
+		<input type="checkbox" name="vehicle" id="Cantina Battles Store" > Cantina Battles Store
+		<input type="checkbox" name="vehicle" id="Galactic War Store"> Galactic War Store
+		<input type="checkbox" name="vehicle" id="Guild Store"> Guild Store
+		<input type="checkbox" name="vehicle" id="Guild Events Store" > Guild Events Store<br>
+
+		<input type="checkbox" name="vehicle" id="Shard Store"> Shard Store
+		<input type="checkbox" name="vehicle" id="Squad Arena Store" > Squad Arena Store
+		<input type="checkbox" name="vehicle" id="Fleet Arena Store"> Fleet Arena Store<br>
+		  
+		  
+		
+
+		<hr>
+		<p>Abillity 1</p>
+
+
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="name" id="abil1name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input name="phone" id="abil1txt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input  name="email" id="abil1lvl" class="data-entry" /></span><br /><br />
+		
+		<div class="group">
+		  <label for="name">Damage:</label><br />
+		  <span><input type="text" name="name" id="abil1damage" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="abil1image" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">AbilImage:</label><br />
+		<span><input  name="email" id="abil1zeta" class="data-entry" /></span><br /><br />
+		
+		
+		<p>Abillity 2</p>
+
+		<input type="hidden" name="return_link_title" value="Go to the Homepage" />
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="abil2name" id="abil2name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input  name="phone" id="abil2txt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input  name="email" id="abil2lvl" class="data-entry" /></span><br /><br />
+
+		<p>Abillity 3</p>
+
+		<input type="hidden" name="return_link_title" value="Go to the Homepage" />
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="name" id="abil3name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input name="phone" id="abil3txt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input  name="email" id="abil3lvl" class="data-entry" /></span><br /><br />
+
+		<p>Abillity 4</p>
+
+
+
+		<input type="hidden" name="return_link_title" value="Go to the Homepage" />
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="" id="abil4name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input name="" id="abil4txt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input name="email" id="abil4lvl" class="data-entry" /></span><br /><br />
+
+
+
+
+
+
+		<!--
+		<p>OPERATING SYSTEM:</p>
+		<select name="os">
+		<option value="Windows-7">Windows 7</option>
+		<option value="Windows-8.1">Windows 8.1</option>
+		<option selected="selected" value="Windows-10">Windows 10</option>
+		</select><br /><br />
+		<p>PRICE RANGE:</p>
+		<select name="price">
+		<option value=" ">Please choose one</option>
+		<option>$300 to $999</option>
+		<option>$1000 to $1999</option>
+		<option>$2000 or more</option>
+		</select><br /><br />
+		<p>OTHER PRODUCTS (Hold the Ctrl key to select more than one):</p>
+		<select multiple="multiple" name="product2" size="3">
+		<option value="printer">Printer</option>
+		<option value="scanner">Scanner</option>
+		<option value="router">Modem / Router</option>
+		</select><br /><br />
+		<label for="comments2">COMMENTS:</label><br />
+		<span><textarea name="comments" id="comments2" rows="4" cols="20"></textarea></span><br /><br />
+		-->
+
+	</form>
+	</div><!--end div sample-->
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script src="js/add.js"></script>
+
+
+  </body>
+</html>
+
