@@ -1,82 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
+	<!-- Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106606663-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106606663-4');
+</script>
+	<!-- End Google Analytics -->
+
+	<title>MSF Characters</title>
+
 	<meta charset="utf-8">
+	<meta name="description" content="Character database for Star Wars Galaxy of Heros">
+	<meta name="keywords" content="SWGoH, swgoh,SWGoH Characrers,Star Wars Galaxy of Heros,Star Wars Galaxy of Heros Characters">
+
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-	  <meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="mobile-web-app-capable" content="yes">
+
+	<meta name="viewport" content="width=device-width">
+	<!-- TODO add manifest here -->
 	<link rel="manifest" href="manifest.json">
-	<title>SWGoH Database</title>
-	<!-- Latest compiled and minified CSS -->
-	<link href="css/styles.css" rel="stylesheet">
-	<!-- Include jQuery Mobile stylesheets -->
-	<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="SWGoH">
+	<link rel="apple-touch-icon" href="img/icons/icon152.png">
+	<meta name="msapplication-TileImage" content="img/icons/icon144.jpg">
+	<meta name="msapplication-TileColor" content="#0000cc">
+
+	<link href="css/styles.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+
   </head>
+
   <body>
-	
-	  <div data-role="navbar">
-		<ul>
-		  <li><a id="home" >Home</a></li>
-		  <li><a id="ships">Ships</a></li>
-		  <li><a id="search" >Search</a></li>
-		  <li><a id="chat" >Chat</a></li>
+	<header class="header">
+	  <h1 class="header__title" id="header__title">SWGoH</h1>
+	  <div id="searchText">
+		<span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
+			placeholder="Search"></span>  
+	  </div>
+	 
+		<form id="area_list" name="form2">
+		  <select id="jumpmenu" onChange="jumpto(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
+			<option id="all_toons">Sort list by Shard Location</option>
+			<option id="cantina_battles">Cantina Battles</option>
+			<option id="light_side">Light Side</option>
+			<option id="dark_side">Dark Side</option>
+			<option id="shipments">Shipments</option>
+			<option id="squad_arena_store">Squad Arena Store</option>
+			<option id="fleet_arena_store">Fleet Arena Store</option>
+			<option id="cantina_battles_store">Cantina Battles Store</option>
+			<option id="galactic_war_store">Galactic War Store</option>
+			<option id="guild_store">Guild Store</option>
+			<option id="guild_events_store">Guild Events Store</option>
+			<option id="shard_store">Shard Store</option>
+		  </select>
+		</form>
+	 
+	  <div onclick="search()"> <i class="fas fa-search"></i></div>
+	  <div onclick="menu()" id="menu_icon"> <i class="fas fa-bars"></i></div>
+	</header>
+
+
+	<nav id="menu">
+      <ul class="menu_list">
+		<li class="menu_item" onclick="menu_item(this)">Comapre</li>
+		<li class="menu_item" onclick="menu_item(this)">Team Builder</li>
+		<li class="menu_item" onclick="menu_item(this)">Ships</li>
+		<li class="menu_item" onclick="menu_item(this)">Chat</li>
+	  </ul>
+
+
+	  <ul id="myDropdown_menu" class="dropdown-content_menu">
+		<hr>
+		<h2>Sort List by:</h2>
+		<h3>Shard Location</h3>
+		<li onclick="shard_loc_item(this)">All</li>
+		<li onclick="shard_loc_item(this)">Cantina Battles</li>
+		<li onclick="shard_loc_item(this)">Light Side</li>
+		<li onclick="shard_loc_item(this)">Dark Side</li>
+		<li onclick="shard_loc_item(this)">Shipments</li>
+		<li onclick="shard_loc_item(this)">Squad Arena Store</li>
+		<li onclick="shard_loc_item(this)">Fleet Arena Store</li>
+		<li onclick="shard_loc_item(this)">Cantina Battles Store</li>
+		<li onclick="shard_loc_item(this)">Galactic War Store</li>
+		<li onclick="shard_loc_item(this)">Guild Store</li>
+		<li onclick="shard_loc_item(this)">Guild Events Store</li>
+		<li onclick="shard_loc_item(this)">Shard Store</li>
+	  </ul>
+    </nav>
+
+	<main id="panel">
+
+
+	  <br>
+	  <br>
+
+	  <div id="container" class="list">
+		<ul id="toons" class="list-group">
+		  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
 		</ul>
-		    <form id="area_list" name="form2">
-				<select id="jumpmenu" onChange="jumpto(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
-				  <option id="all_toons">Sort list by Shard Location</option>
-				  <option id="cantina_battles">Cantina Battles</option>
-				  <option id="light_side">Light Side</option>
-				  <option id="dark_side">Dark Side</option>
-				  <option id="shipments">Shipments</option>
-				  <option id="squad_arena_store">Squad Arena Store</option>
-				  <option id="fleet_arena_store">Fleet Arena Store</option>
-				  <option id="cantina_battles_store">Cantina Battles Store</option>
-				  <option id="galactic_war_store">Galactic War Store</option>
-				  <option id="guild_store">Guild Store</option>
-				  <option id="guild_events_store">Guild Events Store</option>
-				  <option id="shard_store">Shard Store</option>
-				</select>
-			  </form>
-	
 	  </div>
 
-	<div id="searchText">
-	  <span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
-		placeholder="Type name or tag of the character you would like to search for"></span>  
-	</div>
-<script language="javascript" type="text/javascript">
-    function filter(element) {
-        var value = $(element).val();
- value = value.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-        return letter.toUpperCase();
- });
-        $("#toons > li").each(function() {
-            if ($(this).text().search(value) > -1) {
-                $(this).show();
-            }
-            else {
-                $(this).hide();
-            }
-        });
-    }
-</script>
-	
-		  <ul id="toons" class="list-group">
-			<!-- Conatct Object li.list-group-item.contact will be added here by js -->
-		  </ul>
-		
-
-
+	</main>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+
 	<!-- Latest compiled and minified Bootstrap -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<!-- Include Firebase Library -->
-	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
-	<!-- Contacts Store JavaScript -->
+
 	<script src="js/scripts.js"></script>
+
+
   </body>
 </html>
+

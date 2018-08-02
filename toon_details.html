@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<!-- Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106606663-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106606663-4');
+</script>
+	<!-- End Google Analytics -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width">
+	<!-- TODO add manifest here -->
+	<link rel="manifest" href="manifest.json">
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="MSF">
+	<link rel="apple-touch-icon" href="img/icons/icon152.png">
+	<meta name="msapplication-TileImage" content="img/icons/icon144.png">
+	<meta name="msapplication-TileColor" content="#2F3BA2">
+
+	<link href="/css/toon_detail.css" rel="stylesheet" />
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+
+  </head>
+
+  <body>
+	<header class="header">
+	  <h1 class="header__title" id="header__title">MSF</h1>
+	  <div onclick="menu()"> <i class="fas fa-bars"></i></div>
+	</header>
+
+	<footer class="footer">
+	  <div class="prev" onclick="prev()">
+	  <i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+	  </div>
+	  <div class="next" onclick="next()">
+	  <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+	  </div>
+	</footer>
+	<nav id="menu">
+      <ul class="menu_list">
+		<li class="menu_item" onclick="menu_item(this)">Characters/Home</li>
+		<li class="menu_item" onclick="menu_item(this)">Team Builder</li>
+		<li class="menu_item" onclick="menu_item(this)">Ships</li>
+		<li class="menu_item" onclick="menu_item(this)">Raids</li>
+	  </ul>
+    </nav>
+
+	<main id="panel">
+
+
+	  <br>
+	  <div class="img_container">
+		<img id="img" />
+	  </div>
+	  <h1 id="name">Jyn Erso</h1>
+
+	  <div class="card">
+		<div class="abil_title">
+		  <a class="abil_title" id="abil1">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="abilLvl1">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="abil_img1">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="abilTxt1">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			  <a class="abil_upgrade_to_lvl" id="abilDamage1"></a><br><br>
+			 
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="abilZeta1">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <br>
+	  <div class="card">
+		<div class="abil_title">
+		  <a class="abil_title" id="spName1">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="spLvl1">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="sp_img1">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="spTxt1">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			  <a class="abil_upgrade_to_lvl" id="spDamage1"></a><br><br>
+			  <a class="abil_upgrade_to_lvl" id="spCd1"></a><br><br>
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="spZeta1">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <br>
+	  <div class="card" id="cardSp2">
+		<div class="abil_title">
+		  <a class="abil_title" id="spName2">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="spLvl2">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="sp_img2">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="spTxt2">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			  <a class="abil_upgrade_to_lvl" id="spDamage2"></a><br><br>
+			  <a class="abil_upgrade_to_lvl" id="spCd2"></a><br><br>
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="spZeta2">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <br>
+	  <div class="card" id="cardSp3">
+		<div class="abil_title">
+		  <a class="abil_title" id="spName3">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="spLvl3">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="sp_img3">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="spTxt3">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			  <a class="abil_upgrade_to_lvl" id="spDamage3"></a><br><br>
+			  <a class="abil_upgrade_to_lvl" id="spCd3"></a><br><br>
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="spZeta3">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <br>
+	  <div class="card" id="cardlead">
+		<div class="abil_title">
+		  <a class="abil_title" id="leadName">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="leadLvl">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="lead_img">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="leadTxt">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="leadZeta">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <br>
+	  <div class="card" id="cardU1">
+		<div class="abil_title">
+		  <a class="abil_title" id="uName1">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="uLvl1">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="u_img1">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="uTxt1">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="uZeta1">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  <br>
+	  <div class="card" id="cardU2">
+		<div class="abil_title">
+		  <a class="abil_title" id="uName2">Title</a>
+		</div>
+		<div class="abil_lvl">
+		  <a class="abil_lvl" id="uLvl2">lvl</a>
+		</div>
+
+		<div class="abilImgTxt">
+		  <div class="abilImg_container">
+			<img class="abil_img" id="u_img2">
+		  </div>
+		  <div class="abilTxt_container">
+			<hr>
+			<p class="abilTxt" id="uTxt2">text</p> 
+			<hr>
+		  </div>
+		</div>
+		<div class="abil_upgrade_layout">
+		  <br>
+		  <div class="abil_upgrade">
+			<div class="abil_upgrade_txt">
+			</div>
+			<div class="abil_material">
+			  <div class="abil_material_type">
+				<img class="material" id="uZeta2">
+			  </div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+	  
+	  <br><br>
+
+
+	</main>
+	
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script src="js/toon_detail.js"></script>
+
+
+  </body>
+</html>
+

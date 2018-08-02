@@ -1,4 +1,7 @@
-
+var dbRef = new Firebase("https://swgoh-campanion.firebaseio.com/");
+var toonImgRef = dbRef.child('new_toons');
+var namesArray = [];
+var toonName01;
 
 var config = {
     apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
@@ -12,7 +15,17 @@ var config = {
 
 // Initialize Cloud Firestore through Firebase
 var db = firebase.firestore();
+db.collection("Toons").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        //alert(`${doc.id}`);
+		var toon1 = `${doc.id}`;
+				namesArray.push(toon1);
+    });
+});	
 
+
+				
+  
 var toonName = document.getElementById('toon_name');
 var toonImgUrl = document.getElementById('toon_img_url');
 var toonInfo = document.getElementById('toon_info');
@@ -28,17 +41,48 @@ var abildamage = document.getElementById('abil1damage');
 var abilimage = document.getElementById('abil1image');
 var abilzeta = document.getElementById('abil1zeta');
 
-var abilName2 = document.getElementById('abil2name');
-var abilTxt2 = document.getElementById('abil2txt');
-var abilLvl2 = document.getElementById('abil2lvl');
+var sp1name = document.getElementById('sp1name');
+var sp1txt = document.getElementById('sp1txt');
+var sp1lvl = document.getElementById('sp1lvl');
+var sp1damage = document.getElementById('sp1damage');
+var sp1image = document.getElementById('sp1image');
+var sp1lzeta = document.getElementById('sp1zeta');
+var sp1cd = document.getElementById('sp1cd');
 
-var abilName3 = document.getElementById('abil3name');
-var abilTxt3 = document.getElementById('abil3txt');
-var abilLvl3 = document.getElementById('abil3lvl');
+var sp2name = document.getElementById('sp2name');
+var sp2txt = document.getElementById('sp2txt');
+var sp2lvl = document.getElementById('sp2lvl');
+var sp2damage = document.getElementById('sp2damage');
+var sp2image = document.getElementById('sp2image');
+var sp2lzeta = document.getElementById('sp2zeta');
+var sp2cd = document.getElementById('sp2cd');
 
-var abilName4 = document.getElementById('abil4name');
-var abilTxt4 = document.getElementById('abil4txt');
-var abilLvl4 = document.getElementById('abil4lvl');
+
+var sp3name = document.getElementById('sp3name');
+var sp3txt = document.getElementById('sp3txt');
+var sp3lvl = document.getElementById('sp3lvl');
+var sp3damage = document.getElementById('sp2damage');
+var sp3image = document.getElementById('sp3image');
+var sp3lzeta = document.getElementById('sp3zeta');
+var sp3cd = document.getElementById('sp3cd');
+
+var leadName1 = document.getElementById('leadname');
+var leadTxt1 = document.getElementById('leadtxt');
+var leadLvl1 = document.getElementById('leadlvl');
+var leadimage = document.getElementById('leadimage');
+var leadzeta = document.getElementById('leadzeta');
+
+var u1Name1 = document.getElementById('u1name');
+var u1Txt1 = document.getElementById('u1txt');
+var u1Lvl1 = document.getElementById('u1lvl');
+var u1image = document.getElementById('u1image');
+var u1zeta = document.getElementById('u1zeta');
+
+var u2Name1 = document.getElementById('u2name');
+var u2Txt1 = document.getElementById('u2txt');
+var u2Lvl1 = document.getElementById('u2lvl');
+var u2image = document.getElementById('u2image');
+var u2zeta = document.getElementById('u2zeta');
 
 
 
@@ -58,44 +102,70 @@ var shipments = document.getElementById('Shipments');
 	
 	
 	
-	var basicOrb = document.getElementById('Basic Orb');
-	var premiumOrb = document.getElementById('Premium Orb');
-	var ultimusOrb = document.getElementById('Ultimus Orb');
-	var infinityOrb = document.getElementById('Infinity Orb');
-	
-	var warriorKingOrb1 = document.getElementById('Warrior King Orb');
-	var widowBiteOrb = document.getElementById("Widow's Bite Orb");
-	var immortalProtectorOrb = document.getElementById('Immortal Protector Orb');
-	var warriorKingBlitz1 = document.getElementById('Warrior King Blitz');
-	var widowBiteBlitz = document.getElementById("Widow's Bite Blitz");
 	
 
 
 
 function add(){
-/*
+
 db.collection("Toons").doc(toonName.value).collection("Abilities").doc("Abilities").set({
 	head: toonImgUrl.value,
 	
-    abilName1_7: abilName1.value,
-    abilTxt1_7: abilTxt1.value,
-    abilLvl1_7: abilLvl1.value,
-	
-	abilName2_7: abilName2.value,
-    abilTxt2_7: abilTxt2.value,
-    abilLvl2_7: abilLvl2.value,
-	
-	abilName3_7: abilName3.value,
-    abilTxt3_7: abilTxt3.value,
-    abilLvl3_7: abilLvl3.value,
-	
-	abilName4_5: abilName4.value,
-    abilTxt4_5: abilTxt4.value,
-    abilLvl4_5: abilLvl4.value,
-	
-	factionAbilAll:factionAbilAllTxt.value,
-	factionAbil1:factionAbil1Txt.value,
-	factionAbil2:factionAbil2Txt.value
+    power: power.value,
+speed: speed.value,
+health: health.value,
+
+abilName1: abilName1.value,
+abilTxt1: abilTxt1.value,
+abilLvl1: abilLvl1.value,
+abildamage: abildamage.value,
+abilimage: abilimage.value,
+abilzeta: abilzeta.value,
+
+sp1name: sp1name.value,
+sp1txt: sp1txt.value,
+sp1lvl: sp1lvl.value,
+sp1damage: sp1damage.value,
+sp1image: sp1image.value,
+sp1lzeta: sp1lzeta.value,
+sp1cd: sp1cd.value,
+
+sp2name: sp2name.value,
+sp2txt: sp2txt.value,
+sp2lvl: sp2lvl.value,
+sp2damage: sp2damage.value,
+sp2image: sp2image.value,
+sp2lzeta: sp2lzeta.value,
+sp2cd: sp2cd.value,
+
+
+sp3name: sp3name.value,
+sp3txt: sp3txt.value,
+sp3lvl: sp3lvl.value,
+sp3damage: sp3damage.value,
+sp3image: sp3image.value,
+sp3lzeta: sp3lzeta.value,
+sp3cd: sp3cd.value,
+
+leadName1: leadName1.value,
+leadTxt1: leadTxt1.value,
+leadLvl1: leadLvl1.value,
+leadimage: leadimage.value,
+leadzeta: leadzeta.value,
+
+u1Name1: u1Name1.value,
+u1Txt1: u1Txt1.value,
+u1Lvl1: u1Lvl1.value,
+ u1image: u1image.value,
+ u1AbilLvl: u1zeta.value,
+
+ u2name: u2Name1.value,
+ u2txt: u2Txt1.value,
+ U2lvl: u2Lvl1.value,
+ U2image: u2image.value,
+ U2AbilLvl: u2zeta.value
+
+
 })
 .then(function(docRef) {
     console.log("Document written with ID: ", docRef.id);
@@ -105,7 +175,7 @@ db.collection("Toons").doc(toonName.value).collection("Abilities").doc("Abilitie
     console.error("Error adding document: ", error);
 	//alert(error);
 });
-*/
+
 db.collection("Toons").doc(toonName.value).set({
 	
     Name: toonName.value,
@@ -152,19 +222,23 @@ db.collection("Toons").doc(toonName.value).set({
 	//alert(error);
 });
 document.getElementById("myform").reset();
+toonName.value = toonName01;
 }
 
 
 function get(){
-	
+	getAbilInfo();
 var docRef = db.collection("Toons").doc(toonName.value);
 
+	var currentCharacter = namesArray.indexOf(toonName.value);
+
+toonName01 = namesArray[currentCharacter+1];
 docRef.get().then(function(doc) {
      if (doc.exists) {
         console.log("Document data:", doc.data());
-		toonImgUrl.value = doc.data().Image;
-		toonInfo.value = doc.data().Info;
-		toonTraits.value = doc.data().Traits;
+		//toonImgUrl.value = doc.data().Image;
+		//toonInfo.value = doc.data().Info;
+		//toonTraits.value = doc.data().Traits;
 		
 		
 		shipments.checked = doc.data().Shipments;
@@ -240,11 +314,23 @@ db.collection("Toons").doc(toonName.value).collection("Abilities").get().then((q
 
 
 function getAbilInfo(){
-	alert(toonName.value);
+	
+	var toonRef = dbRef.child("new_toons").child('All Toons').child(toonName.value);
+toonRef.once("value", function(snap) {
+  console.log("added", snap.key(), snap.val());
+  var toons1 = snap.val();
+  //description-power-speed-health
+  toonImgUrl.value = toons1.photoUrl;
+  toonTraits.value = toons1.catagory;
+  
+	});
+	
+	
 	var contactsRef = dbRef.child('toon_details').child(toonName.value);
 
 contactsRef.once("value", function(snap) {
   console.log("added", snap.key(), snap.val());
+
   var toons = snap.val();
   //description-power-speed-health
   toonInfo.value = toons.toon_description;
@@ -254,118 +340,124 @@ contactsRef.once("value", function(snap) {
   //basic ability
   abilLvl1.value = toons.basic_level;
   abilName1.value = toons.basic_name;
-  abilimage.value = toons.basic_url;
+  if (toons.basic_url === undefined) {
+	}else{
+  abilimage.value = toons.basic_url;}
   abilTxt1.value = toons.basic_description;
   abildamage.value = toons.basic_damage;
   abilzeta.value = toons.basic_ability_image;
   //special 1 ability
-  /*
-  document.getElementById("sp1Level").innerHTML = "Special: level " + toons.special_level;
-  document.getElementById("sp1Name").innerHTML = toons.special_name;
-  document.getElementById("sp1Img").innerHTML = '<img src="' + toons.special_url + '"/>';
-  document.getElementById("sp1Description").innerHTML = toons.special_description;
+  
+  sp1lvl.value = toons.special_level;
+  sp1name.value = toons.special_name;
+  if (toons.basic_url === undefined) {
+	}else{
+  sp1image.value = toons.special_url;}
+  sp1txt.value = toons.special_description;
   if (toons.special_damage === undefined) {
-	  document.getElementById("sp1Dmg").innerHTML = "";}
-	  else{document.getElementById("sp1Dmg").innerHTML = "Damage: "+toons.special_damage;}
+	  sp1damage.value = "";}
+	  else{sp1damage.value = toons.special_damage;}
   if (toons.cooldown_special === undefined) {
-	  document.getElementById("sp1cooldown").innerHTML = "";}
-	  else{document.getElementById("sp1cooldown").innerHTML = toons.cooldown_special+" turn cooldown";}
-  document.getElementById("sp1AbilImg").innerHTML = '<img src="img/'+toons.special1_ability_image+'.jpg" width="25px"/>';
+	  sp1cd.value = "";}
+	  else{sp1cd.value = toons.cooldown_special;}
+  sp1lzeta.value = toons.special1_ability_image;
   //special 2 ability
     if (toons.special_level_2 === undefined) {
-	  document.getElementById("sp2Level").innerHTML = "";}
-	  else{ document.getElementById("sp2Level").innerHTML = "Special: level " + toons.special_level_2;}
+	  sp2lvl.value = "";}
+	  else{sp2lvl.value = toons.special_level_2;}
       if (toons.special_name_2 === undefined) {
-	  document.getElementById("stable2").style.display="none";}
-	  else{document.getElementById("sp2Name").innerHTML = toons.special_name_2;}
+	 // document.getElementById("stable2").style.display="none";
+	 }
+	  else{sp2name.value = toons.special_name_2;}
      if (toons.special_url_2 === undefined) {
-	  document.getElementById("sp2Img").innerHTML = "";}
-	  else{document.getElementById("sp2Img").innerHTML = '<img src="' + toons.special_url_2 + '"/>';}
+	  sp2image.value = "";}
+	  else{sp2image.value =toons.special_url_2;}
      if (toons.special_description_2 === undefined) {
-	  document.getElementById("sp2Description").innerHTML = "";}
-	  else{document.getElementById("sp2Description").innerHTML = toons.special_description_2;}
+	  sp2txt.value = "";}
+	  else{sp2txt.value = toons.special_description_2;}
    if (toons.special_damage_2 === undefined) {
-	  document.getElementById("sp2Dmg").innerHTML = "";}
-	  else{document.getElementById("sp2Dmg").innerHTML = "Damage: "+ toons.special_damage_2;}
+	  sp2damage.value = "";}
+	  else{sp1damage.value = toons.special_damage_2;}
   if (toons.cooldown_special_2 === undefined) {
-	  document.getElementById("sp2cooldown").innerHTML = "";}
-	  else{document.getElementById("sp2cooldown").innerHTML = toons.cooldown_special_2+" turn cooldown";}
+	  sp2cd.value = "";}
+	  else{sp2cd.value = toons.cooldown_special_2+" turn cooldown";}
      if (toons.special2_ability_image === undefined) {
-	  document.getElementById("sp2AbilImg").innerHTML = "";}
-	  else{document.getElementById("sp2AbilImg").innerHTML = '<img src="img/'+toons.special2_ability_image+'.jpg" width="25px"/>';}
+	  sp2lzeta.value = "";}
+	  else{sp2lzeta.value = '<img src="img/'+toons.special2_ability_image+'.jpg" width="25px"/>';}
   //special 3 ability
   if (toons.special_level_3 === undefined) {
-	  document.getElementById("sp3Level").innerHTML = "";}
-	  else{  document.getElementById("sp3Level").innerHTML = "Special: level " + toons.special_level_3;}
+	  sp3lvl.value = "";}
+	  else{  sp3lvl.value = "Special: level " + toons.special_level_3;}
    if (toons.special_name_3 === undefined) {
-	  document.getElementById("stable3").style.display="none";}
-	  else{ document.getElementById("sp3Name").innerHTML = toons.special_name_3;}
+	  ;}
+	  else{ sp3name.value = toons.special_name_3;}
    if (toons.special_url_3 === undefined) {
-	  document.getElementById("sp3Img").innerHTML = "";}
-	  else{  document.getElementById("sp3Img").innerHTML = '<img src="' + toons.special_url_3 + '"/>';}
+	  sp3image.value = "";}
+	  else{  sp3image.value = '<img src="' + toons.special_url_3 + '"/>';}
     if (toons.special_description_3 === undefined) {
-	  document.getElementById("sp3Description").innerHTML = "";}
-	  else{ document.getElementById("sp3Description").innerHTML = toons.special_description_3;}
+	  sp3txt.value = "";}
+	  else{ sp3txt.value = toons.special_description_3;}
   if (toons.special_damage_3 === undefined) {
-	  document.getElementById("sp3Dmg").innerHTML = "";}
-	  else{document.getElementById("sp3Dmg").innerHTML = toons.special_damage_3;}
+	  sp3damage.value = "";}
+	  else{sp3damage.value = toons.special_damage_3;}
   if (toons.cooldown_special_3 === undefined) {
-	  document.getElementById("sp3cooldown").innerHTML = "";}
-	  else{document.getElementById("sp3cooldown").innerHTML = toons.cooldown_special_3+" turn cooldown";}
+	  sp3cd.value = "";}
+	  else{sp3cd.value = toons.cooldown_special_3+" turn cooldown";}
    if (toons.special3_ability_image === undefined) {
-	  document.getElementById("sp3AbilImg").innerHTML = "";}
-	  else{ document.getElementById("sp3AbilImg").innerHTML = '<img src="img/'+toons.special3_ability_image+'.jpg" width="25px"/>';}
+	  sp3lzeta.value = "";}
+	  else{ sp3lzeta.value = '<img src="img/'+toons.special3_ability_image+'.jpg" width="25px"/>';}
   //leader ability
   if (toons.leader_level === undefined) {
-	  document.getElementById("leadLevel").innerHTML = "";}
-	  else{document.getElementById("leadLevel").innerHTML = "Leader: level " + toons.leader_level;}
+	  leadLvl1.value = "";}
+	  else{leadLvl1.value =toons.leader_level;}
  if (toons.leader_name === undefined) {
-	  document.getElementById("ltable").style.display="none";}
-	  else{ document.getElementById("leadName").innerHTML = toons.leader_name;}
+	  }
+	  else{ leadName1.value = toons.leader_name;}
    if (toons.leader_url === undefined) {
-	  document.getElementById("leadImg").innerHTML = "";}
-	  else{ document.getElementById("leadImg").innerHTML = '<img src="' + toons.leader_url + '"/>';}
+	  leadimage.value = "";}
+	  else{ leadimage.value = toons.leader_url;}
    if (toons.leader_description === undefined) {
-	  document.getElementById("leadDescription").innerHTML = "";}
-	  else{ document.getElementById("leadDescription").innerHTML = toons.leader_description;}
+	  leadTxt1.value = "";}
+	  else{ leadTxt1.value = toons.leader_description;}
    if (toons.leader_ability_image === undefined) {
-	  document.getElementById("leadAbilImg").innerHTML = "";}
-	  else{ document.getElementById("leadAbilImg").innerHTML = '<img src="img/'+toons.leader_ability_image+'.jpg" width="25px"/>';}
+	  leadzeta.value = "";}
+	  else{ leadzeta.value = toons.leader_ability_image;}
   //unique 1 ability
   if (toons.unique_level === undefined) {
-	  document.getElementById("unique1Level").innerHTML = "";}
-	  else{document.getElementById("unique1Level").innerHTML = "Unique: level " + toons.unique_level;}
+	  u1Lvl1.value = "";}
+	  else{u1Lvl1.value =toons.unique_level;}
 	if (toons.unique_name === undefined) {
-	  document.getElementById("utable1").style.display="none";}
-	  else{document.getElementById("unique1Name").innerHTML = toons.unique_name;}
+	  }
+	  else{u1Name1.value = toons.unique_name;}
    if (toons.unique_url === undefined) {
-	  document.getElementById("unique1Img").innerHTML = "";}
-	  else{ document.getElementById("unique1Img").innerHTML = '<img src="' + toons.unique_url + '"/>';}
+	  u1image.value = "";}
+	  else{ u1image.value = toons.unique_url;}
    if (toons.unique_description === undefined) {
-	  document.getElementById("unique1Description").innerHTML = "";}
-	  else{ document.getElementById("unique1Description").innerHTML = toons.unique_description;}
+	  u1Txt1.value = "";}
+	  else{ u1Txt1.value = toons.unique_description;}
    if (toons.unique1_ability_image === undefined) {
-	  document.getElementById("unique1AbilImg").innerHTML = "";}
-	  else{ document.getElementById("unique1AbilImg").innerHTML = '<img src="img/'+toons.unique1_ability_image+'.jpg" width="25px"/>';}
+	  u1zeta.value = "";}
+	  else{ u1zeta.value = toons.unique1_ability_image;}
   //unique 2 ability
    if (toons.unique_level_2 === undefined) {
-	  document.getElementById("unique2Level").innerHTML = "";}
-	  else{ document.getElementById("unique2Level").innerHTML = "Unique: level " + toons.unique_level_2;}
+	  u2Lvl1.value = "";}
+	  else{ u2Lvl1.value =toons.unique_level_2;}
    if (toons.unique_name_2 === undefined) {
-	  document.getElementById("utable2").style.display="none";}
-	  else{ document.getElementById("unique2Name").innerHTML = toons.unique_name_2;}
+	  }
+	  else{ u2Name1.value = toons.unique_name_2;}
     if (toons.unique_url_2 === undefined) {
-	  document.getElementById("unique2Img").innerHTML = "";}
-	  else{document.getElementById("unique2Img").innerHTML = '<img src="' + toons.unique_url_2 + '"/>';}
+	  u2image.value = "";}
+	  else{u2image.value = toons.unique_url_2;}
     if (toons.unique_description_2 === undefined) {
-	  document.getElementById("unique2Description").innerHTML = "";}
-	  else{document.getElementById("unique2Description").innerHTML = toons.unique_description_2;}
+	  u2Txt1.value = "";}
+	  else{u2Txt1.value = toons.unique_description_2;}
    if (toons.unique2_ability_image === undefined) {
-	  document.getElementById("unique2AbilImg").innerHTML = "";}
-	  else{ document.getElementById("unique2AbilImg").innerHTML = '<img src="img/'+toons.unique2_ability_image+'.jpg" width="25px"/>';}
-	  if(toons.unique2_ability_image === undefined){}else{
-		document.getElementById('addedBy').innerHTML = "Edited by: "+toons.user_id;
-		}*/
-})
+	  u2zeta.value = "";}
+	  else{ u2zeta.value = toons.unique2_ability_image;}
+});
 
 }
+
+
+
+

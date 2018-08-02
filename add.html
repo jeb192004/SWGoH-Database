@@ -29,7 +29,7 @@
 
 	<link href="css/add.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
-
+	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
@@ -46,7 +46,7 @@
 		<h2>Add Character Form</h2>
 		<span><input type="reset" class="button" value="RESET" />
 		  <input type="button" class="button" value="SUBMIT" onclick="add()" />
-		  <input type="button" class="button" value="Check/Get existing data()" onclick="get()" onclick="getAbilInfo()" />
+		  <input type="button" class="button" value="Check/Get existing data()" onclick="get()" />
 		</span><br />
 
 
@@ -122,7 +122,7 @@
 		
 
 		<hr>
-		<p>Abillity 1</p>
+		<p>Basic</p>
 
 
 		<div class="group">
@@ -148,53 +148,153 @@
 		<span><input  name="email" id="abil1zeta" class="data-entry" /></span><br /><br />
 		
 		
-		<p>Abillity 2</p>
+		<p>Special 1</p>
 
 		<input type="hidden" name="return_link_title" value="Go to the Homepage" />
 		<div class="group">
 		  <label for="name">NAME:</label><br />
-		  <span><input type="text" name="abil2name" id="abil2name" class="data-entry" /></span><br /><br />
+		  <span><input type="text" name="sp1name" id="sp1name" class="data-entry" /></span><br /><br />
 		</div>
 		<div class="group">
 		  <label for="phone">DESC:</label><br />
-		  <span><input  name="phone" id="abil2txt" class="data-entry" /></span><br /><br />
+		  <span><input  name="phone" id="sp1txt" class="data-entry" /></span><br /><br />
 		</div>
 		<label for="email">Lvl:</label><br />
-		<span><input  name="email" id="abil2lvl" class="data-entry" /></span><br /><br />
-
-		<p>Abillity 3</p>
+		<span><input  name="email" id="sp1lvl" class="data-entry" /></span><br /><br />
+		
+		<div class="group">
+		  <label for="name">Damage:</label><br />
+		  <span><input type="text" name="name" id="sp1damage" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="sp1image" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">AbilImage:</label><br />
+		<span><input  name="email" id="sp1zeta" class="data-entry" /></span><br /><br />
+		
+		<label for="email">Ability CD:</label><br />
+		<span><input  name="email" id="sp1cd" class="data-entry" /></span><br /><br />
+		
+		<p>Special 2</p>
 
 		<input type="hidden" name="return_link_title" value="Go to the Homepage" />
 		<div class="group">
 		  <label for="name">NAME:</label><br />
-		  <span><input type="text" name="name" id="abil3name" class="data-entry" /></span><br /><br />
+		  <span><input type="text" name="sp2name" id="sp2name" class="data-entry" /></span><br /><br />
 		</div>
 		<div class="group">
 		  <label for="phone">DESC:</label><br />
-		  <span><input name="phone" id="abil3txt" class="data-entry" /></span><br /><br />
+		  <span><input  name="phone" id="sp2txt" class="data-entry" /></span><br /><br />
 		</div>
 		<label for="email">Lvl:</label><br />
-		<span><input  name="email" id="abil3lvl" class="data-entry" /></span><br /><br />
+		<span><input  name="email" id="sp2lvl" class="data-entry" /></span><br /><br />
 
-		<p>Abillity 4</p>
+		<div class="group">
+		  <label for="name">Damage:</label><br />
+		  <span><input type="text" name="name" id="sp2damage" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="sp2image" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">AbilImage:</label><br />
+		<span><input  name="email" id="sp2zeta" class="data-entry" /></span><br /><br />
 
-
+		<label for="email">Ability CD:</label><br />
+		<span><input  name="email" id="sp2cd" class="data-entry" /></span><br /><br />
+		
+		<p>Special 3</p>
 
 		<input type="hidden" name="return_link_title" value="Go to the Homepage" />
 		<div class="group">
 		  <label for="name">NAME:</label><br />
-		  <span><input type="text" name="" id="abil4name" class="data-entry" /></span><br /><br />
+		  <span><input type="text" name="sp1name" id="sp3name" class="data-entry" /></span><br /><br />
 		</div>
 		<div class="group">
 		  <label for="phone">DESC:</label><br />
-		  <span><input name="" id="abil4txt" class="data-entry" /></span><br /><br />
+		  <span><input  name="phone" id="sp3txt" class="data-entry" /></span><br /><br />
 		</div>
 		<label for="email">Lvl:</label><br />
-		<span><input name="email" id="abil4lvl" class="data-entry" /></span><br /><br />
+		<span><input  name="email" id="sp3lvl" class="data-entry" /></span><br /><br />
+
+		<div class="group">
+		  <label for="name">Damage:</label><br />
+		  <span><input type="text" name="name" id="sp3damage" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="sp3image" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">AbilImage:</label><br />
+		<span><input  name="email" id="sp3zeta" class="data-entry" /></span><br /><br />
+
+		<label for="email">Ability CD:</label><br />
+		<span><input  name="email" id="sp3cd" class="data-entry" /></span><br /><br />
+		
+		<p>Leader</p>
 
 
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="name" id="leadname" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input name="phone" id="leadtxt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input  name="email" id="leadlvl" class="data-entry" /></span><br /><br />
+
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="leadimage" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Abil Lvl Image:</label><br />
+		<span><input  name="email" id="leadzeta" class="data-entry" /></span><br /><br />
+		
+		<p>Unique 1</p>
 
 
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="name" id="u1name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input name="phone" id="u1txt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input  name="email" id="u1lvl" class="data-entry" /></span><br /><br />
+
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="u1image" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Abil Lvl Image:</label><br />
+		<span><input  name="email" id="u1zeta" class="data-entry" /></span><br /><br />
+		
+		<p>Unique 2</p>
+
+
+		<div class="group">
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="name" id="u2name" class="data-entry" /></span><br /><br />
+		</div>
+		<div class="group">
+		  <label for="phone">DESC:</label><br />
+		  <span><input name="phone" id="u2txt" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Lvl:</label><br />
+		<span><input  name="email" id="u2lvl" class="data-entry" /></span><br /><br />
+
+		<div class="group">
+		  <label for="phone">Image:</label><br />
+		  <span><input name="phone" id="u2image" class="data-entry" /></span><br /><br />
+		</div>
+		<label for="email">Abil Lvl Image:</label><br />
+		<span><input  name="email" id="u2zeta" class="data-entry" /></span><br /><br />
+		
 
 
 		<!--
@@ -220,9 +320,8 @@
 		<label for="comments2">COMMENTS:</label><br />
 		<span><textarea name="comments" id="comments2" rows="4" cols="20"></textarea></span><br /><br />
 		-->
-
+	  </div>
 	</form>
-	</div><!--end div sample-->
 
 
 
