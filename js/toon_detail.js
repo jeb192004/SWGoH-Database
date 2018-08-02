@@ -5,8 +5,8 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	//var characterName = urlParam('character').replace(/_/g, ' ');
-	var characterName = "Commander Luke Skywalker";
+	var characterName = urlParam('character').replace(/_/g, ' ');
+	//var characterName = "Commander Luke Skywalker";
 document.getElementById('name').innerHTML = characterName;
 if (localStorage.getItem("namesArray")) {
   // Restore the contents of the text field
