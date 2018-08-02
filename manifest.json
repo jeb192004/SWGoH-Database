@@ -21,5 +21,6 @@
   }
     
   ],
-  "start_url": "http://swgoh.co/index.html"
+  "start_url": "http://swgoh.co/index.html",
+"display": "standalone"
 }

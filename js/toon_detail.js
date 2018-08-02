@@ -182,10 +182,10 @@ db.collection("Toons").doc(characterName).collection("Abilities").get().then((qu
 			
 		}
 		uName2.innerHTML = doc.data().u2name;
-		uLvl2.innerHTML = doc.data().u1lvl;
+		uLvl2.innerHTML = doc.data().U2lvl;
 		uTxt2.textContent = doc.data().u2txt;
-		uImg2.src = doc.data().u2image;
-		uZeta2.src =  "img/"+doc.data().u2AbilLvl+".jpg";
+		uImg2.src = doc.data().U2image;
+		uZeta2.src =  "img/"+doc.data().U2AbilLvl+".jpg";
 		
     });
 		
