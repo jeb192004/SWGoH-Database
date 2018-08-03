@@ -139,13 +139,15 @@ else {
     }
 	
 	function menu_item(item){
-		if(item.innerHTML === "Blitz"){
-			window.location = "blitz.html";
+		if(item.innerHTML === "Compare Abilities"){
+			window.location = "compareToon.html";
 		}
 		if(item.innerHTML === "Team Builder"){
-		window.location = "teambuilder.html";
-		}if(item.innerHTML === "Raids"){
-			alert("This page will be coming soon");
+			alert("This page is still under development");
+		}if(item.innerHTML === "Chat"){
+			window.location = "chat.html";
+		}if(item.innerHTML === "Ships"){
+			alert("This page is still under development");
 		}
 	}
 	
