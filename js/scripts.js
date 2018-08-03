@@ -139,7 +139,7 @@ else {
     }
 	
 	function menu_item(item){
-		if(item.innerHTML === "Compare Abilities"){
+		if(item.innerHTML === "Comapare Abilities"){
 			window.location = "compareToon.html";
 		}
 		if(item.innerHTML === "Team Builder"){
@@ -188,13 +188,56 @@ window.onclick = function(event) {
 };
 
 function shard_loc_item(shard_loc){
+	
 	$('#toons').empty();
+	
 	var shard1 = shard_loc.innerText || shard_loc.textContent;
-	var shards = shard1.replace(/[.'\s]/g, '');
-	if(shards === "ClearFilter"){
+	//var shards = shard1.replace(/[.'\s]/g, '');
+	
+	if(shard_loc === "all_toons"){
 		loadList();
-	}else{
-  db.collection("Toons").where(shards, "==", true)
+	}if(shard_loc === "cantina_battles"){
+		var shardLoc = "CantinaBattles";
+		filterList(shardLoc);
+	}if(shard_loc === "light_side"){
+		var shardLoc = "LSBattles";
+		filterList(shardLoc);
+	}if(shard_loc === "dark_side"){
+		var shardLoc = "DSBattles";
+		filterList(shardLoc);
+	}if(shard_loc === "shipments"){
+		var shardLoc = "Shipments";
+		filterList(shardLoc);
+	}if(shard_loc === "squad_arena_store"){
+		var shardLoc = "SquadArenaStore";
+		filterList(shardLoc);
+	}if(shard_loc === "fleet_arena_store"){
+		var shardLoc = "FleetArenaStore";
+		filterList(shardLoc);
+	}if(shard_loc === "cantina_battles_store"){
+		var shardLoc = "CantinaBattlesStore";
+		filterList(shardLoc);
+	}if(shard_loc === "galactic_war_store"){
+		var shardLoc = "GalacticWarStore";
+		filterList(shardLoc);
+	}if(shard_loc === "guild_store"){
+		var shardLoc = "GuildStore";
+		filterList(shardLoc);
+	}if(shard_loc === "guild_events_store"){
+		var shardLoc = "GuildEventsStore";
+		filterList(shardLoc);
+	}if(shard_loc === "shard_store"){
+		var shardLoc = "ShardStore";
+		filterList(shardLoc);
+	}
+	
+	else{
+  
+	}
+	}
+	
+	function filterList(shardLoc){
+		db.collection("Toons").where(shardLoc, "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
@@ -215,7 +258,5 @@ function shard_loc_item(shard_loc){
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
+		
 	}
-	}
-	
-	

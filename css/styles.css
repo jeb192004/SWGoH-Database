@@ -169,6 +169,10 @@ ul {
 	border-radius:10px;
 }
 	 
+#area_list{
+  display:none;
+}
+
 @media only screen and (max-width: 600px) {
     /* For mobile phones: */
 	
@@ -310,9 +314,30 @@ ul {
     position: relative;
     display: inline-block;
 }
-#shard_loc{
+#area_list{
   display:inline-block;
 }
+select {
+  width: 150px;
+  padding: 5px 35px 5px 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url(https://swgoh.co/img/overlay_icon.png) 96% / 15% no-repeat #eee;
+}
+
+
+/* CAUTION: IE hackery ahead */
+
+
+select::-ms-expand { 
+    display: none; /* remove default arrow in IE 10 and 11 */
+}
+
+
 /* Dropdown Content (Hidden by Default) */
 .dropdown-content {
     display: none;

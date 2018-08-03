@@ -52,8 +52,9 @@
 	  </div>
 	 
 		<form id="area_list" name="form2">
-		  <select id="jumpmenu" onChange="jumpto(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
-			<option id="all_toons">Sort list by Shard Location</option>
+		  <select id="jumpmenu" onchange="shard_loc_item(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
+			<option id="all_toons">Sort by Shard Location</option>
+			<option id="all_toons">All</option>
 			<option id="cantina_battles">Cantina Battles</option>
 			<option id="light_side">Light Side</option>
 			<option id="dark_side">Dark Side</option>
@@ -86,18 +87,18 @@
 		<hr>
 		<h2>Sort List by:</h2>
 		<h3>Shard Location</h3>
-		<li onclick="shard_loc_item(this)">All</li>
-		<li onclick="shard_loc_item(this)">Cantina Battles</li>
-		<li onclick="shard_loc_item(this)">Light Side</li>
-		<li onclick="shard_loc_item(this)">Dark Side</li>
-		<li onclick="shard_loc_item(this)">Shipments</li>
-		<li onclick="shard_loc_item(this)">Squad Arena Store</li>
-		<li onclick="shard_loc_item(this)">Fleet Arena Store</li>
-		<li onclick="shard_loc_item(this)">Cantina Battles Store</li>
-		<li onclick="shard_loc_item(this)">Galactic War Store</li>
-		<li onclick="shard_loc_item(this)">Guild Store</li>
-		<li onclick="shard_loc_item(this)">Guild Events Store</li>
-		<li onclick="shard_loc_item(this)">Shard Store</li>
+		<li onclick="shard_loc_item(this.id)"id="all_toons">All</li>
+		<li onclick="shard_loc_item(this.id)"id="cantina_battles">Cantina Battles</li>
+		<li onclick="shard_loc_item(this.id)"id="light_side">Light Side</li>
+		<li onclick="shard_loc_item(this.id)"id="dark_side">Dark Side</li>
+		<li onclick="shard_loc_item(this.id)"id="shipments">Shipments</li>
+		<li onclick="shard_loc_item(this.id)"id="squad_arena_store">Squad Arena Store</li>
+		<li onclick="shard_loc_item(this.id)"id="fleet_arena_store">Fleet Arena Store</li>
+		<li onclick="shard_loc_item(this.id)"id="cantina_battles_store">Cantina Battles Store</li>
+		<li onclick="shard_loc_item(this.id)"id="galactic_war_store">Galactic War Store</li>
+		<li onclick="shard_loc_item(this.id)"id="guild_store">Guild Store</li>
+		<li onclick="shard_loc_item(this.id)"id="guild_events_store">Guild Events Store</li>
+		<li onclick="shard_loc_item(this.id)"id="shard_store">Shard Store</li>
 	  </ul>
     </nav>
 
