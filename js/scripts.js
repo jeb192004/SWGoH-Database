@@ -80,7 +80,7 @@ db.collection("Toons").onSnapshot({ includeQueryMetadataChanges: true }, functio
     });});
 }
 function contactHtmlFromObject(toons, traits, info1, img1){
-  console.log( toons );
+  //console.log( toons );
   var html = '';
   html += '<li class="list-group-item contact">';
     html += '<div class="toonlist">';
