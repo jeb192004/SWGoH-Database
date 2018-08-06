@@ -119,7 +119,7 @@ else {
   //Add your javascript for small screens here 
 		document.getElementById("area_list").style.display='inline';
 	}
-		search1 = "false"
+		search1 = "false";
 		}
 }
 
