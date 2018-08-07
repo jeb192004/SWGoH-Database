@@ -12,7 +12,7 @@ var namesArray = [];
 var init = function () {
     //get scroll position in session storage
    	$(window).scrollTop(sessionStorage.scrollPos);
-	console.log(sessionStorage.scrollPos);
+	//console.log(sessionStorage.scrollPos);
 };
 window.onload = init;
 
@@ -71,7 +71,7 @@ db.collection("Toons").onSnapshot({ includeQueryMetadataChanges: true }, functio
     //set scroll position in session storage
     sessionStorage.scrollPos = $(window).scrollTop();
 	//alert(sessionStorage.scrollPos);
-	console.log(sessionStorage.scrollPos);
+	//console.log(sessionStorage.scrollPos);
 	var toonName = $(this).find("p.lead").html();
 	
 	

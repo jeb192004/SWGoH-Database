@@ -2,7 +2,7 @@ alert('sw registered');
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('swgoh.co').then(function(cache) {
+   caches.open('swgoh').then(function(cache) {
      return cache.addAll([
 	 	
 	 	'index.html',
