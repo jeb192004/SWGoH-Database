@@ -30,10 +30,15 @@ var head = document.getElementById('img');
 var getName = document.getElementById('name').innerText;
 
 var cardSp2 = document.getElementById('cardSp2');
+cardSp2.style.display ="none";
 var cardSp3 = document.getElementById('cardSp3');
+cardSp3.style.display ="none";
 var cardlead = document.getElementById('cardlead');
+cardlead.style.display ="none";
 var cardU1 = document.getElementById('cardU1');
+cardU1.style.display ="none";
 var cardU2 = document.getElementById('cardU2');
+cardU2.style.display ="none";
 
 var abilName1 = document.getElementById('abil1');
 var abilLvl1 = document.getElementById('abilLvl1');
@@ -129,10 +134,8 @@ db.collection("Toons").doc(characterName).collection("Abilities").get().then((qu
 		spZeta1.src =  "img/"+doc.data().sp1lzeta+".jpg";
 		
 		if ( doc.data().sp2name == null ){
-			cardSp2.style.display ="none";
 		}else{
-			
-		}
+		cardSp2.style.display ="block";
 		spName2.innerHTML = doc.data().sp2name;
 		spLvl2.innerHTML = doc.data().sp2lvl;
 		spTxt2.textContent = doc.data().sp2txt;
@@ -140,12 +143,10 @@ db.collection("Toons").doc(characterName).collection("Abilities").get().then((qu
 		spDamage2.innerHTML = "Damage: "+doc.data().sp2damage;
 		spCd2.innerHTML = "Cooldown: "+doc.data().sp2cd;
 		spZeta2.src =  "img/"+doc.data().sp2lzeta+".jpg";
-		
-		if ( doc.data().sp3name == null ){
-			
-		}else{
-			cardSp3.style.display ="none";
 		}
+		if ( doc.data().sp3name == null ){
+		}else{
+		cardSp3.style.display ="block";
 		spName3.innerHTML = doc.data().sp3name;
 		spLvl3.innerHTML = doc.data().sp3lvl;
 		spTxt3.textContent = doc.data().sp3txt;
@@ -153,40 +154,34 @@ db.collection("Toons").doc(characterName).collection("Abilities").get().then((qu
 		spDamage3.innerHTML = "Damage: "+doc.data().sp3damage;
 		spCd3.innerHTML = "Cooldown: "+doc.data().sp3cd;
 		spZeta3.src =  "img/"+doc.data().sp3lzeta+".jpg";
-		
-		if ( doc.data().leadName1 == null ){
-			cardlead.style.display ="none";
-		}else{
-			
 		}
+		if ( doc.data().leadName1 == null ){
+		}else{
+		cardlead.style.display ="block";
 		leadName.innerHTML = doc.data().leadName1;
 		leadLvl.innerHTML = doc.data().leadLvl1;
 		leadTxt.textContent = doc.data().leadTxt1;
 		leadImg.src = doc.data().leadimage;
 		leadZeta.src =  "img/"+doc.data().leadzeta+".jpg";
-		
-		if ( doc.data().u1Name1 == null ){
-			cardU1.style.display ="none";
-		}else{
-			
 		}
+		if ( doc.data().u1Name1 == null ){
+		}else{
+		cardU1.style.display ="block";
 		uName1.innerHTML = doc.data().u1Name1;
 		uLvl1.innerHTML = doc.data().u1Lvl1;
 		uTxt1.textContent = doc.data().u1Txt1;
 		uImg1.src = doc.data().u1image;
 		uZeta1.src =  "img/"+doc.data().u1AbilLvl+".jpg";
-		
-		if ( doc.data().u2name == null ){
-			cardU2.style.display ="none";
-		}else{
-			
 		}
+		if ( doc.data().u2name == null ){
+		}else{
+		cardU2.style.display ="block";
 		uName2.innerHTML = doc.data().u2name;
 		uLvl2.innerHTML = doc.data().U2lvl;
 		uTxt2.textContent = doc.data().u2txt;
 		uImg2.src = doc.data().U2image;
 		uZeta2.src =  "img/"+doc.data().U2AbilLvl+".jpg";
-		
+		}
     });
 		
 	});
