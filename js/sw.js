@@ -4,10 +4,10 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('swgoh.co').then(function(cache) {
      return cache.addAll([
-	 	'/',
-	 	'/index.html',
-		'/js/scripts.js',
-  		'/css/styles.css'
+	 	
+	 	'index.html',
+		'js/scripts.js',
+  		'css/styles.css'
  		
 		
      ]);
