@@ -2,7 +2,7 @@
 
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
-           .register('SWGoH-Database/js/sw.js')
+           .register('SWGoH-Database/sw.js')
            .then(function() { console.log('Service Worker Registered'); });
 }
 
