@@ -1,4 +1,3 @@
-alert('sw registered');
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
