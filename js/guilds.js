@@ -1,5 +1,11 @@
-
-
+var urlParam = function(name, w){
+    w = w || window;
+    var rx = new RegExp('[\&|\?]'+name+'=([^\&\#]+)'),
+        val = w.location.search.match(rx);
+    return !val ? '':val[1];
+};
+	var guildName = urlParam('guildName').replace(/_/g, ' ');
+	//var guildName = "Relentless";
 
 var namesArray = [];
 
@@ -20,64 +26,40 @@ var config = {
   };
 var firebase = firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
-var db;
+
 var toon, trait, info, toon1, img;
-firebase.firestore().enablePersistence()
-  .then(function() {
-      // Initialize Cloud Firestore through firebase
-      db = firebase.firestore();
+
+    var  db = firebase.firestore();
+	
 	  loadList();
-  })
-  .catch(function(err) {
-      if (err.code == 'failed-precondition') {
-          // Multiple tabs open, persistence can only be enabled
-          // in one tab at a a time.
-          // ...
-      } else if (err.code == 'unimplemented') {
-          // The current browser does not support all of the
-          // features required to enable persistence
-          // ...
-      }
-  });
 
 
 
 function loadList(){
-db.collection("Toons").onSnapshot({ includeQueryMetadataChanges: true }, function(snapshot) {
-      snapshot.docChanges.forEach(function(change) {
-          if (change.type === "added") {
-              //console.log("New city: ", change.doc.data());
-			  
-          }
 
-          var source = snapshot.metadata.fromCache ? "local cache" : "server";
-          //console.log("Data came from " + source);
-    		//querySnapshot.forEach((doc) => {
-				toon1 = `${change.doc.data().Name}`;
-				info = `${change.doc.data().Info}`;
-				trait = `${change.doc.data().Traits}`;
-				img = `${change.doc.data().Image}`;
-				namesArray.push(toon1);
-		document.querySelector('#toons')
+  db.collection("Guilds").doc(guildName).collection("Members")
+  //.where("JTR", "==", true)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+           toon1 = `${doc.data().Name}`;
+				//info = `${doc.data().Info}`;
+				//trait = `${doc.data().Traits}`;
+				//img = `${doc.data().Image}`;
+		
+			document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
 	$(".list-group li").on("click", function() {
-
-    //set scroll position in session storage
-    sessionStorage.scrollPos = $(window).scrollTop();
-	//alert(sessionStorage.scrollPos);
-	//console.log(sessionStorage.scrollPos);
 	var toonName = $(this).find("p.lead").html();
-	
-	
-	var characterName = toonName.replace(/ /g,"_");
 	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
-	window.localStorage.setItem('namesArray',JSON.stringify(namesArray));
+	window.location = 'characters/'+toonName+'.html';
+	});
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
 	
-	window.location = 'toon_details.html?character='+characterName;
-  	//window.location = 'toon_details.html';
-  
-  });
-    });});
 }
 function contactHtmlFromObject(toons, traits, info1, img1){
   //console.log( toons );
@@ -145,8 +127,8 @@ else {
 		if(item.innerHTML === "Comapare Abilities"){
 			window.location = "compareToon.html";
 		}
-		if(item.innerHTML === "Guild"){
-			window.location = 'guilds.html?guildName='+"Relentless";
+		if(item.innerHTML === "Team Builder"){
+			alert("This page is still under development");
 		}if(item.innerHTML === "Chat"){
 			window.location = "chat.html";
 		}if(item.innerHTML === "Ships"){
@@ -197,18 +179,18 @@ function shard_loc_item(shard_loc){
 	var shard1 = shard_loc.innerText || shard_loc.textContent;
 	//var shards = shard1.replace(/[.'\s]/g, '');
 	
-	if(shard_loc === "all_toons"){
+	if(shard_loc === "all_members"){
 		loadList();
-	}if(shard_loc === "cantina_battles"){
-		var shardLoc = "CantinaBattles";
+	}if(shard_loc === "jtr"){
+		var shardLoc = "JTR";
 		filterList(shardLoc);
-	}if(shard_loc === "light_side"){
-		var shardLoc = "LSBattles";
+	}if(shard_loc === "gk"){
+		var shardLoc = "GK";
 		filterList(shardLoc);
-	}if(shard_loc === "dark_side"){
-		var shardLoc = "DSBattles";
+	}if(shard_loc === "raidhan"){
+		var shardLoc = "RaidHan";
 		filterList(shardLoc);
-	}if(shard_loc === "shipments"){
+	}/*if(shard_loc === "shipments"){
 		var shardLoc = "Shipments";
 		filterList(shardLoc);
 	}if(shard_loc === "squad_arena_store"){
@@ -232,7 +214,7 @@ function shard_loc_item(shard_loc){
 	}if(shard_loc === "shard_store"){
 		var shardLoc = "ShardStore";
 		filterList(shardLoc);
-	}
+	}*/
 	
 	else{
   
@@ -240,14 +222,15 @@ function shard_loc_item(shard_loc){
 	}
 	
 	function filterList(shardLoc){
-		db.collection("Toons").where(shardLoc, "==", true)
+		db.collection("Guilds").doc("Relentless").collection("Members")
+  .where(shardLoc, "==", true)
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
            toon1 = `${doc.data().Name}`;
-				info = `${doc.data().Info}`;
-				trait = `${doc.data().Traits}`;
-				img = `${doc.data().Image}`;
+				//info = `${doc.data().Info}`;
+				//trait = `${doc.data().Traits}`;
+				//img = `${doc.data().Image}`;
 		
 			document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	

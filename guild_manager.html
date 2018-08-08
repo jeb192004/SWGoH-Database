@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<!-- Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106606663-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106606663-4');
+</script>
+	<!-- End Google Analytics -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<!--
+	<meta name="viewport" content="width=device-width">
+	-->
+	<!-- TODO add manifest here -->
+	<link rel="manifest" href="manifest.json">
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="MSF">
+	<link rel="apple-touch-icon" href="img/icons/icon152.png">
+	<meta name="msapplication-TileImage" content="img/icons/icon144.png">
+	<meta name="msapplication-TileColor" content="#2F3BA2">
+
+	<link href="css/add.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+	<script src="https://cdn.firebase.com/js/client/2.2.3/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+
+  </head>
+
+  <body>
+	<header class="header">
+	  <h1 class="header__title" id="header__title">SWGoH</h1>
+
+	</header>
+	<form id="myform" action="/cgi-bin/umbrella.pl" method="post">
+	  <div id="sample">
+		<h2>Add Character Form</h2>
+		<span><input type="reset" class="button" value="RESET" />
+		  <input type="button" class="button" value="SUBMIT" onclick="addmembertoon()" />
+		  <input type="button" class="button" value="Check/Get existing data()" onclick="get()" />
+		</span><br />
+
+
+		<p>Character Img Url</p>
+
+		
+		  <label for="name">NAME:</label><br />
+		  <span><input type="text" name="toon_name" id="member_name" class="data-entry" /></span><br /><br />
+		
+	
+
+		
+<br>
+
+		<p>Characters</p>
+
+
+		<input type="checkbox" name="vehicle" id="jtr"> Rey(Jedi Training)
+		
+		<input type="checkbox" name="vehicle" id="gk"> General Kenobi
+		
+		<input type="checkbox" name="vehicle" id="raidhan"> Han Solo(Raid Han)
+		
+
+		<hr>
+		
+	  </div>
+	</form>
+
+
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script src="js/guild_manager.js"></script>
+
+
+  </body>
+</html>
+

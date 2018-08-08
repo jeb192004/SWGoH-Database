@@ -234,18 +234,11 @@ $('.menu_item').each(function() {
 function menu_item(item){
 		if(item.innerHTML === "Blitz"){
 			window.location = "blitz.html";
-		}
-		if(item.innerHTML === "Team Builder"){
-		window.location = "teambuilder.html";
+		}if(item.innerHTML === "Guild"){
+			window.location = 'guilds.html?guildName='+"Relentless";
 		}if(item.innerHTML === "Characters/Home"){
 			window.location = "index.html";
-		}if(item.innerHTML === "Raids"){
-			firebase.auth().onAuthStateChanged(function(user) {
-  if (user) {
-window.location = 'alliance_manager.html';
-  } else {
-			alert("This page will be coming soon");
-  }
+		}
 });
 
 		}
