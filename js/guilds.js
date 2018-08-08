@@ -4,8 +4,8 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	//var guildName = urlParam('guildName').replace(/_/g, ' ');
-	var guildName = "Relentless";
+	var guildName = urlParam('guildName').replace(/_/g, ' ');
+	//var guildName = "Relentless";
 
 var toonsArray = [];
 
