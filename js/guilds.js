@@ -4,10 +4,10 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	var guildName = urlParam('guildName').replace(/_/g, ' ');
-	//var guildName = "Relentless";
+	//var guildName = urlParam('guildName').replace(/_/g, ' ');
+	var guildName = "Relentless";
 
-var namesArray = [];
+var toonsArray = [];
 
 var init = function () {
     //get scroll position in session storage
@@ -43,12 +43,17 @@ function loadList(){
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
            toon1 = `${doc.data().Name}`;
-				//info = `${doc.data().Info}`;
-				//trait = `${doc.data().Traits}`;
-				//img = `${doc.data().Image}`;
-		
+		   if(doc.data().JTR){
+			   toonsArray.push("JTR");
+		   }if(doc.data().GK){
+			   toonsArray.push("GK");
+		   }if(doc.data().RaidHan){
+			   toonsArray.push("Han Solo(Raid Han)");
+		   }
+			
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
+    .innerHTML += contactHtmlFromObject(toon1, toonsArray, info, img);	
+	toonsArray = [];
 	$(".list-group li").on("click", function() {
 	var toonName = $(this).find("p.lead").html();
 	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
@@ -61,18 +66,18 @@ function loadList(){
     });
 	
 }
-function contactHtmlFromObject(toons, traits, info1, img1){
+function contactHtmlFromObject(toons, toonsArray, info1, img1){
   //console.log( toons );
   var html = '';
-  html += '<li class="list-group-item contact">';
+  html += '<li class="list-group-item contact" >';
     html += '<div class="toonlist">';
       
-      html += '<p>'+'<div class="img_container">'
+      html += '<p>'+'<div class="img_container"style="visibility:hidden">'
 	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
 	  	   + '</div>'+'</p>';
 		   html += '<div> <p class="lead">'+toons+'</p>';
-	html += '<p>'+traits+'</p>';
-                html += '<p>'+info1+'</p></div>';
+	html += '<p>'+toonsArray+'</p>';
+                //html += '<p>'+info1+'</p></div>';
     html += '</div>';
   html += '</li>';
   return html;
@@ -129,8 +134,8 @@ else {
 		}
 		if(item.innerHTML === "Team Builder"){
 			alert("This page is still under development");
-		}if(item.innerHTML === "Chat"){
-			window.location = "chat.html";
+		}if(item.innerHTML === "Characters/Home"){
+			window.location = "index.html";
 		}if(item.innerHTML === "Ships"){
 			alert("This page is still under development");
 		}
