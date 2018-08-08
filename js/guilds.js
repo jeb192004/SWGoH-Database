@@ -52,7 +52,7 @@ function loadList(){
 		   }
 			
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, toonsArray, info, img);	
+    .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");	
 	toonsArray = [];
 	$(".list-group li").on("click", function() {
 	var toonName = $(this).find("p.lead").html();
@@ -238,7 +238,7 @@ function shard_loc_item(shard_loc){
 				//img = `${doc.data().Image}`;
 		
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
+    .innerHTML += contactHtmlFromObject(toon1, "", "", "");	
 	$(".list-group li").on("click", function() {
 	var toonName = $(this).find("p.lead").html();
 	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
