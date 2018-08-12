@@ -4,10 +4,11 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	var guildName = urlParam('guildName').replace(/_/g, ' ');
-	//var guildName = "Relentless";
+	//var guildName = urlParam('guildName').replace(/_/g, ' ');
+	var guildName = "Relentless";
 
 var toonsArray = [];
+var strp1jtr = [];
 
 var init = function () {
     //get scroll position in session storage
@@ -30,31 +31,32 @@ var firebase = firebase.initializeApp(config);
 var toon, trait, info, toon1, img;
 
     var  db = firebase.firestore();
-	
+	var guildref = db.collection("Guilds").doc(guildName);
 	  loadList();
 
 
 
 function loadList(){
 
-  db.collection("Guilds").doc(guildName).collection("Members")
-  //.where("JTR", "==", true)
+ 
+ guildref.collection("Members")
+  
     .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-           toon1 = `${doc.data().Name}`;
-		   if(doc.data().GK){
+			
+			toon1 = `${doc.data().Name}`;
+			toonsArray = [];
+			if(doc.data().GK){
 			   toonsArray.push("GK");
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
 		   }
-		   if(doc.data().JTR){
-		   var p1jtr = "JTR";
-			}
-			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, toonsArray, p1jtr, "");	
-	toonsArray = [];
-	p1jtr = "";
+		
+		   getstrteam(toon1, toonsArray);
+			
+	
+	
 	/*
 	$(".list-group li").on("click", function() {
 	var toonName = $(this).find("p.lead").html();
@@ -68,7 +70,40 @@ function loadList(){
     });
 	
 }
-function contactHtmlFromObject(toons, toonsArray, p1, img1){
+
+function getstrteam(member, toonsarray){
+	
+	guildref.collection("STR").doc("P1").collection("members").doc(member)
+    .get().then(function(doc1) {
+
+			strp1jtr = [];
+			var jtrname = doc1.data().JTRName;
+			var bbname = doc1.data().BB8NAME;
+			var r2name = doc1.data().R2NAME;
+			var rtname = doc1.data().RTNAME;
+			var reyname = doc1.data().REYNAME;
+			
+			if(jtrname){
+			strp1jtr.push(jtrname);}
+			if(bbname){
+			strp1jtr.push(bbname);}
+			if(r2name){
+			strp1jtr.push(r2name);}
+			if(rtname){
+			strp1jtr.push(rtname);}
+			if(reyname){
+			strp1jtr.push(reyname);}
+			document.querySelector('#toons')
+    .innerHTML += contactHtmlFromObject(member, toonsarray, strp1jtr, "");	
+	
+		});/*.catch(function(error) {
+    console.log("Error getting document:", error);
+});*/
+}
+
+
+
+function contactHtmlFromObject(toons, toonsArray, strp1, img1){
   //console.log( toons );
   var html = '';
   html += '<li class="list-group-item contact" >';
@@ -79,7 +114,7 @@ function contactHtmlFromObject(toons, toonsArray, p1, img1){
 	  	   + '</div>'+'</p>';
 		   html += '<div> <p class="lead">'+toons+'</p>';
 	html += '<p><b><font color="black">7* Raid Characters: </font></b>'+toonsArray+'</p>';
-                html += '<p><b><font color="black">STR P1 Team: </font></b>'+p1+'</p></div>';
+                html += '<p><b><font color="black">STR P1 Team: </font></b>'+strp1+'</p></div>';
     html += '</div>';
   html += '</li>';
   return html;
@@ -240,11 +275,8 @@ function shard_loc_item(shard_loc){
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
 		   }
-		   if(doc.data().JTR){
-		   var p1jtr = "JTR";
-			}
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, toonsArray, p1jtr, "");	
+    .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");	
 	toonsArray = [];
 	p1jtr = "";
 	/*
