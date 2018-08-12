@@ -16,8 +16,8 @@ var db = firebase.firestore();
 
 				
   
-var memberName = document.getElementById('member_name');
-var jtr = document.getElementById('jtr');
+	var memberName = document.getElementById('member_name');
+	var jtr = document.getElementById('jtr');
 	var gk = document.getElementById('gk');
 	var raidhan = document.getElementById('raidhan');
 	

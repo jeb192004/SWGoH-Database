@@ -43,22 +43,24 @@ function loadList(){
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
            toon1 = `${doc.data().Name}`;
-		   if(doc.data().JTR){
-			   toonsArray.push("JTR");
-		   }if(doc.data().GK){
+		   if(doc.data().GK){
 			   toonsArray.push("GK");
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
 		   }
-			
+		   if(doc.data().JTR){
+		   var p1jtr = "JTR";
+			}
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");	
+    .innerHTML += contactHtmlFromObject(toon1, toonsArray, p1jtr, "");	
 	toonsArray = [];
+	p1jtr = "";
+	/*
 	$(".list-group li").on("click", function() {
 	var toonName = $(this).find("p.lead").html();
 	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
 	window.location = 'characters/'+toonName+'.html';
-	});
+	});*/
         });
     })
     .catch(function(error) {
@@ -66,18 +68,18 @@ function loadList(){
     });
 	
 }
-function contactHtmlFromObject(toons, toonsArray, info1, img1){
+function contactHtmlFromObject(toons, toonsArray, p1, img1){
   //console.log( toons );
   var html = '';
   html += '<li class="list-group-item contact" >';
-    html += '<div class="toonlist">';
+    html += '<div class="toonlist"style="margin-left:5px;">';
       
-      html += '<p>'+'<div class="img_container"style="visibility:hidden">'
+      html += '<p>'+'<div class="img_container"style="display:none">'
 	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
 	  	   + '</div>'+'</p>';
 		   html += '<div> <p class="lead">'+toons+'</p>';
-	html += '<p>'+toonsArray+'</p>';
-                //html += '<p>'+info1+'</p></div>';
+	html += '<p><b><font color="black">7* Raid Characters: </font></b>'+toonsArray+'</p>';
+                html += '<p><b><font color="black">STR P1 Team: </font></b>'+p1+'</p></div>';
     html += '</div>';
   html += '</li>';
   return html;
@@ -233,17 +235,24 @@ function shard_loc_item(shard_loc){
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
            toon1 = `${doc.data().Name}`;
-				//info = `${doc.data().Info}`;
-				//trait = `${doc.data().Traits}`;
-				//img = `${doc.data().Image}`;
-		
+				if(doc.data().GK){
+			   toonsArray.push("GK");
+		   }if(doc.data().RaidHan){
+			   toonsArray.push("Han Solo(Raid Han)");
+		   }
+		   if(doc.data().JTR){
+		   var p1jtr = "JTR";
+			}
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, "", "", "");	
+    .innerHTML += contactHtmlFromObject(toon1, toonsArray, p1jtr, "");	
+	toonsArray = [];
+	p1jtr = "";
+	/*
 	$(".list-group li").on("click", function() {
 	var toonName = $(this).find("p.lead").html();
 	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
 	window.location = 'characters/'+toonName+'.html';
-	});
+	});*/
         });
     })
     .catch(function(error) {
