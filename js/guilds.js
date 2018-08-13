@@ -146,7 +146,7 @@ function getstrteam(member, toonsarray){
 	var jtrzu21 = $(this).attr("data-jtrzu2");
 	var jtrgp1 = $(this).attr("data-jtrgp");
 	var jtrName = $(this).html();
-	info(jtrslvl1, jtrlvl1, jtrglvl1, jtrzu11, jtrzu11, jtrzu21, jtrgp1, jtrName);
+	info(jtrslvl1, jtrlvl1, jtrglvl1, jtrzl1, jtrzu11, jtrzu21, jtrgp1, jtrName);
 	});
 	//bb8 click
 	$(".list-group li .bb8name").on("click", function() {
@@ -425,15 +425,12 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	document.getElementById('slvl').innerHTML = "Stars: " +slvl;
 	document.getElementById('lvl').innerHTML = "Lvl: "+ lvl;
 	document.getElementById('glvl').innerHTML = "Gear Lvl: "+ glvl;
-	if(zl){
-	document.getElementById('zl').innerHTML = zl;}
-	if(zu1){
-	document.getElementById('zu1').innerHTML = zu1;}
-	if(zu2){
-	document.getElementById('zu2').innerHTML = zu2;}
+	document.getElementById('zl').innerHTML = zl;
+	document.getElementById('zu1').innerHTML = zu1;
+	document.getElementById('zu2').innerHTML = zu2;
 	document.getElementById('gp').innerHTML = "GP: "+ gp;
 	
-	zl="";zu1="";zu2="";
+	
 }	
 	
 	
