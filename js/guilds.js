@@ -426,14 +426,14 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	document.getElementById('lvl').innerHTML = "Lvl: "+ lvl;
 	document.getElementById('glvl').innerHTML = "Gear Lvl: "+ glvl;
 	if(zl){
-	document.getElementById('zl').innerHTML = "Leader: Zeta";}
+	document.getElementById('zl').innerHTML = zl;}
 	if(zu1){
-	document.getElementById('zu1').innerHTML = "Unique: Zeta";}
+	document.getElementById('zu1').innerHTML = zu1;}
 	if(zu2){
-	document.getElementById('zu2').innerHTML = "Unique: Zeta";}
+	document.getElementById('zu2').innerHTML = zu2;}
 	document.getElementById('gp').innerHTML = "GP: "+ gp;
 	
-
+	zl="";zu1="";zu2="";
 }	
 	
 	
