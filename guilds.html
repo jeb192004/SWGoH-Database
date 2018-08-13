@@ -40,10 +40,16 @@
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
-
+	<script src="https://unpkg.com/tippy.js@2.5.4/dist/tippy.all.min.js"></script>
+	
   </head>
 
   <body>
+	
+	
+	
+	
+	
 	<header class="header">
 	  <h1 class="header__title" id="header__title">SWGoH</h1>
 	  <div id="searchText">
@@ -114,11 +120,27 @@
 		  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
 		</ul>
 	  </div>
+	  <!-- Add content to the popup -->
+	  <div id="my_popup" class="my_popup" style="background-color:#219AFF;
+		padding: 10px; font-size:24px; width:100%; max-width:100%; margin-top:50%;
+		color:White;">
 
+		<center id="name"></center>
+		<center id="slvl"></center>
+		<center id="lvl"></center>
+		<center id="glvl"></center>
+		<center id="zl"></center>
+		<center id="zu1"></center>
+		<center id="zu2"></center>
+		<center id="gp"></center>
+		<!-- Add an optional button to close the popup -->
+		<button class="my_popup_close"  style="float: right; margin:10px">Close</button>
+
+	  </div>
 	</main>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-
+	<script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
 
 	<!-- Latest compiled and minified Bootstrap -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
