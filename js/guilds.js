@@ -126,59 +126,7 @@ function getstrteam(member, toonsarray){
 										rtname,rtslvl, rtlvl, rtglvl, rtgp,
 										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp
 										);	
-	//rey jedi training click
-	$(".list-group li .jtrname").on("click", function() {
-	var jtrslvl1 = $(this).attr("data-jtrslvl");
-	var jtrlvl1 = $(this).attr("data-jtrlvl");
-	var jtrglvl1 = $(this).attr("data-jtrglvl");
-	var jtrzl1 = $(this).attr("data-jtrzl");
-	var jtrzu11 = $(this).attr("data-jtrzu1");
-	var jtrzu21 = $(this).attr("data-jtrzu2");
-	var jtrgp1 = $(this).attr("data-jtrgp");
-	var jtrName = $(this).html();
-	info(jtrslvl1, jtrlvl1, jtrglvl1, jtrzl1, jtrzu11, jtrzu21, jtrgp1, jtrName);
-	});
-	//bb8 click
-	$(".list-group li .bb8name").on("click", function() {
-	var bb8slvl1 = $(this).attr("data-bb8slvl");
-	var bb8lvl1 = $(this).attr("data-bb8lvl");
-	var bb8glvl1 = $(this).attr("data-bb8glvl");
-	var bb8zu11 = $(this).attr("data-bb8zu1");
-	var bb8zu21 = $(this).attr("data-bb8zu2");
-	var bb8gp1 = $(this).attr("data-bb8gp");
-	var bb8Name = $(this).html();
-	info(bb8slvl1, bb8lvl1, bb8glvl1, "", bb8zu11, bb8zu21, bb8gp1, bb8Name);
-	});
-	//r2d2 click
-	$(".list-group li .r2name").on("click", function() {
-	var r2slvl1 = $(this).attr("data-r2slvl");
-	var r2lvl1 = $(this).attr("data-r2lvl");
-	var r2glvl1 = $(this).attr("data-r2glvl");
-	var r2zu11 = $(this).attr("data-r2zu1");
-	var r2zu21 = $(this).attr("data-r2zu2");
-	var r2gp1 = $(this).attr("data-r2gp");
-	var r2Name = $(this).html();
-	info(r2slvl1, r2lvl1, r2glvl1,"", r2zu11, r2zu21, r2gp1, r2Name);
-	});
-	//resistance trooper click
-	$(".list-group li .rtname").on("click", function() {
-	var rtslvl1 = $(this).attr("data-rtslvl");
-	var rtlvl1 = $(this).attr("data-rtlvl");
-	var rtglvl1 = $(this).attr("data-rtglvl");
-	var rtgp1 = $(this).attr("data-rtgp");
-	var rtName = $(this).html();
-	info(rtslvl1, rtlvl1, rtglvl1, "", "", "", rtgp1, rtName);
-	});
-	//rey click
-	$(".list-group li .reyname").on("click", function() {
-	var reyslvl1 = $(this).attr("data-reyslvl");
-	var reylvl1 = $(this).attr("data-reylvl");
-	var reyglvl1 = $(this).attr("data-reyglvl");
-	var reyzu11 = $(this).attr("data-reyzu1");
-	var reygp1 = $(this).attr("data-reygp");
-	var reyName = $(this).html();
-	info(reyslvl1, reylvl1, reyglvl1, "", reyzu11, "", reygp1, reyName);
-	});
+	
 	
 		});/*.catch(function(error) {
     console.log("Error getting document:", error);
@@ -247,6 +195,60 @@ function strp4nihilus(member, toonsarray,
 			nsvname, nsvslvl,nsvlvl,nsvglvl,nsvgp,
 			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp
 										);	
+										
+					//rey jedi training click
+	$(".list-group li .jtrname").on("click", function() {
+	var jtrslvl1 = $(this).attr("data-jtrslvl");
+	var jtrlvl1 = $(this).attr("data-jtrlvl");
+	var jtrglvl1 = $(this).attr("data-jtrglvl");
+	var jtrzl1 = $(this).attr("data-jtrzl");
+	var jtrzu11 = $(this).attr("data-jtrzu1");
+	var jtrzu21 = $(this).attr("data-jtrzu2");
+	var jtrgp1 = $(this).attr("data-jtrgp");
+	var jtrName = $(this).html();
+	info(jtrslvl1, jtrlvl1, jtrglvl1, jtrzl1, jtrzu11, jtrzu21, jtrgp1, jtrName);
+	});
+	//bb8 click
+	$(".list-group li .bb8name").on("click", function() {
+	var bb8slvl1 = $(this).attr("data-bb8slvl");
+	var bb8lvl1 = $(this).attr("data-bb8lvl");
+	var bb8glvl1 = $(this).attr("data-bb8glvl");
+	var bb8zu11 = $(this).attr("data-bb8zu1");
+	var bb8zu21 = $(this).attr("data-bb8zu2");
+	var bb8gp1 = $(this).attr("data-bb8gp");
+	var bb8Name = $(this).html();
+	info(bb8slvl1, bb8lvl1, bb8glvl1, "", bb8zu11, bb8zu21, bb8gp1, bb8Name);
+	});
+	//r2d2 click
+	$(".list-group li .r2name").on("click", function() {
+	var r2slvl1 = $(this).attr("data-r2slvl");
+	var r2lvl1 = $(this).attr("data-r2lvl");
+	var r2glvl1 = $(this).attr("data-r2glvl");
+	var r2zu11 = $(this).attr("data-r2zu1");
+	var r2zu21 = $(this).attr("data-r2zu2");
+	var r2gp1 = $(this).attr("data-r2gp");
+	var r2Name = $(this).html();
+	info(r2slvl1, r2lvl1, r2glvl1,"", r2zu11, r2zu21, r2gp1, r2Name);
+	});
+	//resistance trooper click
+	$(".list-group li .rtname").on("click", function() {
+	var rtslvl1 = $(this).attr("data-rtslvl");
+	var rtlvl1 = $(this).attr("data-rtlvl");
+	var rtglvl1 = $(this).attr("data-rtglvl");
+	var rtgp1 = $(this).attr("data-rtgp");
+	var rtName = $(this).html();
+	info(rtslvl1, rtlvl1, rtglvl1, "", "", "", rtgp1, rtName);
+	});
+	//rey click
+	$(".list-group li .reyname").on("click", function() {
+	var reyslvl1 = $(this).attr("data-reyslvl");
+	var reylvl1 = $(this).attr("data-reylvl");
+	var reyglvl1 = $(this).attr("data-reyglvl");
+	var reyzu11 = $(this).attr("data-reyzu1");
+	var reygp1 = $(this).attr("data-reygp");
+	var reyName = $(this).html();
+	info(reyslvl1, reylvl1, reyglvl1, "", reyzu11, "", reygp1, reyName);
+	});					
 	// asajj click
 	$(".list-group li .avname").on("click", function() {
 	var avslvl1 = $(this).attr("data-avslvl");
@@ -256,7 +258,7 @@ function strp4nihilus(member, toonsarray,
 	var avzu11 = $(this).attr("data-avzu1");
 	var avgp1 = $(this).attr("data-avgp");
 	var avName = $(this).html();
-	info(avslvl1, avlvl1, avglvl1, avzl1, avzu11, "", avgp1, avName);
+	info(avslvl1, avlvl1, avglvl1, avzl1, avzu11, null, avgp1, avName);
 	});
 	//mother talzin click
 	$(".list-group li .mtname").on("click", function() {
@@ -267,7 +269,7 @@ function strp4nihilus(member, toonsarray,
 	var mtzu11 = $(this).attr("data-mtzu1");
 	var mtgp1 = $(this).attr("data-mtgp");
 	var mtName = $(this).html();
-	info(mtslvl1, mtlvl1, mtglvl1, mtzl1, mtzu11, "", mtgp1, mtName);
+	info(mtslvl1, mtlvl1, mtglvl1, mtzl1, mtzu11, null, mtgp1, mtName);
 	});
 	//daka click
 	$(".list-group li .dakaname").on("click", function() {
@@ -277,7 +279,7 @@ function strp4nihilus(member, toonsarray,
 	var dakazu11 = $(this).attr("data-dakazu1");
 	var dakagp1 = $(this).attr("data-dakagp");
 	var dakaName = $(this).html();
-	info(dakaslvl1, dakalvl1, dakaglvl1,"", dakazu11, "", dakagp1, dakaName);
+	info(dakaslvl1, dakalvl1, dakaglvl1,null, dakazu11, null, dakagp1, dakaName);
 	});
 	//zombie click
 	$(".list-group li .nszname").on("click", function() {
@@ -286,17 +288,17 @@ function strp4nihilus(member, toonsarray,
 	var nszglvl1 = $(this).attr("data-nszglvl");
 	var nszgp1 = $(this).attr("data-nszgp");
 	var nszName = $(this).html();
-	info(nszslvl1, nszlvl1, nszglvl1, "", "", "", nszgp1, nszName);
+	info(nszslvl1, nszlvl1, nszglvl1, null, null, null, nszgp1, nszName);
 	});
 	//talia click
 	$(".list-group li .talianame").on("click", function() {
 	var taliaslvl1 = $(this).attr("data-raliaslvl");
 	var talialvl1 = $(this).attr("data-talialvl");
-	var taliaglvl1 = $(this).attr("data-talaiglvl");
+	var taliaglvl1 = $(this).attr("data-taliaglvl");
 	var taliazu11 = $(this).attr("data-taliazu1");
 	var taliagp1 = $(this).attr("data-taliagp");
 	var taliaName = $(this).html();
-	info(taliaslvl1, talialvl1, taliaglvl1,"" , taliazu11, "", taliagp1, taliaName);
+	info(taliaslvl1, talialvl1, taliaglvl1,null , taliazu11, null, taliagp1, taliaName);
 	});
 		});
 }
@@ -593,9 +595,15 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	document.getElementById('slvl').innerHTML = "Stars: " +slvl;
 	document.getElementById('lvl').innerHTML = "Lvl: "+ lvl;
 	document.getElementById('glvl').innerHTML = "Gear Lvl: "+ glvl;
-	document.getElementById('zl').innerHTML = zl;
-	document.getElementById('zu1').innerHTML = zu1;
-	document.getElementById('zu2').innerHTML = zu2;
+	if(zl){
+	document.getElementById('zl').innerHTML = "Lead: Zeta";
+	document.getElementById('zl').style.display = 'block';}else{document.getElementById('zl').style.display = 'none';}
+	if(zu1){
+	document.getElementById('zu1').innerHTML = "Unique 1: Zeta";
+	document.getElementById('zu1').style.display = 'block';}else{document.getElementById('zu1').style.display = 'none';}
+	if(zu2){
+	document.getElementById('zu2').innerHTML = "Unique 2: Zeta";
+	document.getElementById('zu2').style.display = 'block';}else{document.getElementById('zu2').style.display = 'none';}
 	document.getElementById('gp').innerHTML = "GP: "+ gp;
 	
 	
