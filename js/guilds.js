@@ -343,34 +343,34 @@ function contactHtmlFromObject(toons, toonsArray,
 	}else{
 	html +='<a class="jtrname" data-jtrslvl="'+jtrslvl+'" data-jtrlvl="'+jtrlvl+'" data-jtrglvl="'+jtrglvl+'"data-jtrzl="'+jtrzl+'" data-jtrzu1="'+jtrzu1+'"data-jtrzu2="'+jtrzu2+'" data-jtrgp="'+jtrgp+'"  >'+jtrname+'</a>, ';}
 	
-	}else{html +='<a class="nszname"><font color="red">Rey(Jedi Training)</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Rey(Jedi Training)</font></a>, ';}
 	if(bb8name){
 		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl === 12 && bb8zu1){
 		html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"data-bb8zu2="'+bb8zu2+'" data-bb8gp="'+bb8gp+'" ><font color="#00FF00">'+bb8name+'</font></a>, ';
 	}else{
 	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"data-bb8zu2="'+bb8zu2+'" data-bb8gp="'+bb8gp+'" >'+bb8name+'</a>, ';
 	}
-	}else{html +='<a class="nszname"><font color="red">BB-8</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">BB-8</font></a>, ';}
 	 
 	if(r2name){
 		if(r2lvl === 85 && r2slvl === 7 && r2glvl === 12 && r2zu2){
 		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'" data-r2gp="'+r2gp+'"><font color="#00FF00">'+r2name+'</font></a>, ';
 	}else{
 	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'" data-r2gp="'+r2gp+'">'+r2name+'</a>, ';}
-	}else{html +='<a class="nszname"><font color="red">R2-D2</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">R2-D2</font></a>, ';}
 	if(rtname){
 		if(rtlvl === 85 && rtslvl === 7 && rtglvl === 12){
 		html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'" data-rtgp="'+rtgp+'"><font color="#00FF00">'+rtname+'</font></a>, ';
 	}else{
 	html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'" data-rtgp="'+rtgp+'">'+rtname+'</a>, ';}
-	}else{html +='<a class="nszname"><font color="red">Resistance Trooper</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Resistance Trooper</font></a>, ';}
 	if(reyname){
 		if(reylvl === 85 && reyslvl === 7 && reyglvl === 12){
 		html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" data-reyzu1="'+reyzu1+'" data-reygp="'+reygp+'"><font color="#00FF00">'+reyname+'</font></a>, ';
 	}else{
 	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" data-reyzu1="'+reyzu1+'" data-reygp="'+reygp+'">'+reyname+'</a> ';
 	}
-	}else{html +='<a class="nszname"><font color="red">Rey(Scavenger)</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Rey(Scavenger)</font></a>, ';}
 	html +=	'</div>';
 // start p4 nihilus
 	
@@ -381,33 +381,33 @@ function contactHtmlFromObject(toons, toonsArray,
 	}else{
 	html +='<a class="avname" data-avslvl="'+avslvl+'" data-avlvl="'+avlvl+'" data-avglvl="'+avglvl+'"data-avzl="'+avzl+'" data-avzu1="'+avzu1+'" data-avgp="'+avgp+'"  >'+avname+'</a>, ';}
 	
-	}else{html +='<a class="nszname"><font color="red">Asajj Ventress</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Asajj Ventress</font></a>, ';}
 	if(mtname){
 		if(mtlvl === 85 && mtslvl === 7 && mtglvl === 12 && mtzu1){
 		html +='<a class="mtname" data-mtslvl="'+mtslvl+'" data-mtlvl="'+mtlvl+'" data-mtglvl="'+mtglvl+'"data-mtzl="'+mtzl+'" data-mtzu1="'+mtzu1+'" data-mtgp="'+mtgp+'" ><font color="#00FF00">'+mtname+'</font></a>, ';
 	}else{
 	html +='<a class="mtname" data-mtslvl="'+mtslvl+'" data-mtlvl="'+mtlvl+'" data-mtglvl="'+mtglvl+'" data-mtzl="'+mtzl+'" data-mtzu1="'+mtzu1+'" data-mtgp="'+mtgp+'" >'+mtname+'</a>, ';
 	}
-	}else{html +='<a class="nszname"><font color="red">Mother Talzin</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Mother Talzin</font></a>, ';}
 	if(dakaname){
 		if(dakalvl === 85 && dakaslvl === 7 && dakaglvl === 12 && dakazu1){
 		html +='<a class="dakaname" data-dakaslvl="'+dakaslvl+'" data-dakalvl="'+dakalvl+'" data-dakaglvl="'+dakaglvl+'" data-dakazu1="'+dakazu1+'" data-dakagp="'+dakagp+'"><font color="#00FF00">'+dakaname+'</font></a>, ';
 	}else{
 	html +='<a class="dakaname" data-dakaslvl="'+dakaslvl+'" data-dakalvl="'+dakalvl+'" data-dakaglvl="'+dakaglvl+'" data-dakazu1="'+dakazu1+'" data-dakagp="'+dakagp+'">'+dakaname+'</a>, ';}
-	}else{html +='<a class="nszname"><font color="red">Old Daka</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Old Daka</font></a>, ';}
 	if(talianame){
 		if(talialvl === 85 && taliaslvl === 7 && taliaglvl === 12){
 		html +='<a class="talianame" data-raliaslvl="'+taliaslvl+'" data-talialvl="'+talialvl+'" data-taliaglvl="'+taliaglvl+'"data-taliazu1="'+taliazu1+'" data-taliagp="'+taliagp+'"><font color="#00FF00">'+talianame+'</font></a>, ';
 	}else{
 	html +='<a class="talianame" data-raliaslvl="'+taliaslvl+'" data-talialvl="'+talialvl+'" data-taliaglvl="'+taliaglvl+'"data-taliazu1="'+taliazu1+'" data-taliagp="'+taliagp+'">'+talianame+'</a>, ';}
-	}else{html +='<a class="nszname"><font color="red">Talia</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Talia</font></a>, ';}
 	if(nszname){
 		if(nszslvl === 7){
 		html +='<a class="nszname" data-nszslvl="'+nszslvl+'" data-nszlvl="'+nszlvl+'" data-nszglvl="'+nszglvl+'" data-nszgp="'+nszgp+'"><font color="#00FF00">'+nszname+'</font></a>, ';
 	}else{
 	html +='<a class="nszname" data-nszslvl="'+nszslvl+'" data-nszlvl="'+nszlvl+'" data-nszglvl="'+nszglvl+'"  data-nszgp="'+nszgp+'">'+nszname+'</a> ';
 	}
-	}else{html +='<a class="nszname"><font color="red">Nightsister Zombie</font></a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Nightsister Zombie</font></a>, ';}
 	html +=	'</div>';
 	
 	
