@@ -118,18 +118,8 @@ function getstrteam(member, toonsarray){
 			var reyzu1 = doc1.data().REYZU1;
 			var reygp = doc1.data().REYGP.toLocaleString();
 			
-			if(jtrname){
-			strp1jtr.push(jtrname);}
-			if(bb8name){
-			strp1jtr.push(bb8name);}
-			if(r2name){
-			strp1jtr.push(r2name);}
-			if(rtname){
-			strp1jtr.push(rtname);}
-			if(reyname){
-			strp1jtr.push(reyname);}
-			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(member, toonsarray,
+			
+			strp4nihilus(member, toonsarray,
 										jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
@@ -185,7 +175,6 @@ function getstrteam(member, toonsarray){
 	var reylvl1 = $(this).attr("data-reylvl");
 	var reyglvl1 = $(this).attr("data-reyglvl");
 	var reyzu11 = $(this).attr("data-reyzu1");
-	var reyzu21 = $(this).attr("data-reyzu2");
 	var reygp1 = $(this).attr("data-reygp");
 	var reyName = $(this).html();
 	info(reyslvl1, reylvl1, reyglvl1, "", reyzu11, "", reygp1, reyName);
@@ -197,13 +186,139 @@ function getstrteam(member, toonsarray){
 }
 
 
+function strp4nihilus(member, toonsarray,
+										jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
+										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
+										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
+										rtname,rtslvl, rtlvl, rtglvl, rtgp,
+										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp){
+	
+	guildref.collection("STR").doc("P4_NIHILUS").collection("members").doc(member)
+    .get().then(function(doc2) {
+
+			
+			var avname = doc2.data().AVNAME;
+			var avslvl = doc2.data().AVSLVL;
+			var avlvl = doc2.data().AVLVL;
+			var avglvl = doc2.data().AVGLVL;
+			var avzl = doc2.data().AVZL;
+			var avzu1 = doc2.data().AVZU1;
+			var avgp = doc2.data().AVGP.toLocaleString();
+			
+			var dakaname = doc2.data().DAKANAME;
+			var dakaslvl = doc2.data().DAKASLVL;
+			var dakalvl = doc2.data().DAKALVL;
+			var dakaglvl = doc2.data().DAKAGLVL;
+			var dakazu1 = doc2.data().DAKAZU1;
+			var dakagp = doc2.data().DAKAGP.toLocaleString();
+			
+			var mtname = doc2.data().MTNAME;
+			var mtslvl = doc2.data().MTSLVL;
+			var mtlvl = doc2.data().MTLVL;
+			var mtglvl = doc2.data().MTGLVL;
+			var mtzl = doc2.data().MTZL;
+			var mtzu1 = doc2.data().MTZU1;
+			var mtgp = doc2.data().MTGP.toLocaleString();
+			
+			var nsvname = doc2.data().NSZNAME;
+			var nsvslvl = doc2.data().NSZSLVL;
+			var nsvlvl = doc2.data().NSZLVL;
+			var nsvglvl = doc2.data().NSZGLVL;
+			var nsvgp = doc2.data().NSZGP.toLocaleString();
+			
+			var talianame = doc2.data().TALIANAME;
+			var taliaslvl = doc2.data().TALIASLVL;
+			var talialvl = doc2.data().TALIALVL;
+			var taliaglvl = doc2.data().TALIAGLVL;
+			var taliazu1 = doc2.data().TALIAZL;
+			var taliagp = doc2.data().TALIAGP.toLocaleString();
+	
+	document.querySelector('#toons')
+    .innerHTML += contactHtmlFromObject(member, toonsarray,
+					jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
+					bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
+					r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
+					rtname,rtslvl, rtlvl, rtglvl, rtgp,
+					reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp,
+										
+			avname,avslvl,avlvl,avglvl,avzl,avzu1,avgp,
+			dakaname,dakaslvl,dakalvl,dakaglvl,dakazu1,dakagp,
+			mtname,mtslvl,mtlvl,mtglvl,mtzl,mtzu1,mtgp,
+			nsvname, nsvslvl,nsvlvl,nsvglvl,nsvgp,
+			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp
+										);	
+	// asajj click
+	$(".list-group li .avname").on("click", function() {
+	var avslvl1 = $(this).attr("data-avslvl");
+	var avlvl1 = $(this).attr("data-avlvl");
+	var avglvl1 = $(this).attr("data-avglvl");
+	var avzl1 = $(this).attr("data-avzl");
+	var avzu11 = $(this).attr("data-avzu1");
+	var avgp1 = $(this).attr("data-avgp");
+	var avName = $(this).html();
+	info(avslvl1, avlvl1, avglvl1, avzl1, avzu11, "", avgp1, avName);
+	});
+	//mother talzin click
+	$(".list-group li .mtname").on("click", function() {
+	var mtslvl1 = $(this).attr("data-mtslvl");
+	var mtlvl1 = $(this).attr("data-mtlvl");
+	var mtglvl1 = $(this).attr("data-mtglvl");
+	var mtzl1 = $(this).attr("data-mtzl");
+	var mtzu11 = $(this).attr("data-mtzu1");
+	var mtgp1 = $(this).attr("data-mtgp");
+	var mtName = $(this).html();
+	info(mtslvl1, mtlvl1, mtglvl1, mtzl1, mtzu11, "", mtgp1, mtName);
+	});
+	//daka click
+	$(".list-group li .dakaname").on("click", function() {
+	var dakaslvl1 = $(this).attr("data-dakaslvl");
+	var dakalvl1 = $(this).attr("data-dakalvl");
+	var dakaglvl1 = $(this).attr("data-dakaglvl");
+	var dakazu11 = $(this).attr("data-dakazu1");
+	var dakagp1 = $(this).attr("data-dakagp");
+	var dakaName = $(this).html();
+	info(dakaslvl1, dakalvl1, dakaglvl1,"", dakazu11, "", dakagp1, dakaName);
+	});
+	//zombie click
+	$(".list-group li .nszname").on("click", function() {
+	var nszslvl1 = $(this).attr("data-nszslvl");
+	var nszlvl1 = $(this).attr("data-nszlvl");
+	var nszglvl1 = $(this).attr("data-nszglvl");
+	var nszgp1 = $(this).attr("data-nszgp");
+	var nszName = $(this).html();
+	info(nszslvl1, nszlvl1, nszglvl1, "", "", "", nszgp1, nszName);
+	});
+	//talia click
+	$(".list-group li .talianame").on("click", function() {
+	var taliaslvl1 = $(this).attr("data-raliaslvl");
+	var talialvl1 = $(this).attr("data-talialvl");
+	var taliaglvl1 = $(this).attr("data-talaiglvl");
+	var taliazu11 = $(this).attr("data-taliazu1");
+	var taliagp1 = $(this).attr("data-taliagp");
+	var taliaName = $(this).html();
+	info(taliaslvl1, talialvl1, taliaglvl1,"" , taliazu11, "", taliagp1, taliaName);
+	});
+		});
+}
+
+
+
+
+
 
 function contactHtmlFromObject(toons, toonsArray,
 										jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
 										rtname,rtslvl, rtlvl, rtglvl, rtgp,
-										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp
+										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp,
+										
+										avname,avslvl,avlvl,avglvl,avzl,avzu1,avgp,
+			dakaname,dakaslvl,dakalvl,dakaglvl,dakazu1,dakagp,
+			mtname,mtslvl,mtlvl,mtglvl,mtzl,mtzu1,mtgp,
+			nszname, nszslvl,nszlvl,nszglvl,nszgp,
+			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp
+				
 										){
   //console.log( toons );
   var html = '';
@@ -218,19 +333,72 @@ function contactHtmlFromObject(toons, toonsArray,
     //html += '<p class="strjtr" ><b><font color="black">STR P1 Team: </font></b>'+strp1+'</p></div>';
     html += '<div><b><font color="black">STR P1 Team: </font></b>';
 	if(jtrname){
+		if(jtrlvl === 85 && jtrslvl === 7 && jtrglvl === 12 && jtrzl){
+	html +='<a class="jtrname" data-jtrslvl="'+jtrslvl+'" data-jtrlvl="'+jtrlvl+'" data-jtrglvl="'+jtrglvl+'"data-jtrzl="'+jtrzl+'" data-jtrzu1="'+jtrzu1+'"data-jtrzu2="'+jtrzu2+'" data-jtrgp="'+jtrgp+'"  ><font color="#00FF00">'+jtrname+'</font></a>, ';
+	}else{
 	html +='<a class="jtrname" data-jtrslvl="'+jtrslvl+'" data-jtrlvl="'+jtrlvl+'" data-jtrglvl="'+jtrglvl+'"data-jtrzl="'+jtrzl+'" data-jtrzu1="'+jtrzu1+'"data-jtrzu2="'+jtrzu2+'" data-jtrgp="'+jtrgp+'"  >'+jtrname+'</a>, ';}
 	
-	if(bb8name){
-	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"data-bb8zu2="'+bb8zu2+'" data-bb8gp="'+bb8gp+'" >'+bb8name+'</a>, ';}
+	}if(bb8name){
+		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl === 12 && bb8zu1){
+		html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"data-bb8zu2="'+bb8zu2+'" data-bb8gp="'+bb8gp+'" ><font color="#00FF00">'+bb8name+'</font></a>, ';
+	}else{
+	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"data-bb8zu2="'+bb8zu2+'" data-bb8gp="'+bb8gp+'" >'+bb8name+'</a>, ';
+	}
+	}
 	 
 	if(r2name){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl === 12 && r2zu2){
+		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'" data-r2gp="'+r2gp+'"><font color="#00FF00">'+r2name+'</font></a>, ';
+	}else{
 	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'" data-r2gp="'+r2gp+'">'+r2name+'</a>, ';}
-	if(rtname){
+	}if(rtname){
+		if(rtlvl === 85 && rtslvl === 7 && rtglvl === 12){
+		html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'" data-rtgp="'+rtgp+'"><font color="#00FF00">'+rtname+'</font></a>, ';
+	}else{
 	html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'" data-rtgp="'+rtgp+'">'+rtname+'</a>, ';}
-	if(reyname){
-	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" data-reyzu1="'+reyzu1+'" data-reygp="'+reygp+'">'+reyname+'</a> ';}
-	
+	}if(reyname){
+		if(reylvl === 85 && reyslvl === 7 && reyglvl === 12){
+		html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" data-reyzu1="'+reyzu1+'" data-reygp="'+reygp+'"><font color="#00FF00">'+reyname+'</font></a>, ';
+	}else{
+	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" data-reyzu1="'+reyzu1+'" data-reygp="'+reygp+'">'+reyname+'</a> ';
+	}
+	}
 	html +=	'</div>';
+// start p4 nihilus
+	
+	html += '<div><b><font color="black">STR P4 DN Team: </font></b>';
+	if(avname){
+		if(avlvl === 85 && avslvl === 7 && avglvl === 12 && avzl && avzu1){
+	html +='<a class="avname" data-avslvl="'+avslvl+'" data-avlvl="'+avlvl+'" data-avglvl="'+avglvl+'"data-avzl="'+avzl+'" data-avzu1="'+avzu1+'" data-avgp="'+avgp+'"  ><font color="#00FF00">'+avname+'</font></a>, ';
+	}else{
+	html +='<a class="avname" data-avslvl="'+avslvl+'" data-avlvl="'+avlvl+'" data-avglvl="'+avglvl+'"data-avzl="'+avzl+'" data-avzu1="'+avzu1+'" data-avgp="'+avgp+'"  >'+avname+'</a>, ';}
+	
+	}if(mtname){
+		if(mtlvl === 85 && mtslvl === 7 && mtglvl === 12 && mtzu1){
+		html +='<a class="mtname" data-mtslvl="'+mtslvl+'" data-mtlvl="'+mtlvl+'" data-mtglvl="'+mtglvl+'"data-mtzl="'+mtzl+'" data-mtzu1="'+mtzu1+'" data-mtgp="'+mtgp+'" ><font color="#00FF00">'+mtname+'</font></a>, ';
+	}else{
+	html +='<a class="mtname" data-mtslvl="'+mtslvl+'" data-mtlvl="'+mtlvl+'" data-mtglvl="'+mtglvl+'" data-mtzl="'+mtzl+'" data-mtzu1="'+mtzu1+'" data-mtgp="'+mtgp+'" >'+mtname+'</a>, ';
+	}
+	}
+	if(dakaname){
+		if(dakalvl === 85 && dakaslvl === 7 && dakaglvl === 12 && dakazu1){
+		html +='<a class="dakaname" data-dakaslvl="'+dakaslvl+'" data-dakalvl="'+dakalvl+'" data-dakaglvl="'+dakaglvl+'" data-dakazu1="'+dakazu1+'" data-dakagp="'+dakagp+'"><font color="#00FF00">'+dakaname+'</font></a>, ';
+	}else{
+	html +='<a class="dakaname" data-dakaslvl="'+dakaslvl+'" data-dakalvl="'+dakalvl+'" data-dakaglvl="'+dakaglvl+'" data-dakazu1="'+dakazu1+'" data-dakagp="'+dakagp+'">'+dakaname+'</a>, ';}
+	}if(talianame){
+		if(talialvl === 85 && taliaslvl === 7 && taliaglvl === 12){
+		html +='<a class="talianame" data-taliaslvl="'+taliaslvl+'" data-talialvl="'+talialvl+'" data-taliaglvl="'+taliaglvl+'"data-taliazu1="'+taliazu1+'" data-taliagp="'+taliagp+'"><font color="#00FF00">'+talianame+'</font></a>, ';
+	}else{
+	html +='<a class="talianame" data-taliaslvl="'+taliaslvl+'" data-talialvl="'+talialvl+'" data-taliaglvl="'+taliaglvl+'"data-taliazu1="'+taliazu1+'" data-taliagp="'+taliagp+'">'+talianame+'</a>, ';}
+	}if(nszname){
+		if(nszslvl === 7){
+		html +='<a class="nszname" data-nszslvl="'+nszslvl+'" data-nszlvl="'+nszlvl+'" data-nszglvl="'+nszglvl+'" data-nszgp="'+nszgp+'"><font color="#00FF00">'+nszname+'</font></a>, ';
+	}else{
+	html +='<a class="nszname" data-nszslvl="'+nszslvl+'" data-nszlvl="'+nszlvl+'" data-nszglvl="'+nszglvl+'"  data-nszgp="'+nszgp+'">'+nszname+'</a> ';
+	}
+	}
+	html +=	'</div>';
+	
 	
 	html += '</div>';
   	html += '</li>';
