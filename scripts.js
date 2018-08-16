@@ -268,21 +268,13 @@ function shard_loc_item(shard_loc){
 	
 	// Register service worker to control making site work offline
 
-/*if('serviceWorker' in navigator) {
+if('serviceWorker' in navigator) {
   navigator.serviceWorker
            .register('/sw.js')
-           .then(function() { console.log('Service Worker Registered'); });
-}*/
+           .then(function() { console.log('Service Worker Registered');
+		   button.onclick = function() {
+      registration.update();};
+		   });
+}
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/sw.js', {scope: ''}).then(function(registration) {
-    // registration worked
-    alert('Registration succeeded.');
-    button.onclick = function() {
-      registration.update();
-    }
-  }).catch(function(error) {
-    // registration failed
-    alert('Registration failed with ' + error);
-  });
-};
+
