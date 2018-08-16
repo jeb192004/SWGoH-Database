@@ -272,8 +272,7 @@ if('serviceWorker' in navigator) {
   navigator.serviceWorker
            .register('/sw.js')
            .then(function() { console.log('Service Worker Registered');
-		   button.onclick = function() {
-      registration.update();};
+		   //button.onclick = function() {registration.update();};
 		   });
 }
 
