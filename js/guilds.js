@@ -53,6 +53,8 @@ function loadList(){
         querySnapshot.forEach(function(doc) {
 			
 			toon1 = `${doc.data().Name}`;
+			var lvl = `${doc.data().LVL}`;
+			var gp = doc.data().GP.toLocaleString();
 			toonsArray = [];
 			if(doc.data().GK){
 			   toonsArray.push("GK");
@@ -60,7 +62,7 @@ function loadList(){
 			   toonsArray.push("Han Solo(Raid Han)");
 		   }
 		
-		   getstrteam(toon1, toonsArray);
+		   getstrteam(toon1, toonsArray, lvl, gp);
 			
 	
 
@@ -74,7 +76,7 @@ function loadList(){
 	
 }
 
-function getstrteam(member, toonsarray){
+function getstrteam(member, toonsarray, lvl, gp){
 	
 	guildref.collection("STR").doc("P1").collection("members").doc(member)
     .get().then(function(doc1) {
@@ -124,7 +126,9 @@ function getstrteam(member, toonsarray){
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
 										rtname,rtslvl, rtlvl, rtglvl, rtgp,
-										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp
+										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp,
+										
+										lvl, gp
 										);	
 	
 	
@@ -139,7 +143,9 @@ function strp4nihilus(member, toonsarray,
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
 										rtname,rtslvl, rtlvl, rtglvl, rtgp,
-										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp){
+										reyname,reyslvl, reylvl, reyglvl, reyzu1, reygp,
+										
+										lvl, gp){
 	
 	guildref.collection("STR").doc("P4_NIHILUS").collection("members").doc(member)
     .get().then(function(doc2) {
@@ -194,9 +200,17 @@ function strp4nihilus(member, toonsarray,
 			dakaname,dakaslvl,dakalvl,dakaglvl,dakazu1,dakagp,
 			mtname,mtslvl,mtlvl,mtglvl,mtzl,mtzu1,mtgp,
 			nsvname, nsvslvl,nsvlvl,nsvglvl,nsvgp,
-			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp
+			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp,
+			
+			lvl, gp
 										);	
-										
+					
+	$(".list-group li .lead").on("click", function() {
+	var lvl = $(this).attr("data-lvl");
+	var gp = $(this).attr("data-gp");
+	var name = $(this).html();
+	info(null, lvl, null, null, null, null, gp, name);
+	});
 					//rey jedi training click
 	$(".list-group li .jtrname").on("click", function() {
 	var jtrslvl1 = $(this).attr("data-jtrslvl");
@@ -321,8 +335,9 @@ function contactHtmlFromObject(toons, toonsArray,
 			dakaname,dakaslvl,dakalvl,dakaglvl,dakazu1,dakagp,
 			mtname,mtslvl,mtlvl,mtglvl,mtzl,mtzu1,mtgp,
 			nszname, nszslvl,nszlvl,nszglvl,nszgp,
-			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp
+			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp,
 				
+			lvl, gp
 										){
 											
   //console.log( toons );
@@ -333,7 +348,7 @@ function contactHtmlFromObject(toons, toonsArray,
     html += '<p>'+'<div class="img_container"style="display:none">'
 	 	 //+ '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
 	  	 + '</div>'+'</p>';
-	html += '<div> <p class="lead">'+toons+'</p>';
+	html += '<div> <p class="lead" data-lvl="'+lvl+'"data-gp="'+gp+'" >'+toons+'</p>';
 	html += '<p><b><font color="black">7* Raid Characters: </font></b>'+toonsArray+'</p>';
     //html += '<p class="strjtr" ><b><font color="black">STR P1 Team: </font></b>'+strp1+'</p></div>';
     html += '<div><b><font color="black">STR P1 Team: </font></b>';
@@ -592,18 +607,22 @@ function shard_loc_item(shard_loc){
 	
 function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	$('#my_popup').popup({
-  color: 'white',
-  opacity: 1,
-  transition: '0.3s',
-  scrolllock: true,
-  vertical:'center'
+  outline: true, // optional
+  focusdelay: 400, // optional
+  vertical: 'center' //optional
 });
 	$('#my_popup').popup('show');
 
 	document.getElementById('name').innerHTML = name;
+	document.getElementById('name').style.fontWeight = 'bold';
+	document.getElementById('name').style.color = 'black';
+	if(slvl){
 	document.getElementById('slvl').innerHTML = "Stars: " +slvl;
+	document.getElementById('slvl').style.display = 'block';}else{document.getElementById('slvl').style.display = 'none';}
 	document.getElementById('lvl').innerHTML = "Lvl: "+ lvl;
+	if(glvl){
 	document.getElementById('glvl').innerHTML = "Gear Lvl: "+ glvl;
+	document.getElementById('glvl').style.display = 'block';}else{document.getElementById('glvl').style.display = 'none';}
 	if(zl){
 	document.getElementById('zl').innerHTML = "Lead: Zeta";
 	document.getElementById('zl').style.display = 'block';}else{document.getElementById('zl').style.display = 'none';}
@@ -620,11 +639,3 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	
 	
 	
-	// Register service worker to control making site work offline
-
-if('serviceWorker' in navigator) {
-  navigator.serviceWorker
-           .register('/sw.js')
-           .then(function() { console.log('Service Worker Registered'); });
-}
-

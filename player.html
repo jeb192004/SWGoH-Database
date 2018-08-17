@@ -40,64 +40,32 @@
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
-	<script src="https://unpkg.com/tippy.js@2.5.4/dist/tippy.all.min.js"></script>
-	
+
   </head>
 
   <body>
-	
-	
-	
-	
-	
 	<header class="header">
 	  <h1 class="header__title" id="header__title">SWGoH</h1>
-	  <div id="searchText">
-		<span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
-			placeholder="Search"></span>  
-	  </div>
-
-	  <form id="area_list" name="form2">
-		<select id="jumpmenu" onchange="shard_loc_item(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
-		  <option id="">Sort by Character</option>
-		  <option id="all_members">All</option>
-		  <option id="jtr">JTR</option>
-		  <option id="gk">General Kenobi</option>
-		  <option id="raidhan">Han Solo(Raid Han)</option><!--
-		  <option id="shipments">Shipments</option>
-		  <option id="squad_arena_store">Squad Arena Store</option>
-		  <option id="fleet_arena_store">Fleet Arena Store</option>
-		  <option id="cantina_battles_store">Cantina Battles Store</option>
-		  <option id="galactic_war_store">Galactic War Store</option>
-		  <option id="guild_store">Guild Store</option>
-		  <option id="guild_events_store">Guild Events Store</option>
-		  <option id="shard_store">Shard Store</option>-->
-		</select>
-	  </form>
-
-	  <div onclick="search()"> <i class="fas fa-search"></i></div>
-	  <div onclick="menu()" id="menu_icon"> <i class="fas fa-bars"></i></div>
 	</header>
 
 
 	<nav id="menu">
       <ul class="menu_list">
-		<li class="menu_item" onclick="menu_item(this)">Characters/Home</li>
 		<li class="menu_item" onclick="menu_item(this)">Comapare Abilities</li>
-		<li class="menu_item" onclick="menu_item(this)">Team Builder</li>
+		<li class="menu_item" onclick="menu_item(this)">Guild</li>
 		<li class="menu_item" onclick="menu_item(this)">Ships</li>
-		
+		<!--<li class="menu_item" onclick="menu_item(this)">Chat</li>-->
 	  </ul>
 
 
 	  <ul id="myDropdown_menu" class="dropdown-content_menu">
 		<hr>
 		<h2>Sort List by:</h2>
-		<h3>Character</h3>
-		<li onclick="shard_loc_item(this.id)"id="all_members">All</li>
-		<li onclick="shard_loc_item(this.id)"id="jtr">JTR</li>
-		<li onclick="shard_loc_item(this.id)"id="gk">General Kenobi</li>
-		<li onclick="shard_loc_item(this.id)"id="raidhan">Han Solo(Raid Han)</li><!--
+		<h3>Shard Location</h3>
+		<li onclick="shard_loc_item(this.id)"id="all_toons">All</li>
+		<li onclick="shard_loc_item(this.id)"id="cantina_battles">Cantina Battles</li>
+		<li onclick="shard_loc_item(this.id)"id="light_side">Light Side</li>
+		<li onclick="shard_loc_item(this.id)"id="dark_side">Dark Side</li>
 		<li onclick="shard_loc_item(this.id)"id="shipments">Shipments</li>
 		<li onclick="shard_loc_item(this.id)"id="squad_arena_store">Squad Arena Store</li>
 		<li onclick="shard_loc_item(this.id)"id="fleet_arena_store">Fleet Arena Store</li>
@@ -105,7 +73,7 @@
 		<li onclick="shard_loc_item(this.id)"id="galactic_war_store">Galactic War Store</li>
 		<li onclick="shard_loc_item(this.id)"id="guild_store">Guild Store</li>
 		<li onclick="shard_loc_item(this.id)"id="guild_events_store">Guild Events Store</li>
-		<li onclick="shard_loc_item(this.id)"id="shard_store">Shard Store</li>-->
+		<li onclick="shard_loc_item(this.id)"id="shard_store">Shard Store</li>
 	  </ul>
     </nav>
 
@@ -115,37 +83,53 @@
 	  <br>
 	  <br>
 
+		
+		
+		
+	  <header class="header">
+		
+		<div id="searchText">
+		  <span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
+			  placeholder="Search"></span>  
+		</div>
+
+		<form id="area_list" name="form2">
+		  <select id="jumpmenu" onchange="shard_loc_item(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
+			<option id="">Sort by Shard Location</option>
+			<option id="all_toons">All</option>
+			<option id="cantina_battles">Cantina Battles</option>
+			<option id="light_side">Light Side</option>
+			<option id="dark_side">Dark Side</option>
+			<option id="shipments">Shipments</option>
+			<option id="squad_arena_store">Squad Arena Store</option>
+			<option id="fleet_arena_store">Fleet Arena Store</option>
+			<option id="cantina_battles_store">Cantina Battles Store</option>
+			<option id="galactic_war_store">Galactic War Store</option>
+			<option id="guild_store">Guild Store</option>
+			<option id="guild_events_store">Guild Events Store</option>
+			<option id="shard_store">Shard Store</option>
+		  </select>
+		</form>
+
+		<div onclick="search()"> <i class="fas fa-search"></i></div>
+		<div onclick="menu()" id="menu_icon"> <i class="fas fa-bars"></i></div>
+	  </header>
+		
 	  <div id="container" class="list">
 		<ul id="toons" class="list-group">
 		  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
 		</ul>
 	  </div>
-	  <!-- Add content to the popup -->
-	  <div id="my_popup" class="my_popup" style="background-color:#219AFF;
-		padding: 10px; font-size:24px; width:90%; max-width:90%; 
-		color:White;">
 
-		<center id="name"></center>
-		<center id="slvl"></center>
-		<center id="lvl"></center>
-		<center id="glvl"></center>
-		<center id="zl"></center>
-		<center id="zu1"></center>
-		<center id="zu2"></center>
-		<center id="gp"></center>
-		<!-- Add an optional button to close the popup -->
-		<button class="my_popup_close"  style="float: right; margin:10px">Close</button>
-
-	  </div>
 	</main>
 	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-	<script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+
 
 	<!-- Latest compiled and minified Bootstrap -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
-	<script src="js/guilds.js"></script>
+	<script src="js/player.js"></script>
 
 
   </body>

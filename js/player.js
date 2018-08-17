@@ -3,13 +3,6 @@
 
 var namesArray = [];
 
-var init = function () {
-    //get scroll position in session storage
-   	$(window).scrollTop(sessionStorage.scrollPos);
-	//console.log(sessionStorage.scrollPos);
-};
-window.onload = init;
-
 var config = {
     apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
     authDomain: "swgoh-campanion.firebaseapp.com",
@@ -20,66 +13,46 @@ var config = {
   };
 var firebase = firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
-var db;
-var toon, trait, info, toon1, img;
-firebase.firestore().enablePersistence()
-  .then(function() {
-      // Initialize Cloud Firestore through firebase
-      db = firebase.firestore();
-	  loadList();
-  })
-  .catch(function(err) {
-      if (err.code == 'failed-precondition') {
-          // Multiple tabs open, persistence can only be enabled
-          // in one tab at a a time.
-          // ...
-      } else if (err.code == 'unimplemented') {
-          // The current browser does not support all of the
-          // features required to enable persistence
-          // ...
-      }
-  });
 
+var toon, trait, info, toon1, img;
+
+    var  db = firebase.firestore();
+	  loadList();
+ 
 
 
 function loadList(){
-db.collection("Toons").onSnapshot({ includeQueryMetadataChanges: true }, function(snapshot) {
-      snapshot.docChanges.forEach(function(change) {
-          if (change.type === "added") {
-              //console.log("New city: ", change.doc.data());
-			  
-          }
+db.collection("Guilds").doc("Relentless").collection("Members").doc("Jimmy Burn 2").
+collection("Toons")
+.get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+			
+			var toons = doc.data().ALLTOONS;
+			var obj = JSON.parse(toons);
+			$.each(obj, function (key, val) {
+                //alert(JSON.stringify(val));
+				var toonname = JSON.stringify(val[0].unit.name);
+				var toongp = JSON.stringify(val[0].unit.gp);
+				
+				
+				document.querySelector('#toons')
+    .innerHTML += contactHtmlFromObject(toonname, toongp,"","");
+            });
+			
+		  
+			
+	
 
-          var source = snapshot.metadata.fromCache ? "local cache" : "server";
-          //console.log("Data came from " + source);
-    		//querySnapshot.forEach((doc) => {
-				toon1 = `${change.doc.data().Name}`;
-				info = `${change.doc.data().Info}`;
-				trait = `${change.doc.data().Traits}`;
-				img = `${change.doc.data().Image}`;
-				namesArray.push(toon1);
-		document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
-	$(".list-group li").on("click", function() {
-
-    //set scroll position in session storage
-    sessionStorage.scrollPos = $(window).scrollTop();
-	//alert(sessionStorage.scrollPos);
-	//console.log(sessionStorage.scrollPos);
-	var toonName = $(this).find("p.lead").html();
 	
 	
-	var characterName = toonName.replace(/ /g,"_");
-	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
-	window.localStorage.setItem('namesArray',JSON.stringify(namesArray));
-	
-	window.location = 'toon_details.html?character='+characterName;
-  	//window.location = 'toon_details.html';
-  
-  });
-    });});
+        });
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
 }
-function contactHtmlFromObject(toons, traits, info1, img1){
+function contactHtmlFromObject(toons, gp, info1, img1){
   //console.log( toons );
   var html = '';
   html += '<li class="list-group-item contact">';
@@ -89,7 +62,7 @@ function contactHtmlFromObject(toons, traits, info1, img1){
 	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
 	  	   + '</div>'+'</p>';
 		   html += '<div> <p class="lead">'+toons+'</p>';
-	html += '<p>'+traits+'</p>';
+	html += '<p>'+gp+'</p>';
                 html += '<p>'+info1+'</p></div>';
     html += '</div>';
   html += '</li>';
