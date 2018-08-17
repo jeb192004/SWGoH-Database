@@ -35,7 +35,7 @@ var config = {
 var firebase = firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
 
-var toon, trait, info, toon1, img;
+
 
     var  db = firebase.firestore();
 	var guildref = db.collection("Guilds").doc(guildName);
@@ -52,9 +52,9 @@ function loadList(){
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
 			
-			toon1 = `${doc.data().Name}`;
-			var lvl = `${doc.data().LVL}`;
-			var gp = doc.data().GP.toLocaleString();
+			var toon1 = doc.data().Name;
+			var lvl = doc.data().LVL;
+			var gp = doc.data().GP;//.toLocaleString();
 			toonsArray = [];
 			if(doc.data().GK){
 			   toonsArray.push("GK");
@@ -71,7 +71,7 @@ function loadList(){
         });
     })
     .catch(function(error) {
-        console.log("Error getting documents: ", error);
+        console.log("Error getting documents: "+doc.id, error);
     });
 	
 }
