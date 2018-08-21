@@ -8,7 +8,6 @@ var urlParam = function(name, w){
 	//var memberName = "Jimmy Burn 2";
 	console.log(memberName);
 
-
 var namesArray = [];
 
 var config = {
@@ -78,7 +77,7 @@ collection("Toons").orderBy("POWER","desc")
 			
 	
 
-	
+	$('#loading').hide();
 	
         
     })
@@ -216,7 +215,7 @@ window.onclick = function(event) {
 };
 
 function shard_loc_item(shard_loc){
-	
+	$('#loading').show();
 	$('#toons').empty();
 	
 	var shard1 = shard_loc.innerText || shard_loc.textContent;
@@ -271,7 +270,7 @@ collection("Toons").orderBy(shard_loc,"desc")
 				document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp);
             });
-        
+        $('#loading').hide();
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);

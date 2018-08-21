@@ -317,6 +317,7 @@ function strp4nihilus(member, toonsarray,
 	
 	info(taliaslvl1, talialvl1, taliaglvl1,null , taliazu11, null, taliagp1, taliaName);
 	});
+	$('#loading').hide();
 		});
 }
 
@@ -527,7 +528,7 @@ window.onclick = function(event) {
 };
 
 function shard_loc_item(shard_loc){
-	
+	$('#loading').show();
 	$('#toons').empty();
 	
 	var shard1 = shard_loc.innerText || shard_loc.textContent;
@@ -598,6 +599,7 @@ function shard_loc_item(shard_loc){
 	window.location = 'characters/'+toonName+'.html';
 	});*/
         });
+		$('#loading').hide();
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
