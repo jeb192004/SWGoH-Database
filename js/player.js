@@ -4,7 +4,7 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	var memberName = urlParam('memberName').replace(/_/g, ' ');
+	var memberName = urlParam('memberName').replace(/_/, / /g);
 	//var memberName = "Jimmy Burn 2";
 	console.log(memberName);
 
@@ -71,15 +71,10 @@ collection("Toons").orderBy("POWER","desc")
 				
 				document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp);
-            });
-			
-		  
-			
-	
-
+          
 	$('#loading').hide();
-	
-        
+	});
+			      
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);

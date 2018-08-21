@@ -209,7 +209,7 @@ function strp4nihilus(member, toonsarray,
 	$(".list-group li .lead").on("click", function() {
 	//var lvl = $(this).attr("data-lvl");
 	//var gp = $(this).attr("data-gp");
-	var name = $(this).html().replace(/ /g,"_");
+	var name = $(this).html().replace(" ",/ /g);
 	window.location = 'player.html?memberName='+name;
 	//info(null, lvl, null, null, null, null, gp, name);
 	});

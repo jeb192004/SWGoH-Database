@@ -1,0 +1,128 @@
+
+[{"unit":{"player":"Jimmy Burn 2","allyCode":676714695,"starLevel":7,"level":85,"gearLevel":12,"gear":[],"zetas":["uniqueskill_HANSOLO01"],"gp":19299,"type":1,"mods":[
+
+{"id":"3OcNOl9qQ3OB5EgwpEaqMw","set":6,"level":15,"pips":5,"stat":
+[
+["UNITSTATOFFENSEPERCENTADDITIVE",5880000],
+
+["UNITSTATMAXHEALTH",21400000000],
+
+["UNITSTATSPEED",1400000000],
+
+["UNITSTATCRITICALCHANCEPERCENTADDITIVE",2041000],
+
+["UNITSTATACCURACY",1886000]
+]},
+
+{"id":"5vXk8eodSGWzBD6z9hWvKg","set":6,"level":15,"pips":5,"stat":
+[
+["UNITSTATSPEED",3000000000],
+
+["UNITSTATOFFENSE",4400000000],
+
+["UNITSTATOFFENSEPERCENTADDITIVE",1135000],
+
+["UNITSTATMAXHEALTH",74000000000],
+
+["UNITSTATDEFENSEPERCENTADDITIVE",1073000]
+]},
+
+{"id":"Ua6rihTHSN6o8bJVfARkfg","set":6,"level":15,"pips":5,"stat":
+[
+["UNITSTATDEFENSEPERCENTADDITIVE",11750000],
+
+["UNITSTATOFFENSEPERCENTADDITIVE",909000],
+
+["UNITSTATSPEED",500000000],
+["UNITSTATMAXHEALTH",93800000000],
+
+["UNITSTATMAXSHIELDPERCENTADDITIVE",1413000]
+]},
+
+{"id":"6zvq9aU3T9utgvwQUJ1CWQ","set":6,"level":15,"pips":5,"stat":[
+[
+["UNITSTATCRITICALCHANCEPERCENTADDITIVE",12000000],
+
+["UNITSTATDEFENSE",600000000],
+
+["UNITSTATMAXSHIELDPERCENTADDITIVE",2741000],
+
+["UNITSTATSPEED",800000000],
+["UNITSTATOFFENSEPERCENTADDITIVE",1126000]
+]},
+
+{"id":"tNfSEyKnSP6YqowWOqJV6Q","set":7,"level":15,"pips":5,"stat":
+[
+["UNITSTATMAXSHIELDPERCENTADDITIVE",23500000],
+
+["UNITSTATSPEED",1000000000],
+
+["UNITSTATOFFENSE",4100000000],
+
+["UNITSTATACCURACY",1555000],
+
+["UNITSTATDEFENSEPERCENTADDITIVE",1267000]
+]},
+
+{"id":"J-ZmGU5RTwS9_Dyv6b2hXw","set":7,"level":15,"pips":5,"stat":
+[
+["UNITSTATACCURACY",24000000],
+
+["UNITSTATCRITICALCHANCEPERCENTADDITIVE",3417000],
+
+["UNITSTATDEFENSEPERCENTADDITIVE",2596000],
+
+["UNITSTATMAXSHIELD",126400000000],
+["UNITSTATSPEED",300000000]
+]}
+],
+
+"characterID":"HANSOLO",
+"name":"Han Solo",
+"mainStat":"Agility"
+},
+
+"base":{
+"Agility":934,
+"Armor":195,
+"Armor Penetration":89,
+"Health":19753,
+"Health Steal":0.1,
+"Physical Critical Rating":1037,
+"Physical Damage":2306,
+"Potency":0.12,
+"Resistance":62,
+"Resistance Penetration":0,
+"Special Critical Rating":0,
+"Special Damage":1255,
+"Speed":136,
+"Strength":891,
+"Tenacity":0.35,
+"Protection":21291,
+"Tactics":523
+},
+
+"total":{
+"Agility":934,
+"Armor":195,
+"Armor Penetration":89,
+"Health":19753,
+ "Health Steal":0.1,
+ "Physical Critical Rating":1037,
+ "Physical Damage":2306,
+ "Potency":0.12,
+ "Resistance":62,
+ "Resistance Penetration":0,
+ "Special Critical Rating":0,
+  "Special Damage":1255,
+  "Speed":136,
+  "Strength":891,
+  "Tenacity":0.35,
+  "Protection":21291,
+  "Armor %":"23.42%",
+  "Resistance %":"8.86%",
+  "Physical Critical %":"53.21%",
+"Special Critical %":"10.00%",
+"Tactics":523
+}}]
+
