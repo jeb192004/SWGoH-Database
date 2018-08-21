@@ -6,7 +6,7 @@ var urlParam = function(name, w){
 };
 	var memberName = urlParam('memberName').replace(/_/g, ' ');
 	//var memberName = "Jimmy Burn 2";
-
+	console.log(memberName);
 
 
 var namesArray = [];
