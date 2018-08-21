@@ -209,7 +209,7 @@ function strp4nihilus(member, toonsarray,
 	//var lvl = $(this).attr("data-lvl");
 	//var gp = $(this).attr("data-gp");
 	var name = $(this).html();
-	window.location = 'guilds.html?guildName='+name;
+	window.location = 'player.html?guildName='+name;
 	//info(null, lvl, null, null, null, null, gp, name);
 	});
 					//rey jedi training click
