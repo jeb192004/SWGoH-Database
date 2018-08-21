@@ -1,3 +1,11 @@
+var urlParam = function(name, w){
+    w = w || window;
+    var rx = new RegExp('[\&|\?]'+name+'=([^\&\#]+)'),
+        val = w.location.search.match(rx);
+    return !val ? '':val[1];
+};
+	var guildName = urlParam('memberName').replace(/_/g, ' ');
+	//var memberName = "Jimmy Burn 2";
 
 
 
@@ -22,22 +30,48 @@ var toon, trait, info, toon1, img;
 
 
 function loadList(){
-db.collection("Guilds").doc("Relentless").collection("Members").doc("Jimmy Burn 2").
-collection("Toons")
+db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).
+collection("Toons").orderBy("POWER","desc")
 .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
 			
-			var toons = doc.data().ALLTOONS;
-			var obj = JSON.parse(toons);
-			$.each(obj, function (key, val) {
-                //alert(JSON.stringify(val));
-				var toonname = JSON.stringify(val[0].unit.name);
-				var toongp = JSON.stringify(val[0].unit.gp);
+			
+				//unit
+				var toonname = doc.data().NAME;
+				var toonslvl = doc.data().STARLVL;
+				var toonlvl = doc.data().LVL;
+				var toonglvl = doc.data().GLVL;
+				var toonz = doc.data().ZETAS;
+				var toongp = doc.data().POWER.toLocaleString();
+				//base
+				var toonagility = doc.data().AGILITY;
+				var toonarmor = doc.data().ARMOR;
+				var toonarmorpen = doc.data().ARMORPEN;
+				var toonhealth = doc.data().HEALTH;
+				var toonhealthsteal = doc.data().HEALTHSTEAL;
+				var toonphycritrat = doc.data().PHYCRITRAT;
+				var toonphysicaldamage = doc.data().PHYDMG;
+				var toonpotency = doc.data().POTENCY;
+				var toonresistance = doc.data().RESISTANCE;
+				var toonrespen = doc.data().RESISTANCEPEN;
+				var toonspcritrat = doc.data().SPCRITRAT;
+				var toonspdmg = doc.data().SPDMG;
+				var toonspeed = doc.data().SPEED;
+				var toonstrength = doc.data().STRENGTH;
+				var toontenacity = doc.data().TENACITY;
+				var toonprotection = doc.data().PROTECTION;
+				var toontactic = doc.data().TACTICS;
+				
+  console.log(toonagility, toonarmor, toonarmorpen, toonhealth, toonhealthsteal, toonphycritrat, toonphysicaldamage,
+  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonspeed, toonstrength,
+				toontenacity, toonprotection, toontactic);
+				
+		
 				
 				
 				document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toonname, toongp,"","");
+    .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp);
             });
 			
 		  
@@ -46,24 +80,42 @@ collection("Toons")
 
 	
 	
-        });
+        
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
 }
-function contactHtmlFromObject(toons, gp, info1, img1){
+
+
+function contactHtmlFromObject(toonname, toonslvl, toonlvl, toonglvl, toonz, toongp){
   //console.log( toons );
   var html = '';
-  html += '<li class="list-group-item contact">';
+  html += '<li style="text-align:center" class="list-group-item contact">';
     html += '<div class="toonlist">';
-      
+      /*
       html += '<p>'+'<div class="img_container">'
 	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
-	  	   + '</div>'+'</p>';
-		   html += '<div> <p class="lead">'+toons+'</p>';
-	html += '<p>'+gp+'</p>';
-                html += '<p>'+info1+'</p></div>';
+	  	   + '</div>'+'</p>';*/
+		   html += '<div> <p class="lead"><b><font color="black">'+toonname+'</font></b></p>';
+		   if(toonslvl === 1){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 2){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 3){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 4){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 5){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 6){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 7){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+ '</div>'+'</p>';
+		   }
+	html += '<p><b><font color="black">Level: </font></b>'+toonlvl+'</p>';
+                html += '<p><b><font color="black">Gear Lvl: </font></b>'+toonglvl+'</p></div>';
+				html += '<p><b><font color="black">Power: </font></b>'+toongp+'</p></div>';
     html += '</div>';
   html += '</li>';
   return html;
@@ -172,64 +224,54 @@ function shard_loc_item(shard_loc){
 	
 	if(shard_loc === "all_toons"){
 		loadList();
-	}if(shard_loc === "cantina_battles"){
-		var shardLoc = "CantinaBattles";
-		filterList(shardLoc);
-	}if(shard_loc === "light_side"){
-		var shardLoc = "LSBattles";
-		filterList(shardLoc);
-	}if(shard_loc === "dark_side"){
-		var shardLoc = "DSBattles";
-		filterList(shardLoc);
-	}if(shard_loc === "shipments"){
-		var shardLoc = "Shipments";
-		filterList(shardLoc);
-	}if(shard_loc === "squad_arena_store"){
-		var shardLoc = "SquadArenaStore";
-		filterList(shardLoc);
-	}if(shard_loc === "fleet_arena_store"){
-		var shardLoc = "FleetArenaStore";
-		filterList(shardLoc);
-	}if(shard_loc === "cantina_battles_store"){
-		var shardLoc = "CantinaBattlesStore";
-		filterList(shardLoc);
-	}if(shard_loc === "galactic_war_store"){
-		var shardLoc = "GalacticWarStore";
-		filterList(shardLoc);
-	}if(shard_loc === "guild_store"){
-		var shardLoc = "GuildStore";
-		filterList(shardLoc);
-	}if(shard_loc === "guild_events_store"){
-		var shardLoc = "GuildEventsStore";
-		filterList(shardLoc);
-	}if(shard_loc === "shard_store"){
-		var shardLoc = "ShardStore";
-		filterList(shardLoc);
-	}
-	
-	else{
-  
+	}else{
+		
+		filterList(shard_loc);
 	}
 	}
 	
-	function filterList(shardLoc){
-		db.collection("Toons").where(shardLoc, "==", true)
-    .get()
+	function filterList(shard_loc){
+db.collection("Guilds").doc("Relentless").collection("Members").doc("Jimmy Burn 2").
+collection("Toons").orderBy(shard_loc,"desc")
+.get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-           toon1 = `${doc.data().Name}`;
-				info = `${doc.data().Info}`;
-				trait = `${doc.data().Traits}`;
-				img = `${doc.data().Image}`;
-		
-			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
-	$(".list-group li").on("click", function() {
-	var toonName = $(this).find("p.lead").html();
-	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
-	window.location = 'characters/'+toonName+'.html';
-	});
-        });
+			
+			
+				//unit
+				var toonname = doc.data().NAME;
+				var toonslvl = doc.data().STARLVL;
+				var toonlvl = doc.data().LVL;
+				var toonglvl = doc.data().GLVL;
+				var toonz = doc.data().ZETAS;
+				var toongp = doc.data().POWER;
+				//base
+				var toonagility = doc.data().AGILITY;
+				var toonarmor = doc.data().ARMOR;
+				var toonarmorpen = doc.data().ARMORPEN;
+				var toonhealth = doc.data().HEALTH;
+				var toonhealthsteal = doc.data().HEALTHSTEAL;
+				var toonphycritrat = doc.data().PHYCRITRAT;
+				var toonphysicaldamage = doc.data().PHYDMG;
+				var toonpotency = doc.data().POTENCY;
+				var toonresistance = doc.data().RESISTANCE;
+				var toonrespen = doc.data().RESISTANCEPEN;
+				var toonspcritrat = doc.data().SPCRITRAT;
+				var toonspdmg = doc.data().SPDMG;
+				var toonspeed = doc.data().SPEED;
+				var toonstrength = doc.data().STRENGTH;
+				var toontenacity = doc.data().TENACITY;
+				var toonprotection = doc.data().PROTECTION;
+				var toontactic = doc.data().TACTICS;
+				
+  console.log(toonagility, toonarmor, toonarmorpen, toonhealth, toonhealthsteal, toonphycritrat, toonphysicaldamage,
+  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonspeed, toonstrength,
+				toontenacity, toonprotection, toontactic);
+				
+				document.querySelector('#toons')
+    .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp);
+            });
+        
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);

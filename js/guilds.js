@@ -206,10 +206,11 @@ function strp4nihilus(member, toonsarray,
 										);	
 					
 	$(".list-group li .lead").on("click", function() {
-	var lvl = $(this).attr("data-lvl");
-	var gp = $(this).attr("data-gp");
+	//var lvl = $(this).attr("data-lvl");
+	//var gp = $(this).attr("data-gp");
 	var name = $(this).html();
-	info(null, lvl, null, null, null, null, gp, name);
+	window.location = 'guilds.html?guildName='+name;
+	//info(null, lvl, null, null, null, null, gp, name);
 	});
 					//rey jedi training click
 	$(".list-group li .jtrname").on("click", function() {

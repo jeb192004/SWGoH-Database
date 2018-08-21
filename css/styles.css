@@ -187,6 +187,11 @@ ul {
   transform: translateX(0) translateY(0);
 }
 
+#starimg{
+  width:20px;
+  height:20px;
+}
+
 @media only screen and (max-width: 600px) {
     /* For mobile phones: */
 	
