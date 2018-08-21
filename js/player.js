@@ -4,7 +4,7 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	var memberName = urlParam('memberName').replace(/_/, / /g);
+	var memberName = urlParam('memberName').split("_").join(" ");
 	//var memberName = "Jimmy Burn 2";
 	console.log(memberName);
 

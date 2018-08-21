@@ -210,7 +210,8 @@ function strp4nihilus(member, toonsarray,
 	//var lvl = $(this).attr("data-lvl");
 	//var gp = $(this).attr("data-gp");
 	var name = $(this).html().replace(" ",/ /g);
-	window.location = 'player.html?memberName='+name;
+	var name2 = name.split(" ").join("_");
+	window.location = 'player.html?memberName='+name2;
 	//info(null, lvl, null, null, null, null, gp, name);
 	});
 					//rey jedi training click
