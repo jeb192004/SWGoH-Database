@@ -204,6 +204,7 @@ function strp4nihilus(member, toonsarray,
 			
 			lvl, gp
 										);	
+					$('#loading').hide();
 					
 	$(".list-group li .lead").on("click", function() {
 	//var lvl = $(this).attr("data-lvl");
@@ -317,7 +318,7 @@ function strp4nihilus(member, toonsarray,
 	
 	info(taliaslvl1, talialvl1, taliaglvl1,null , taliazu11, null, taliagp1, taliaName);
 	});
-	$('#loading').hide();
+	
 		});
 }
 
