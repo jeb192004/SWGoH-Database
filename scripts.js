@@ -77,8 +77,9 @@ db.collection("Toons").onSnapshot({ includeQueryMetadataChanges: true }, functio
   	//window.location = 'toon_details.html';
   
   });
+  $('#loading').hide();
     });
-	$('#loading').hide();
+	
 	});
 }
 function contactHtmlFromObject(toons, traits, info1, img1){
