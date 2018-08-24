@@ -35,7 +35,7 @@ collection("Toons").orderBy("POWER","desc")
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
 			
-			
+		var modspeed1=0, modspeed2=0, modspeed3=0, modspeed4=0, modspeed5=0, modspeed6=0;	
 				//unit
 				var toonname = doc.data().NAME;
 				var toonslvl = doc.data().STARLVL;
@@ -62,15 +62,83 @@ collection("Toons").orderBy("POWER","desc")
 				var toonprotection = doc.data().PROTECTION;
 				var toontactic = doc.data().TACTICS;
 				
+				var mod1 = doc.data().MODSET1;
+				var mod2 = doc.data().MODSET2;
+				var mod3 = doc.data().MODSET3;
+				var mod4 = doc.data().MODSET4;
+				var mod5 = doc.data().MODSET5;
+				var mod6 = doc.data().MODDET6;
+				
+				if(mod1 != '" "'){
+				var modSet1 = JSON.parse(mod1).stat;
+				var arrayLength = modSet1.length;
+					for (var i = 0; i < arrayLength; i++) {
+						if(modSet1[i].includes("UNITSTATSPEED")){
+    					modspeed1 = modSet1[i][1];
+					
+   						 }
+						}}else{}
+				if(mod2 != '" "'){
+				var modSet2 = JSON.parse(doc.data().MODSET2).stat;
+				var arrayLength2 = modSet2.length;
+					for (var i = 0; i < arrayLength2; i++) {
+						if(modSet2[i].includes("UNITSTATSPEED")){
+    					modspeed2 = modSet2[i][1];
+						
+   						 }
+						}}
+				if(mod3 != '" "'){
+				var modSet3 = JSON.parse(doc.data().MODSET3).stat;
+				var arrayLength3 = modSet3.length;
+					for (var i = 0; i < arrayLength3; i++) {
+						if(modSet3[i].includes("UNITSTATSPEED")){
+    					modspeed3 = modSet3[i][1];
+						
+   						 }
+						}}
+				if(mod4 != '" "'){
+				var modSet4 = JSON.parse(doc.data().MODSET4).stat;
+				var arrayLength4 = modSet4.length;
+					for (var i = 0; i < arrayLength4; i++) {
+						if(modSet4[i].includes("UNITSTATSPEED")){
+    					modspeed4 = modSet4[i][1];
+						
+   						 }
+						}}
+				if(mod5 != '" "'){
+				var modSet5 = JSON.parse(doc.data().MODSET5).stat;
+				var arrayLength5 = modSet5.length;
+					for (var i = 0; i < arrayLength5; i++) {
+						if(modSet5[i].includes("UNITSTATSPEED")){
+    					modspeed5 = modSet5[i][1];
+						
+   						 }
+						}}
+				if(mod6 != '" "'){
+				var modSet6 = JSON.parse(doc.data().MODDET6).stat;
+				var arrayLength6 = modSet6.length;
+					for (var i = 0; i < arrayLength6; i++) {
+						if(modSet6[i].includes("UNITSTATSPEED")){
+    					modspeed6 = modSet6[i][1];
+						
+   						 }
+						}}
+						
+						//alert(modspeed1, modspeed2, modspeed3, modspeed4,modspeed5, modspeed6);
+						var totalmodspeed = modspeed1 + modspeed2 + modspeed3 + modspeed4 + modspeed5 + modspeed6;
+						var modspeed = totalmodspeed/100000000;
+						var toonSpeed = modspeed + toonspeed;
+				
+				
   console.log(toonagility, toonarmor, toonarmorpen, toonhealth, toonhealthsteal, toonphycritrat, toonphysicaldamage,
-  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonspeed, toonstrength,
+  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonSpeed, toonstrength,
 				toontenacity, toonprotection, toontactic);
 				
 		
 				
 				
 				document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp);
+    .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp, toonSpeed, toonhealth, toonprotection);
           
 	$('#loading').hide();
 	});
@@ -82,16 +150,16 @@ collection("Toons").orderBy("POWER","desc")
 }
 
 
-function contactHtmlFromObject(toonname, toonslvl, toonlvl, toonglvl, toonz, toongp){
+function contactHtmlFromObject(toonname, toonslvl, toonlvl, toonglvl, toonz, toongp, toonspeed, toonhealth, toonprotection ){
   //console.log( toons );
   var html = '';
-  html += '<li style="text-align:center" class="list-group-item contact">';
+  html += '<li  class="list-group-item contact">';
     html += '<div class="toonlist">';
       /*
       html += '<p>'+'<div class="img_container">'
 	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
 	  	   + '</div>'+'</p>';*/
-		   html += '<div> <p class="lead"><b><font color="black">'+toonname+'</font></b></p>';
+		   html += '<div style="text-align:center"> <p class="lead"><b><font color="black">'+toonname+'</font></b></p>';
 		   if(toonslvl === 1){
 		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
 		   } if(toonslvl === 2){
@@ -107,9 +175,22 @@ function contactHtmlFromObject(toonname, toonslvl, toonlvl, toonglvl, toonz, too
 		   } if(toonslvl === 7){
 		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+ '</div>'+'</p>';
 		   }
-	html += '<p><b><font color="black">Level: </font></b>'+toonlvl+'</p>';
-                html += '<p><b><font color="black">Gear Lvl: </font></b>'+toonglvl+'</p></div>';
-				html += '<p><b><font color="black">Power: </font></b>'+toongp+'</p></div>';
+		   html += '</div>';
+		   html += '<div style="padding:5px;" >';
+		   
+		   html += '<div style="float:left">';
+	            html += '<p><b><font color="black">Level: </font></b>'+toonlvl+'</p>';
+                html += '<p><b><font color="black">Gear Lvl: </font></b>'+toonglvl+'</p>';
+				html += '<p><b><font color="black">Power: </font></b>'+toongp+'</p>';
+		   html += '</div>';	
+			
+		   html += '<div style="float:right; text-align:right; " >';
+	            html += '<p><b><font color="black">Speed: </font></b>'+toonspeed+'</p>';
+                html += '<p><b><font color="black">Health: </font></b>'+toonhealth+'</p>';
+				html += '<p><b><font color="black">Protection: </font></b>'+toonprotection+'</p>';
+		   html += '</div>';	
+				
+			html += '</div>';	
     html += '</div>';
   html += '</li>';
   return html;
