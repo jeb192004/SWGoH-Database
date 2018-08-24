@@ -306,20 +306,20 @@ function shard_loc_item(shard_loc){
 	}
 	
 	function filterList(shard_loc){
-db.collection("Guilds").doc("Relentless").collection("Members").doc("Jimmy Burn 2").
+db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).
 collection("Toons").orderBy(shard_loc,"desc")
 .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
 			
-			
+		var modspeed1=0, modspeed2=0, modspeed3=0, modspeed4=0, modspeed5=0, modspeed6=0;	
 				//unit
 				var toonname = doc.data().NAME;
 				var toonslvl = doc.data().STARLVL;
 				var toonlvl = doc.data().LVL;
 				var toonglvl = doc.data().GLVL;
 				var toonz = doc.data().ZETAS;
-				var toongp = doc.data().POWER;
+				var toongp = doc.data().POWER.toLocaleString();
 				//base
 				var toonagility = doc.data().AGILITY;
 				var toonarmor = doc.data().ARMOR;
@@ -339,14 +339,87 @@ collection("Toons").orderBy(shard_loc,"desc")
 				var toonprotection = doc.data().PROTECTION;
 				var toontactic = doc.data().TACTICS;
 				
+				var mod1 = doc.data().MODSET1;
+				var mod2 = doc.data().MODSET2;
+				var mod3 = doc.data().MODSET3;
+				var mod4 = doc.data().MODSET4;
+				var mod5 = doc.data().MODSET5;
+				var mod6 = doc.data().MODDET6;
+				
+				if(mod1 != '" "'){
+				var modSet1 = JSON.parse(mod1).stat;
+				var arrayLength = modSet1.length;
+					for (var i = 0; i < arrayLength; i++) {
+						if(modSet1[i].includes("UNITSTATSPEED")){
+    					modspeed1 = modSet1[i][1];
+					
+   						 }
+						}}else{}
+				if(mod2 != '" "'){
+				var modSet2 = JSON.parse(doc.data().MODSET2).stat;
+				var arrayLength2 = modSet2.length;
+					for (var i = 0; i < arrayLength2; i++) {
+						if(modSet2[i].includes("UNITSTATSPEED")){
+    					modspeed2 = modSet2[i][1];
+						
+   						 }
+						}}
+				if(mod3 != '" "'){
+				var modSet3 = JSON.parse(doc.data().MODSET3).stat;
+				var arrayLength3 = modSet3.length;
+					for (var i = 0; i < arrayLength3; i++) {
+						if(modSet3[i].includes("UNITSTATSPEED")){
+    					modspeed3 = modSet3[i][1];
+						
+   						 }
+						}}
+				if(mod4 != '" "'){
+				var modSet4 = JSON.parse(doc.data().MODSET4).stat;
+				var arrayLength4 = modSet4.length;
+					for (var i = 0; i < arrayLength4; i++) {
+						if(modSet4[i].includes("UNITSTATSPEED")){
+    					modspeed4 = modSet4[i][1];
+						
+   						 }
+						}}
+				if(mod5 != '" "'){
+				var modSet5 = JSON.parse(doc.data().MODSET5).stat;
+				var arrayLength5 = modSet5.length;
+					for (var i = 0; i < arrayLength5; i++) {
+						if(modSet5[i].includes("UNITSTATSPEED")){
+    					modspeed5 = modSet5[i][1];
+						
+   						 }
+						}}
+				if(mod6 != '" "'){
+				var modSet6 = JSON.parse(doc.data().MODDET6).stat;
+				var arrayLength6 = modSet6.length;
+					for (var i = 0; i < arrayLength6; i++) {
+						if(modSet6[i].includes("UNITSTATSPEED")){
+    					modspeed6 = modSet6[i][1];
+						
+   						 }
+						}}
+						
+						//alert(modspeed1, modspeed2, modspeed3, modspeed4,modspeed5, modspeed6);
+						var totalmodspeed = modspeed1 + modspeed2 + modspeed3 + modspeed4 + modspeed5 + modspeed6;
+						var modspeed = totalmodspeed/100000000;
+						var toonSpeed = modspeed + toonspeed;
+				
+				
   console.log(toonagility, toonarmor, toonarmorpen, toonhealth, toonhealthsteal, toonphycritrat, toonphysicaldamage,
-  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonspeed, toonstrength,
+  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonSpeed, toonstrength,
 				toontenacity, toonprotection, toontactic);
 				
+		
+				
+				
 				document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp);
-            });
-        $('#loading').hide();
+    .innerHTML += contactHtmlFromObject(toonname,toonslvl, toonlvl, toonglvl,toonz, toongp, toonSpeed, toonhealth, toonprotection);
+          
+	$('#loading').hide();
+	});
+			      
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);
