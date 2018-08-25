@@ -34,8 +34,9 @@ collection("Toons").orderBy("POWER","desc")
 .get()
     .then(function(querySnapshot) {
         querySnapshot.forEach(function(doc) {
-			
-		var modspeed1=0, modspeed2=0, modspeed3=0, modspeed4=0, modspeed5=0, modspeed6=0;	
+		var modspeed = 0;
+		var modhealth = 0;
+		var modhealthper = 0;
 				//unit
 				var toonname = doc.data().NAME;
 				var toonslvl = doc.data().STARLVL;
@@ -74,8 +75,11 @@ collection("Toons").orderBy("POWER","desc")
 				var arrayLength = modSet1.length;
 					for (var i = 0; i < arrayLength; i++) {
 						if(modSet1[i].includes("UNITSTATSPEED")){
-    					modspeed1 = modSet1[i][1];
-					
+    					modspeed += modSet1[i][1];
+   						 }if(modSet1[i].includes("UNITSTATMAXHEALTH")){
+    					modhealth = modSet1[i][1];
+   						 }if(modSet1[i].includes("UNITSTATMAXHEALTHPERCENTADDITIVE")){
+    					modhealthper = Math.round(100*modSet1[i][1])/100;
    						 }
 						}}else{}
 				if(mod2 != '" "'){
@@ -83,8 +87,11 @@ collection("Toons").orderBy("POWER","desc")
 				var arrayLength2 = modSet2.length;
 					for (var i = 0; i < arrayLength2; i++) {
 						if(modSet2[i].includes("UNITSTATSPEED")){
-    					modspeed2 = modSet2[i][1];
-						
+    					modspeed += modSet2[i][1];
+						}if(modSet2[i].includes("UNITSTATMAXHEALTH")){
+    					modhealth = modSet2[i][1];
+   						 }if(modSet2[i].includes("UNITSTATMAXHEALTHPERCENTADDITIVE")){
+    					modhealthper = Math.round(100*modSet2[i][1])/100;
    						 }
 						}}
 				if(mod3 != '" "'){
@@ -92,8 +99,11 @@ collection("Toons").orderBy("POWER","desc")
 				var arrayLength3 = modSet3.length;
 					for (var i = 0; i < arrayLength3; i++) {
 						if(modSet3[i].includes("UNITSTATSPEED")){
-    					modspeed3 = modSet3[i][1];
-						
+    					modspeed += modSet3[i][1];
+   						 }if(modSet3[i].includes("UNITSTATMAXHEALTH")){
+    					modhealth = modSet3[i][1];
+   						 }if(modSet3[i].includes("UNITSTATMAXHEALTHPERCENTADDITIVE")){
+    					modhealthper = Math.round(100*modSet3[i][1])/100;
    						 }
 						}}
 				if(mod4 != '" "'){
@@ -101,8 +111,11 @@ collection("Toons").orderBy("POWER","desc")
 				var arrayLength4 = modSet4.length;
 					for (var i = 0; i < arrayLength4; i++) {
 						if(modSet4[i].includes("UNITSTATSPEED")){
-    					modspeed4 = modSet4[i][1];
-						
+    					modspeed += modSet4[i][1];
+   						 }if(modSet4[i].includes("UNITSTATMAXHEALTH")){
+    					modhealth = modSet4[i][1];
+   						 }if(modSet4[i].includes("UNITSTATMAXHEALTHPERCENTADDITIVE")){
+    					modhealthper = Math.round(100*modSet4[i][1])/100;
    						 }
 						}}
 				if(mod5 != '" "'){
@@ -110,8 +123,11 @@ collection("Toons").orderBy("POWER","desc")
 				var arrayLength5 = modSet5.length;
 					for (var i = 0; i < arrayLength5; i++) {
 						if(modSet5[i].includes("UNITSTATSPEED")){
-    					modspeed5 = modSet5[i][1];
-						
+    					modspeed += modSet5[i][1];
+   						 }if(modSet5[i].includes("UNITSTATMAXHEALTH")){
+    					modhealth = modSet5[i][1];
+   						 }if(modSet5[i].includes("UNITSTATMAXHEALTHPERCENTADDITIVE")){
+    					modhealthper = Math.round(100*modSet5[i][1])/100;
    						 }
 						}}
 				if(mod6 != '" "'){
@@ -119,20 +135,17 @@ collection("Toons").orderBy("POWER","desc")
 				var arrayLength6 = modSet6.length;
 					for (var i = 0; i < arrayLength6; i++) {
 						if(modSet6[i].includes("UNITSTATSPEED")){
-    					modspeed6 = modSet6[i][1];
-						
+    					modspeed += modSet6[i][1];
+   						 }if(modSet6[i].includes("UNITSTATMAXHEALTH")){
+    					modhealth = modSet6[i][1];
+   						 }if(modSet6[i].includes("UNITSTATMAXHEALTHPERCENTADDITIVE")){
+    					modhealthper = Math.round(100*modSet6[i][1])/100;
    						 }
 						}}
 						
-						//alert(modspeed1, modspeed2, modspeed3, modspeed4,modspeed5, modspeed6);
-						var totalmodspeed = modspeed1 + modspeed2 + modspeed3 + modspeed4 + modspeed5 + modspeed6;
-						var modspeed = totalmodspeed/100000000;
-						var toonSpeed = modspeed + toonspeed;
+						//var toonHealth = (modhealth/100000000) + toonhealth;
+						var toonSpeed = modspeed/100000000 + toonspeed;
 				
-				
-  console.log(toonagility, toonarmor, toonarmorpen, toonhealth, toonhealthsteal, toonphycritrat, toonphysicaldamage,
-  				toonpotency, toonresistance, toonrespen, toonspcritrat, toonspdmg, toonSpeed, toonstrength,
-				toontenacity, toonprotection, toontactic);
 				
 		
 				
