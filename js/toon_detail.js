@@ -211,8 +211,6 @@ function menu_item(item){
 		}
 });
 
-		}
-	}
 	
 	
 	function next(){
