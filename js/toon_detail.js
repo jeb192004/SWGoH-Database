@@ -96,22 +96,7 @@ var factionAbil2;
   //$('.abil_upgrade_layout').hide();
 
 var db = firebase.firestore();
-firebase.firestore().enablePersistence()
-  .then(function() {
-      // Initialize Cloud Firestore through firebase
-      var db = firebase.firestore();
-  })
-  .catch(function(err) {
-      if (err.code == 'failed-precondition') {
-          // Multiple tabs open, persistence can only be enabled
-          // in one tab at a a time.
-          // ...
-      } else if (err.code == 'unimplemented') {
-          // The current browser does not support all of the
-          // features required to enable persistence
-          // ...
-      }
-  });
+
 
 db.collection("Toons").doc(characterName).collection("Abilities").get().then((querySnapshot) => {
     querySnapshot.forEach((doc) => {
@@ -211,20 +196,6 @@ function menu(){
     document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-};
 
 
 $('.menu_item').each(function() {
@@ -232,9 +203,8 @@ $('.menu_item').each(function() {
 });
 
 function menu_item(item){
-		if(item.innerHTML === "Blitz"){
-			window.location = "blitz.html";
-		}if(item.innerHTML === "Guild"){
+		
+		if(item.innerHTML === "Guild"){
 			window.location = 'guilds.html?guildName='+"Relentless";
 		}if(item.innerHTML === "Characters/Home"){
 			window.location = "index.html";
