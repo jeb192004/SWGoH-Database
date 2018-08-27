@@ -5,7 +5,7 @@ var urlParam = function(name, w){
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
-	var characterName = urlParam('character').replace(/_/g, ' ');
+	var characterName = urlParam('character').split("_").join(" ");
 	//var characterName = "Commander Luke Skywalker";
 document.getElementById('name').innerHTML = characterName;
 if (localStorage.getItem("namesArray")) {
