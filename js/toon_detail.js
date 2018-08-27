@@ -205,11 +205,11 @@ $('.menu_item').each(function() {
 function menu_item(item){
 		
 		if(item.innerHTML === "Guild"){
-			window.location = 'guilds.html?guildName='+"Relentless";
+			window.location = 'guilds.html?guildName='+'Relentless';
 		}if(item.innerHTML === "Characters/Home"){
 			window.location = "index.html";
 		}
-});
+}
 
 	
 	
