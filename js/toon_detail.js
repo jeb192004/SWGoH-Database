@@ -3,10 +3,11 @@ var urlParam = function(name, w){
     w = w || window;
     var rx = new RegExp('[\&|\?]'+name+'=([^\&\#]+)'),
         val = w.location.search.match(rx);
+		console.log(name);
     return !val ? '':val[1];
 };
 	var characterName = urlParam('character').split("_").join(" ");
-	//var characterName = "Commander Luke Skywalker";
+	//var characterName = "Commander_Luke_Skywalker";
 document.getElementById('name').innerHTML = characterName;
 if (localStorage.getItem("namesArray")) {
   // Restore the contents of the text field
