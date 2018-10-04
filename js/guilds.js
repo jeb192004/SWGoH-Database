@@ -46,7 +46,7 @@ var firebase = firebase.initializeApp(config);
 
 function loadList(){
 
- 
+ jtrArray =[];
  guildref.collection("Members")
   
     .get()
@@ -605,15 +605,19 @@ function shard_loc_item(shard_loc){
 	//var shards = shard1.replace(/[.'\s]/g, '');
 	
 	if(shard_loc === "all_members"){
+		document.getElementById("header__title").innerHTML = "SWGoH";
 		loadList();
 	}if(shard_loc === "jtr"){
 		var shardLoc = "JTR";
+		document.getElementById("header__title").innerHTML = jtrArray.length;
 		filterList(shardLoc);
 	}if(shard_loc === "gk"){
 		var shardLoc = "GK";
+		document.getElementById("header__title").innerHTML = "SWGoH";
 		filterList(shardLoc);
 	}if(shard_loc === "raidhan"){
 		var shardLoc = "RaidHan";
+		document.getElementById("header__title").innerHTML = "SWGoH";
 		filterList(shardLoc);
 	}/*if(shard_loc === "shipments"){
 		var shardLoc = "Shipments";
@@ -663,7 +667,7 @@ function shard_loc_item(shard_loc){
 		   }
 			document.querySelector('#toons')
     .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");
-	document.getElementById("header__title").innerHTML = jtrArray.length;
+	
 	toonsArray = [];
 	p1jtr = "";
 	/*
