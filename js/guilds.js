@@ -14,7 +14,7 @@ var urlParam = function(name, w){
 
     });
 	
-var toonsArray = [];
+var toonsArray = [], jtrArray = [];
 var strp1jtr = [];
 
 var init = function () {
@@ -43,6 +43,7 @@ var firebase = firebase.initializeApp(config);
 
 
 
+
 function loadList(){
 
  
@@ -60,10 +61,13 @@ function loadList(){
 			   toonsArray.push("GK");
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
+		   }if(doc.data().JTR){
+			   toonsArray.push("Rey(Jedi Training)");
+			   jtrArray.push(doc.data().JTR);
 		   }
 		
 		   getstrteam(toon1, toonsArray, lvl, gp);
-			
+			//getNewToons(toon1, lvl, gp, doc.data().GK, doc.data().RaidHan);
 	
 
 	
@@ -75,6 +79,70 @@ function loadList(){
     });
 	
 }
+
+
+	
+function getNewToons(memberName, lvl, gp, gk, rh){
+db.collection("Guild").doc("Relentless").collection("Members").doc(memberName).
+collection("Toons")
+.get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) {
+			var roster = doc.data().ROSTER;
+			var jtr = JSON.parse(roster).REYJEDITRAINING;
+			var legendChew = JSON.parse(roster).LEGENDARYCHEWBACCA;
+			var jtrtf;
+			if(jtr){
+				jtrtf = true;
+				//addmembertoon("Jimmy Burn 2", jtrtf);
+			db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).set({
+	
+  Name:memberName,
+  LVL:lvl,
+  GUILD:"Relentless",
+  GP:gp,
+  GK:gk,
+  RaidHan:rh,
+  JTR:true
+})
+.then(function(docRef) {
+  console.log("finished");
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+
+});
+			}else{
+				jtrtf = false;
+				//addmembertoon(memberName, jtrtf);
+				db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).set({
+	
+  Name:memberName,
+  LVL:lvl,
+  GUILD:"Relentless",
+  GP:gp,
+  GK:gk,
+  RaidHan:rh,
+  JTR:false
+})
+.then(function(docRef) {
+  console.log("finished");
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+
+});
+			}
+	});
+			      
+    })
+    .catch(function(error) {
+        alert("Error getting documents: "+ error);
+    });
+	}
+	
+
+
 
 function getstrteam(member, toonsarray, lvl, gp){
 	
@@ -579,6 +647,7 @@ function shard_loc_item(shard_loc){
 	}
 	
 	function filterList(shardLoc){
+		toonsArray = [];
 		db.collection("Guilds").doc("Relentless").collection("Members")
   .where(shardLoc, "==", true)
     .get()
@@ -589,9 +658,12 @@ function shard_loc_item(shard_loc){
 			   toonsArray.push("GK");
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
+		   }if(doc.data().JTR){
+			   toonsArray.push("Rey(Jedi Training)");
 		   }
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");	
+    .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");
+	document.getElementById("header__title").innerHTML = jtrArray.length;
 	toonsArray = [];
 	p1jtr = "";
 	/*
@@ -602,6 +674,7 @@ function shard_loc_item(shard_loc){
 	});*/
         });
 		$('#loading').hide();
+		
     })
     .catch(function(error) {
         console.log("Error getting documents: ", error);

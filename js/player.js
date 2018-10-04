@@ -26,7 +26,7 @@ var toon, trait, info, toon1, img;
     var  db = firebase.firestore();
 	  loadList();
  
-
+	  
 
 function loadList(){
 db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).
