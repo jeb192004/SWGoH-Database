@@ -14,7 +14,8 @@ var urlParam = function(name, w){
 
     });
 	
-var toonsArray = [], jtrArray = [];
+var toonsArray = [], jtrArray =[], gkArray =[], hanArray = [], chewieArray =[], legendArray = [],
+epArray =[], r2Array=[], clsArray=[], thrawnArray=[];
 var strp1jtr = [];
 
 var init = function () {
@@ -46,7 +47,8 @@ var firebase = firebase.initializeApp(config);
 
 function loadList(){
 
- jtrArray =[];
+ jtrArray =[], gkArray =[], hanArray = [], chewieArray =[], 
+ epArray =[], r2Array=[], clsArray=[], thrawnArray=[];
  guildref.collection("Members")
   
     .get()
@@ -57,16 +59,34 @@ function loadList(){
 			var lvl = doc.data().LVL;
 			var gp = doc.data().GP;//.toLocaleString();
 			toonsArray = [];
+			legendArray = [];
 			if(doc.data().GK){
 			   toonsArray.push("GK");
+			   gkArray.push("gk");
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
+			   hanArray.push("han");
+		   }if(doc.data().EP){
+			   legendArray.push("Emperor Palpatine");
+			   epArray.push("ep");
+		   }if(doc.data().R2D2){
+			   legendArray.push("R2D2");
+			   r2Array.push("r2");
+		   }if(doc.data().CLS){
+			   legendArray.push("Commander Luke Skywalker");
+			   clsArray.push("cls");
+		   }if(doc.data().THRAWN){
+			   legendArray.push("Grand Admiral Thrawn");
+			   thrawnArray.push("thrawn");
 		   }if(doc.data().JTR){
-			   toonsArray.push("Rey(Jedi Training)");
-			   jtrArray.push(doc.data().JTR);
+			   legendArray.push("Rey(Jedi Training)");
+			   jtrArray.push("rey");
+		   }if(doc.data().CHEWIE){
+			   legendArray.push("Chewbacca(OT)");
+			   chewieArray.push("chewie");
 		   }
 		
-		   getstrteam(toon1, toonsArray, lvl, gp);
+		   getstrteam(toon1, toonsArray, lvl, gp, legendArray);
 			//getNewToons(toon1, lvl, gp, doc.data().GK, doc.data().RaidHan);
 	
 
@@ -90,49 +110,40 @@ collection("Toons")
         querySnapshot.forEach(function(doc) {
 			var roster = doc.data().ROSTER;
 			var jtr = JSON.parse(roster).REYJEDITRAINING;
-			var legendChew = JSON.parse(roster).LEGENDARYCHEWBACCA;
-			var jtrtf;
+			var legendChew = JSON.parse(roster).CHEWBACCALEGENDARY;
+			var legendCls = JSON.parse(roster).COMMANDERLUKESKYWALKER;
+			var legendR2d2 = JSON.parse(roster).R2D2_LEGENDARY;
+			var legendEp = JSON.parse(roster).EMPERORPALPATINE;
+			var legendthrawn = JSON.parse(roster).GRANDADMIRALTHRAWN;
+			
+			var jtrtf, chewietf, clstf, r2tf, eptf, thrawntf;
 			if(jtr){
 				jtrtf = true;
-				//addmembertoon("Jimmy Burn 2", jtrtf);
-			db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).set({
-	
-  Name:memberName,
-  LVL:lvl,
-  GUILD:"Relentless",
-  GP:gp,
-  GK:gk,
-  RaidHan:rh,
-  JTR:true
-})
-.then(function(docRef) {
-  console.log("finished");
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-
-});
 			}else{
 				jtrtf = false;
-				//addmembertoon(memberName, jtrtf);
-				db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).set({
-	
-  Name:memberName,
-  LVL:lvl,
-  GUILD:"Relentless",
-  GP:gp,
-  GK:gk,
-  RaidHan:rh,
-  JTR:false
-})
-.then(function(docRef) {
-  console.log("finished");
-})
-.catch(function(error) {
-    console.error("Error adding document: ", error);
-
-});
+			}if(legendChew){
+				chewietf = true;
+			}else{
+				chewietf = false;
+			}if(legendCls){
+				clstf = true;
+			}else{
+				clstf = false;
+			}if(legendR2d2){
+				r2tf = true;
+			}else{
+				r2tf = false;
+			}if(legendEp){
+				eptf = true;
+			}else{
+				eptf = false;
+			}if(legendthrawn){
+				thrawntf = true;
+			}else{
+				thrawntf = false;
 			}
+			addmembertoon(memberName, lvl, gp, gk, rh, jtrtf, chewietf,
+			clstf, r2tf, eptf, thrawntf);
 	});
 			      
     })
@@ -141,10 +152,36 @@ collection("Toons")
     });
 	}
 	
+function addmembertoon(memberName, lvl, gp, gk, rh, jtrtf, chewietf,
+		clstf, r2tf, eptf, thrawntf){
+	//alert(memberName+ lvl+ gp+ gk+ rh+ jtrtf+ chewietf+clstf+ r2tf+ eptf+ thrawntf);
+	
+	db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).set({
+	
+  Name:memberName,
+  LVL:lvl,
+  GUILD:"Relentless",
+  GP:gp,
+  GK:gk,
+  RaidHan:rh,
+  JTR:jtrtf,
+  CHEWIE:chewietf,
+  CLS:clstf,
+  R2D2:r2tf,
+  EP:eptf,
+  THRAWN:thrawntf
+})
+.then(function(docRef) {
+  console.log("finished");
+})
+.catch(function(error) {
+    console.error("Error adding document: ", error);
+
+});
+}
 
 
-
-function getstrteam(member, toonsarray, lvl, gp){
+function getstrteam(member, toonsarray, lvl, gp, legendArray){
 	
 	guildref.collection("STR").doc("P1").collection("members").doc(member)
     .get().then(function(doc1) {
@@ -189,7 +226,7 @@ function getstrteam(member, toonsarray, lvl, gp){
 			var reygp = doc1.data().REYGP.toLocaleString();
 			
 			
-			strp4nihilus(member, toonsarray,
+			strp4nihilus(member, toonsarray, legendArray,
 										jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
@@ -206,7 +243,7 @@ function getstrteam(member, toonsarray, lvl, gp){
 }
 
 
-function strp4nihilus(member, toonsarray,
+function strp4nihilus(member, toonsarray, legendArray,
 										jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
@@ -257,7 +294,7 @@ function strp4nihilus(member, toonsarray,
 			
 	
 	document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(member, toonsarray,
+    .innerHTML += contactHtmlFromObject(member, toonsarray, legendArray,
 					jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
 					bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 					r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
@@ -396,7 +433,7 @@ function strp4nihilus(member, toonsarray,
 
 
 
-function contactHtmlFromObject(toons, toonsArray,
+function contactHtmlFromObject(toons, toonsArray, legendArray,
 										jtrname, jtrslvl, jtrlvl, jtrglvl,jtrzl, jtrzu1, jtrzu2,jtrgp,
 										bb8name,bb8slvl, bb8lvl, bb8glvl, bb8zu1, bb8zu2, bb8gp,
 										r2name,r2slvl, r2lvl, r2glvl, r2zu1, r2zu2, r2gp,
@@ -422,6 +459,7 @@ function contactHtmlFromObject(toons, toonsArray,
 	  	 + '</div>'+'</p>';
 	html += '<div> <p class="lead" data-lvl="'+lvl+'"data-gp="'+gp+'" >'+toons+'</p>';
 	html += '<p><b><font color="black">7* Raid Characters: </font></b>'+toonsArray+'</p>';
+	html += '<p><b><font color="gold">Legendary Characters: </font></b>'+legendArray+'</p>';
     //html += '<p class="strjtr" ><b><font color="black">STR P1 Team: </font></b>'+strp1+'</p></div>';
     html += '<div><b><font color="black">STR P1 Team: </font></b>';
 	if(jtrname){
@@ -613,28 +651,33 @@ function shard_loc_item(shard_loc){
 		filterList(shardLoc);
 	}if(shard_loc === "gk"){
 		var shardLoc = "GK";
-		document.getElementById("header__title").innerHTML = "SWGoH";
+		document.getElementById("header__title").innerHTML = gkArray.length;
 		filterList(shardLoc);
 	}if(shard_loc === "raidhan"){
 		var shardLoc = "RaidHan";
-		document.getElementById("header__title").innerHTML = "SWGoH";
+		document.getElementById("header__title").innerHTML = hanArray.length;
 		filterList(shardLoc);
-	}/*if(shard_loc === "shipments"){
-		var shardLoc = "Shipments";
+	}if(shard_loc === "chewie"){
+		var shardLoc = "CHEWIE";
+		document.getElementById("header__title").innerHTML = chewieArray.length;
 		filterList(shardLoc);
-	}if(shard_loc === "squad_arena_store"){
-		var shardLoc = "SquadArenaStore";
+	}if(shard_loc === "ep"){
+		var shardLoc = "EP";
+		document.getElementById("header__title").innerHTML = epArray.length;
 		filterList(shardLoc);
-	}if(shard_loc === "fleet_arena_store"){
-		var shardLoc = "FleetArenaStore";
+	}if(shard_loc === "r2"){
+		var shardLoc = "R2D2";
+		document.getElementById("header__title").innerHTML = r2Array.length;
 		filterList(shardLoc);
-	}if(shard_loc === "cantina_battles_store"){
-		var shardLoc = "CantinaBattlesStore";
+	}if(shard_loc === "cls"){
+		var shardLoc = "CLS";
+		document.getElementById("header__title").innerHTML = clsArray.length;
 		filterList(shardLoc);
-	}if(shard_loc === "galactic_war_store"){
-		var shardLoc = "GalacticWarStore";
+	}if(shard_loc === "thrawn"){
+		var shardLoc = "THRAWN";
+		document.getElementById("header__title").innerHTML = thrawnArray.length;
 		filterList(shardLoc);
-	}if(shard_loc === "guild_store"){
+	}/*if(shard_loc === "guild_store"){
 		var shardLoc = "GuildStore";
 		filterList(shardLoc);
 	}if(shard_loc === "guild_events_store"){
@@ -652,6 +695,7 @@ function shard_loc_item(shard_loc){
 	
 	function filterList(shardLoc){
 		toonsArray = [];
+		legendArray =[];
 		db.collection("Guilds").doc("Relentless").collection("Members")
   .where(shardLoc, "==", true)
     .get()
@@ -662,13 +706,24 @@ function shard_loc_item(shard_loc){
 			   toonsArray.push("GK");
 		   }if(doc.data().RaidHan){
 			   toonsArray.push("Han Solo(Raid Han)");
+		   }if(doc.data().EP){
+			   legendArray.push("Emperor Palpatine");
+		   }if(doc.data().R2D2){
+			   legendArray.push("R2D2");
+		   }if(doc.data().CLS){
+			   legendArray.push("Commander Luke Skywalker");
+		   }if(doc.data().THRAWN){
+			   legendArray.push("Grand Admiral Thrawn");
 		   }if(doc.data().JTR){
-			   toonsArray.push("Rey(Jedi Training)");
+			   legendArray.push("Rey(Jedi Training)");
+		   }if(doc.data().CHEWIE){
+			   legendArray.push("Chewbacca(OT)");
 		   }
 			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, toonsArray, "", "");
+    .innerHTML += contactHtmlFromObject2(toon1, toonsArray, lvl, gp, legendArray);
 	
 	toonsArray = [];
+	legendArray = [];
 	p1jtr = "";
 	/*
 	$(".list-group li").on("click", function() {
@@ -720,4 +775,26 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 }	
 	
 	
+	function contactHtmlFromObject2(toons, toonsArray, lvl, gp,legendArray
+										){
+											
+  //console.log( toons );
+  var html = '';
+  html += '<li class="list-group-item contact" >';
+    html += '<div class="toonlist"style="margin-left:5px; margin-bottom:5px;">';
+      
+    html += '<p>'+'<div class="img_container"style="display:none">'
+	 	 //+ '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
+	  	 + '</div>'+'</p>';
+	html += '<div> <p class="lead" data-lvl="'+lvl+'"data-gp="'+gp+'" >'+toons+'</p>';
+	html += '<p><b><font color="black">7* Raid Characters: </font></b>'+toonsArray+'</p>';
+	html += '<p><b><font color="gold">Legendary Characters: </font></b>'+legendArray+'</p>';
+    //html += '<p class="strjtr" ><b><font color="black">STR P1 Team: </font></b>'+strp1+'</p></div>';
+	html +=	'</div>';
 	
+	
+	html += '</div>';
+  	html += '</li>';
+  return html;
+  
+}
