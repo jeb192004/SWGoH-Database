@@ -15,7 +15,7 @@ var urlParam = function(name, w){
     });
 	
 var toonsArray = [], jtrArray =[], gkArray =[], hanArray = [], chewieArray =[], legendArray = [],
-epArray =[], r2Array=[], clsArray=[], thrawnArray=[];
+epArray =[], r2Array=[], clsArray=[], thrawnArray=[], bb8Array=[];
 var strp1jtr = [];
 
 var init = function () {
@@ -48,7 +48,7 @@ var firebase = firebase.initializeApp(config);
 function loadList(){
 
  jtrArray =[], gkArray =[], hanArray = [], chewieArray =[], 
- epArray =[], r2Array=[], clsArray=[], thrawnArray=[];
+ epArray =[], r2Array=[], clsArray=[], thrawnArray=[], bb8Array=[];
  guildref.collection("Members")
   
     .get()
@@ -78,6 +78,9 @@ function loadList(){
 		   }if(doc.data().THRAWN){
 			   legendArray.push("Grand Admiral Thrawn");
 			   thrawnArray.push("thrawn");
+		   }if(doc.data().BB8){
+			   legendArray.push("BB8");
+			   bb8Array.push("bb8");
 		   }if(doc.data().JTR){
 			   legendArray.push("Rey(Jedi Training)");
 			   jtrArray.push("rey");
@@ -115,8 +118,9 @@ collection("Toons")
 			var legendR2d2 = JSON.parse(roster).R2D2_LEGENDARY;
 			var legendEp = JSON.parse(roster).EMPERORPALPATINE;
 			var legendthrawn = JSON.parse(roster).GRANDADMIRALTHRAWN;
+			var bb8 = JSON.parse(roster).BB8;
 			
-			var jtrtf, chewietf, clstf, r2tf, eptf, thrawntf;
+			var jtrtf, chewietf, clstf, r2tf, eptf, thrawntf, bb8tf;
 			if(jtr){
 				jtrtf = true;
 			}else{
@@ -141,9 +145,13 @@ collection("Toons")
 				thrawntf = true;
 			}else{
 				thrawntf = false;
+			}if(bb8){
+				bb8tf = true;
+			}else{
+				bb8tf = false;
 			}
 			addmembertoon(memberName, lvl, gp, gk, rh, jtrtf, chewietf,
-			clstf, r2tf, eptf, thrawntf);
+			clstf, r2tf, eptf, thrawntf, bb8tf);
 	});
 			      
     })
@@ -153,7 +161,7 @@ collection("Toons")
 	}
 	
 function addmembertoon(memberName, lvl, gp, gk, rh, jtrtf, chewietf,
-		clstf, r2tf, eptf, thrawntf){
+		clstf, r2tf, eptf, thrawntf, bb8tf){
 	//alert(memberName+ lvl+ gp+ gk+ rh+ jtrtf+ chewietf+clstf+ r2tf+ eptf+ thrawntf);
 	
 	db.collection("Guilds").doc("Relentless").collection("Members").doc(memberName).set({
@@ -169,7 +177,8 @@ function addmembertoon(memberName, lvl, gp, gk, rh, jtrtf, chewietf,
   CLS:clstf,
   R2D2:r2tf,
   EP:eptf,
-  THRAWN:thrawntf
+  THRAWN:thrawntf,
+  BB8:bb8tf
 })
 .then(function(docRef) {
   console.log("finished");
@@ -677,10 +686,11 @@ function shard_loc_item(shard_loc){
 		var shardLoc = "THRAWN";
 		document.getElementById("header__title").innerHTML = thrawnArray.length;
 		filterList(shardLoc);
-	}/*if(shard_loc === "guild_store"){
-		var shardLoc = "GuildStore";
+	}if(shard_loc === "bb8"){
+		var shardLoc = "BB8";
+		document.getElementById("header__title").innerHTML = bb8Array.length;
 		filterList(shardLoc);
-	}if(shard_loc === "guild_events_store"){
+	}/*if(shard_loc === "guild_events_store"){
 		var shardLoc = "GuildEventsStore";
 		filterList(shardLoc);
 	}if(shard_loc === "shard_store"){
@@ -714,6 +724,8 @@ function shard_loc_item(shard_loc){
 			   legendArray.push("Commander Luke Skywalker");
 		   }if(doc.data().THRAWN){
 			   legendArray.push("Grand Admiral Thrawn");
+		   }if(doc.data().BB8){
+			   legendArray.push("BB8");
 		   }if(doc.data().JTR){
 			   legendArray.push("Rey(Jedi Training)");
 		   }if(doc.data().CHEWIE){
