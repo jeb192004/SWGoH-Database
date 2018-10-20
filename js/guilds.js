@@ -611,7 +611,7 @@ else {
 		}
 		if(item.innerHTML === "Team Builder"){
 			alert("This page is still under development");
-		}if(item.innerHTML === "Characters/Home"){
+		}if(item.innerHTML === "Home"){
 			window.location = "index.html";
 		}if(item.innerHTML === "Ships"){
 			alert("This page is still under development");

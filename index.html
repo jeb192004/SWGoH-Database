@@ -47,31 +47,9 @@
 
   <body>
 	<header class="header">
-	  <h1 class="header__title" id="header__title">SWGoH</h1>
-	  <div id="searchText">
-		<span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
-			placeholder="Search"></span>  
-	  </div>
+	  <h1 class="header__title" id="header_title">SWGoH</h1>
 	 
-		<form id="area_list" name="form2">
-		  <select id="jumpmenu" onchange="shard_loc_item(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
-			<option id="">Sort by Shard Location</option>
-			<option id="all_toons">All</option>
-			<option id="cantina_battles">Cantina Battles</option>
-			<option id="light_side">Light Side</option>
-			<option id="dark_side">Dark Side</option>
-			<option id="shipments">Shipments</option>
-			<option id="squad_arena_store">Squad Arena Store</option>
-			<option id="fleet_arena_store">Fleet Arena Store</option>
-			<option id="cantina_battles_store">Cantina Battles Store</option>
-			<option id="galactic_war_store">Galactic War Store</option>
-			<option id="guild_store">Guild Store</option>
-			<option id="guild_events_store">Guild Events Store</option>
-			<option id="shard_store">Shard Store</option>
-		  </select>
-		</form>
-	 
-	  <div onclick="search()"> <i class="fas fa-search"></i></div>
+
 	  <div onclick="menu()" id="menu_icon"> <i class="fas fa-bars"></i></div>
 	</header>
 

@@ -10,6 +10,13 @@ var init = function () {
 };
 window.onload = init;
 
+var dateObj = new Date();
+var month = dateObj.getUTCMonth()+1;
+var day = dateObj.getUTCDate();
+var year = dateObj.getUTCFullYear();
+var today = month+'/'+day+'/'+year;
+document.getElementById('header_title').innerHTML = 'SWGoH - '+ today;
+
 var config = {
     apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
     authDomain: "swgoh-campanion.firebaseapp.com",
@@ -26,7 +33,7 @@ firebase.firestore().enablePersistence()
   .then(function() {
       // Initialize Cloud Firestore through firebase
       db = firebase.firestore();
-	  loadList();
+	  events();
   })
   .catch(function(err) {
       if (err.code == 'failed-precondition') {
@@ -42,107 +49,31 @@ firebase.firestore().enablePersistence()
 
 
 
-function loadList(){
-db.collection("Toons").onSnapshot({ includeQueryMetadataChanges: true }, function(snapshot) {
-      snapshot.docChanges.forEach(function(change) {
-          if (change.type === "added") {
-              //console.log("New city: ", change.doc.data());
-			  
-          }
 
-          var source = snapshot.metadata.fromCache ? "local cache" : "server";
-          //console.log("Data came from " + source);
-    		//querySnapshot.forEach((doc) => {
-				toon1 = `${change.doc.data().Name}`;
-				info = `${change.doc.data().Info}`;
-				trait = `${change.doc.data().Traits}`;
-				img = `${change.doc.data().Image}`;
-				namesArray.push(toon1);
-		document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
-	$(".list-group li").on("click", function() {
-
-    //set scroll position in session storage
-    sessionStorage.scrollPos = $(window).scrollTop();
-	//alert(sessionStorage.scrollPos);
-	//console.log(sessionStorage.scrollPos);
-	var toonName = $(this).find("p.lead").html();
-	
-	
-	var characterName = toonName.replace(/ /g,"_");
-	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
-	window.localStorage.setItem('namesArray',JSON.stringify(namesArray));
-	
-	window.location = 'toon_details.html?character='+characterName;
-  	//window.location = 'toon_details.html';
-  
-  });
-  $('#loading').hide();
-    });
-	
-	});
-}
-function contactHtmlFromObject(toons, traits, info1, img1){
+function contactHtmlFromObject(name, info, start, end, name2, backImg){
   //console.log( toons );
   var html = '';
-  html += '<li class="list-group-item contact">';
-    html += '<div class="toonlist">';
+  html += '<li class="list-group-item contact" style="background-image: url('+backImg+')">';
+    html += '<div class="toonlist" >';
       
-      html += '<p>'+'<div class="img_container">'
-	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
-	  	   + '</div>'+'</p>';
-		   html += '<div> <p class="lead">'+toons+'</p>';
-	html += '<p>'+traits+'</p>';
-                html += '<p>'+info1+'</p></div>';
+      /*html += '<p>'+'<div class="img_container">'
+       + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
+         + '</div>'+'</p>';*/
+       html += '<div> <p class="lead">'+name+'<br>'+name2+'</p>';
+  html += '<p>'+info+'</p>';
+                html += '<p>'+start+' - '+end+'</p></div>';
     html += '</div>';
   html += '</li>';
   return html;
   
 }
 
-var search1 = "false";
-    document.getElementById("searchText").style.display='none';
-function search(){
-	if(search1 == "false"){
-    document.getElementById("searchText").style.display='inline';
-	    document.getElementById("searchtxt").focus();
 
-		document.getElementById("area_list").style.display='none';
-		search1 ="true";
-				if ( $(window).width() > 739) {}else{  	   
-  			document.getElementById("header__title").style.display='none';
-			}
-		}else{
-		document.getElementById("searchText").style.display='none';
-	    document.getElementById("header__title").style.display='inline';
-		if ( $(window).width() > 739) {      
-  //Add your javascript for large screens here 
-} 
-else {
-  //Add your javascript for small screens here 
-		document.getElementById("area_list").style.display='inline';
-	}
-		search1 = "false";
-		}
-}
 
 
     
 	
-	function filter(element) {
-        var value = $(element).val();
- value = value.toLowerCase().replace(/\b[a-z]/g, function(letter) {
-        return letter.toUpperCase();
- });
-        $("#toons > li").each(function() {
-            if ($(this).text().search(value) > -1) {
-                $(this).show();
-            }
-            else {
-                $(this).hide();
-            }
-        });
-    }
+	
 	
 	function menu_item(item){
 		if(item.innerHTML === "Comapare Abilities"){
@@ -193,82 +124,81 @@ window.onclick = function(event) {
   }
 };
 
-function shard_loc_item(shard_loc){
-	$('#loading').show();
-	$('#toons').empty();
-	
-	var shard1 = shard_loc.innerText || shard_loc.textContent;
-	//var shards = shard1.replace(/[.'\s]/g, '');
-	
-	if(shard_loc === "all_toons"){
-		loadList();
-	}if(shard_loc === "cantina_battles"){
-		var shardLoc = "CantinaBattles";
-		filterList(shardLoc);
-	}if(shard_loc === "light_side"){
-		var shardLoc = "LSBattles";
-		filterList(shardLoc);
-	}if(shard_loc === "dark_side"){
-		var shardLoc = "DSBattles";
-		filterList(shardLoc);
-	}if(shard_loc === "shipments"){
-		var shardLoc = "Shipments";
-		filterList(shardLoc);
-	}if(shard_loc === "squad_arena_store"){
-		var shardLoc = "SquadArenaStore";
-		filterList(shardLoc);
-	}if(shard_loc === "fleet_arena_store"){
-		var shardLoc = "FleetArenaStore";
-		filterList(shardLoc);
-	}if(shard_loc === "cantina_battles_store"){
-		var shardLoc = "CantinaBattlesStore";
-		filterList(shardLoc);
-	}if(shard_loc === "galactic_war_store"){
-		var shardLoc = "GalacticWarStore";
-		filterList(shardLoc);
-	}if(shard_loc === "guild_store"){
-		var shardLoc = "GuildStore";
-		filterList(shardLoc);
-	}if(shard_loc === "guild_events_store"){
-		var shardLoc = "GuildEventsStore";
-		filterList(shardLoc);
-	}if(shard_loc === "shard_store"){
-		var shardLoc = "ShardStore";
-		filterList(shardLoc);
-	}
-	
-	else{
-  
-	}
-	}
-	
-	function filterList(shardLoc){
-		db.collection("Toons").where(shardLoc, "==", true)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-           toon1 = `${doc.data().Name}`;
-				info = `${doc.data().Info}`;
-				trait = `${doc.data().Traits}`;
-				img = `${doc.data().Image}`;
-		
-			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject(toon1, trait, info, img);	
-	$(".list-group li").on("click", function() {
-	var toonName = $(this).find("p.lead").html();
-	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
-	window.location = 'characters/'+toonName+'.html';
-	});
-        });
-		$('#loading').hide();
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-		
-	}
+
 	
 	
+	
+	function events(){
+	
+var eventArray = [];
+db.collection("Events").orderBy("STARTDATE").get()
+     .then(function(querySnapshot){
+          querySnapshot.forEach(function (doc){
+            
+            var id = doc.data().ID;
+            var nameKey = doc.data().NAMEKEY;
+            var descKey = doc.data().DESCKEY;
+            var startDate = doc.data().STARTDATE;
+            startDate = startDate.toString().slice(0, -3);
+            startDate = parseInt(startDate);
+            startDate = new Date(startDate * 1000).toLocaleDateString("en-US");
+            var endDate = doc.data().ENDDATE;
+            endDate = endDate.toString().slice(0, -3);
+            endDate = parseInt(endDate);
+            endDate = new Date(endDate * 1000).toLocaleDateString("en-US");
+            timeStamp = doc.data().TIMESTAMP;
+           // eventArray.push({id: id, namekey: nameKey, desckey: descKey, start: startDate, end: endDate});
+          if(id.includes("restrictedmodbattle")||id.includes("shipevent")||id.includes("challenge")){}else{
+			  
+        var today1 = Math.round(new Date().getTime());
+        var eventDate = Date.parse(endDate);
+      
+       if(eventDate < today1){}else{
+			  var name = nameKey;
+     		  var name1 = name.split("\\n");
+			 
+			      if(name1[0] === "THE TEMPLATE IN THE TEMPEST"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_130758.jpg?alt=media&token=1675be3e-fabc-4a61-b9c7-4c9fc71c77dd";}
+         if(name1[0] === "ONE FAMOUS WOOKIEE"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_130839.jpg?alt=media&token=ebd726c9-be54-4c01-bfea-bece5fc030b8";}
+         if(name1[0] === "DATHOMIR"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_130931.jpg?alt=media&token=8bd3622c-8751-4040-921e-10493b3c5b5f";}
+         if(name1[0] === "EXECUTRIX"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_134351.jpg?alt=media&token=5534a5db-e15f-430e-a0fc-46af2f3f1651";}
+         if(name1[0] === "INTO THE BREACH II"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_134301.jpg?alt=media&token=34c0e6db-22f2-466f-8bd4-702c76782c80";}
+         if(name1[0] === "ENDOR ESCALATION"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_134329.jpg?alt=media&token=30ffd404-bb84-4f0d-9586-2af5a93222e3";}
+         if(name1[0] === "HOTH"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_140433.jpg?alt=media&token=75be9c63-7a13-486e-b7de-3dcdc86da701";}
+         if(name1[0] === "FOREST MOON"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_140355.jpg?alt=media&token=2fc72624-11bd-4251-bb9a-4fcb1f68575b";}
+         if(name1[0] === "LEGEND OF THE OLD REPUBLIC"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181020-114924_Heroes.jpg?alt=media&token=764909ed-1056-4e43-b15c-7f5f5bc896cd";}
+          if(name1[1]){
+      var name2 = name.split("]");
+     var name3 = name2[2].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');
+       var name4 = name3
+       }else{var name4 = " "}
+      var info = descKey;//.replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ');
+         if(info.includes("]")){
+            info = info.split("]");
+         info = info[1].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');}
+      var start = startDate;
+      var end = endDate;
+      
+     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name1[0], info, start, end, name4, backImg);
+    
+			  }
+			}
+          });
+}).catch(function (error){
+  console.log("error getting docs", error);
+});
+$('#loading').hide();
+
+
+}
 	
 	// Register service worker to control making site work offline
 
