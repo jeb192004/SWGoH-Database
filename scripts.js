@@ -177,9 +177,9 @@ db.collection("Events").orderBy("STARTDATE").get()
          if(name1[0] === "LEGEND OF THE OLD REPUBLIC"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181020-114924_Heroes.jpg?alt=media&token=764909ed-1056-4e43-b15c-7f5f5bc896cd";}
           if(name1[0] === "GHOSTS OF DATHOMIR"){
-           var backImg = "";}
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181022_085328.jpg?alt=media&token=4c2d2875-84f7-454f-969f-7ca9592576b0";}
 		   if(name1[0] === "Training Droid Smuggling"){
-           var backImg = "";}
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181022_085402.jpg?alt=media&token=a005ecc8-5c31-4d95-93dd-448fdbd33f28";}
 		   if(name1[1]){
       var name2 = name.split("]");
      var name3 = name2[2].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');
