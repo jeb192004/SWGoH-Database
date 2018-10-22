@@ -53,7 +53,7 @@ firebase.firestore().enablePersistence()
 function contactHtmlFromObject(name, info, start, end, name2, backImg){
   //console.log( toons );
   var html = '';
-  html += '<li class="list-group-item contact" style="background-image: url('+backImg+')">';
+  html += '<li class="list-group-item" style="background-image: url('+backImg+')">';
     html += '<div class="toonlist" >';
       
       /*html += '<p>'+'<div class="img_container">'
@@ -200,6 +200,7 @@ db.collection("Events").orderBy("STARTDATE").get()
 }).catch(function (error){
   console.log("error getting docs", error);
 });
+
 $('#loading').hide();
 
 

@@ -161,12 +161,16 @@ ul {
 .list-group-item {
   
 	margin-bottom:10px;
+	padding-left:10px;
 	font-size:14px;
+	
+	background-size: 400px 150px; 
     background-color: #219AFF;
     border:2px solid Black;
 	display:flex;
     flex-direction:column;
 	border-radius:10px;
+	
 }
 	 
 #area_list{
@@ -252,6 +256,8 @@ ul {
 	font-size:14px;
 	display:flex;
     flex-direction:column;
+background-repeat: no-repeat;
+    background-size: 50px 25px;
 }
 
 
