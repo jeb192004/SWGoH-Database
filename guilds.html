@@ -36,6 +36,7 @@
 	<meta name="msapplication-TileColor" content="#0000cc">
 
 	<link href="css/styles.css" rel="stylesheet" />
+	<link href="css/guilds.css" rel="stylesheet" />
 	<link href="css/load_icon.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
 
@@ -51,7 +52,7 @@
 	
 	
 	
-	
+	<div id="header_container">
 	<header class="header">
 	  <h1 class="header__title" id="header__title">SWGoH</h1>
 	  <div id="searchText">
@@ -72,16 +73,16 @@
 		  <option id="r2">R2D2</option>
 		  <option id="thrawn">Grand Admiral Thrawn</option>
 		  <option id="bb8">BB8</option>
-		  <option id="gmy">Grand Master Yoda</option><!--
-		  <option id="guild_events_store">Guild Events Store</option>
-		  <option id="shard_store">Shard Store</option>-->
+		  <option id="gmy">Grand Master Yoda</option>
+		  <option id="name">Player Name</option>
+		  <option id="gp">GP</option>
 		</select>
 	  </form>
 
 	  <div onclick="search()"> <i class="fas fa-search"></i></div>
 	  <div onclick="menu()" id="menu_icon"> <i class="fas fa-bars"></i></div>
 	</header>
-
+</div>
 
 	<nav id="menu">
       <ul class="menu_list">
@@ -107,17 +108,17 @@
 		<li onclick="shard_loc_item(this.id)"id="r2">R2D2</li>
 		<li onclick="shard_loc_item(this.id)"id="thrawn">Grand Admiral Thrawn</li>
 		<li onclick="shard_loc_item(this.id)"id="bb8">BB8</li>
-		<li onclick="shard_loc_item(this.id)"id="gmy">Grand Master Yoda</li><!--
-		<li onclick="shard_loc_item(this.id)"id="guild_events_store">Guild Events Store</li>
-		<li onclick="shard_loc_item(this.id)"id="shard_store">Shard Store</li>-->
+		<li onclick="shard_loc_item(this.id)"id="gmy">Grand Master Yoda</li>
+		<li onclick="shard_loc_item(this.id)"id="name">Player Name</li>
+		<li onclick="shard_loc_item(this.id)"id="gp">GP</li>-->
 	  </ul>
     </nav>
 
 	<main id="panel">
 
 
-	  <br>
-	  <br>
+	 
+	 
 
 	  <div id="container" class="list">
 		<ul id="toons" class="list-group">

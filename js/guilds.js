@@ -40,10 +40,121 @@ var firebase = firebase.initializeApp(config);
 
     var  db = firebase.firestore();
 	var guildref = db.collection("Guilds").doc(guildName);
-	  loadList();
+	var roster;
+	//  loadList();
+
+load_guild();
+
+	
+	function load_guild(){
+	
+		var allycodes = [];
+	db.collection("Guild").doc("Relentless").get()
+    .then(function(doc) {
+        //querySnapshot.forEach(function(doc) {
+			allycodes = doc.data().ALLYCODES;
+			var desc = doc.data().DESCRIPTION;
+			var gp = doc.data().GP;
+			var guild = doc.data().GUILD;
+			var members = doc.data().MEMBERS;
+			var message = doc.data(). MESSAGE;
+			var raid = doc.data().RAID;
+			roster = doc.data().ROSTER;
+			var updated = doc.data().UPDATED;
+		
+			document.querySelector('#header_container')
+    .innerHTML += guildHtml(guild, desc, gp, members, raid, roster, message);
 
 
+			
+			roster.forEach(function (roster){
+			
+				var mGp = roster.gp;
+				var mGpChar = roster.gpChar;
+				var mGpShip = roster.gpShip;
+				var pos = roster.guildMemberLevel;
+				var level = roster.level;
+				var name = roster.name;
+				
+				document.querySelector('#toons')
+    .innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name);
 
+			});
+  
+//	});
+			      
+    })
+    .catch(function(error) {
+        alert("Error getting documents: "+ error);
+    });
+	}
+	
+	function guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name){
+$('#loading').hide();
+  var html = '';
+  html += '<li  class="list-group-item contact">';
+    html += '<div class="toonlist">';
+    
+		   html += '<div style="text-align:center"> <p class="lead"><b><font color="black">'+name+'</font></b></p>';
+		    if(pos === 2){
+		   html += '<p>Member</p>';
+		   } if(pos === 3){
+		   html += '<p>Officer</p>';
+		   }if(pos === 4){
+		   html += '<p>Leader</p>';
+		   }
+		   html += '</div>';
+		   html += '<div style="padding:5px;" >';
+		   
+		   html += '<div style="float:left">';
+	            html += '<p><b><font color="black">Level: </font></b>'+level+'</p>';
+                html += '<p><b><font color="black">GP: </font></b>'+mGp.toLocaleString()+'</p>';
+		   html += '</div>';	
+			
+		   html += '<div style="float:right; text-align:right; " >';
+	            html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar.toLocaleString()+'</p>';
+                html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip.toLocaleString()+'</p>';
+		   html += '</div>';	
+				
+			html += '</div>';	
+    html += '</div>';
+  html += '</li>';
+  return html;
+  
+}
+
+	
+	function guildHtml(guild, desc, gp, members, raid, roster, message){
+		$('#loading').hide();
+		var raid1 = [];
+		if(JSON.stringify(raid).includes("rancor")){
+			raid1.push("HPIT");
+			}
+		if(JSON.stringify(raid).includes("aat")){
+			raid1.push("HAAT");
+			}/*if(JSON.stringify(raid).includes("sith")){
+			raid1.push("STR");
+			}*/
+		
+		var html = '';
+	html += '<header class="guild_header" >';
+   
+      html += '<p id="guild_name"><b><font color="white">'+ guild +'</font></b></p>';
+html += '<div id="guild_info">';
+html += '<p id="guild_desc"><b><font color="white">'+ desc +'</font></b></p>';
+html += '<p id="guild_message"><b><font color="white">'+ message +'</font></b></p>';
+html += '<p id="guild_raid"><b><font color="white">Current Raids: '+ raid1 +'</font></b></p>';
+html += '<div id="guild_gp_members">';
+				html += '<p id ="guild_gp">GP: '+gp.toLocaleString()+'</p>';
+				html += '<p id="guild_members">Members: '+members+'</p>';
+html += '</div>';
+html += '</div>';
+
+html += '</header>';
+			return html;
+	}
+	
+	
 
 function loadList(){
 
@@ -704,12 +815,11 @@ function shard_loc_item(shard_loc){
 		var shardLoc = "GMY";
 		document.getElementById("header__title").innerHTML = gmyArray.length;
 		filterList(shardLoc);
-	}/*if(shard_loc === "shard_store"){
-		var shardLoc = "ShardStore";
-		filterList(shardLoc);
-	}*/
-	
-	else{
+	}if(shard_loc === "name"){
+reorder_guild_members(shard_loc, "asc");
+}if(shard_loc === "gp"){
+ reorder_guild_members(shard_loc, "desc");
+}else{
   
 	}
 	}
@@ -799,6 +909,25 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	
 }	
 	
+
+function reorder_guild_members(item, order){
+	if(order === "asc"){
+		roster.sort(function(a,b) {return (a[item] > b[item]) ? 1 : ((b[item] > a[item]) ? -1 : 0);} ); 
+		}if(order === "desc"){
+		roster.sort(function(a,b) {return (a[item] < b[item]) ? 1 : ((b[item] < a[item]) ? -1 : 0);} ); 
+		}
+ 
+			roster.forEach(function (roster){
+				var mGp = roster.gp;
+				var mGpChar = roster.gpChar;
+				var mGpShip = roster.gpShip;
+				var pos = roster.guildMemberLevel;
+				var level = roster.level;
+				var name = roster.name;
+				document.querySelector('#toons')
+    .innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name);
+});
+}
 	
 	function contactHtmlFromObject2(toons, toonsArray, lvl, gp,legendArray
 										){

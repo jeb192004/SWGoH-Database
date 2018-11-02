@@ -1,0 +1,55 @@
+.guild_header{
+	 color: White;
+  background: #219AFF;
+margin-top:0px;
+margin-bottom:-20px;
+padding-top:50px;
+padding-bottom:32px;
+box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 2px 9px 1px rgba(0, 0, 0, 0.12), 0 4px 2px -2px rgba(0, 0, 0, 0.2);
+text-align:center;
+
+	}
+	
+	#guild_name{
+
+	margin:0;
+		}
+		
+		#guild_desc{
+	
+	margin:0;
+		}
+		#guild_message{
+	padding-bottom:5px;
+	margin:0;
+		}
+#guild_raid{
+	padding-bottom:5px;
+	margin:0;
+		}
+		#guild_info{
+			font-size:16px;
+			margin:0;
+			padding:5px;
+			}
+			
+			#guild_desc{
+				padding-top:-5px;
+				}
+				
+				#guild_gp{
+					float:left;
+					
+					
+					}
+					
+					#guild_members{
+						float:right;
+						
+						
+						}
+						
+						#guild_gp_members{
+							margin-top:-20px;
+							
+							}

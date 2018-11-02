@@ -128,10 +128,12 @@ window.onclick = function(event) {
 
 	
 	
-	
+	 
 	function events(){
 	
 var eventArray = [];
+var timeStamp;
+var timeStamp1 = new Date().getTime() - (2 * 24 * 60 * 60 * 1000);
 db.collection("Events").orderBy("STARTDATE").get()
      .then(function(querySnapshot){
           querySnapshot.forEach(function (doc){
@@ -148,6 +150,7 @@ db.collection("Events").orderBy("STARTDATE").get()
             endDate = parseInt(endDate);
             endDate = new Date(endDate * 1000).toLocaleDateString("en-US");
             timeStamp = doc.data().TIMESTAMP;
+
            // eventArray.push({id: id, namekey: nameKey, desckey: descKey, start: startDate, end: endDate});
           if(id.includes("restrictedmodbattle")||id.includes("shipevent")||id.includes("challenge")){}else{
 			  
@@ -183,8 +186,8 @@ db.collection("Events").orderBy("STARTDATE").get()
 		   if(name1[1]){
       var name2 = name.split("]");
      var name3 = name2[2].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');
-       var name4 = name3
-       }else{var name4 = " "}
+       var name4 = name3;
+       }else{var name4 = " ";}
       var info = descKey;//.replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ');
          if(info.includes("]")){
             info = info.split("]");
@@ -196,6 +199,12 @@ db.collection("Events").orderBy("STARTDATE").get()
     
 			  }
 			}
+			
+			/*
+if(timeStamp < timeStamp1){
+	document.getElementById('header_title').innerHTML = "need update";
+	}else{document.getElementById('header_title').innerHTML = "no update needed";}
+*/
           });
 }).catch(function (error){
   console.log("error getting docs", error);
