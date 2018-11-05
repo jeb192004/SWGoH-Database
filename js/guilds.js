@@ -52,14 +52,14 @@ load_guild();
 	db.collection("Guild").doc("Relentless").get()
     .then(function(doc) {
         //querySnapshot.forEach(function(doc) {
-			allycodes = doc.data().ALLYCODES;
+		//	allycodes = doc.data().ALLYCODES;
 			var desc = doc.data().DESCRIPTION;
 			var gp = doc.data().GP;
 			var guild = doc.data().GUILD;
 			var members = doc.data().MEMBERS;
 			var message = doc.data(). MESSAGE;
 			var raid = doc.data().RAID;
-			roster = doc.data().ROSTER;
+			roster = JSON.parse(doc.data().ROSTER);
 			var updated = doc.data().UPDATED;
 		
 			document.querySelector('#header_container')
@@ -72,7 +72,7 @@ load_guild();
 				var mGp = roster.gp;
 				var mGpChar = roster.gpChar;
 				var mGpShip = roster.gpShip;
-				var pos = roster.guildMemberLevel;
+				var pos = roster.titles;
 				var level = roster.level;
 				var name = roster.name;
 				
@@ -108,12 +108,12 @@ $('#loading').hide();
 		   
 		   html += '<div style="float:left">';
 	            html += '<p><b><font color="black">Level: </font></b>'+level+'</p>';
-                html += '<p><b><font color="black">GP: </font></b>'+mGp.toLocaleString()+'</p>';
+                html += '<p><b><font color="black">GP: </font></b>'+mGp/*.toLocaleString()*/+'</p>';
 		   html += '</div>';	
 			
 		   html += '<div style="float:right; text-align:right; " >';
-	            html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar.toLocaleString()+'</p>';
-                html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip.toLocaleString()+'</p>';
+	            html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar/*.toLocaleString()*/+'</p>';
+                html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip/*.toLocaleString()*/+'</p>';
 		   html += '</div>';	
 				
 			html += '</div>';	
@@ -151,6 +151,7 @@ html += '</div>';
 html += '</div>';
 
 html += '</header>';
+
 			return html;
 	}
 	
