@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<!-- Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106606663-5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106606663-5');
+</script>
+	
+	<!-- End Google Analytics -->
+
+	<title>Relentless</title>
+
+	<meta charset="utf-8">
+	<meta name="description" content="Character database for Star Wars Galaxy of Heros">
+	<meta name="keywords" content="SWGoH, swgoh,SWGoH Characrers,Star Wars Galaxy of Heros,Star Wars Galaxy of Heros Characters">
+
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<meta name="viewport" content="width=device-width">
+	<!-- TODO add manifest here -->
+	<link rel="manifest" href="manifest.json">
+	<!-- Add to home screen for Safari on iOS -->
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta name="apple-mobile-web-app-title" content="SWGoH">
+	<link rel="apple-touch-icon" href="img/icons/icon152.png">
+	<meta name="msapplication-TileImage" content="img/icons/icon144.jpg">
+	<meta name="msapplication-TileColor" content="#0000cc">
+
+	<link href="css/styles.css" rel="stylesheet" />
+	<link href="css/load_icon.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/4.12.0/firebase-firestore.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/slideout/1.0.1/slideout.min.js"></script>
+	<script src="https://unpkg.com/tippy.js@2.5.4/dist/tippy.all.min.js"></script>
+	
+  </head>
+
+  <body>
+	
+	
+	
+	
+	
+	<header class="header">
+	  <h1 class="header__title" id="header__title">SWGoH</h1>
+	  <div id="searchText">
+		<span ><input id="searchtxt" type="text" onkeyup="filter(this)" 
+			placeholder="Search"></span>  
+	  </div>
+
+	  <form id="area_list" name="form2">
+		<select id="jumpmenu" onchange="shard_loc_item(document.form2.jumpmenu.options[document.form2.jumpmenu.options.selectedIndex].id)">
+		  <option id="">Sort by Character</option>
+		  <option id="all_members">All</option>
+		  <option id="chewie">Chewbacca(OT)</option>
+		  <option id="jtr">JTR</option>
+		  <option id="gk">General Kenobi</option>
+		  <option id="raidhan">Han Solo(Raid Han)</option>
+		  <option id="ep">Emperor Palpatine</option>
+		  <option id="cls">Commander Luke Skywalker</option>
+		  <option id="r2">R2D2</option>
+		  <option id="thrawn">Grand Admiral Thrawn</option>
+		  <option id="bb8">BB8</option>
+		  <option id="gmy">Grand Master Yoda</option><!--
+		  <option id="guild_events_store">Guild Events Store</option>
+		  <option id="shard_store">Shard Store</option>-->
+		</select>
+	  </form>
+
+	  <div onclick="search()"> <i class="fas fa-search"></i></div>
+	  <div onclick="menu()" id="menu_icon"> <i class="fas fa-bars"></i></div>
+	</header>
+
+
+	<nav id="menu">
+      <ul class="menu_list">
+		<li class="menu_item" onclick="menu_item(this)">Home</li>
+		<li class="menu_item" onclick="menu_item(this)">Comapare Abilities</li>
+		<li class="menu_item" onclick="menu_item(this)">Team Builder</li>
+		<li class="menu_item" onclick="menu_item(this)">Ships</li>
+		
+	  </ul>
+
+
+	  <ul id="myDropdown_menu" class="dropdown-content_menu">
+		<hr>
+		<h2>Sort List by:</h2>
+		<h3>Character</h3>
+		<li onclick="shard_loc_item(this.id)"id="all_members">All</li>
+		<li onclick="shard_loc_item(this.id)"id="chewie">Chewbacca(OT)</li>
+		<li onclick="shard_loc_item(this.id)"id="jtr">JTR</li>
+		<li onclick="shard_loc_item(this.id)"id="gk">General Kenobi</li>
+		<li onclick="shard_loc_item(this.id)"id="raidhan">Han Solo(Raid Han)</li>
+		<li onclick="shard_loc_item(this.id)"id="ep">Emperor Palpatine</li>
+		<li onclick="shard_loc_item(this.id)"id="cls">Commander Luke Skywalker</li>
+		<li onclick="shard_loc_item(this.id)"id="r2">R2D2</li>
+		<li onclick="shard_loc_item(this.id)"id="thrawn">Grand Admiral Thrawn</li>
+		<li onclick="shard_loc_item(this.id)"id="bb8">BB8</li>
+		<li onclick="shard_loc_item(this.id)"id="gmy">Grand Master Yoda</li><!--
+		<li onclick="shard_loc_item(this.id)"id="guild_events_store">Guild Events Store</li>
+		<li onclick="shard_loc_item(this.id)"id="shard_store">Shard Store</li>-->
+	  </ul>
+    </nav>
+
+	<main id="panel">
+
+
+	  <br>
+	  <br>
+
+	  <div id="container" class="list">
+		<ul id="toons" class="list-group">
+		  <!-- Conatct Object li.list-group-item.contact will be added here by js -->
+		</ul>
+	  </div>
+	  <!-- Add content to the popup -->
+	  <div id="my_popup" class="my_popup" style="background-color:#219AFF;
+		padding: 10px; font-size:24px; width:90%; max-width:90%; 
+		color:White;">
+
+		<center id="name"></center>
+		<center id="slvl"></center>
+		<center id="lvl"></center>
+		<center id="glvl"></center>
+		<center id="zl"></center>
+		<center id="zu1"></center>
+		<center id="zu2"></center>
+		<center id="gp"></center>
+		<!-- Add an optional button to close the popup -->
+		<button class="my_popup_close"  style="float: right; margin:10px">Close</button>
+
+	  </div>
+	  <div id="loading">
+		<img id="loading-image" src="img/ajax-loader.gif" alt="Loading..." />
+	  </div>
+	</main>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="https://cdn.rawgit.com/vast-engineering/jquery-popup-overlay/1.7.13/jquery.popupoverlay.js"></script>
+
+	<!-- Latest compiled and minified Bootstrap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script src="js/guild.js"></script>
+
+
+  </body>
+</html>
+
