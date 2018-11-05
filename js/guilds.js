@@ -14,8 +14,8 @@ var urlParam = function(name, w){
 
     });
 	
-var toonsArray = [], jtrArray =[], gkArray =[], hanArray = [], chewieArray =[], legendArray = [],
-epArray =[], r2Array=[], clsArray=[], thrawnArray=[], bb8Array=[], gmyArray=[];
+var toonsArray = [], jtr, gk, solo, otchew,
+ep, r2d2, cls, thrawn, bb8, gmy, revan;
 var strp1jtr = [];
 
 var init = function () {
@@ -40,7 +40,7 @@ var firebase = firebase.initializeApp(config);
 
     var  db = firebase.firestore();
 	var guildref = db.collection("Guilds").doc(guildName);
-	var roster;
+	var roster, bb8;
 	//  loadList();
 
 load_guild();
@@ -61,6 +61,17 @@ load_guild();
 			var raid = doc.data().RAID;
 			roster = JSON.parse(doc.data().ROSTER);
 			var updated = doc.data().UPDATED;
+			bb8 = doc.data().BB8;
+			jtr = doc.data().JTR;
+		  gk = doc.data().GK; 
+		  solo = doc.data().SOLO;
+		 otchew = doc.data().CHEWIE;
+      ep = doc.data().EP;
+      r2d2 = doc.data().R2D2;
+      cls = doc.data().CLS;
+      thrawn = doc.data().THRAWN;
+      gmy = doc.data().GMY;
+		  revan = doc.data().REVAN;
 		
 			document.querySelector('#header_container')
     .innerHTML += guildHtml(guild, desc, gp, members, raid, roster, message);
@@ -108,12 +119,12 @@ $('#loading').hide();
 		   
 		   html += '<div style="float:left">';
 	            html += '<p><b><font color="black">Level: </font></b>'+level+'</p>';
-                html += '<p><b><font color="black">GP: </font></b>'+mGp/*.toLocaleString()*/+'</p>';
+                html += '<p><b><font color="black">GP: </font></b>'+mGp.toLocaleString()+'</p>';
 		   html += '</div>';	
 			
 		   html += '<div style="float:right; text-align:right; " >';
-	            html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar/*.toLocaleString()*/+'</p>';
-                html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip/*.toLocaleString()*/+'</p>';
+	            html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar.toLocaleString()+'</p>';
+                html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip.toLocaleString()+'</p>';
 		   html += '</div>';	
 				
 			html += '</div>';	
@@ -775,55 +786,182 @@ function shard_loc_item(shard_loc){
 	
 	if(shard_loc === "all_members"){
 		document.getElementById("header__title").innerHTML = "SWGoH";
-		loadList();
+		roster.forEach(function (roster){
+				var mGp = roster.gp;
+				var mGpChar = roster.gpChar;
+				var mGpShip = roster.gpShip;
+				var pos = roster.titles;
+				var level = roster.level;
+				var name = roster.name;
+				document.querySelector('#toons')
+    .innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name);
+			});
 	}if(shard_loc === "jtr"){
-		var shardLoc = "JTR";
-		document.getElementById("header__title").innerHTML = jtrArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = jtr.length;
+		jtr.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "gk"){
-		var shardLoc = "GK";
-		document.getElementById("header__title").innerHTML = gkArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = gk.length;
+		gk.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "raidhan"){
-		var shardLoc = "RaidHan";
-		document.getElementById("header__title").innerHTML = hanArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = solo.length;
+		solo.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "chewie"){
-		var shardLoc = "CHEWIE";
-		document.getElementById("header__title").innerHTML = chewieArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = otchew.length;
+		otchew.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "ep"){
-		var shardLoc = "EP";
-		document.getElementById("header__title").innerHTML = epArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = ep.length;
+		ep.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "r2"){
-		var shardLoc = "R2D2";
-		document.getElementById("header__title").innerHTML = r2Array.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = r2d2.length;
+		r2d2.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "cls"){
-		var shardLoc = "CLS";
-		document.getElementById("header__title").innerHTML = clsArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = cls.length;
+		cls.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "thrawn"){
-		var shardLoc = "THRAWN";
-		document.getElementById("header__title").innerHTML = thrawnArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = thrawn.length;
+		thrawn.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "bb8"){
-		var shardLoc = "BB8";
-		document.getElementById("header__title").innerHTML = bb8Array.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = bb8.length;
+		bb8.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "gmy"){
-		var shardLoc = "GMY";
-		document.getElementById("header__title").innerHTML = gmyArray.length;
-		filterList(shardLoc);
+		document.getElementById("header__title").innerHTML = gmy.length;
+		gmy.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "name"){
 reorder_guild_members(shard_loc, "asc");
 }if(shard_loc === "gp"){
- reorder_guild_members(shard_loc, "desc");
+reorder_guild_members(shard_loc, "desc");
 }else{
   
 	}
+	$('#loading').hide();
 	}
+	
+	function character(power, gearLvl, member, toonslvl, level){
+  //console.log( toons );
+  var html = '';
+  html += '<li  class="list-group-item contact">';
+    html += '<div class="toonlist">';
+      /*
+      html += '<p>'+'<div class="img_container">'
+	 	   + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
+	  	   + '</div>'+'</p>';*/
+		   html += '<div style="text-align:center"> <p class="lead"><b><font color="black">'+member+'</font></b></p>';
+		   if(toonslvl === 1){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 2){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 3){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 4){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 5){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 6){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star2.png"/>'+ '</div>'+'</p>';
+		   } if(toonslvl === 7){
+		   html += '<p>'+'<div class="star">' + '<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>' +'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+'<img id= "starimg" src="img/star.png"/>'+ '</div>'+'</p>';
+		   }
+		   html += '</div>';
+		   html += '<div style="padding:5px;" >';
+		   
+		   html += '<div style="float:left">';
+	            html += '<p><b><font color="black">Level: </font></b>'+level+'</p>';
+                html += '<p><b><font color="black">Gear Lvl: </font></b>'+gearLvl+'</p>';
+				html += '<p><b><font color="black">Power: </font></b>'+power.toLocaleString()+'</p>';
+		   html += '</div>';	
+		/*	
+		   html += '<div style="float:right; text-align:right; " >';
+	            html += '<p><b><font color="black">Speed: </font></b>'+toonspeed+'</p>';
+                html += '<p><b><font color="black">Health: </font></b>'+toonhealth+'</p>';
+				html += '<p><b><font color="black">Protection: </font></b>'+toonprotection+'</p>';
+		   html += '</div>';	
+				*/
+			html += '</div>';	
+    html += '</div>';
+  html += '</li>';
+  return html;
+  
+}
 	
 	function filterList(shardLoc){
 		toonsArray = [];
@@ -849,7 +987,7 @@ reorder_guild_members(shard_loc, "asc");
 		   }if(doc.data().THRAWN){
 			   legendArray.push("Grand Admiral Thrawn");
 		   }if(doc.data().BB8){
-			   legendArray.push("BB8");
+			   
 		   }if(doc.data().JTR){
 			   legendArray.push("Rey(Jedi Training)");
 		   }if(doc.data().CHEWIE){
@@ -861,12 +999,7 @@ reorder_guild_members(shard_loc, "asc");
 	toonsArray = [];
 	legendArray = [];
 	p1jtr = "";
-	/*
-	$(".list-group li").on("click", function() {
-	var toonName = $(this).find("p.lead").html();
-	toonName = toonName.replace(/\s+/g, '').replace(/\./g,'').toLowerCase();
-	window.location = 'characters/'+toonName+'.html';
-	});*/
+
         });
 		$('#loading').hide();
 		
@@ -912,16 +1045,18 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	
 
 function reorder_guild_members(item, order){
+	var rosterReorder = roster;
+	document.getElementById("header__title").innerHTML = "SWGoH";
 	if(order === "asc"){
-		roster.sort(function(a,b) {return (a[item] > b[item]) ? 1 : ((b[item] > a[item]) ? -1 : 0);} ); 
+		rosterReorder.sort(function(a,b) {return (a[item] > b[item]) ? 1 : ((b[item] > a[item]) ? -1 : 0);} ); 
 		}if(order === "desc"){
-		roster.sort(function(a,b) {return (a[item] < b[item]) ? 1 : ((b[item] < a[item]) ? -1 : 0);} ); 
+		rosterReorder.sort(function(a,b) {return (a[item] < b[item]) ? 1 : ((b[item] < a[item]) ? -1 : 0);} ); 
 		}
  
-			roster.forEach(function (roster){
-				var mGp = roster.gp;
-				var mGpChar = roster.gpChar;
-				var mGpShip = roster.gpShip;
+			rosterReorder.forEach(function (roster){
+				var mGp = roster.gp.toLocaleString();
+				var mGpChar = roster.gpChar.toLocaleString();
+				var mGpShip = roster.gpShip.toLocaleString();
 				var pos = roster.guildMemberLevel;
 				var level = roster.level;
 				var name = roster.name;
