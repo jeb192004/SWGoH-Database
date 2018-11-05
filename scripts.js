@@ -183,7 +183,16 @@ db.collection("Events").orderBy("STARTDATE").get()
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181022_085328.jpg?alt=media&token=4c2d2875-84f7-454f-969f-7ca9592576b0";}
 		   if(name1[0] === "Training Droid Smuggling"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181022_085402.jpg?alt=media&token=a005ecc8-5c31-4d95-93dd-448fdbd33f28";}
-		   if(name1[1]){
+		   if(name1[0] === "CONTRABAND CARGO"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181105_104948.jpg?alt=media&token=99c6be88-8042-453f-affb-48669cfc4936";}
+				if(name1[0] === "SMUGGLER'S RUN"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181105-105443_Heroes.jpg?alt=media&token=8c2c65d1-73a9-4953-8759-a41926753cdd";}
+					if(name1[0] === "Grand Master's Training"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181105_110159.jpg?alt=media&token=d4e97d8e-3a75-431f-a179-70701d55f463";}
+						
+								
+										
+					if(name1[1]){
       var name2 = name.split("]");
      var name3 = name2[2].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');
        var name4 = name3;
