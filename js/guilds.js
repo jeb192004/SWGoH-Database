@@ -906,7 +906,20 @@ function shard_loc_item(shard_loc){
 				document.querySelector('#toons')
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
-	}if(shard_loc === "name"){
+	}if(shard_loc === "revan"){
+		document.getElementById("header__title").innerHTML = revan.length;
+		revan.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}
+		
+			if(shard_loc === "name"){
 reorder_guild_members(shard_loc, "asc");
 }if(shard_loc === "gp"){
 reorder_guild_members(shard_loc, "desc");
