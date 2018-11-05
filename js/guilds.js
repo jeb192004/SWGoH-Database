@@ -750,8 +750,17 @@ else {
   });
 function menu(){
 	slideout.toggle();
-	}
 	
+	}
+	$('.menu_list').hide();
+	slideout.on('open', function() { 
+	$('.guild_header').hide();
+	$('.menu_list').show();
+	});
+	slideout.on('close', function() { 
+	$('.guild_header').show();
+	$('.menu_list').hide();
+	});
   // Toggle button
   document.querySelector('.toggle-button').addEventListener('click', function() {
     slideout.toggle();

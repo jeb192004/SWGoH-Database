@@ -97,6 +97,7 @@ function contactHtmlFromObject(name, info, start, end, name2, backImg){
   });
 function menu(){
 	slideout.toggle();
+	
 	}
 	
   // Toggle button
