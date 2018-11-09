@@ -579,7 +579,7 @@ function shard_loc_item(shard_loc){
 	$('#toons').empty();
 	
 	var shard1 = shard_loc.innerText || shard_loc.textContent;
-	//var shards = shard1.replace(/[.'\s]/g, '');
+	
 	
 	if(shard_loc === "all_members"){
 		document.getElementById("header__title").innerHTML = "SWGoH";
@@ -715,6 +715,8 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "strp1"){
+		var strp1team = [];
+		var strp1ready =[];
 		document.getElementById("header__title").innerHTML = "STR P1";
 		strP1.forEach(function (roster){		
 			var memName = roster.member;
@@ -723,7 +725,7 @@ function shard_loc_item(shard_loc){
 			var memR2 = roster.teams.strR2;
 			var memRt = roster.teams.strRt;
 			var memRey = roster.teams.strRey;
-			
+			strp1team =[];
 			var JtrZeta = false,  Jtrname, Jtrgear, Jtrlevel, Jtrstar;
 			memJtr.forEach(function (roster){		
 			Jtrname = roster.toon;
@@ -765,14 +767,14 @@ function shard_loc_item(shard_loc){
 			var skills = roster.skills;
 			skills.forEach(function (roster){		
 				if(roster.nameKey === "Combat Analysis"){
-					R2Zeta = roster.isZeta;
+					R2Zeta1 = roster.isZeta;
 					}if(roster.nameKey === "Number Crunch"){
 					R2Zeta2 = roster.isZeta;
 					}	
-							});});if(R2Zeta){
-					R2Zeta = R2Zeta;
+							});});if(R2Zeta1){
+					R2Zeta1 = R2Zeta1;
 					}else{
-					R2Zeta = false;
+					R2Zeta1 = false;
 					}if(R2Zeta2){
 					R2Zeta2 = R2Zeta2;
 					}else{
@@ -797,26 +799,44 @@ function shard_loc_item(shard_loc){
 if(Jtrname === undefined){
 	Jtrname = "";Jtrstar =""; Jtrlevel = "";Jtrgear = "";JtrZeta = "";
 	}if(Bb8name === undefined){
-	Bb8name = "";Bb8star =""; Bb8level = "";Bb8gear = "";Bb8Zeta = "";
+	Bb8name = "";Bb8star =""; Bb8level = "";Bb8gear = "";BZeta = "";
 	}if(R2name === undefined){
-	R2name = "";R2star =""; R2level = "";R2gear = "";R2Zeta = "";
+	R2name = "";R2star =""; R2level = "";R2gear = "";R2Zeta1 = "";
 	}if(Rtname === undefined){
-	Rtname = "";Rtstar =""; Rtlevel = "";Rtgear = "";RtZeta = "";
+	Rtname = "";Rtstar =""; Rtlevel = "";Rtgear = "";RtZeta= "";
 	}if(Reyname === undefined){
-	Reyname = "";Reystar =""; Reylevel = "";Reygear = "";ReyZeta = "";
+	Reyname = "";Reystar =""; Reylevel = "";Reygear = "";ReyZeta = ""	;
 	}
+	strp1count(memName, 
+										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
+										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
+										Rtname, Rtgear, Rtlevel, Rtstar,
+										Reyname, Reygear, Reylevel, Reystar,
+										strp1team
+										);
+					
+	if(strp1team.length === 5){
+		//alert(strp1team.length);
+					strp1ready.push(1);
+					}
+
 	
 	
-	document.querySelector('#toons').innerHTML += strp1(memName, Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+	document.querySelector('#toons').innerHTML += strp1(memName, 
+	        						Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
 										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
 										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
 										Rtname, Rtgear, Rtlevel, Rtstar,
 										Reyname, Reygear, Reylevel, Reystar
 								
 										);
-										
 				strp4nihilus();
+				
+				//document.getElementById("header__title").innerHTML = "HSTR P1: " + strp1ready.length;
+				
 			});
+			document.getElementById("header__title").innerHTML = "HSTR P1: " + strp1ready.length;
 	}
 		
 			if(shard_loc === "name"){
@@ -828,6 +848,40 @@ reorder_guild_members(shard_loc, "desc");
 	}
 	$('#loading').hide();
 	}
+	
+	
+function strp1count(memName,
+										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										bb8zu1, bb8name, bb8glvl, bb8lvl, bb8slvl,
+										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
+										rtname, rtglvl, rtlvl, rtslvl,
+										reyname,reyglvl,reylvl,reyslvl,
+										strp1team
+								
+										){
+
+  	if(Jtrname){
+		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta){
+		strp1team.push(1);
+	}}
+	if(bb8name){
+		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
+			strp1team.push(1);
+		}}
+	if(r2name){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu1&& r2zu2){
+			strp1team.push(1);
+			}}
+		if(rtname){
+		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
+			strp1team.push(1);
+		}}
+	if(reyname){
+		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
+			strp1team.push(1);
+	}}
+	}	
+	
 	
 	function strp1(memName,
 										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
@@ -850,7 +904,8 @@ reorder_guild_members(shard_loc, "desc");
     
     html += '<div style="text-align:center"><b><font color="black">'+memName+'</font></b>';
 	if(Jtrname){
-		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta){
+		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta ){
+		
 	html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" ><font color="#00FF00">'+Jtrname+'</font></p>';
 	}else{
 html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" >'+Jtrname+'</p> ';}
@@ -859,6 +914,7 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 
 	if(bb8name){
 		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
+			
 		html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"><font color="#00FF00">'+bb8name+'</font></a>, ';
 	}else{
 	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'">'+bb8name+'</a>, ';
@@ -866,7 +922,8 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 	}else{html +='<a class="nszname"><font color="#C01111">BB-8</font></a>, ';}
 	 
 	if(r2name){
-		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu2){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu1 === true && r2zu2===true){
+			
 		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'"><font color="#00FF00">'+r2name+'</font></a>, ';
 	}else{
 	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'">'+r2name+'</a>, ';}
@@ -874,6 +931,7 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 	
 		if(rtname){
 		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
+			
 		html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'"><font color="#00FF00">'+rtname+'</font></a>, ';
 	}else{
 	html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'">'+rtname+'</a>, ';}
@@ -881,6 +939,7 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 
 	if(reyname){
 		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
+			
 		html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" ><font color="#00FF00">'+reyname+'</font></a>, ';
 	}else{
 	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" >'+reyname+'</a> ';
@@ -892,9 +951,7 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
   return html;
   
 
-
-}
-	
+	}
 	
 	
 	function character(power, gearLvl, member, toonslvl, level){
