@@ -850,7 +850,7 @@ reorder_guild_members(shard_loc, "desc");
     
     html += '<div style="text-align:center"><b><font color="black">'+memName+'</font></b>';
 	if(Jtrname){
-		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear === 12 && JtrZeta){
+		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta){
 	html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" ><font color="#00FF00">'+Jtrname+'</font></p>';
 	}else{
 html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" >'+Jtrname+'</p> ';}
@@ -858,7 +858,7 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 	}else{html +='<p class="nszname"><font color="#C01111">Rey(Jedi Training)</font></p> ';}
 
 	if(bb8name){
-		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl === 12 && bb8zu1){
+		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
 		html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"><font color="#00FF00">'+bb8name+'</font></a>, ';
 	}else{
 	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'">'+bb8name+'</a>, ';
@@ -866,21 +866,21 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 	}else{html +='<a class="nszname"><font color="#C01111">BB-8</font></a>, ';}
 	 
 	if(r2name){
-		if(r2lvl === 85 && r2slvl === 7 && r2glvl === 12 && r2zu2){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu2){
 		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'"><font color="#00FF00">'+r2name+'</font></a>, ';
 	}else{
 	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'">'+r2name+'</a>, ';}
 	}else{html +='<a class="nszname"><font color="#C01111">R2-D2</font></a>, ';}
 	
 		if(rtname){
-		if(rtlvl === 85 && rtslvl === 7 && rtglvl === 12){
+		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
 		html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'"><font color="#00FF00">'+rtname+'</font></a>, ';
 	}else{
 	html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'">'+rtname+'</a>, ';}
 	}else{html +='<a class="nszname"><font color="#C01111">Resistance Trooper</font></a>, ';}
 
 	if(reyname){
-		if(reylvl === 85 && reyslvl === 7 && reyglvl === 12){
+		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
 		html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" ><font color="#00FF00">'+reyname+'</font></a>, ';
 	}else{
 	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" >'+reyname+'</a> ';
