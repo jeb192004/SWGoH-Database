@@ -53,3 +53,15 @@ text-align:center;
 							margin-top:-20px;
 							
 							}
+							
+							
+.list-group-item-str {
+  
+	margin-bottom:10px;
+	font-size:18px;
+	display:flex;
+    flex-direction:column;
+background-color: #219AFF;
+border-radius:10px;
+}
+

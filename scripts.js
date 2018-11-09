@@ -177,7 +177,7 @@ db.collection("Events").orderBy("STARTDATE").get()
          if(name1[0] === "HOTH"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_140433.jpg?alt=media&token=75be9c63-7a13-486e-b7de-3dcdc86da701";}
          if(name1[0] === "FOREST MOON"){
-           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_140355.jpg?alt=media&token=2fc72624-11bd-4251-bb9a-4fcb1f68575b";}
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181108-064837_Heroes.jpg?alt=media&token=ea4969e4-5e0b-4386-9bda-ec9ab794c2a9";}
          if(name1[0] === "LEGEND OF THE OLD REPUBLIC"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181020-114924_Heroes.jpg?alt=media&token=764909ed-1056-4e43-b15c-7f5f5bc896cd";}
           if(name1[0] === "GHOSTS OF DATHOMIR"){
@@ -190,8 +190,8 @@ db.collection("Events").orderBy("STARTDATE").get()
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181105-105443_Heroes.jpg?alt=media&token=8c2c65d1-73a9-4953-8759-a41926753cdd";}
 					if(name1[0] === "Grand Master's Training"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181105_110159.jpg?alt=media&token=d4e97d8e-3a75-431f-a179-70701d55f463";}
-						
-								
+						if(name1[0] === "Credit Heist"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181108-064755_Heroes.jpg?alt=media&token=1d62f697-c9e7-48da-ab1b-30ecf34e5faa";}
 										
 					if(name1[1]){
       var name2 = name.split("]");
