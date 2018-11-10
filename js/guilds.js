@@ -921,13 +921,13 @@ if(MTname === undefined){
 	}if(DAKAname === undefined){
 	DAKAname = "";DAKAstar =""; DAKAlevel = "";DAKAgear = "";DAKAZeta = ""	;
 	}
-	strp1count(memName, 
+	strp4dncount(memName, 
 										AVZeta,  AVname, AVgear, AVlevel, AVstar,
 										MTname, MTstar, MTlevel, MTgear,MTZeta,
 									  R2Zeta1, R2Zeta2,TALIAname, TALIAgear, TALIAlevel, TALIAstar,
 										NSZname, NSZgear, NSZlevel, NSZstar,
 										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
-										strp1team,
+										strp1team,team,
 										AVZeta2
 										);
 					
@@ -935,7 +935,7 @@ if(MTname === undefined){
 					strp1ready.push(1);
 					}
 					
-	document.querySelector('#toons').innerHTML += strp1(memName, 
+	document.querySelector('#toons').innerHTML += strp4dn(memName, 
 										AVname,  AVstar, AVlevel, AVgear, AVZeta,
 										MTZeta, MTname, MTgear, MTlevel,MTstar,
 										R2Zeta1, R2Zeta2, TALIAname, TALIAgear, TALIAlevel, TALIAstar,
@@ -973,29 +973,54 @@ function strp1count(memName,
 										AVZeta2
 								
 										){
-
   	if(Jtrname){
 		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta){
 		strp1team.push(1);
-	}}
+	}}if(bb8name){
+		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
+			strp1team.push(1);
+		}}if(r2name){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu1&& r2zu2){
+			strp1team.push(1);
+			}}if(rtname){
+		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
+			strp1team.push(1);
+		}}if(reyname){
+		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
+			strp1team.push(1);
+	}}	
+	}	
+	function strp4dncount(memName,
+										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										bb8zu1, bb8name, bb8glvl, bb8lvl, bb8slvl,
+										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
+										rtname, rtglvl, rtlvl, rtslvl,
+										reyname,reyglvl,reylvl,reyslvl,
+										strp1team,
+										AVZeta2
+								
+										){
+		if(Jtrname){
+		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta && AVZeta2){
+		strp1team.push(1);
+		}}
 	if(bb8name){
 		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
 			strp1team.push(1);
-		}}
+}}
 	if(r2name){
-		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu1&& r2zu2){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11){
 			strp1team.push(1);
-			}}
+	}}
 		if(rtname){
 		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
 			strp1team.push(1);
-		}}
-	if(reyname){
+			}}
+		if(reyname){
 		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
 			strp1team.push(1);
-	}}
+	}}	
 	}	
-	
 	
 	function strp1(memName,
 										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
@@ -1033,12 +1058,8 @@ function strp1count(memName,
     html += '<div style="text-align:center"><b><font color="black">'+memName+'</font></b>';
 	if(Jtrname){
 		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta ){
-		if(Jtrname === "Rey(Jedi Training)"){
 	html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" ><font color="#00FF00">'+Jtrname+'</font></p>';
-	}if(Jtrname === "Asajj Ventress"){
-		if(AVZeta2){
-		html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" ><font color="#00FF00">'+Jtrname+'</font></p>';
-		}}
+	
 	}else{
 html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" >'+Jtrname+'</p> ';}
 	
@@ -1054,13 +1075,9 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 	}else{html +='<a class="nszname"><font color="#C01111">'+second+'</font></a>, ';}
 	 
 	if(r2name){
-		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11){
-			if(r2name === "R2D2"){
-				if(r2zu1 === true && r2zu2===true){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu1 === true && r2zu2===true){
 		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'"><font color="#00FF00">'+r2name+'</font></a>, ';
-		}}if(r2name === "Talia"){
-			html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'"><font color="#00FF00">'+r2name+'</font></a>, ';
-			}
+		
 	}else{
 	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'">'+r2name+'</a>, ';}
 	}else{html +='<a class="nszname"><font color="#C01111">'+third+'</font></a>, ';}
@@ -1089,7 +1106,83 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
 
 	}
 	
+	function strp4dn(memName,
+										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										bb8zu1, bb8name, bb8glvl, bb8lvl, bb8slvl,
+										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
+										rtname, rtglvl, rtlvl, rtslvl,
+										reyname,reyglvl,reylvl,reyslvl,
+										team,
+										AVZeta2
+				
+										){
+											if(team === "JTR"){
+												var leader = "Rey(Jedi Training)";
+												var second = "BB8";
+												var third = "R2D2";
+												var fourth = "Resistance Trooper";
+												var fith = "Rey(Scavenger)";
+												}if(team === "NS"){
+													var leader = "Asajj Ventress";
+													var second = "Mother Talzin";
+													var third = "Talia";
+													var fourth = "Nightsister Zombie"; 
+													var fith = "Old Daka";
+													}
+  var html = '';
+  html += '<li class="list-group-item-str" >';
+    html += '<div class="toonlist"style="margin-left:5px; margin-bottom:5px;">';
+    
+    html += '<div style="text-align:center"><b><font color="black">'+memName+'</font></b>';
+	if(Jtrname){
+		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta && AVZeta2){
+		
+		html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" ><font color="#00FF00">'+Jtrname+'</font></p>';
+		}
+	else{
+html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" >'+Jtrname+'</p> ';}
 	
+	}else{html +='<p class="nszname"><font color="#C01111">'+leader+'</font></p> ';}
+
+	if(bb8name){
+		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
+			
+		html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"><font color="#00FF00">'+bb8name+'</font></a>, ';
+	}else{
+	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'">'+bb8name+'</a>, ';
+	}
+	}else{html +='<a class="nszname"><font color="#C01111">'+second+'</font></a>, ';}
+	 
+	if(r2name){
+		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11){
+			
+		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'"><font color="#00FF00">'+r2name+'</font></a>, ';
+	
+	}else{
+	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'">'+r2name+'</a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">'+third+'</font></a>, ';}
+	
+		if(rtname){
+		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
+			
+		html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'"><font color="#00FF00">'+rtname+'</font></a>, ';
+	}else{
+	html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'">'+rtname+'</a>, ';}
+	}else{html +='<a class="nszname"><font color="#C01111">Resistance Trooper</font></a>, ';}
+
+	if(reyname){
+		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
+			
+		html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" ><font color="#00FF00">'+reyname+'</font></a>, ';
+	}else{
+	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" >'+reyname+'</a> ';
+	}
+	}else{html +='<a class="nszname"><font color="#C01111">Rey(Scavenger)</font></a>, ';}
+  /*html +=	'</div>';*/
+	html += '</div>';
+  	html += '</li>';
+  return html;
+	}
 	function character(power, gearLvl, member, toonslvl, level){
   //console.log( toons );
   var html = '';
