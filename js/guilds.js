@@ -834,8 +834,8 @@ if(Jtrname === undefined){
 			document.getElementById("header__title").innerHTML = "HSTR P1: " + strp1ready.length;
 	}
 	if(shard_loc === "strp4dn"){
-		var strp1team = [];
-		var strp1ready =[];
+		var strp4dnteam = [];
+		var strp4dnready =[];
 		var team = "NS";
 		
 		strP4DN.forEach(function (roster){		
@@ -845,7 +845,7 @@ if(Jtrname === undefined){
 			var memTALIA = roster.teams.strTALIA;
 			var memNSZ = roster.teams.strNSZ;
 			var memDAKA = roster.teams.strDAKA;
-			strp1team =[];
+			strp4dnteam =[];
 			
 			var MTZeta = false,  MTname, MTgear, MTlevel, MTstar;
 			memMT.forEach(function (roster){		
@@ -927,12 +927,12 @@ if(MTname === undefined){
 									  R2Zeta1, R2Zeta2,TALIAname, TALIAgear, TALIAlevel, TALIAstar,
 										NSZname, NSZgear, NSZlevel, NSZstar,
 										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
-										strp1team,team,
-										AVZeta2
+									 AVZeta2,strp4dnteam
+										
 										);
-					
-	if(strp1team.length === 5){
-					strp1ready.push(1);
+				
+	if(strp4dnteam.length === 5){
+					strp4dnready.push(1);
 					}
 					
 	document.querySelector('#toons').innerHTML += strp4dn(memName, 
@@ -947,7 +947,7 @@ if(MTname === undefined){
 				strp4nihilus();
 			});
 			
-			document.getElementById("header__title").innerHTML = "HSTR P4 DN: " + strp1ready.length;
+			document.getElementById("header__title").innerHTML = "HSTR P4 DN: " + strp4dnready.length;
 	}
 	
 	
@@ -969,10 +969,16 @@ function strp1count(memName,
 										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
 										rtname, rtglvl, rtlvl, rtslvl,
 										reyname,reyglvl,reylvl,reyslvl,
-										strp1team,
-										AVZeta2
+								    strp1team
 								
 										){
+											if(memName ==="SteveMurch"){
+					console.log(Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										bb8zu1, bb8name, bb8glvl, bb8lvl, bb8slvl,
+										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
+										rtname, rtglvl, rtlvl, rtslvl,
+										reyname,reyglvl,reylvl,reyslvl);
+					}
   	if(Jtrname){
 		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta){
 		strp1team.push(1);
@@ -996,30 +1002,30 @@ function strp1count(memName,
 										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
 										rtname, rtglvl, rtlvl, rtslvl,
 										reyname,reyglvl,reylvl,reyslvl,
-										strp1team,
-										AVZeta2
+							     	AVZeta2,	strp4dnteam
 								
 										){
-		if(Jtrname){
+											
+			if(Jtrname){
 		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta && AVZeta2){
-		strp1team.push(1);
+		strp4dnteam.push(1);
 		}}
 	if(bb8name){
 		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
-			strp1team.push(1);
-}}
+			strp4dnteam.push(1);
+		}}
 	if(r2name){
 		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11){
-			strp1team.push(1);
-	}}
+			strp4dnteam.push(1);
+		}}	
 		if(rtname){
 		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
-			strp1team.push(1);
+			strp4dnteam.push(1);
 			}}
-		if(reyname){
+	if(reyname){
 		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
-			strp1team.push(1);
-	}}	
+			strp4dnteam.push(1);
+			}	}
 	}	
 	
 	function strp1(memName,
