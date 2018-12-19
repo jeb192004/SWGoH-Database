@@ -160,7 +160,8 @@ db.collection("Events").orderBy("STARTDATE").get()
       
        if(eventDate < today1){}else{
 			  var name = nameKey;
-     		  var name1 = name.split("\\n");
+		
+     		  name1 = name.split("\\n");
 			 
 			      if(name1[0] === "THE TEMPLATE IN THE TEMPEST"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20180927_130758.jpg?alt=media&token=1675be3e-fabc-4a61-b9c7-4c9fc71c77dd";}
@@ -192,12 +193,24 @@ db.collection("Events").orderBy("STARTDATE").get()
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2F20181105_110159.jpg?alt=media&token=d4e97d8e-3a75-431f-a179-70701d55f463";}
 						if(name1[0] === "Credit Heist"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181108-064755_Heroes.jpg?alt=media&token=1d62f697-c9e7-48da-ab1b-30ecf34e5faa";}
-										
+											if(name1[0] === "SECRETS AND SHADOWS"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181219-114410_Heroes.jpg?alt=media&token=141a79e1-fe92-4864-980f-3676e9d9fba9";}
+											if(name1[0] === "CONTACT PROTOCOL"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181219-114340_Heroes.jpg?alt=media&token=f1649bf5-b1de-4eed-a87f-5acb60d69db9";}
+							if(name1[0] === "TERRITORY_TOURNAMENT_EVENT_NAME"){
+								name1[0] = "GRAND ARENA";
+								descKey = id.replace(/_|-|\./g, ' ');
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181219-123807_Heroes.jpg?alt=media&token=9bb85f42-cf8e-4dfb-9a88-18eb59872eac";}
+							
 					if(name1[1]){
-      var name2 = name.split("]");
-     var name3 = name2[2].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');
-       var name4 = name3;
+      var name2 = name1[1].replace(/ *\[[^\]]*]/, '');
+    	  var name2 = name2.replace(/ *\[[^\]]*]/, '');
+			var name2 = name2.replace(/ *\[[^\]]*]/, '');
+			var name2 = name2.replace(/ *\[[^\]]*]/, '');
+       var name4 = name2;
        }else{var name4 = " ";}
+
+
       var info = descKey;//.replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ');
          if(info.includes("]")){
             info = info.split("]");
@@ -206,7 +219,6 @@ db.collection("Events").orderBy("STARTDATE").get()
       var end = endDate;
       
      document.querySelector('#toons').innerHTML += contactHtmlFromObject(name1[0], info, start, end, name4, backImg);
-    
 			  }
 			}
 			

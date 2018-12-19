@@ -52,7 +52,8 @@ load_guild();
 	db.collection("Guild").doc("Relentless").get()
     .then(function(doc) {
         //querySnapshot.forEach(function(doc) {
-		//	allycodes = doc.data().ALLYCODES;
+			allycodes = doc.data().ALLYCODES;
+			/*
 			var desc = doc.data().DESCRIPTION;
 			var gp = doc.data().GP;
 			var guild = doc.data().GUILD;
@@ -93,8 +94,7 @@ load_guild();
     .innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name);
 
 			});
-  
-//	});
+  */
 			      
     })
     .catch(function(error) {
@@ -551,9 +551,10 @@ function menu(){
 	$('.menu_list').hide();
 	});
   // Toggle button
+/*
   document.querySelector('.toggle-button').addEventListener('click', function() {
     slideout.toggle();
-  });
+  });*/
 	
   
   function myFunction() {
@@ -1232,54 +1233,7 @@ html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'"
   return html;
   
 }
-	/*
-	function filterList(shardLoc){
-		toonsArray = [];
-		legendArray =[];
-		db.collection("Guilds").doc("Relentless").collection("Members")
-  .where(shardLoc, "==", true)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) {
-           toon1 = `${doc.data().Name}`;
-				if(doc.data().GK){
-			   toonsArray.push("GK");
-		   }if(doc.data().RaidHan){
-			   toonsArray.push("Han Solo(Raid Han)");
-		   }if(doc.data().GMY){
-			   legendArray.push("Grand Master Yoda");
-		   }if(doc.data().EP){
-			   legendArray.push("Emperor Palpatine");
-		   }if(doc.data().R2D2){
-			   legendArray.push("R2D2");
-		   }if(doc.data().CLS){
-			   legendArray.push("Commander Luke Skywalker");
-		   }if(doc.data().THRAWN){
-			   legendArray.push("Grand Admiral Thrawn");
-		   }if(doc.data().BB8){
-			   
-		   }if(doc.data().JTR){
-			   legendArray.push("Rey(Jedi Training)");
-		   }if(doc.data().CHEWIE){
-			   legendArray.push("Chewbacca(OT)");
-		   }
-			document.querySelector('#toons')
-    .innerHTML += contactHtmlFromObject2(toon1, toonsArray, lvl, gp, legendArray);
 	
-	toonsArray = [];
-	legendArray = [];
-	p1jtr = "";
-
-        });
-		$('#loading').hide();
-		
-    })
-    .catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-		
-	}
-	*/
 	
 function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	$('#my_popup').popup({
