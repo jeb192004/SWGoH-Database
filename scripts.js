@@ -78,6 +78,8 @@ function contactHtmlFromObject(name, info, start, end, name2, backImg){
 	function menu_item(item){
 		if(item.innerHTML === "Comapare Abilities"){
 			window.location = "compareToon.html";
+		}if(item.innerHTML === "Characters"){
+			window.location = "characters.html";
 		}
 		if(item.innerHTML === "Guild"){
 			window.location = 'guilds.html?guildName='+"Relentless";
@@ -240,12 +242,12 @@ $('#loading').hide();
 }
 	
 	// Register service worker to control making site work offline
-
+/*
 if('serviceWorker' in navigator) {
   navigator.serviceWorker
            .register('/sw.js')
            .then(function() { console.log('Service Worker Registered'); });
 }
-
+*/
 
 
