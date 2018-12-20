@@ -44,9 +44,10 @@ db.collection("Characters").orderBy("NAME").get()
             var alignment = doc.data().ALIGNMENT;
             var catList = doc.data().CATLIST;
             var combatType = doc.data().COMBATTYPE;
-				
+				if(desc === desc.toUpperCase()){}else{
      document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, combatType, id);
-			 
+			 }
+			
 			 });
 			$('#loading').hide();
 			});
@@ -54,14 +55,20 @@ db.collection("Characters").orderBy("NAME").get()
 	function contactHtmlFromObject(name, desc, alignment, catList, combatType, id){
   //console.log( toons );
   var html = '';
-  html += '<li class="list-group-item">';
+if(alignment === "LIGHT"){
+    html += '<li class="list-group-item" style="background-color: blue">';
+   }if(alignment === "DARK"){
+	  html += '<li class="list-group-item" style="background-color: red">';
+	}/*else{
+	  html += '<li class="list-group-item">';
+	}*/
     html += '<div class="toonlist" >';
       
       /*html += '<p>'+'<div class="img_container">'
        + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
          + '</div>'+'</p>';*/
-       html += '<div> <p class="lead">'+name+'<br>'+desc+'</p>';
-  html += '<p>'+alignment+'</p>';
+       html += '<div> <p class="lead">'+name+'</p>';
+  html += '<p>'+desc+'</p>';
               //  html += '<p>'+catList+'</p>';
 							html += '</div>';
     html += '</div>';
