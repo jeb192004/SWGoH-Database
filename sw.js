@@ -7,6 +7,7 @@ self.addEventListener('install', function(e) {
 	 	'/index.html',
 		'/scripts.js',
  		'/css/styles.css',
+		'/characters.html'
 		
      ]);
    })
