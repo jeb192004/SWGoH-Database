@@ -212,13 +212,15 @@ db.collection("Events").orderBy("STARTDATE").get()
 
 
       var info = descKey;//.replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ');
-         if(info.includes("]")){
-            info = info.split("]");
-         info = info[1].replace(/[^0-9a-zA-Z\xC0-\xFF \-]/g, ' ').replace('-', '');}
+      var info1 = info.replace(/ *\[[^\]]*]/, '');
+      var info2 =    info1.replace(/ *\[[^\]]*]/, '');
+		  var info3 = info2.replace(/ *\[[^\]]*]/, '');
+		  var info4 = info3.replace(/ *\[[^\]]*]/, '');
+		  var info5 = info4.replace(/ *\[[^\]]*]/, '');
       var start = startDate;
       var end = endDate;
       
-     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name1[0], info, start, end, name4, backImg);
+     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name1[0], info5, start, end, name4, backImg);
 			  }
 			}
 			
