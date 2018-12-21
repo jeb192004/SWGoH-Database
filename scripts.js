@@ -203,7 +203,9 @@ db.collection("Events").orderBy("STARTDATE").get()
 								name1[0] = "GRAND ARENA";
 								descKey = id.replace(/_|-|\./g, ' ');
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181219-123807_Heroes.jpg?alt=media&token=9bb85f42-cf8e-4dfb-9a88-18eb59872eac";}
-							
+							if(name1[0] === "ENDURANCE"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181221-041008_Heroes.jpg?alt=media&token=de170f60-964e-48bc-9a09-cff54537d57c";}
+
 					if(name1[1]){
       var name2 = name1[1].replace(/ *\[[^\]]*]/, '');
     	  var name2 = name2.replace(/ *\[[^\]]*]/, '');
