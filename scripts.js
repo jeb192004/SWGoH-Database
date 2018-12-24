@@ -205,8 +205,17 @@ db.collection("Events").orderBy("STARTDATE").get()
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181219-123807_Heroes.jpg?alt=media&token=9bb85f42-cf8e-4dfb-9a88-18eb59872eac";}
 							if(name1[0] === "ENDURANCE"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181221-041008_Heroes.jpg?alt=media&token=de170f60-964e-48bc-9a09-cff54537d57c";}
+							if(name1[0] === "MILITARY MIGHT"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181222-070720_Heroes.jpg?alt=media&token=29691b59-c42f-4d66-adfc-d2159800c54b";}
+				if(name1[0] === "GRAND MASTERS TRAINING"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181224-063640_Heroes.jpg?alt=media&token=7d34c584-127c-43d1-bc86-238f35e8a439";}
+						if(name1[0] === "GALACTIC BOUNTIES I"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181224-063719_Heroes.jpg?alt=media&token=7c7d6824-c999-4c74-a8ff-eda11cc33ab6";}
+if(name1[0] === "BESPIN"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181224-071441_Heroes.jpg?alt=media&token=45b1edb3-9abb-45e4-bc40-0885ef7af7a7";}
 
-					if(name1[1]){
+
+			if(name1[1]){
       var name2 = name1[1].replace(/ *\[[^\]]*]/, '');
     	  var name2 = name2.replace(/ *\[[^\]]*]/, '');
 			var name2 = name2.replace(/ *\[[^\]]*]/, '');

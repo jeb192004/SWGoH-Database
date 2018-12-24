@@ -13,6 +13,8 @@ var firebase = firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
 var db;
 
+var toonsArray = [ ];
+
 firebase.firestore().enablePersistence()
   .then(function() {
       // Initialize Cloud Firestore through firebase
@@ -44,15 +46,26 @@ db.collection("Characters").orderBy("NAME").get()
             var alignment = doc.data().ALIGNMENT;
             var catList = doc.data().CATLIST;
             var combatType = doc.data().COMBATTYPE;
-				if(desc === desc.toUpperCase()){}else{
-     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, combatType, id);
+					 var skillList = doc.data().SKILLLIST;
+					toonsArray.push({ id:id, name:name, desc:desc, alignment: alignment,	 catList: catList, 
+					combatType: combatType, skillList: skillList });
+																					
+				if(desc === desc.toUpperCase()||catList == ""){}else{
+     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray);
+
+$(".list-group li").on("click", function() {
+	var toon = $(this.getElementsByClassName("id")).html();
+	window.location = 'toon_details.html?id='+toon;
+	
+	});
 			 }
 			
 			 });
+			localStorage.setItem("toonsArray",JSON.stringify(toonsArray));
 			$('#loading').hide();
 			});
 			}
-	function contactHtmlFromObject(name, desc, alignment, catList, combatType, id){
+	function contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray){
   //console.log( toons );
   var html = '';
 if(alignment === "LIGHT"){
@@ -69,7 +82,8 @@ if(alignment === "LIGHT"){
          + '</div>'+'</p>';*/
        html += '<div> <p class="lead">'+name+'</p>';
   html += '<p>'+desc+'</p>';
-              //  html += '<p>'+catList+'</p>';
+              html += '<p style="display:none">'+skillList+'</p>';
+						html += '<p class="id" style="display:none">'+id+'</p>';
 							html += '</div>';
     html += '</div>';
   html += '</li>';
