@@ -86,7 +86,7 @@ db.collection("abilitylist").doc(abil).get()
             var name = doc.data().NAME;
             var desc =doc.data().DESC;
             var cooldown =JSON.stringify(doc.data().COOLDOWN);
-            var icon =JSON.stringify(doc.data().ICON);
+            var icon =doc.data().ICON;
     
 					abilArray.push({ id:id, name:name, desc:desc, cooldown: cooldown,	 icon: icon });
 					
@@ -102,15 +102,15 @@ db.collection("abilitylist").doc(abil).get()
 }
 
 	function contactHtmlFromObject(name, desc, cooldown,icon, id){
-  //console.log( toons );
+  var icon1 = "https://swgoh.gg/static/img/assets/"+icon+".png";
   var html = '';
 
 	  html += '<li class="list-group-item">';
     html += '<div class="toonlist" >';
       
-      /*html += '<p>'+'<div class="img_container">'
-       + '<img id= "img" src="'+img1+'"alt="'+icon+'""/>'
-         + '</div>'+'</p>';*/
+      html += '<p>'+'<div class="img_container">'
+      + '<img id= "img" src='+icon1 + ' alt="'+name+'"/>'
+         + '</div>'+'</p>';
        html += '<div> <p class="lead">'+name+'</p>';
   html += '<p>'+desc+'</p>';
               html += '<p style="display:none">'+cooldown+'</p>';
