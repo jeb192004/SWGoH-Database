@@ -18,8 +18,30 @@ var urlParam = function(name, w){
 });
 
 // Initialize Cloud Firestore through Firebase
+
 var db = firebase.firestore();
 
+/*
+db.collection("abilitylist").get()
+     .then(function(querySnapshot){
+          querySnapshot.forEach(function (doc){
+	
+            var id = JSON.stringify(doc.data().ID);
+            var name = JSON.stringify(doc.data().NAME);
+            var desc =JSON.stringify(doc.data().DESC);
+            var cooldown =JSON.stringify(doc.data().COOLDOWN);
+            var icon =JSON.stringify(doc.data().ICON);
+    
+					abilArray.push({ id:id, name:name, desc:desc, cooldown: cooldown,	 icon: icon });
+					
+															
+     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, cooldown, icon, id);
+
+			
+			 });
+			//localStorage.setItem("toonsArray",JSON.stringify(toonsArray));
+			$('#loading').hide();
+			});*/
 // Disable deprecated features
 
 	
@@ -38,34 +60,66 @@ namesArray.forEach(function(element) {
 		document.getElementById("name").textContent = name;
 		document.getElementById('desc').textContent = desc;
 		abilArray = JSON.parse(element.skillList);
-  		abilArray.forEach(function (abil){
-		var abil = abil.skillId;
-		//alert(abil);
-		db.collection("abilitylist").doc(abil).get().then(function(doc) {
-            alert(doc.data());
-
-            var id = doc.data().ID;
-            var name = doc.data().NAME;
-            var desc = doc.data().DESC;
-            var icon = doc.data().ICON;
-            var cooldown = doc.data().COOLDOWN;
-          //  alert(name);
-					
-     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, icon, cooldown, id);
-
-			 }).catch(function(error) { 
-			alert("Error getting document: "+ error); 
-			});
-			$('#loading').hide();
 		
+  		abilArray.forEach(function (abil){
+		var ability = "";
+	  ability = abil.skillId.toLowerCase();
+		//alert(abil);
+		var abil = ability.split('_');
+		var abil0 = abil[0];
+		var abil1 = abil[1];
+		if(abil0 = "basicskill"){
+		abil0= "basicability_";
+		var abil01 = abil0+abil1;
+		get_abil(abil01);
+		}if(abil0 = "specialskill"){
+		abil0= "specialability_";
+		var abil01 = abil0+abil1;
+		get_abil(abil01);
+		}if(abil0 = "uniqueskill"){
+		abil0= "uniqueability_";
+		var abil01 = abil0+abil1;
+		get_abil(abil01);
+		}if(abil0 = "leaderskill"){
+		abil0= "leaderability_";
+		var abil01 = abil0+abil1;
+		get_abil(abil01);
+		}
+
+
 		});
-}
+}else{};
 });
 }
 
 
+function get_abil(abil){
 
-	function contactHtmlFromObject(name, desc, icon, cooldown, id){
+db.collection("abilitylist").doc(abil).get()
+     .then(function(doc){
+	
+        //  querySnapshot.forEach(function (doc){
+	
+            var id = JSON.stringify(doc.data().ID);
+            var name = JSON.stringify(doc.data().NAME);
+            var desc =JSON.stringify(doc.data().DESC);
+            var cooldown =JSON.stringify(doc.data().COOLDOWN);
+            var icon =JSON.stringify(doc.data().ICON);
+    
+					abilArray.push({ id:id, name:name, desc:desc, cooldown: cooldown,	 icon: icon });
+					
+															
+     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, cooldown, icon, id);
+
+			
+			// });
+			//localStorage.setItem("toonsArray",JSON.stringify(toonsArray));
+			$('#loading').hide();
+			});
+	
+}
+
+	function contactHtmlFromObject(name, desc, cooldown,icon, id){
   //console.log( toons );
   var html = '';
 

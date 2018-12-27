@@ -213,6 +213,11 @@ db.collection("Events").orderBy("STARTDATE").get()
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181224-063719_Heroes.jpg?alt=media&token=7c7d6824-c999-4c74-a8ff-eda11cc33ab6";}
 if(name1[0] === "BESPIN"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181224-071441_Heroes.jpg?alt=media&token=45b1edb3-9abb-45e4-bc40-0885ef7af7a7";}
+if(name1[0] === "ARTIST OF WAR"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181226-093251_Heroes.jpg?alt=media&token=88bf370c-418f-4e03-8673-ba17dac57bd2";}
+if(name1[0] === "HOME ONE"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181226-093634_Heroes.jpg?alt=media&token=678a3e4a-bc01-4be4-a06b-30482b8c2f1d";}
+
 
 
 			if(name1[1]){
