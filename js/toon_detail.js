@@ -63,26 +63,28 @@ namesArray.forEach(function(element) {
 		
   		abilArray.forEach(function (abil){
 		var ability = "";
+		
 	  ability = abil.skillId.toLowerCase();
 		//alert(abil);
 		var abil = ability.split('_');
 		var abil0 = abil[0];
 		var abil1 = abil[1];
-		if(abil0 = "basicskill"){
+		if(abil0 === "basicskill"){
 		abil0= "basicability_";
 		var abil01 = abil0+abil1;
 		get_abil(abil01);
-		}if(abil0 = "specialskill"){
+		}if(abil0 === "specialskill"){
 		abil0= "specialability_";
 		var abil01 = abil0+abil1;
 		get_abil(abil01);
-		}if(abil0 = "uniqueskill"){
+		}if(abil0 === "uniqueskill"){
 		abil0= "uniqueability_";
 		var abil01 = abil0+abil1;
 		get_abil(abil01);
-		}if(abil0 = "leaderskill"){
+		}if(abil0 === "leaderskill"){
 		abil0= "leaderability_";
-		var abil01 = abil0+abil1;
+		var abil01 = abil0+abil1+"_BASE";
+		
 		get_abil(abil01);
 		}
 

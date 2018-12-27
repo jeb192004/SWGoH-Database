@@ -14,7 +14,7 @@ var firebase = firebase.initializeApp(config);
 var db;
 
 var toonsArray = [ ];
-
+if (localStorage.getItem("toonsArray") === null) {}else{
 firebase.firestore().enablePersistence()
   .then(function() {
       // Initialize Cloud Firestore through firebase
@@ -32,7 +32,7 @@ firebase.firestore().enablePersistence()
           // ...
       }
   });
-	
+	}
 	function get_toons(){
 	
 
