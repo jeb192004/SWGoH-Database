@@ -14,14 +14,19 @@ var firebase = firebase.initializeApp(config);
 var db;
 
 var toonsArray = [ ];
-if (localStorage.getItem("toonsArray") === null) {}else{
+
+var namesArray = JSON.parse(localStorage.getItem("toonsArray"));
+    
+
+	if(namesArray!=null && namesArray.length>0){
+	get_local_list(namesArray);
+		}else{
 firebase.firestore().enablePersistence()
   .then(function() {
       // Initialize Cloud Firestore through firebase
       db = firebase.firestore();
 	  get_toons();
-  })
-  .catch(function(err) {
+  }).catch(function(err) {
       if (err.code == 'failed-precondition') {
           // Multiple tabs open, persistence can only be enabled
           // in one tab at a a time.
@@ -33,6 +38,9 @@ firebase.firestore().enablePersistence()
       }
   });
 	}
+	
+	
+	
 	function get_toons(){
 	
 
@@ -91,6 +99,30 @@ if(alignment === "LIGHT"){
   
 }
 	
+
+function get_local_list(namesArray){
+
+	namesArray.forEach(function(element) {
+					 var id = element.id;
+            var name = element.name;
+            var desc = element.desc;
+            var alignment = element.alignment;
+            var catList = element.catList;
+            var combatType = element.combatType;
+					 var skillList = element.skillList;
+					
+					document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray);
+
+$(".list-group li").on("click", function() {
+	var toon = $(this.getElementsByClassName("id")).html();
+	window.location = 'toon_details.html?id='+toon;
+	
+	});
+	
+	
+		});
+	$('#loading').hide();
+}
 	
 	function menu_item(item){
 		if(item.innerHTML === "Comapare Abilities"){

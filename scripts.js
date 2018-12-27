@@ -217,6 +217,12 @@ if(name1[0] === "ARTIST OF WAR"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181226-093251_Heroes.jpg?alt=media&token=88bf370c-418f-4e03-8673-ba17dac57bd2";}
 if(name1[0] === "HOME ONE"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181226-093634_Heroes.jpg?alt=media&token=678a3e4a-bc01-4be4-a06b-30482b8c2f1d";}
+if(name1[0] === "EMPEROR'S DEMISE"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181227-092723_Heroes.jpg?alt=media&token=2899028a-2667-4f85-b1ed-498a9963fe60";}
+if(name1[0] === "ENDOR"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181227-095158_Heroes.jpg?alt=media&token=12c2017e-a052-4e96-90b5-a2774ea4397f";}
+
+
 
 
 

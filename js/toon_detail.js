@@ -21,27 +21,7 @@ var urlParam = function(name, w){
 
 var db = firebase.firestore();
 
-/*
-db.collection("abilitylist").get()
-     .then(function(querySnapshot){
-          querySnapshot.forEach(function (doc){
-	
-            var id = JSON.stringify(doc.data().ID);
-            var name = JSON.stringify(doc.data().NAME);
-            var desc =JSON.stringify(doc.data().DESC);
-            var cooldown =JSON.stringify(doc.data().COOLDOWN);
-            var icon =JSON.stringify(doc.data().ICON);
-    
-					abilArray.push({ id:id, name:name, desc:desc, cooldown: cooldown,	 icon: icon });
-					
-															
-     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, cooldown, icon, id);
 
-			
-			 });
-			//localStorage.setItem("toonsArray",JSON.stringify(toonsArray));
-			$('#loading').hide();
-			});*/
 // Disable deprecated features
 
 	
@@ -103,8 +83,8 @@ db.collection("abilitylist").doc(abil).get()
         //  querySnapshot.forEach(function (doc){
 	
             var id = JSON.stringify(doc.data().ID);
-            var name = JSON.stringify(doc.data().NAME);
-            var desc =JSON.stringify(doc.data().DESC);
+            var name = doc.data().NAME;
+            var desc =doc.data().DESC;
             var cooldown =JSON.stringify(doc.data().COOLDOWN);
             var icon =JSON.stringify(doc.data().ICON);
     
