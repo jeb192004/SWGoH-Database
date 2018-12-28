@@ -55,11 +55,14 @@ db.collection("Characters").orderBy("NAME").get()
             var catList = doc.data().CATLIST;
             var combatType = doc.data().COMBATTYPE;
 					 var skillList = doc.data().SKILLLIST;
+					 var thumbnail = doc.data().THUMBNAIL;
+					 var rarity = doc.data().RARITY;
+					 var obtainable = doc.data().OBTAINABLE;
 					toonsArray.push({ id:id, name:name, desc:desc, alignment: alignment,	 catList: catList, 
-					combatType: combatType, skillList: skillList });
+					combatType: combatType, skillList: skillList, thumbnail: thumbnail, rarity: rarity, obtainable: obtainable });
 																					
 				if(desc === desc.toUpperCase()||catList == ""){}else{
-     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray);
+     document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray, thumbnail, rarity, obtainable);
 
 $(".list-group li").on("click", function() {
 	var toon = $(this.getElementsByClassName("id")).html();
@@ -73,7 +76,8 @@ $(".list-group li").on("click", function() {
 			$('#loading').hide();
 			});
 			}
-	function contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray){
+	function contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray, thumbnail, rarity, obtainable){
+		var icon1 = "https://swgoh.gg/static/img/assets/"+thumbnail+".png";
   //console.log( toons );
   var html = '';
 if(alignment === "LIGHT"){
@@ -85,9 +89,9 @@ if(alignment === "LIGHT"){
 	}*/
     html += '<div class="toonlist" >';
       
-      /*html += '<p>'+'<div class="img_container">'
-       + '<img id= "img" src="'+img1+'"alt="'+toons+'""/>'
-         + '</div>'+'</p>';*/
+      html += '<p>'+'<div class="img_container">'
+       + '<img id= "img" src="'+icon1+'"alt="'+name+'""/>'
+         + '</div>'+'</p>';
        html += '<div> <p class="lead">'+name+'</p>';
   html += '<p>'+desc+'</p>';
               html += '<p style="display:none">'+skillList+'</p>';
@@ -110,8 +114,10 @@ function get_local_list(namesArray){
             var catList = element.catList;
             var combatType = element.combatType;
 					 var skillList = element.skillList;
+					var thumbnail = element.thumbnail;
+					 
 					
-					document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray);
+					document.querySelector('#toons').innerHTML += contactHtmlFromObject(name, desc, alignment, catList, skillList, id, toonsArray, thumbnail, null, null);
 
 $(".list-group li").on("click", function() {
 	var toon = $(this.getElementsByClassName("id")).html();

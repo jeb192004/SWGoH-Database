@@ -87,6 +87,7 @@ db.collection("abilitylist").doc(abil).get()
             var desc =doc.data().DESC;
             var cooldown =JSON.stringify(doc.data().COOLDOWN);
             var icon =doc.data().ICON;
+				   
     
 					abilArray.push({ id:id, name:name, desc:desc, cooldown: cooldown,	 icon: icon });
 					

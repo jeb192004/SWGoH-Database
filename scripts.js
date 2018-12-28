@@ -221,6 +221,15 @@ if(name1[0] === "EMPEROR'S DEMISE"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181227-092723_Heroes.jpg?alt=media&token=2899028a-2667-4f85-b1ed-498a9963fe60";}
 if(name1[0] === "ENDOR"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181227-095158_Heroes.jpg?alt=media&token=12c2017e-a052-4e96-90b5-a2774ea4397f";}
+if(name1[0] === "GEONOSIAN FLEET"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181228-073343_Heroes.jpg?alt=media&token=7cb3f159-b4d6-42b5-a3be-6f2a04ac276f";}
+if(name1[0] === "REBEL ROUNDUP"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181228-073854_Heroes.jpg?alt=media&token=49e382ec-81ca-4e03-8341-47704cc47eb7";}
+if(name1[0] === "DARING DROID"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181228-074100_Heroes.jpg?alt=media&token=c9870dac-3897-4bd3-b346-d7db4ec17add";}
+if(name1[0] === "JAKKU"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181228-074312_Heroes.jpg?alt=media&token=b6887c4a-ad2e-4254-adcb-617d3da03d50";}
+
 
 
 
