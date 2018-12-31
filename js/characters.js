@@ -130,6 +130,23 @@ $(".list-group li").on("click", function() {
 	$('#loading').hide();
 }
 	
+function filter(element) {
+        var value = $(element).val();
+ value = value.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+        return letter.toUpperCase();
+ });
+        $("#toons > li").each(function() {
+            if ($(this).text().search(value) > -1) {
+                $(this).show();
+            }
+            else {
+                $(this).hide();
+            }
+        });
+    }
+
+
+
 	function menu_item(item){
 		if(item.innerHTML === "Comapare Abilities"){
 			window.location = "compareToon.html";
