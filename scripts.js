@@ -229,6 +229,8 @@ if(name1[0] === "DARING DROID"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181228-074100_Heroes.jpg?alt=media&token=c9870dac-3897-4bd3-b346-d7db4ec17add";}
 if(name1[0] === "JAKKU"){
            var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181228-074312_Heroes.jpg?alt=media&token=b6887c4a-ad2e-4254-adcb-617d3da03d50";}
+if(name1[0] === "DEFENSE OF DATHOMIR"){
+           var backImg = "https://firebasestorage.googleapis.com/v0/b/swgoh-campanion.appspot.com/o/Events%2FScreenshot_20181231-071202_Heroes.jpg?alt=media&token=1bb2c80a-eb59-4882-ae58-e59d08f23939";}
 
 
 
