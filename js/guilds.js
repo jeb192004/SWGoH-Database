@@ -1,11 +1,12 @@
-var urlParam = function(name, w){
+/*var urlParam = function(name, w){
     w = w || window;
     var rx = new RegExp('[\&|\?]'+name+'=([^\&\#]+)'),
         val = w.location.search.match(rx);
     return !val ? '':val[1];
 };
 	//var guildName = urlParam('guildName').replace(/_/g, ' ');
-	var guildName = "Relentless";
+	var guildName = "Relentless";*/
+
 
 	$(document).ready(function() {
 
@@ -18,13 +19,8 @@ var toonsArray = [], jtr, gk, solo, otchew,
 ep, r2d2, cls, thrawn, bb8, gmy, revan, strP1, strP4DN;
 var strp1jtr = [];
 
-var init = function () {
-    //get scroll position in session storage
-   	$(window).scrollTop(sessionStorage.scrollPos);
-	//console.log(sessionStorage.scrollPos);
-};
-window.onload = init;
 
+/*
 var config = {
     apiKey: "AIzaSyCG184jd5tjKzBDRRXYVmIm53o_n33g04E",
     authDomain: "swgoh-campanion.firebaseapp.com",
@@ -35,138 +31,692 @@ var config = {
   };
 var firebase = firebase.initializeApp(config);
 // Initialize Cloud Firestore through Firebase
+var  db = firebase.firestore();
+var guildref = db.collection("Guilds").doc(guildName);
+*/
 
+				var guildArray = [];
+				var guildRosterArray = [];
+				//localStorage.clear();
 
+//hstr jtr
+				var jtrHstrArray = [], bb8HstrArray = [], r2HstrArray = [], rtHstrArray = [], reyHstrArray = [];
+				var hstrJtr = [];
+//legendary characters
+				var legendaryJtr = [], legendaryBb8 = [], legendaryR2 = [];
 
-    var  db = firebase.firestore();
-	var guildref = db.collection("Guilds").doc(guildName);
-	var roster, bb8;
-	//  loadList();
+var guildArrayLs = JSON.parse(localStorage.getItem("guildArray"));
+var guildRosterArrayLs = JSON.parse(localStorage.getItem("guildRosterArray"));
+var hstrJtrLs = JSON.parse(localStorage.getItem("hstrJtr"));
+var legendaryJtrLs = JSON.parse(localStorage.getItem("legendaryJtr"));
+var legendaryBb8Ls = JSON.parse(localStorage.getItem("legendaryBb8"));
+var legendaryR2Ls = JSON.parse(localStorage.getItem("legendaryR2"));
 
-load_guild();
+				
+if(guildArrayLs!=null && guildArrayLs.length>0 && guildRosterArrayLs!=null && guildRosterArrayLs.length>0){
+				build_list(guildArrayLs, guildRosterArrayLs);
+				
+}else{
 
-	
-	function load_guild(){
-	
-		var allycodes = [];
-	db.collection("Guild").doc("Relentless").get()
-    .then(function(doc) {
-        //querySnapshot.forEach(function(doc) {
-			allycodes = doc.data().ALLYCODES;
-			/*
-			var desc = doc.data().DESCRIPTION;
-			var gp = doc.data().GP;
-			var guild = doc.data().GUILD;
-			var members = doc.data().MEMBERS;
-			var message = doc.data(). MESSAGE;
-			var raid = doc.data().RAID;
-			roster = JSON.parse(doc.data().ROSTER);
-			var updated = doc.data().UPDATED;
-			bb8 = doc.data().BB8;
-			jtr = doc.data().JTR;
-		  gk = doc.data().GK; 
-		  solo = doc.data().SOLO;
-		 otchew = doc.data().CHEWIE;
-      ep = doc.data().EP;
-      r2d2 = doc.data().R2D2;
-      cls = doc.data().CLS;
-      thrawn = doc.data().THRAWN;
-      gmy = doc.data().GMY;
-		  revan = doc.data().REVAN;
-		  strP1 = doc.data().STRP1;
-		  strP4DN = doc.data().STRP4DN;
-		
-			document.querySelector('#header_container')
-    .innerHTML += guildHtml(guild, desc, gp, members, raid, roster, message);
-
-
+				
+				
+				fetch('https://api.swgoh.help/swgoh/guilds/676714695')
+			  .then(response => response.json()) 
+				.then(data => {
+				 // Do what you want with your data
+				
+				build_list(data, data[0].roster);
+				
+				 }) .catch(err => { 
+				alert('An error ocurred' + err); 
+				});
+				
+}			
+				
+var hstrp1 = [];
+				function build_list(guild_obj, roster){
+				var guild = guild_obj[0];
+				
+				
+				var gName = guild.name;
+				var gDesc = guild.desc;
+				var gMembers = guild.members;
+				var gStatus = guild.status;
+				var gRequired = guild.required;
+				var gBannerColor = guild.bannerColor;
+				var gBannerLogo = guild.bannerLogo;
+				var gMessage = guild.message;
+				var gGp = guild.gp;
+				var gRaid = guild.raid;
+				
+				if(guildArrayLs!=null && guildArrayLs.length>0){}else{
+				guildArray.push({ name:gName, desc:gDesc, members:gMembers, status: gStatus,	 required: gRequired, 
+				bannerColor: gBannerColor, bannerLogo: gBannerLogo, message: gMessage, gp: gGp, raid:gRaid });
+				localStorage.setItem("guildArray",JSON.stringify(guildArray));
+				}
+				document.querySelector('#header_container')
+				.innerHTML += guildHtml(gName, gDesc, gGp, gMembers, JSON.stringify(gRaid), gMessage);
+				
+				
+				if(guildRosterArrayLs!=null && guildRosterArrayLs.length>0){
+					roster.forEach(function (gRoster){
 			
-			roster.forEach(function (roster){
-			
+				var allyCode = gRoster.allyCode;
+				var mGp = gRoster.gp;
+				var mGpChar = gRoster.gpChar;
+				var mGpShip = gRoster.gpShip;
+				var mLevel = gRoster.level;
+				var mName = gRoster.name;
+				var mMemberLevel = gRoster.guildMemberLevel;
+				
+				document.querySelector('#toons')
+				.innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, mLevel, mName, mMemberLevel);
+				$('#loading').hide();
+				});
+						}else{
+					var rosterLength = roster.length;
+					roster.forEach(function (gRoster){
+				
+				var allyCode = gRoster.allyCode;
+				var mGp = gRoster.gp;
+				var mGpChar = gRoster.gpChar;
+				var mGpShip = gRoster.gpShip;
+				var mLevel = gRoster.level;
+				var mName = gRoster.name;
+				var mMemberLevel = gRoster.guildMemberLevel;
+				get_guild_toons(allyCode, rosterLength);
+				
+				
+				
+				guildRosterArray.push({ name:mName, guildMemberLevel:mMemberLevel, level:mLevel, gpShip: mGpShip, 
+				gpChar: mGpChar, gp: mGp, message: gMessage, gp: gGp, allyCode:allyCode });
+				
+				document.querySelector('#toons')
+				.innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, mLevel, mName, mMemberLevel);
+				
+				
+				
+				 
+				});
+				
+				
+				
+				localStorage.setItem("guildRosterArray",JSON.stringify(guildRosterArray));
+				
+				
+				
+				
+				}
+				
+				
+				
+				}
+				var n =0;
+				function get_guild_toons(allyCode, length){
+					var url = 'https://api.swgoh.help/swgoh/units/'+ allyCode;
+				fetch(url)
+			  .then(response => response.json()) 
+				.then(data => {
+				 // Do what you want with your data
+				
+				var jtr = data.REYJEDITRAINING;
+				if(jtr === undefined || jtr.length == 0){}else{
+				jtrHstrArray.push({player:player(jtr), gp:gp(jtr), starLevel:starLevel(jtr), level:level(jtr), gearLevel:gearLevel(jtr), zetas:zetas(jtr)});
+				legendaryJtr.push({player:player(jtr), gp:gp(jtr), starLevel:starLevel(jtr), level:level(jtr), gearLevel:gearLevel(jtr), zetas:zetas(jtr)});
+				
+				}
+				var bb8 = data.BB8;
+				if(bb8 === undefined || bb8.length == 0){}else{
+				bb8HstrArray.push({player:player(bb8), gp:gp(bb8), starLevel:starLevel(bb8), level:level(bb8), gearLevel:gearLevel(bb8), zetas:zetas(bb8)});
+				legendaryBb8.push({player:player(bb8), gp:gp(bb8), starLevel:starLevel(bb8), level:level(bb8), gearLevel:gearLevel(bb8), zetas:zetas(bb8)});
+				}
+				var r2 = data.R2D2_LEGENDARY;
+				if(r2 === undefined || r2.length == 0){}else{
+				r2HstrArray.push({player:player(r2), gp:gp(r2), starLevel:starLevel(r2), level:level(r2), gearLevel:gearLevel(r2), zetas:zetas(r2)});
+				legendaryR2.push({player:player(r2), gp:gp(r2), starLevel:starLevel(r2), level:level(r2), gearLevel:gearLevel(r2), zetas:zetas(r2)});
+				}
+				var rt = data.RESISTANCETROOPER;
+				if(rt === undefined || rt.length == 0){}else{
+				rtHstrArray.push({player:player(rt), gp:gp(rt), starLevel:starLevel(rt), level:level(rt), gearLevel:gearLevel(rt), zetas:zetas(rt)});
+				}
+				var rey = data.REY;
+				if(rey === undefined || rey.length == 0){}else{
+				reyHstrArray.push({player:player(rey), gp:gp(rey), starLevel:starLevel(rey), level:level(rey), gearLevel:gearLevel(rey), zetas:zetas(rey)});
+				}
+				hstrJtr.push({ jtrHstrArray, bb8HstrArray, r2HstrArray, rtHstrArray, reyHstrArray })
+				localStorage.setItem("hstrJtr",JSON.stringify(hstrJtr));
+				localStorage.setItem("legendaryJtr",JSON.stringify(legendaryJtr));
+				localStorage.setItem("legendaryBb8",JSON.stringify(legendaryBb8));
+				localStorage.setItem("legendaryR2",JSON.stringify(legendaryR2));
+				
+				guildArrayLs = guildArray;
+				guildRosterArrayLs = guildRosterArray;
+				hstrJtrLs = hstrJtr;
+				legendaryJtrLs = legendaryJtr;
+				legendaryBb8Ls = legendaryBb8;
+				legendaryR2Ls = legendaryR2;
+
+				
+			  n++;
+				
+				if(length === n){
+				$('#loading').hide();
+				}
+				 }) .catch(err => { 
+				alert('An error ocurred' + err); 
+				});
+				
+				
+				}
+				function player(data){
+					var player;
+					if(data[0].player){
+						player = data[0].player;}else{player = "";
+						}
+						return player;
+						}
+				function gp(data){
+					var gp;
+					if(data[0].gp){
+						gp = data[0].gp;}else{gp = "";
+						}
+						return gp;
+						}
+				function starLevel(data){
+					var starLevel;
+					if(data[0].starLevel){
+						starLevel = data[0].starLevel;}else{starLevel ="";
+						}
+						return starLevel;
+					}
+					function level(data){
+					var level;
+					if(data[0].level){
+						level = data[0].level;}else{level = "";
+						}
+						return level;
+					}
+					function gearLevel(data){
+					var gearLevel;
+					if(data[0].gearLevel){
+						gearLevel = data[0].gearLevel;}else{gearLevel = "";
+						}
+						return gearLevel;
+					}
+					function zetas(data){
+					var zetas;
+					if(data[0].zetas){
+						zetas = data[0].zetas;}else{zetas = "";
+						}
+						return zetas;
+					}
+				
+				function guildMemberHtml(mGp, mGpChar, mGpShip, level, name, memlevel){
+					
+					var html = '';
+					html += '<li  class="list-group-item contact">';
+					html += '<div class="toonlist">';
+					html += '<div style="text-align:center"> <p class="lead"><b><font color="black">'+name+'</font></b></p>';
+						if(memlevel === 2){
+							html += '<p>Member</p>';
+							} if(memlevel === 3){
+								html += '<p>Officer</p>';
+								}if(memlevel === 4){
+									html += '<p>Leader</p>';
+									}
+					html += '</div>';
+					html += '<div style="padding:5px;" >';
+					html += '<div style="float:left">';
+					html += '<p><b><font color="black">Level: </font></b>'+level+'</p>';
+					html += '<p><b><font color="black">GP: </font></b>'+mGp.toLocaleString()+'</p>';
+					html += '</div>';	
+					html += '<div style="float:right; text-align:right; " >';
+					html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar.toLocaleString()+'</p>';
+					html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip.toLocaleString()+'</p>';
+					html += '</div>';	
+					html += '</div>';	
+					html += '</div>';
+					html += '</li>';
+
+					return html;
+			}
+//guild header html
+				function guildHtml(gName, gDesc, gGp, gMembers, gRaid, gMessage){
+				
+				var html = '';
+				html += '<header class="guild_header" >';
+				html += '<p id="guild_name"><b><font color="white">'+ gName +'</font></b></p>';
+				html += '<div id="guild_info">';
+				html += '<p id="guild_desc"><b><font color="white">'+ gDesc +'</font></b></p>';
+				html += '<p id="guild_message"><b><font color="white">'+ gMessage +'</font></b></p>';
+				html += '<p id="guild_raid"><b><font color="white">Current Raids: '+ gRaid +'</font></b></p>';
+				html += '<div id="guild_gp_members">';
+				html += '<p id ="guild_gp">GP: '+gGp.toLocaleString()+'</p>';
+				html += '<p id="guild_members">Members: '+gMembers+'</p>';
+				html += '</div>';
+				html += '</div>';
+				html += '</header>';
+				
+				return html;
+				}
+
+
+
+function shard_loc_item(shard_loc){
+	$('#loading').show();
+	$('#toons').empty();
+	
+	var shard1 = shard_loc.innerText || shard_loc.textContent;
+	
+	
+	if(shard_loc === "all_members"){
+		document.getElementById("header__title").innerHTML = "SWGoH";
+		roster.forEach(function (roster){
 				var mGp = roster.gp;
 				var mGpChar = roster.gpChar;
 				var mGpShip = roster.gpShip;
 				var pos = roster.titles;
 				var level = roster.level;
 				var name = roster.name;
-				
 				document.querySelector('#toons')
     .innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name);
-
 			});
-  */
-			      
-    })
-    .catch(function(error) {
-        alert("Error getting documents: "+ error);
-    });
-	}
-	
-	function guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name){
-$('#loading').hide();
-  var html = '';
-  html += '<li  class="list-group-item contact">';
-    html += '<div class="toonlist">';
-    
-		   html += '<div style="text-align:center"> <p class="lead"><b><font color="black">'+name+'</font></b></p>';
-		    if(pos === 2){
-		   html += '<p>Member</p>';
-		   } if(pos === 3){
-		   html += '<p>Officer</p>';
-		   }if(pos === 4){
-		   html += '<p>Leader</p>';
-		   }
-		   html += '</div>';
-		   html += '<div style="padding:5px;" >';
-		   
-		   html += '<div style="float:left">';
-	            html += '<p><b><font color="black">Level: </font></b>'+level+'</p>';
-                html += '<p><b><font color="black">GP: </font></b>'+mGp.toLocaleString()+'</p>';
-		   html += '</div>';	
-			
-		   html += '<div style="float:right; text-align:right; " >';
-	            html += '<p><b><font color="black">Character GP: </font></b>'+mGpChar.toLocaleString()+'</p>';
-                html += '<p><b><font color="black">Ship GP: </font></b>'+mGpShip.toLocaleString()+'</p>';
-		   html += '</div>';	
-				
-			html += '</div>';	
-    html += '</div>';
-  html += '</li>';
-  return html;
-  
-}
+	}if(shard_loc === "jtr"){
+		document.getElementById("header__title").innerHTML = legendaryJtrLs.length;
+		legendaryJtrLs.forEach(function (roster){		
+				var power = roster.gp;
+				var gearLvl = roster.gearLevel;
+				var member = roster.player;
+				var star = roster.starLevel;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "gk"){
+		document.getElementById("header__title").innerHTML = gk.length;
+		gk.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "raidhan"){
+		document.getElementById("header__title").innerHTML = solo.length;
+		solo.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "chewie"){
+		document.getElementById("header__title").innerHTML = otchew.length;
+		otchew.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "ep"){
+		document.getElementById("header__title").innerHTML = ep.length;
+		ep.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "r2"){
+		document.getElementById("header__title").innerHTML = legendaryR2Ls.length;
+		legendaryR2Ls.forEach(function (roster){		
+				var power = roster.gp;
+				var gearLvl = roster.gearLevel;
+				var member = roster.player;
+				var star = roster.starLevel;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "cls"){
+		document.getElementById("header__title").innerHTML = cls.length;
+		cls.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "thrawn"){
+		document.getElementById("header__title").innerHTML = thrawn.length;
+		thrawn.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "bb8"){
+		document.getElementById("header__title").innerHTML = legendaryBb8Ls.length;
+		legendaryBb8Ls.forEach(function (roster){		
+				var power = roster.gp;
+				var gearLvl = roster.gearLevel;
+				var member = roster.player;
+				var star = roster.starLevel;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "gmy"){
+		document.getElementById("header__title").innerHTML = gmy.length;
+		gmy.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "revan"){
+		document.getElementById("header__title").innerHTML = revan.length;
+		revan.forEach(function (roster){		
+				var power = roster.power;
+				var gearLvl = roster.gearlvl;
+				var member = roster.member;
+				var star = roster.star;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
+	}if(shard_loc === "strp1"){
+		var strp1team = [];
+		var strp1ready =[];
+		var team = "JTR";
+		document.getElementById("header__title").innerHTML = "STR P1";
+		strP1.forEach(function (roster){		
+			var memName = roster.member;
+			var memJtr = roster.teams.strJtr;
+			var memBb8 = roster.teams.strBb8;
+			var memR2 = roster.teams.strR2;
+			var memRt = roster.teams.strRt;
+			var memRey = roster.teams.strRey;
+			strp1team =[];
+			var JtrZeta = false,  Jtrname, Jtrgear, Jtrlevel, Jtrstar;
+			memJtr.forEach(function (roster){		
+			Jtrname = roster.toon;
+			Jtrgear = roster.gearlvl;
+			Jtrlevel = roster.level;
+			Jtrstar = roster.star;
+			var skills = roster.skills;
+			skills.forEach(function (roster){		
+				if(roster.nameKey === "Inspirational Presence"){
+					JtrZeta = roster.isZeta;
+					}	});});if(JtrZeta){
+					JtrZeta = JtrZeta;
+					}else{
+					JtrZeta = false;
+					}
+					
+			var BZeta = false,  Bb8name, Bb8gear, Bb8level, Bb8star;
+			memBb8.forEach(function (roster){		
+			Bb8name = roster.toon;
+			Bb8gear = roster.gearlvl;
+			Bb8level = roster.level;
+			Bb8star = roster.star;
+			var skills = roster.skills;
+			skills.forEach(function (roster){		
+				if(roster.nameKey === "Roll with the Punches"){
+					BZeta = roster.isZeta;
+					}	});});if(BZeta){
+					BZeta = BZeta;
+					}else{
+					BZeta = false;
+					}
+					
+					var R2Zeta1 = false, R2Zeta2 = false,  R2name, R2gear, R2level, R2star;
+			memR2.forEach(function (roster){		
+			R2name = roster.toon;
+			R2gear = roster.gearlvl;
+			R2level = roster.level;
+			R2star = roster.star;
+			var skills = roster.skills;
+			skills.forEach(function (roster){		
+				if(roster.nameKey === "Combat Analysis"){
+					R2Zeta1 = roster.isZeta;
+					}if(roster.nameKey === "Number Crunch"){
+					R2Zeta2 = roster.isZeta;
+					}	
+							});});if(R2Zeta1){
+					R2Zeta1 = R2Zeta1;
+					}else{
+					R2Zeta1 = false;
+					}if(R2Zeta2){
+					R2Zeta2 = R2Zeta2;
+					}else{
+					R2Zeta2 = false;
+					}
 
-	
-	function guildHtml(guild, desc, gp, members, raid, roster, message){
-		$('#loading').hide();
-		var raid1 = [];
-		if(JSON.stringify(raid).includes("rancor")){
-			raid1.push("HPIT");
-			}
-		if(JSON.stringify(raid).includes("aat")){
-			raid1.push("HAAT");
-			}/*if(JSON.stringify(raid).includes("sith")){
-			raid1.push("STR");
-			}*/
+					var Rtname, Rtgear, Rtlevel, Rtstar;
+			memRt.forEach(function (roster){		
+			Rtname = roster.toon;
+			Rtgear = roster.gearlvl;
+			Rtlevel = roster.level;
+			Rtstar = roster.star;
+		});
+
+					var Reyname, Reygear, Reylevel, Reystar;
+			memRey.forEach(function (roster){		
+			Reyname = roster.toon;
+			Reygear = roster.gearlvl;
+			Reylevel = roster.level;
+			Reystar = roster.star;
+			});
+if(Jtrname === undefined){
+	Jtrname = "";Jtrstar =""; Jtrlevel = "";Jtrgear = "";JtrZeta = "";
+	}if(Bb8name === undefined){
+	Bb8name = "";Bb8star =""; Bb8level = "";Bb8gear = "";BZeta = "";
+	}if(R2name === undefined){
+	R2name = "";R2star =""; R2level = "";R2gear = "";R2Zeta1 = "";
+	}if(Rtname === undefined){
+	Rtname = "";Rtstar =""; Rtlevel = "";Rtgear = "";RtZeta= "";
+	}if(Reyname === undefined){
+	Reyname = "";Reystar =""; Reylevel = "";Reygear = "";ReyZeta = ""	;
+	}
+	strp1count(memName, 
+										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
+										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
+										Rtname, Rtgear, Rtlevel, Rtstar,
+										Reyname, Reygear, Reylevel, Reystar,
+										strp1team
+										);
+					
+	if(strp1team.length === 5){
+					strp1ready.push(1);
+					}
+	document.querySelector('#toons').innerHTML += strp1(memName, 
+	        						Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
+										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
+										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
+										Rtname, Rtgear, Rtlevel, Rtstar,
+										Reyname, Reygear, Reylevel, Reystar,
+										team
+										);
+				strp4nihilus();
+			});
+			document.getElementById("header__title").innerHTML = "HSTR P1: " + strp1ready.length;
+	}
+	if(shard_loc === "strp4dn"){
+		var strp4dnteam = [];
+		var strp4dnready =[];
+		var team = "NS";
 		
-		var html = '';
-	html += '<header class="guild_header" >';
-   
-      html += '<p id="guild_name"><b><font color="white">'+ guild +'</font></b></p>';
-html += '<div id="guild_info">';
-html += '<p id="guild_desc"><b><font color="white">'+ desc +'</font></b></p>';
-html += '<p id="guild_message"><b><font color="white">'+ message +'</font></b></p>';
-html += '<p id="guild_raid"><b><font color="white">Current Raids: '+ raid1 +'</font></b></p>';
-html += '<div id="guild_gp_members">';
-				html += '<p id ="guild_gp">GP: '+gp.toLocaleString()+'</p>';
-				html += '<p id="guild_members">Members: '+members+'</p>';
-html += '</div>';
-html += '</div>';
+		strP4DN.forEach(function (roster){		
+			var memName = roster.member;
+			var memMT = roster.teams.strMT;
+			var memAV = roster.teams.strAV;
+			var memTALIA = roster.teams.strTALIA;
+			var memNSZ = roster.teams.strNSZ;
+			var memDAKA = roster.teams.strDAKA;
+			strp4dnteam =[];
+			
+			var MTZeta = false,  MTname, MTgear, MTlevel, MTstar;
+			memMT.forEach(function (roster){		
+			MTname = roster.toon;
+			MTgear = roster.gearlvl;
+			MTlevel = roster.level;
+			MTstar = roster.star;
+			var skills = roster.skills;
+			skills.forEach(function (roster){		
+				if(roster.nameKey === "Plaguebearer"){
+					MTZeta = roster.isZeta;
+					}	});});if(MTZeta){
+					MTZeta = MTZeta;
+					}else{
+					MTZeta = false;
+					}
+					
+			var AVZeta = false, AVZeta2 = false,  AVname, AVgear, AVlevel, AVstar;
+			memAV.forEach(function (roster){		
+			AVname = roster.toon;
+			AVgear = roster.gearlvl;
+			AVlevel = roster.level;
+			AVstar = roster.star;
+			var skills = roster.skills;
+			skills.forEach(function (roster){		
+				if(roster.nameKey === "Nightsister Swiftness"){
+					AVZeta = roster.isZeta;
+					}if(roster.nameKey === "Rampage"){
+					AVZeta2 = roster.isZeta;
+					}});});if(AVZeta){
+					AVZeta = AVZeta;
+					}else{
+					AVZeta = false;
+					}if(AVZeta2){
+					AVZeta2 = AVZeta2;
+					}else{
+					AVZeta2 = false;
+					}
+					
+			 var TALIAname, TALIAgear, TALIAlevel, TALIAstar;
+			var R2Zeta1 = false, R2Zeta2 = false;
+			memTALIA.forEach(function (roster){		
+			TALIAname = roster.toon;
+			TALIAgear = roster.gearlvl;
+			TALIAlevel = roster.level;
+			TALIAstar = roster.star;
+			
+			});
+			
+					var NSZname, NSZgear, NSZlevel, NSZstar;
+			memNSZ.forEach(function (roster){		
+			NSZname = roster.toon;
+			NSZgear = roster.gearlvl;
+			NSZlevel = roster.level;
+			NSZstar = roster.star;
+		});
 
-html += '</header>';
-
-			return html;
+					var DAKAname, DAKAgear, DAKAlevel, DAKAstar;
+			memDAKA.forEach(function (roster){		
+			DAKAname = roster.toon;
+			DAKAgear = roster.gearlvl;
+			DAKAlevel = roster.level;
+			DAKAstar = roster.star;
+			});
+if(MTname === undefined){
+	MTname = "";MTstar =""; MTlevel = "";MTgear = "";MTZeta = "";
+	}if(AVname === undefined){
+	AVname = "";AVstar =""; AVlevel = "";AVgear = "";AVZeta = "";
+	}if(TALIAname === undefined){
+	TALIAname = "";TALIAstar =""; TALIAlevel = "";TALIAgear = "";
+	}if(NSZname === undefined){
+	NSZname = "";NSZstar =""; NSZlevel = "";NSZgear = "";
+	}if(DAKAname === undefined){
+	DAKAname = "";DAKAstar =""; DAKAlevel = "";DAKAgear = "";DAKAZeta = ""	;
 	}
+	strp4dncount(memName, 
+										AVZeta,  AVname, AVgear, AVlevel, AVstar,
+										MTname, MTstar, MTlevel, MTgear,MTZeta,
+									  R2Zeta1, R2Zeta2,TALIAname, TALIAgear, TALIAlevel, TALIAstar,
+										NSZname, NSZgear, NSZlevel, NSZstar,
+										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
+									 AVZeta2,strp4dnteam
+										
+										);
+				
+	if(strp4dnteam.length === 5){
+					strp4dnready.push(1);
+					}
+					
+	document.querySelector('#toons').innerHTML += strp4dn(memName, 
+										AVname,  AVstar, AVlevel, AVgear, AVZeta,
+										MTZeta, MTname, MTgear, MTlevel,MTstar,
+										R2Zeta1, R2Zeta2, TALIAname, TALIAgear, TALIAlevel, TALIAstar,
+										NSZname, NSZgear, NSZlevel, NSZstar,
+										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
+										team,
+										AVZeta2
+										);
+				strp4nihilus();
+			});
+			
+			document.getElementById("header__title").innerHTML = "HSTR P4 DN: " + strp4dnready.length;
+	}
+	
+	
+		
+			if(shard_loc === "name"){
+reorder_guild_members(shard_loc, "asc");
+}if(shard_loc === "gp"){
+reorder_guild_members(shard_loc, "desc");
+}else{
+  
+	}
+	$('#loading').hide();
+	}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+
+	
+	
 	
 	
 
@@ -576,393 +1126,7 @@ window.onclick = function(event) {
   }
 };
 
-function shard_loc_item(shard_loc){
-	$('#loading').show();
-	$('#toons').empty();
-	
-	var shard1 = shard_loc.innerText || shard_loc.textContent;
-	
-	
-	if(shard_loc === "all_members"){
-		document.getElementById("header__title").innerHTML = "SWGoH";
-		roster.forEach(function (roster){
-				var mGp = roster.gp;
-				var mGpChar = roster.gpChar;
-				var mGpShip = roster.gpShip;
-				var pos = roster.titles;
-				var level = roster.level;
-				var name = roster.name;
-				document.querySelector('#toons')
-    .innerHTML += guildMemberHtml(mGp, mGpChar, mGpShip, pos, level, name);
-			});
-	}if(shard_loc === "jtr"){
-		document.getElementById("header__title").innerHTML = jtr.length;
-		jtr.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "gk"){
-		document.getElementById("header__title").innerHTML = gk.length;
-		gk.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "raidhan"){
-		document.getElementById("header__title").innerHTML = solo.length;
-		solo.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "chewie"){
-		document.getElementById("header__title").innerHTML = otchew.length;
-		otchew.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "ep"){
-		document.getElementById("header__title").innerHTML = ep.length;
-		ep.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "r2"){
-		document.getElementById("header__title").innerHTML = r2d2.length;
-		r2d2.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "cls"){
-		document.getElementById("header__title").innerHTML = cls.length;
-		cls.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "thrawn"){
-		document.getElementById("header__title").innerHTML = thrawn.length;
-		thrawn.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "bb8"){
-		document.getElementById("header__title").innerHTML = bb8.length;
-		bb8.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "gmy"){
-		document.getElementById("header__title").innerHTML = gmy.length;
-		gmy.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "revan"){
-		document.getElementById("header__title").innerHTML = revan.length;
-		revan.forEach(function (roster){		
-				var power = roster.power;
-				var gearLvl = roster.gearlvl;
-				var member = roster.member;
-				var star = roster.star;
-				var level = roster.level;		
-				document.querySelector('#toons')
-    .innerHTML += character(power, gearLvl, member, star, level);
-			});
-	}if(shard_loc === "strp1"){
-		var strp1team = [];
-		var strp1ready =[];
-		var team = "JTR";
-		document.getElementById("header__title").innerHTML = "STR P1";
-		strP1.forEach(function (roster){		
-			var memName = roster.member;
-			var memJtr = roster.teams.strJtr;
-			var memBb8 = roster.teams.strBb8;
-			var memR2 = roster.teams.strR2;
-			var memRt = roster.teams.strRt;
-			var memRey = roster.teams.strRey;
-			strp1team =[];
-			var JtrZeta = false,  Jtrname, Jtrgear, Jtrlevel, Jtrstar;
-			memJtr.forEach(function (roster){		
-			Jtrname = roster.toon;
-			Jtrgear = roster.gearlvl;
-			Jtrlevel = roster.level;
-			Jtrstar = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Inspirational Presence"){
-					JtrZeta = roster.isZeta;
-					}	});});if(JtrZeta){
-					JtrZeta = JtrZeta;
-					}else{
-					JtrZeta = false;
-					}
-					
-			var BZeta = false,  Bb8name, Bb8gear, Bb8level, Bb8star;
-			memBb8.forEach(function (roster){		
-			Bb8name = roster.toon;
-			Bb8gear = roster.gearlvl;
-			Bb8level = roster.level;
-			Bb8star = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Roll with the Punches"){
-					BZeta = roster.isZeta;
-					}	});});if(BZeta){
-					BZeta = BZeta;
-					}else{
-					BZeta = false;
-					}
-					
-					var R2Zeta1 = false, R2Zeta2 = false,  R2name, R2gear, R2level, R2star;
-			memR2.forEach(function (roster){		
-			R2name = roster.toon;
-			R2gear = roster.gearlvl;
-			R2level = roster.level;
-			R2star = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Combat Analysis"){
-					R2Zeta1 = roster.isZeta;
-					}if(roster.nameKey === "Number Crunch"){
-					R2Zeta2 = roster.isZeta;
-					}	
-							});});if(R2Zeta1){
-					R2Zeta1 = R2Zeta1;
-					}else{
-					R2Zeta1 = false;
-					}if(R2Zeta2){
-					R2Zeta2 = R2Zeta2;
-					}else{
-					R2Zeta2 = false;
-					}
 
-					var Rtname, Rtgear, Rtlevel, Rtstar;
-			memRt.forEach(function (roster){		
-			Rtname = roster.toon;
-			Rtgear = roster.gearlvl;
-			Rtlevel = roster.level;
-			Rtstar = roster.star;
-		});
-
-					var Reyname, Reygear, Reylevel, Reystar;
-			memRey.forEach(function (roster){		
-			Reyname = roster.toon;
-			Reygear = roster.gearlvl;
-			Reylevel = roster.level;
-			Reystar = roster.star;
-			});
-if(Jtrname === undefined){
-	Jtrname = "";Jtrstar =""; Jtrlevel = "";Jtrgear = "";JtrZeta = "";
-	}if(Bb8name === undefined){
-	Bb8name = "";Bb8star =""; Bb8level = "";Bb8gear = "";BZeta = "";
-	}if(R2name === undefined){
-	R2name = "";R2star =""; R2level = "";R2gear = "";R2Zeta1 = "";
-	}if(Rtname === undefined){
-	Rtname = "";Rtstar =""; Rtlevel = "";Rtgear = "";RtZeta= "";
-	}if(Reyname === undefined){
-	Reyname = "";Reystar =""; Reylevel = "";Reygear = "";ReyZeta = ""	;
-	}
-	strp1count(memName, 
-										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
-										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
-										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
-										Rtname, Rtgear, Rtlevel, Rtstar,
-										Reyname, Reygear, Reylevel, Reystar,
-										strp1team
-										);
-					
-	if(strp1team.length === 5){
-					strp1ready.push(1);
-					}
-	document.querySelector('#toons').innerHTML += strp1(memName, 
-	        						Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
-										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
-										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
-										Rtname, Rtgear, Rtlevel, Rtstar,
-										Reyname, Reygear, Reylevel, Reystar,
-										team
-										);
-				strp4nihilus();
-			});
-			document.getElementById("header__title").innerHTML = "HSTR P1: " + strp1ready.length;
-	}
-	if(shard_loc === "strp4dn"){
-		var strp4dnteam = [];
-		var strp4dnready =[];
-		var team = "NS";
-		
-		strP4DN.forEach(function (roster){		
-			var memName = roster.member;
-			var memMT = roster.teams.strMT;
-			var memAV = roster.teams.strAV;
-			var memTALIA = roster.teams.strTALIA;
-			var memNSZ = roster.teams.strNSZ;
-			var memDAKA = roster.teams.strDAKA;
-			strp4dnteam =[];
-			
-			var MTZeta = false,  MTname, MTgear, MTlevel, MTstar;
-			memMT.forEach(function (roster){		
-			MTname = roster.toon;
-			MTgear = roster.gearlvl;
-			MTlevel = roster.level;
-			MTstar = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Plaguebearer"){
-					MTZeta = roster.isZeta;
-					}	});});if(MTZeta){
-					MTZeta = MTZeta;
-					}else{
-					MTZeta = false;
-					}
-					
-			var AVZeta = false, AVZeta2 = false,  AVname, AVgear, AVlevel, AVstar;
-			memAV.forEach(function (roster){		
-			AVname = roster.toon;
-			AVgear = roster.gearlvl;
-			AVlevel = roster.level;
-			AVstar = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Nightsister Swiftness"){
-					AVZeta = roster.isZeta;
-					}if(roster.nameKey === "Rampage"){
-					AVZeta2 = roster.isZeta;
-					}});});if(AVZeta){
-					AVZeta = AVZeta;
-					}else{
-					AVZeta = false;
-					}if(AVZeta2){
-					AVZeta2 = AVZeta2;
-					}else{
-					AVZeta2 = false;
-					}
-					
-			 var TALIAname, TALIAgear, TALIAlevel, TALIAstar;
-			var R2Zeta1 = false, R2Zeta2 = false;
-			memTALIA.forEach(function (roster){		
-			TALIAname = roster.toon;
-			TALIAgear = roster.gearlvl;
-			TALIAlevel = roster.level;
-			TALIAstar = roster.star;
-			
-			});
-			
-					var NSZname, NSZgear, NSZlevel, NSZstar;
-			memNSZ.forEach(function (roster){		
-			NSZname = roster.toon;
-			NSZgear = roster.gearlvl;
-			NSZlevel = roster.level;
-			NSZstar = roster.star;
-		});
-
-					var DAKAname, DAKAgear, DAKAlevel, DAKAstar;
-			memDAKA.forEach(function (roster){		
-			DAKAname = roster.toon;
-			DAKAgear = roster.gearlvl;
-			DAKAlevel = roster.level;
-			DAKAstar = roster.star;
-			});
-if(MTname === undefined){
-	MTname = "";MTstar =""; MTlevel = "";MTgear = "";MTZeta = "";
-	}if(AVname === undefined){
-	AVname = "";AVstar =""; AVlevel = "";AVgear = "";AVZeta = "";
-	}if(TALIAname === undefined){
-	TALIAname = "";TALIAstar =""; TALIAlevel = "";TALIAgear = "";
-	}if(NSZname === undefined){
-	NSZname = "";NSZstar =""; NSZlevel = "";NSZgear = "";
-	}if(DAKAname === undefined){
-	DAKAname = "";DAKAstar =""; DAKAlevel = "";DAKAgear = "";DAKAZeta = ""	;
-	}
-	strp4dncount(memName, 
-										AVZeta,  AVname, AVgear, AVlevel, AVstar,
-										MTname, MTstar, MTlevel, MTgear,MTZeta,
-									  R2Zeta1, R2Zeta2,TALIAname, TALIAgear, TALIAlevel, TALIAstar,
-										NSZname, NSZgear, NSZlevel, NSZstar,
-										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
-									 AVZeta2,strp4dnteam
-										
-										);
-				
-	if(strp4dnteam.length === 5){
-					strp4dnready.push(1);
-					}
-					
-	document.querySelector('#toons').innerHTML += strp4dn(memName, 
-										AVname,  AVstar, AVlevel, AVgear, AVZeta,
-										MTZeta, MTname, MTgear, MTlevel,MTstar,
-										R2Zeta1, R2Zeta2, TALIAname, TALIAgear, TALIAlevel, TALIAstar,
-										NSZname, NSZgear, NSZlevel, NSZstar,
-										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
-										team,
-										AVZeta2
-										);
-				strp4nihilus();
-			});
-			
-			document.getElementById("header__title").innerHTML = "HSTR P4 DN: " + strp4dnready.length;
-	}
-	
-	
-		
-			if(shard_loc === "name"){
-reorder_guild_members(shard_loc, "asc");
-}if(shard_loc === "gp"){
-reorder_guild_members(shard_loc, "desc");
-}else{
-  
-	}
-	$('#loading').hide();
-	}
-	
 	
 function strp1count(memName,
 										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
@@ -1271,7 +1435,7 @@ function info(slvl, lvl, glvl, zl, zu1, zu2, gp, name){
 	
 
 function reorder_guild_members(item, order){
-	var rosterReorder = roster;
+	var rosterReorder = guildRosterArrayLs;
 	document.getElementById("header__title").innerHTML = "SWGoH";
 	if(order === "asc"){
 		rosterReorder.sort(function(a,b) {return (a[item] > b[item]) ? 1 : ((b[item] > a[item]) ? -1 : 0);} ); 
