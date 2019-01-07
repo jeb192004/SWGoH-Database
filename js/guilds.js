@@ -38,9 +38,8 @@ var guildref = db.collection("Guilds").doc(guildName);
 				var guildArray = [];
 				var guildRosterArray = [];
 				//localStorage.clear();
-
+var counted = 0;
 //hstr jtr
-				var jtrHstrArray = [], bb8HstrArray = [], r2HstrArray = [], rtHstrArray = [], reyHstrArray = [];
 				var hstrJtr = [];
 //legendary characters
 				var legendaryJtr = [], legendaryBb8 = [], legendaryR2 = [];
@@ -124,6 +123,7 @@ var hstrp1 = [];
 				var mLevel = gRoster.level;
 				var mName = gRoster.name;
 				var mMemberLevel = gRoster.guildMemberLevel;
+				
 				get_guild_toons(allyCode, rosterLength);
 				
 				
@@ -158,32 +158,38 @@ var hstrp1 = [];
 			  .then(response => response.json()) 
 				.then(data => {
 				 // Do what you want with your data
+				var jtrHstrArray = [], bb8HstrArray = [], r2HstrArray = [], rtHstrArray = [], reyHstrArray = [];
 				
+				var player1;
 				var jtr = data.REYJEDITRAINING;
 				if(jtr === undefined || jtr.length == 0){}else{
 				jtrHstrArray.push({player:player(jtr), gp:gp(jtr), starLevel:starLevel(jtr), level:level(jtr), gearLevel:gearLevel(jtr), zetas:zetas(jtr)});
 				legendaryJtr.push({player:player(jtr), gp:gp(jtr), starLevel:starLevel(jtr), level:level(jtr), gearLevel:gearLevel(jtr), zetas:zetas(jtr)});
-				
+				player1 = player(jtr);
 				}
 				var bb8 = data.BB8;
 				if(bb8 === undefined || bb8.length == 0){}else{
 				bb8HstrArray.push({player:player(bb8), gp:gp(bb8), starLevel:starLevel(bb8), level:level(bb8), gearLevel:gearLevel(bb8), zetas:zetas(bb8)});
 				legendaryBb8.push({player:player(bb8), gp:gp(bb8), starLevel:starLevel(bb8), level:level(bb8), gearLevel:gearLevel(bb8), zetas:zetas(bb8)});
+				player1 = player(bb8);
 				}
 				var r2 = data.R2D2_LEGENDARY;
 				if(r2 === undefined || r2.length == 0){}else{
 				r2HstrArray.push({player:player(r2), gp:gp(r2), starLevel:starLevel(r2), level:level(r2), gearLevel:gearLevel(r2), zetas:zetas(r2)});
 				legendaryR2.push({player:player(r2), gp:gp(r2), starLevel:starLevel(r2), level:level(r2), gearLevel:gearLevel(r2), zetas:zetas(r2)});
+				player1 = player(r2);
 				}
 				var rt = data.RESISTANCETROOPER;
 				if(rt === undefined || rt.length == 0){}else{
 				rtHstrArray.push({player:player(rt), gp:gp(rt), starLevel:starLevel(rt), level:level(rt), gearLevel:gearLevel(rt), zetas:zetas(rt)});
+				player1 = player(rt);
 				}
 				var rey = data.REY;
 				if(rey === undefined || rey.length == 0){}else{
 				reyHstrArray.push({player:player(rey), gp:gp(rey), starLevel:starLevel(rey), level:level(rey), gearLevel:gearLevel(rey), zetas:zetas(rey)});
+				player1 = player(rey);
 				}
-				hstrJtr.push({ jtrHstrArray, bb8HstrArray, r2HstrArray, rtHstrArray, reyHstrArray })
+				hstrJtr.push({player: player1, teams:{ jtrHstrArray, bb8HstrArray, r2HstrArray, rtHstrArray, reyHstrArray }})
 				localStorage.setItem("hstrJtr",JSON.stringify(hstrJtr));
 				localStorage.setItem("legendaryJtr",JSON.stringify(legendaryJtr));
 				localStorage.setItem("legendaryBb8",JSON.stringify(legendaryBb8));
@@ -195,7 +201,7 @@ var hstrp1 = [];
 				legendaryJtrLs = legendaryJtr;
 				legendaryBb8Ls = legendaryBb8;
 				legendaryR2Ls = legendaryR2;
-
+				
 				
 			  n++;
 				
@@ -443,236 +449,27 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "strp1"){
-		var strp1team = [];
-		var strp1ready =[];
-		var team = "JTR";
+		var jtr = hstrJtrLs;
+		
+		
 		document.getElementById("header__title").innerHTML = "STR P1";
-		strP1.forEach(function (roster){		
-			var memName = roster.member;
-			var memJtr = roster.teams.strJtr;
-			var memBb8 = roster.teams.strBb8;
-			var memR2 = roster.teams.strR2;
-			var memRt = roster.teams.strRt;
-			var memRey = roster.teams.strRey;
-			strp1team =[];
-			var JtrZeta = false,  Jtrname, Jtrgear, Jtrlevel, Jtrstar;
-			memJtr.forEach(function (roster){		
-			Jtrname = roster.toon;
-			Jtrgear = roster.gearlvl;
-			Jtrlevel = roster.level;
-			Jtrstar = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Inspirational Presence"){
-					JtrZeta = roster.isZeta;
-					}	});});if(JtrZeta){
-					JtrZeta = JtrZeta;
-					}else{
-					JtrZeta = false;
-					}
-					
-			var BZeta = false,  Bb8name, Bb8gear, Bb8level, Bb8star;
-			memBb8.forEach(function (roster){		
-			Bb8name = roster.toon;
-			Bb8gear = roster.gearlvl;
-			Bb8level = roster.level;
-			Bb8star = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Roll with the Punches"){
-					BZeta = roster.isZeta;
-					}	});});if(BZeta){
-					BZeta = BZeta;
-					}else{
-					BZeta = false;
-					}
-					
-					var R2Zeta1 = false, R2Zeta2 = false,  R2name, R2gear, R2level, R2star;
-			memR2.forEach(function (roster){		
-			R2name = roster.toon;
-			R2gear = roster.gearlvl;
-			R2level = roster.level;
-			R2star = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Combat Analysis"){
-					R2Zeta1 = roster.isZeta;
-					}if(roster.nameKey === "Number Crunch"){
-					R2Zeta2 = roster.isZeta;
-					}	
-							});});if(R2Zeta1){
-					R2Zeta1 = R2Zeta1;
-					}else{
-					R2Zeta1 = false;
-					}if(R2Zeta2){
-					R2Zeta2 = R2Zeta2;
-					}else{
-					R2Zeta2 = false;
-					}
-
-					var Rtname, Rtgear, Rtlevel, Rtstar;
-			memRt.forEach(function (roster){		
-			Rtname = roster.toon;
-			Rtgear = roster.gearlvl;
-			Rtlevel = roster.level;
-			Rtstar = roster.star;
-		});
-
-					var Reyname, Reygear, Reylevel, Reystar;
-			memRey.forEach(function (roster){		
-			Reyname = roster.toon;
-			Reygear = roster.gearlvl;
-			Reylevel = roster.level;
-			Reystar = roster.star;
+		jtr.forEach(function (roster){		
+			//alert(JSON.stringify(roster));
+			var player = roster.player;
+			var team = roster.teams;
+			var teamJtr = team.jtrHstrArray[0];
+			var teamBb8 = team.bb8HstrArray[0];
+			var teamR2 = team.r2HstrArray[0];
+			var teamRt = team.rtHstrArray[0];
+			var teamRey = team.reyHstrArray[0];
+			document.querySelector('#toons')
+				.innerHTML += strp1(player, teamJtr, teamBb8, teamR2, teamRt, teamRey);
+				
 			});
-if(Jtrname === undefined){
-	Jtrname = "";Jtrstar =""; Jtrlevel = "";Jtrgear = "";JtrZeta = "";
-	}if(Bb8name === undefined){
-	Bb8name = "";Bb8star =""; Bb8level = "";Bb8gear = "";BZeta = "";
-	}if(R2name === undefined){
-	R2name = "";R2star =""; R2level = "";R2gear = "";R2Zeta1 = "";
-	}if(Rtname === undefined){
-	Rtname = "";Rtstar =""; Rtlevel = "";Rtgear = "";RtZeta= "";
-	}if(Reyname === undefined){
-	Reyname = "";Reystar =""; Reylevel = "";Reygear = "";ReyZeta = ""	;
-	}
-	strp1count(memName, 
-										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
-										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
-										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
-										Rtname, Rtgear, Rtlevel, Rtstar,
-										Reyname, Reygear, Reylevel, Reystar,
-										strp1team
-										);
-					
-	if(strp1team.length === 5){
-					strp1ready.push(1);
-					}
-	document.querySelector('#toons').innerHTML += strp1(memName, 
-	        						Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
-										BZeta,  Bb8name, Bb8gear, Bb8level, Bb8star,
-										R2Zeta1, R2Zeta2,  R2name, R2gear, R2level, R2star,
-										Rtname, Rtgear, Rtlevel, Rtstar,
-										Reyname, Reygear, Reylevel, Reystar,
-										team
-										);
-				strp4nihilus();
-			});
-			document.getElementById("header__title").innerHTML = "HSTR P1: " + strp1ready.length;
+			
 	}
 	if(shard_loc === "strp4dn"){
-		var strp4dnteam = [];
-		var strp4dnready =[];
-		var team = "NS";
 		
-		strP4DN.forEach(function (roster){		
-			var memName = roster.member;
-			var memMT = roster.teams.strMT;
-			var memAV = roster.teams.strAV;
-			var memTALIA = roster.teams.strTALIA;
-			var memNSZ = roster.teams.strNSZ;
-			var memDAKA = roster.teams.strDAKA;
-			strp4dnteam =[];
-			
-			var MTZeta = false,  MTname, MTgear, MTlevel, MTstar;
-			memMT.forEach(function (roster){		
-			MTname = roster.toon;
-			MTgear = roster.gearlvl;
-			MTlevel = roster.level;
-			MTstar = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Plaguebearer"){
-					MTZeta = roster.isZeta;
-					}	});});if(MTZeta){
-					MTZeta = MTZeta;
-					}else{
-					MTZeta = false;
-					}
-					
-			var AVZeta = false, AVZeta2 = false,  AVname, AVgear, AVlevel, AVstar;
-			memAV.forEach(function (roster){		
-			AVname = roster.toon;
-			AVgear = roster.gearlvl;
-			AVlevel = roster.level;
-			AVstar = roster.star;
-			var skills = roster.skills;
-			skills.forEach(function (roster){		
-				if(roster.nameKey === "Nightsister Swiftness"){
-					AVZeta = roster.isZeta;
-					}if(roster.nameKey === "Rampage"){
-					AVZeta2 = roster.isZeta;
-					}});});if(AVZeta){
-					AVZeta = AVZeta;
-					}else{
-					AVZeta = false;
-					}if(AVZeta2){
-					AVZeta2 = AVZeta2;
-					}else{
-					AVZeta2 = false;
-					}
-					
-			 var TALIAname, TALIAgear, TALIAlevel, TALIAstar;
-			var R2Zeta1 = false, R2Zeta2 = false;
-			memTALIA.forEach(function (roster){		
-			TALIAname = roster.toon;
-			TALIAgear = roster.gearlvl;
-			TALIAlevel = roster.level;
-			TALIAstar = roster.star;
-			
-			});
-			
-					var NSZname, NSZgear, NSZlevel, NSZstar;
-			memNSZ.forEach(function (roster){		
-			NSZname = roster.toon;
-			NSZgear = roster.gearlvl;
-			NSZlevel = roster.level;
-			NSZstar = roster.star;
-		});
-
-					var DAKAname, DAKAgear, DAKAlevel, DAKAstar;
-			memDAKA.forEach(function (roster){		
-			DAKAname = roster.toon;
-			DAKAgear = roster.gearlvl;
-			DAKAlevel = roster.level;
-			DAKAstar = roster.star;
-			});
-if(MTname === undefined){
-	MTname = "";MTstar =""; MTlevel = "";MTgear = "";MTZeta = "";
-	}if(AVname === undefined){
-	AVname = "";AVstar =""; AVlevel = "";AVgear = "";AVZeta = "";
-	}if(TALIAname === undefined){
-	TALIAname = "";TALIAstar =""; TALIAlevel = "";TALIAgear = "";
-	}if(NSZname === undefined){
-	NSZname = "";NSZstar =""; NSZlevel = "";NSZgear = "";
-	}if(DAKAname === undefined){
-	DAKAname = "";DAKAstar =""; DAKAlevel = "";DAKAgear = "";DAKAZeta = ""	;
-	}
-	strp4dncount(memName, 
-										AVZeta,  AVname, AVgear, AVlevel, AVstar,
-										MTname, MTstar, MTlevel, MTgear,MTZeta,
-									  R2Zeta1, R2Zeta2,TALIAname, TALIAgear, TALIAlevel, TALIAstar,
-										NSZname, NSZgear, NSZlevel, NSZstar,
-										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
-									 AVZeta2,strp4dnteam
-										
-										);
-				
-	if(strp4dnteam.length === 5){
-					strp4dnready.push(1);
-					}
-					
-	document.querySelector('#toons').innerHTML += strp4dn(memName, 
-										AVname,  AVstar, AVlevel, AVgear, AVZeta,
-										MTZeta, MTname, MTgear, MTlevel,MTstar,
-										R2Zeta1, R2Zeta2, TALIAname, TALIAgear, TALIAlevel, TALIAstar,
-										NSZname, NSZgear, NSZlevel, NSZstar,
-										DAKAname, DAKAgear, DAKAlevel, DAKAstar,
-										team,
-										AVZeta2
-										);
-				strp4nihilus();
-			});
 			
 			document.getElementById("header__title").innerHTML = "HSTR P4 DN: " + strp4dnready.length;
 	}
@@ -692,7 +489,117 @@ reorder_guild_members(shard_loc, "desc");
 
 
 
+function strp1(player, teamJtr, teamBb8, teamR2, teamRt, teamRey){
+	var teamCount = 0;
+  var html = '';
+  html += '<li class="list-group-item-str" >';
+    html += '<div class="toonlist"style="margin-left:5px; margin-bottom:5px;">';
+    
+    html += '<div style="text-align:center"><b><font color="black">'+player+'</font></b>';
+/*******
+JTR HTML
+*******/
+if(teamJtr === undefined || teamJtr.length == 0){
+	html +='<p class="nszname"><font color="#C01111">Rey (Jedi Training)</font></p> ';
+		}else{
+			var gp = teamJtr.gp;
+			var starLevel = teamJtr.starLevel;
+			var level = teamJtr.level;
+			var gearLevel = teamJtr.gearLevel;
+			var zetas = teamJtr.zetas;
+			 //alert(gp + ': ' + starLevel + ': ' + level + ': ' + gearLevel + ': ' + zetas);
+		if(level === 85 && starLevel === 7 && gearLevel >= 11 && zetas ){
+	html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" ><font color="#00FF00">Rey (Jedi Training)</font></p>';
+	teamCount++;
+	}else{
+html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" >Rey (Jedi Training)</p> ';}
+}
+/******
+BB8 HTML
+******/
+		if(teamBb8 === undefined || teamBb8.length == 0){
+	html +='<p class="nszname"><font color="#C01111">BB8</font></p> ';
+		}else{
+			var gp = teamBb8.gp;
+			var starLevel = teamBb8.starLevel;
+			var level = teamBb8.level;
+			var gearLevel = teamBb8.gearLevel;
+			var zetas = teamBb8.zetas;
+			 //alert(gp + ': ' + starLevel + ': ' + level + ': ' + gearLevel + ': ' + zetas);
+		if(level === 85 && starLevel === 7 && gearLevel >= 11 && zetas ){
+	html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" ><font color="#00FF00">BB8</font></p>';
+	teamCount++;
+	}else{
+html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" >BB8</p> ';}
+}
+/******
+R2D2 HTML
+******/
+		if(teamR2 === undefined || teamR2.length == 0){
+	html +='<p class="nszname"><font color="#C01111">R2-D2</font></p> ';
+		}else{
+			var gp = teamR2.gp;
+			var starLevel = teamR2.starLevel;
+			var level = teamR2.level;
+			var gearLevel = teamR2.gearLevel;
+			var zetas = teamR2.zetas;
+			 //alert(gp + ': ' + starLevel + ': ' + level + ': ' + gearLevel + ': ' + zetas);
+		if(level === 85 && starLevel === 7 && gearLevel >= 11 && zetas ){
+	html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" ><font color="#00FF00">R2-D2</font></p>';
+	teamCount++;
+	}else{
+html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" >R2-D2</p> ';}
+}
+/******
+RESISTANCE TROOPER HTML
+******/
+		if(teamRt === undefined || teamRt.length == 0){
+	html +='<p class="nszname"><font color="#C01111">Resistance Trooper</font></p> ';
+		}else{
+			var gp = teamRt.gp;
+			var starLevel = teamRt.starLevel;
+			var level = teamRt.level;
+			var gearLevel = teamRt.gearLevel;
+			var zetas = teamRt.zetas;
+			 //alert(gp + ': ' + starLevel + ': ' + level + ': ' + gearLevel + ': ' + zetas);
+		if(level === 85 && starLevel === 7 && gearLevel >= 11 && zetas ){
+	html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" ><font color="#00FF00">Resistance Trooper</font></p>';
+	teamCount++;
+	}else{
+html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" >Resistance Trooper</p> ';}
+}
+/******
+REY HTML
+******/
+		if(teamBb8 === undefined || teamBb8.length == 0){
+	html +='<p class="nszname"><font color="#C01111">Rey (Scavenger)</font></p> ';
+		}else{
+			var gp = teamRey.gp;
+			var starLevel = teamRey.starLevel;
+			var level = teamRey.level;
+			var gearLevel = teamRey.gearLevel;
+			var zetas = teamRey.zetas;
+			 //alert(gp + ': ' + starLevel + ': ' + level + ': ' + gearLevel + ': ' + zetas);
+		if(level === 85 && starLevel === 7 && gearLevel >= 11 && zetas ){
+	html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" ><font color="#00FF00">Rey (Scavenger)</font></p>';
+	teamCount++;
+	}else{
+html +='<p class="jtrname" data-jtrslvl="'+starLevel+'" data-jtrlvl="'+level+'" data-jtrglvl="'+gearLevel+'"data-jtrzl="'+zetas+'" >Rey (Scavenger)</p> ';}
+}
 
+
+if(teamCount ===5){
+	counted++;
+	}
+document.getElementById("header__title").innerHTML = "HSTR P1: " + counted;
+		html += '</div>';
+		html += '</div>';
+  	html += '</li>';
+	
+  return html;
+  
+
+	}
 
 
 
@@ -1193,89 +1100,7 @@ function strp1count(memName,
 			}	}
 	}	
 	
-	function strp1(memName,
-										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
-										bb8zu1, bb8name, bb8glvl, bb8lvl, bb8slvl,
-										r2zu1, r2zu2, r2name,r2glvl, r2lvl, r2slvl,
-										rtname, rtglvl, rtlvl, rtslvl,
-										reyname,reyglvl,reylvl,reyslvl,
-										team,
-										AVZeta2
-										
-										/*avname,avslvl,avlvl,avglvl,avzl,avzu1,avgp,
-			dakaname,dakaslvl,dakalvl,dakaglvl,dakazu1,dakagp,
-			mtname,mtslvl,mtlvl,mtglvl,mtzl,mtzu1,mtgp,
-			nszname, nszslvl,nszlvl,nszglvl,nszgp,
-			talianame,taliaslvl,talialvl,taliaglvl,taliazu1,taliagp,*/
-				
-										){
-											if(team === "JTR"){
-												var leader = "Rey(Jedi Training)";
-												var second = "BB8";
-												var third = "R2D2";
-												var fourth = "Resistance Trooper";
-												var fith = "Rey(Scavenger)";
-												}if(team === "NS"){
-													var leader = "Asajj Ventress";
-													var second = "Mother Talzin";
-													var third = "Talia";
-													var fourth = "Nightsister Zombie"; 
-													var fith = "Old Daka";
-													}
-  var html = '';
-  html += '<li class="list-group-item-str" >';
-    html += '<div class="toonlist"style="margin-left:5px; margin-bottom:5px;">';
-    
-    html += '<div style="text-align:center"><b><font color="black">'+memName+'</font></b>';
-	if(Jtrname){
-		if(Jtrlevel === 85 && Jtrstar === 7 && Jtrgear >= 11 && JtrZeta ){
-	html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" ><font color="#00FF00">'+Jtrname+'</font></p>';
 	
-	}else{
-html +='<p class="jtrname" data-jtrslvl="'+Jtrstar+'" data-jtrlvl="'+Jtrlevel+'" data-jtrglvl="'+Jtrgear+'"data-jtrzl="'+JtrZeta+'" >'+Jtrname+'</p> ';}
-	
-	}else{html +='<p class="nszname"><font color="#C01111">'+leader+'</font></p> ';}
-
-	if(bb8name){
-		if(bb8lvl === 85 && bb8slvl === 7 && bb8glvl >= 11 && bb8zu1){
-			
-		html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'"><font color="#00FF00">'+bb8name+'</font></a>, ';
-	}else{
-	html +='<a class="bb8name" data-bb8slvl="'+bb8slvl+'" data-bb8lvl="'+bb8lvl+'" data-bb8glvl="'+bb8glvl+'" data-bb8zu1="'+bb8zu1+'">'+bb8name+'</a>, ';
-	}
-	}else{html +='<a class="nszname"><font color="#C01111">'+second+'</font></a>, ';}
-	 
-	if(r2name){
-		if(r2lvl === 85 && r2slvl === 7 && r2glvl >= 11 && r2zu1 === true && r2zu2===true){
-		html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'"><font color="#00FF00">'+r2name+'</font></a>, ';
-		
-	}else{
-	html +='<a class="r2name" data-r2slvl="'+r2slvl+'" data-r2lvl="'+r2lvl+'" data-r2glvl="'+r2glvl+'" data-r2zu1="'+r2zu1+'"data-r2zu2="'+r2zu2+'">'+r2name+'</a>, ';}
-	}else{html +='<a class="nszname"><font color="#C01111">'+third+'</font></a>, ';}
-	
-		if(rtname){
-		if(rtlvl === 85 && rtslvl === 7 && rtglvl >= 11){
-			
-		html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'"><font color="#00FF00">'+rtname+'</font></a>, ';
-	}else{
-	html +='<a class="rtname" data-rtslvl="'+rtslvl+'" data-rtlvl="'+rtlvl+'" data-rtglvl="'+rtglvl+'">'+rtname+'</a>, ';}
-	}else{html +='<a class="nszname"><font color="#C01111">Resistance Trooper</font></a>, ';}
-
-	if(reyname){
-		if(reylvl === 85 && reyslvl === 7 && reyglvl >= 11){
-			
-		html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" ><font color="#00FF00">'+reyname+'</font></a>, ';
-	}else{
-	html +='<a class="reyname" data-reyslvl="'+reyslvl+'" data-reylvl="'+reylvl+'" data-reyglvl="'+reyglvl+'" >'+reyname+'</a> ';
-	}
-	}else{html +='<a class="nszname"><font color="#C01111">Rey(Scavenger)</font></a>, ';}
-  /*html +=	'</div>';*/
-	html += '</div>';
-  	html += '</li>';
-  return html;
-  
-
-	}
 	
 	function strp4dn(memName,
 										Jtrname, Jtrstar, Jtrlevel, Jtrgear,JtrZeta,
