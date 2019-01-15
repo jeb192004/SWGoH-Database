@@ -37,12 +37,17 @@ var guildref = db.collection("Guilds").doc(guildName);
 
 				var guildArray = [];
 				var guildRosterArray = [];
-				//localStorage.clear();
+				
+				var timestamp1 = new Date().getTime() - (1 * 24 * 60 * 60 * 1000);
+				if(localStorage.getItem("last_updated") < timestamp1){
+				localStorage.clear();
+				}
 var counted = 0;
 //hstr jtr
 				var hstrJtr = [];
 //legendary characters
-				var legendaryJtr = [], legendaryBb8 = [], legendaryR2 = [];
+				var legendaryJtr = [], legendaryBb8 = [], legendaryR2 = [], legendaryC3po = [], legendaryGk = [], legendarySolo = [],
+							 legendaryOtchewie = [], legendaryEp = [];
 
 var guildArrayLs = JSON.parse(localStorage.getItem("guildArray"));
 var guildRosterArrayLs = JSON.parse(localStorage.getItem("guildRosterArray"));
@@ -50,6 +55,12 @@ var hstrJtrLs = JSON.parse(localStorage.getItem("hstrJtr"));
 var legendaryJtrLs = JSON.parse(localStorage.getItem("legendaryJtr"));
 var legendaryBb8Ls = JSON.parse(localStorage.getItem("legendaryBb8"));
 var legendaryR2Ls = JSON.parse(localStorage.getItem("legendaryR2"));
+var legendaryC3poLs = JSON.parse(localStorage.getItem("legendaryC3po"));
+var legendaryGkLs = JSON.parse(localStorage.getItem("legendaryGk"));
+var legendarySoloLs = JSON.parse(localStorage.getItem("legendarySolo"));
+var legendaryOtchewieLs = JSON.parse(localStorage.getItem("legendaryOtchewie"));
+var legendaryEpLs = JSON.parse(localStorage.getItem("legendaryEp"));
+
 
 				
 if(guildArrayLs!=null && guildArrayLs.length>0 && guildRosterArrayLs!=null && guildRosterArrayLs.length>0){
@@ -57,7 +68,7 @@ if(guildArrayLs!=null && guildArrayLs.length>0 && guildRosterArrayLs!=null && gu
 				
 }else{
 
-				
+				localStorage.setItem("last_updated",Date.now());
 				
 				fetch('https://api.swgoh.help/swgoh/guilds/676714695')
 			  .then(response => response.json()) 
@@ -202,12 +213,56 @@ var hstrp1 = [];
 				legendaryBb8Ls = legendaryBb8;
 				legendaryR2Ls = legendaryR2;
 				
+				var c3po = data.C3POLEGENDARY;
+				if(c3po === undefined || c3po.length == 0){}else{
+				legendaryC3po.push({player:player(c3po), gp:gp(c3po), starLevel:starLevel(c3po), level:level(c3po), gearLevel:gearLevel(c3po), zetas:zetas(c3po)});
+				player1 = player(c3po);
+				}
+				localStorage.setItem("legendaryC3po",JSON.stringify(legendaryC3po));
+				legendaryC3poLs = legendaryC3po;
+				
+				var gk = data.GENERALKENOBI;
+				if(gk === undefined || gk.length == 0){}else{
+				legendaryGk.push({player:player(gk), gp:gp(gk), starLevel:starLevel(gk), level:level(gk), gearLevel:gearLevel(gk), zetas:zetas(gk)});
+				player1 = player(gk);
+				}
+				localStorage.setItem("legendaryGk",JSON.stringify(legendaryGk));
+				legendaryGkLs = legendaryGk;
+				
+				var solo = data.HANSOLO;
+				if(solo === undefined || solo.length == 0){}else{
+				legendarySolo.push({player:player(solo), gp:gp(solo), starLevel:starLevel(solo), level:level(solo), gearLevel:gearLevel(solo), zetas:zetas(solo)});
+				player1 = player(solo);
+				}
+				localStorage.setItem("legendarySolo",JSON.stringify(legendarySolo));
+				legendarySoloLs = legendarySolo;
+				
+				var chewie = data.CHEWBACCALEGENDARY;
+				if(chewie === undefined || chewie.length == 0){}else{
+				legendaryOtchewie.push({player:player(chewie), gp:gp(chewie), starLevel:starLevel(chewie), level:level(chewie), gearLevel:gearLevel(chewie), zetas:zetas(chewie)});
+				player1 = player(chewie);
+				}
+				localStorage.setItem("legendaryOtchewie",JSON.stringify(legendaryOtchewie));
+				legendaryOtchewieLs = legendaryOtchewie;
+				
+				var ep = data.EMPERORPALPATINE;
+				if(ep === undefined || ep.length == 0){}else{
+				legendaryEp.push({player:player(ep), gp:gp(ep), starLevel:starLevel(ep), level:level(ep), gearLevel:gearLevel(ep), zetas:zetas(ep)});
+				player1 = player(ep);
+				}
+				localStorage.setItem("legendaryEp",JSON.stringify(legendaryEp));
+				legendaryEpLs = legendaryEp;
+				
+				
+				
 				
 			  n++;
 				
 				if(length === n){
 				$('#loading').hide();
 				}
+				$('#loading_text').innerHTML = "loading member " + n + "of" + length;
+				
 				 }) .catch(err => { 
 				alert('An error ocurred' + err); 
 				});
@@ -338,8 +393,19 @@ function shard_loc_item(shard_loc){
 				document.querySelector('#toons')
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
+	}if(shard_loc === "c3po"){
+		document.getElementById("header__title").innerHTML = legendaryC3poLs.length;
+		legendaryC3poLs.forEach(function (roster){		
+				var power = roster.gp;
+				var gearLvl = roster.gearLevel;
+				var member = roster.player;
+				var star = roster.starLevel;
+				var level = roster.level;		
+				document.querySelector('#toons')
+    .innerHTML += character(power, gearLvl, member, star, level);
+			});
 	}if(shard_loc === "gk"){
-		document.getElementById("header__title").innerHTML = gk.length;
+		document.getElementById("header__title").innerHTML = legendaryGkLs.length;
 		gk.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -350,7 +416,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "raidhan"){
-		document.getElementById("header__title").innerHTML = solo.length;
+		document.getElementById("header__title").innerHTML = legendarySoloLs.length;
 		solo.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -361,7 +427,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "chewie"){
-		document.getElementById("header__title").innerHTML = otchew.length;
+		document.getElementById("header__title").innerHTML = legendaryOtchewieLs.length;
 		otchew.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -372,7 +438,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "ep"){
-		document.getElementById("header__title").innerHTML = ep.length;
+		document.getElementById("header__title").innerHTML = legendaryEp.length;
 		ep.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -394,7 +460,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "cls"){
-		document.getElementById("header__title").innerHTML = cls.length;
+		document.getElementById("header__title").innerHTML = legendaryClsLs.length;
 		cls.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -405,7 +471,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "thrawn"){
-		document.getElementById("header__title").innerHTML = thrawn.length;
+		document.getElementById("header__title").innerHTML = legendaryThrawnLs.length;
 		thrawn.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -427,7 +493,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "gmy"){
-		document.getElementById("header__title").innerHTML = gmy.length;
+		document.getElementById("header__title").innerHTML = legendaryGmyLs.length;
 		gmy.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
@@ -438,7 +504,7 @@ function shard_loc_item(shard_loc){
     .innerHTML += character(power, gearLvl, member, star, level);
 			});
 	}if(shard_loc === "revan"){
-		document.getElementById("header__title").innerHTML = revan.length;
+		document.getElementById("header__title").innerHTML = legendaryRevanLs.length;
 		revan.forEach(function (roster){		
 				var power = roster.power;
 				var gearLvl = roster.gearlvl;
